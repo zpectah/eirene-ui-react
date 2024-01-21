@@ -1,8 +1,13 @@
 export const CLASSNAMES = {
+  GLOBAL: '@global',
   BUTTON: {
     root: 'Button',
     base: 'ButtonBase',
   },
-  BADGE: {},
-  CHIP: {},
+  BADGE: {
+    root: 'Badge',
+  },
+  CHIP: {
+    root: 'Chip',
+  },
 };

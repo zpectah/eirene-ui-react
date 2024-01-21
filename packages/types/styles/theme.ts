@@ -44,4 +44,5 @@ export interface UiContextProps {
 
 export interface UiProviderProps extends WithChildren {
   theme?: Partial<Theme>;
+  withGlobalStyles?: boolean;
 }

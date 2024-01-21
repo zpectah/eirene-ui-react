@@ -4,7 +4,7 @@ import { UiProvider } from 'styles';
 
 const App = () => {
   return (
-    <UiProvider>
+    <UiProvider withGlobalStyles>
       <main>
         mein app
         <br />
