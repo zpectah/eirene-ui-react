@@ -12,11 +12,12 @@ const ButtonBase = forwardRef(
       as: Component = config.BUTTON_DEFAULT_ELEMENT_TYPE,
       className,
       style,
+      jss,
       ...rest
     } = props;
 
     const { className: composedClassName, style: composedStyle } =
-      useButtonBaseStyles({ className, style });
+      useButtonBaseStyles({ className, style, jss });
 
     return (
       <Component

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "alwaysStrict": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "downlevelIteration": true,
   }
 }

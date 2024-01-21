@@ -22,6 +22,16 @@ const App = () => {
         </Button>
         <br />
         <br />
+        <Button
+          jss={{
+            backgroundColor: 'blue',
+            '&:hover': { backgroundColor: 'brown' },
+          }}
+        >
+          My Button
+        </Button>
+        <br />
+        <br />
         <div>...</div>
       </main>
     </UiProvider>
