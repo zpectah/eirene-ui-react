@@ -16,17 +16,9 @@ const ButtonBase = forwardRef(
       ...rest
     } = props;
 
-    const { className: composedClassName, style: composedStyle } =
-      useButtonBaseStyles({ className, style, jss });
+    const { root } = useButtonBaseStyles({ className, style, jss });
 
-    return (
-      <Component
-        ref={ref}
-        className={composedClassName}
-        style={composedStyle}
-        {...rest}
-      />
-    );
+    return <Component ref={ref} {...root} {...rest} />;
   }
 );
 

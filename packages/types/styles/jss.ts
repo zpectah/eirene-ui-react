@@ -21,7 +21,3 @@ export type JssPropertyValue<
     >
   | MinimalObservable<JssStyle | string | null | undefined>
 >;
-
-export interface WithJss {
-  jss?: JssPropertyValue;
-}

@@ -4,21 +4,26 @@ import { CLASSNAMES } from 'core';
 import { deepMerge } from 'utils';
 import { useAttachStylesheet, useUiContext } from 'styles';
 
-export const useButtonBaseStyles = (
-  props: UseButtonBaseStyles
-): UseButtonBaseStylesReturn => {
-  const { className, style, jss } = props;
-
+export const useButtonBaseStyles = ({
+  className,
+  style,
+  jss,
+}: UseButtonBaseStyles): UseButtonBaseStylesReturn => {
   const { theme } = useUiContext();
 
-  const buttonBaseStyle = {
-    [CLASSNAMES.BUTTON.base]: deepMerge(theme.components.ButtonBase.root, jss),
+  const stylesheet = {
+    [CLASSNAMES.BUTTON.base]: deepMerge(
+      theme.components.ButtonBase.root,
+      jss?.root
+    ),
   };
 
-  const { classes } = useAttachStylesheet(buttonBaseStyle);
+  const { classes } = useAttachStylesheet(stylesheet);
 
   return {
-    className: clsx(classes[CLASSNAMES.BUTTON.base], className),
-    style,
+    root: {
+      className: clsx(classes[CLASSNAMES.BUTTON.base], className),
+      style,
+    },
   };
 };

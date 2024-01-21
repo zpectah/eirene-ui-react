@@ -1,15 +1,26 @@
-import { ElementType, CSSProperties } from 'react';
-import { PolymorphicComponentPropsWithRef, WithJss } from 'types';
+import { ElementType } from 'react';
+import {
+  PolymorphicComponentPropsWithRef,
+  ComponentStyleProps,
+  JssPropertyValue,
+} from 'types';
 
-export type ButtonInitialProps<T extends ElementType> =
-  {} & PolymorphicComponentPropsWithRef<T>;
-
-export type ButtonBaseProps<T extends ElementType> = ButtonInitialProps<T> &
-  WithJss & {};
-
-export interface UseButtonBaseStyles extends WithJss {
-  className: string;
-  style: CSSProperties;
+export interface ButtonBaseJssProps {
+  jss: {
+    root: JssPropertyValue;
+  };
 }
 
-export interface UseButtonBaseStylesReturn extends UseButtonBaseStyles {}
+export type ButtonBaseInitialProps<T extends ElementType> =
+  {} & PolymorphicComponentPropsWithRef<T>;
+
+export type ButtonBaseProps<T extends ElementType> =
+  {} & ButtonBaseInitialProps<T> & Partial<ButtonBaseJssProps>;
+
+export interface UseButtonBaseStyles
+  extends ComponentStyleProps,
+    ButtonBaseJssProps {}
+
+export interface UseButtonBaseStylesReturn {
+  root: ComponentStyleProps;
+}

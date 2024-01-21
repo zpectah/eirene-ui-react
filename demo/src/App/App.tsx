@@ -1,4 +1,5 @@
 import React from 'react';
+import { ButtonBase } from 'base';
 import { Button } from 'components';
 import { UiProvider } from 'styles';
 
@@ -24,10 +25,33 @@ const App = () => {
         <br />
         <Button
           jss={{
-            backgroundColor: 'blue',
-            '&:hover': { backgroundColor: 'brown' },
+            root: {
+              backgroundColor: 'blue',
+              '&:hover': { backgroundColor: 'brown' },
+            },
           }}
         >
+          My Button
+        </Button>
+        <br />
+        <br />
+        <ButtonBase as="a" href="/">
+          My Base Button
+        </ButtonBase>
+        <br />
+        <br />
+        <Button
+          as="a"
+          href="/"
+          startIcon={<span>XY</span>}
+          endIcon={<span>XY</span>}
+          endIconProps={{ style: { paddingLeft: '3rem' } }}
+        >
+          My Button
+        </Button>
+        <br />
+        <br />
+        <Button as="a" href="/" isLoading>
           My Button
         </Button>
         <br />

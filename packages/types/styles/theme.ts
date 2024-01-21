@@ -19,8 +19,9 @@ export interface ThemeComponents {
   };
   Button: {
     root: JssPropertyValue;
-    // startIcon: JssPropertyValue;
-    // endIcon: JssPropertyValue;
+    startIcon: JssPropertyValue;
+    endIcon: JssPropertyValue;
+    loadingIcon: JssPropertyValue;
   };
 }
 export interface ThemePalette {
