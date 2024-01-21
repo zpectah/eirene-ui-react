@@ -5,6 +5,9 @@ export const CLASSNAMES = {
     loading: 'is--loading',
     active: 'is--active',
   },
+  __SUFFIX: {
+    fullWidth: '--fullWidth',
+  },
   BUTTON: {
     base: 'ButtonBase',
     root: 'Button',
@@ -17,5 +20,6 @@ export const CLASSNAMES = {
   },
   CHIP: {
     root: 'Chip',
+    actionIcon: 'Chip-actionIcon',
   },
 };

@@ -14,10 +14,10 @@ export const useButtonStyles = ({
   startIconProps,
   endIconProps,
   loadingIconProps,
-  fullWidth, // TODO
-  color, // TODO
-  size, // TODO
-  variant, // TODO
+  fullWidth,
+  color,
+  size,
+  variant,
 }: UseButtonStyles): UseButtonStylesReturn => {
   const { theme } = useUiContext();
 
@@ -46,9 +46,14 @@ export const useButtonStyles = ({
     root: {
       className: clsx(
         classes[CLASSNAMES.BUTTON.root],
+        `${CLASSNAMES.BUTTON.root}--${size}`,
+        `${CLASSNAMES.BUTTON.root}--${variant}`,
+        `${CLASSNAMES.BUTTON.root}--${color}`,
         isLoading && CLASSNAMES.__STATE.loading,
         isDisabled && CLASSNAMES.__STATE.disabled,
         isActive && CLASSNAMES.__STATE.active,
+        fullWidth &&
+          `${CLASSNAMES.BUTTON.root}${CLASSNAMES.__SUFFIX.fullWidth}`,
         className
       ),
       style,

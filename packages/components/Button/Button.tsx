@@ -23,9 +23,9 @@ const Button = forwardRef(
       loadingIcon,
       loadingIconProps,
       fullWidth,
-      color,
-      size,
-      variant,
+      color = 'primary',
+      size = 'medium',
+      variant = 'contained',
       ...rest
     } = props;
 
@@ -53,9 +53,7 @@ const Button = forwardRef(
     const renderChildrenNode = useMemo(() => {
       return (
         <>
-          {isLoading && (
-            <span {...loadingIconStyleProps}>Loading state icon</span>
-          )}
+          {isLoading && <span {...loadingIconStyleProps}>Loading</span>}
           {startIcon && <span {...startIconStyleProps}>{startIcon}</span>}
           {children}
           {endIcon && <span {...endIconStyleProps}>{endIcon}</span>}

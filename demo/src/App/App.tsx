@@ -56,6 +56,9 @@ const App = () => {
         </Button>
         <br />
         <br />
+        <Button fullWidth>My fullwidth Button</Button>
+        <br />
+        <br />
         <div>...</div>
       </main>
     </UiProvider>

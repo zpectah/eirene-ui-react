@@ -29,7 +29,15 @@ export interface ButtonLoadingProps {
 
 export interface ButtonElementaryProps {
   fullWidth?: boolean;
-  color?: 'primary' | 'secondary' | 'tertiary'; // TODO
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'error'
+    | 'warning'
+    | 'info'
+    | 'success'
+    | string; // TODO
   size?: 'small' | 'medium' | 'large' | string; // TODO
   variant?: 'text' | 'outlined' | 'contained' | string; // TODO
   isDisabled?: boolean;

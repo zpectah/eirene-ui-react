@@ -11,6 +11,12 @@ export enum themeModeKeys {
 
 export type ThemeMode = keyof typeof themeModeKeys;
 export type ThemeDirection = keyof typeof themeDirectionKeys;
+export type ThemePaletteCluster = {
+  main: string;
+  light: string;
+  dark: string;
+  text: string;
+};
 
 export interface ThemeBreakpoints {}
 export interface ThemeComponents {
@@ -26,6 +32,29 @@ export interface ThemeComponents {
 }
 export interface ThemePalette {
   mode: ThemeMode;
+  common: {
+    black: string;
+    white: string;
+  };
+
+  primary: ThemePaletteCluster;
+  secondary: ThemePaletteCluster;
+  tertiary: ThemePaletteCluster;
+  error: ThemePaletteCluster;
+  warning: ThemePaletteCluster;
+  info: ThemePaletteCluster;
+  success: ThemePaletteCluster;
+
+  // TODO - typography
+  // TODO - background
+  // TODO - border / divider
+
+  action: {
+    disabled: string;
+    disabledOpacity: number;
+    active: string;
+    activeOpacity: number;
+  };
 }
 export interface ThemeShapes {}
 export interface ThemeSpacing {}
