@@ -1,0 +1,8 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "strict": true,
+    "alwaysStrict": true,
+    "jsx": "react-jsx"
+  }
+}

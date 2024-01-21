@@ -1,15 +1,42 @@
 {
-  "name": "package-based",
+  "name": "eirene-ui-react",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:packages": "yarn nx run-many -t build",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "start:demo": "vite",
+    "build:demo": "vite build"
+  },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "clsx": "^2.1.0",
+    "jss": "^10.10.0",
+    "jss-preset-default": "^10.10.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tslib": "^2.6.2"
+  },
   "devDependencies": {
     "@nx/js": "17.2.8",
-    "nx": "17.2.8"
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "nx": "17.2.8",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "main": "dist",
+  "author": "Tomas Sychra <sychrat@gmail.com>"
 }

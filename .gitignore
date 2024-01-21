@@ -4,6 +4,7 @@
 dist
 tmp
 /out-tsc
+demo/dist
 
 # dependencies
 node_modules
