@@ -1,4 +1,4 @@
-import { WithChildren } from '../common';
+import { JssStyle, MinimalObservable, Styles } from 'jss';
 
 export enum themeDirectionKeys {
   ltr = 'ltr',
@@ -12,8 +12,38 @@ export enum themeModeKeys {
 export type ThemeMode = keyof typeof themeModeKeys;
 export type ThemeDirection = keyof typeof themeDirectionKeys;
 
+type Func<P, T, R> = T extends undefined
+  ? (data: P) => R
+  : (data: P & { theme: T }) => R;
+export type JssPropertyValue<
+  Name extends string | number | symbol = string,
+  Props = unknown,
+  Theme = undefined,
+> = Record<
+  Name,
+  | JssStyle<Props, Theme>
+  | Array<JssStyle<Props, Theme>>
+  | string
+  | number
+  | Func<
+      Props,
+      Theme,
+      JssStyle<undefined, undefined> | string | null | undefined
+    >
+  | MinimalObservable<JssStyle | string | null | undefined>
+>;
+
 export interface ThemeBreakpoints {}
-export interface ThemeComponents {}
+export interface ThemeComponents {
+  ButtonBase: {
+    root: JssPropertyValue;
+  };
+  Button: {
+    root: JssPropertyValue;
+    startIcon: JssPropertyValue;
+    endIcon: JssPropertyValue;
+  };
+}
 export interface ThemePalette {
   mode: ThemeMode;
 }
@@ -34,15 +64,4 @@ export interface Theme {
   typography: ThemeTypography;
   transitions: ThemeTransitions;
   zIndex: ThemeZIndex;
-}
-
-export interface UiContextProps {
-  theme: Theme;
-  setTheme: (theme: Partial<Theme>) => void;
-  setThemeMode: (mode: ThemeMode) => void;
-}
-
-export interface UiProviderProps extends WithChildren {
-  theme?: Partial<Theme>;
-  withGlobalStyles?: boolean;
 }

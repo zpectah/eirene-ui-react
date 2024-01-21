@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import jss from 'jss';
-import preset from 'jss-preset-default';
+import React, { useState } from 'react';
 import { UiProviderProps, Theme, ThemeMode } from 'types';
 import { globalStyle } from '../global';
 import { defaultTheme } from '../theme';
+import { useAttachStylesheet } from '../hooks';
 import { UiContextProvider } from '../UiContext';
-
-jss.setup(preset());
 
 const UiProvider = ({ children, theme, withGlobalStyles }: UiProviderProps) => {
   /*
@@ -48,12 +45,11 @@ const UiProvider = ({ children, theme, withGlobalStyles }: UiProviderProps) => {
 
   console.log('Ui provider is loaded', defaultProviderValues); // TODO #delete
 
-  useEffect(() => {
-    if (withGlobalStyles) jss.createStyleSheet(globalStyle).attach().toString();
-  }, [withGlobalStyles]);
+  const styles = useAttachStylesheet(globalStyle).toString();
 
   return (
     <UiContextProvider value={defaultProviderValues}>
+      {withGlobalStyles && <style>{styles}</style>}
       {children}
     </UiContextProvider>
   );

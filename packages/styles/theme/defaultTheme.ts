@@ -2,7 +2,19 @@ import { Theme, themeDirectionKeys, themeModeKeys } from 'types';
 
 const defaultTheme: Theme = {
   breakpoints: {},
-  components: {},
+  components: {
+    ButtonBase: {
+      root: {},
+    },
+    Button: {
+      root: {
+        margin: 0,
+        padding: 0,
+      },
+      startIcon: {},
+      endIcon: {},
+    },
+  },
   palette: {
     mode: themeModeKeys.light,
   },
