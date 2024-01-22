@@ -44,12 +44,15 @@ export interface ThemePalette {
   warning: ThemePaletteCluster;
   info: ThemePaletteCluster;
   success: ThemePaletteCluster;
+  inverted: ThemePaletteCluster;
 
   // TODO - typography
   // TODO - background
   // TODO - border / divider
 
   action: {
+    hover: string;
+    hoverOpacity: number;
     disabled: string;
     disabledOpacity: number;
     active: string;

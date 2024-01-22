@@ -8,7 +8,6 @@ export default defineConfig({
     outDir: 'demo/dist',
     rollupOptions: {
       input: {
-        // app: './demo/index.html',
         index: './demo/src/index.tsx',
       },
       output: {

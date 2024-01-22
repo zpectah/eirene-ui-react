@@ -11,15 +11,22 @@ export interface ButtonBaseJssProps {
   };
 }
 
+export interface ButtonBaseElementaryProps {
+  isDisabled?: boolean;
+}
+
 export type ButtonBaseInitialProps<T extends ElementType> =
   {} & PolymorphicComponentPropsWithRef<T>;
 
 export type ButtonBaseProps<T extends ElementType> =
-  {} & ButtonBaseInitialProps<T> & Partial<ButtonBaseJssProps>;
+  {} & ButtonBaseInitialProps<T> &
+    Partial<ButtonBaseJssProps> &
+    ButtonBaseElementaryProps;
 
 export interface UseButtonBaseStyles
   extends ComponentStyleProps,
-    ButtonBaseJssProps {}
+    ButtonBaseJssProps,
+    ButtonBaseElementaryProps {}
 
 export interface UseButtonBaseStylesReturn {
   root: ComponentStyleProps;

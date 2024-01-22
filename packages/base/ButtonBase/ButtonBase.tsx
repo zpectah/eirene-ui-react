@@ -13,10 +13,11 @@ const ButtonBase = forwardRef(
       className,
       style,
       jss,
+      isDisabled,
       ...rest
     } = props;
 
-    const { root } = useButtonBaseStyles({ className, style, jss });
+    const { root } = useButtonBaseStyles({ className, style, jss, isDisabled });
 
     return <Component ref={ref} {...root} {...rest} />;
   }

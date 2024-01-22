@@ -2,6 +2,7 @@
   "name": "eirene-ui-react",
   "version": "0.0.0",
   "license": "MIT",
+  "author": "Tomas Sychra <sychrat@gmail.com>",
   "scripts": {
     "build:packages": "yarn nx run-many -t build",
     "prettier:check": "prettier --check .",
@@ -38,7 +39,5 @@
   },
   "workspaces": [
     "packages/*"
-  ],
-  "main": "dist",
-  "author": "Tomas Sychra <sychrat@gmail.com>"
+  ]
 }

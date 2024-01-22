@@ -37,6 +37,7 @@ export interface ButtonElementaryProps {
     | 'warning'
     | 'info'
     | 'success'
+    | 'inverted'
     | string; // TODO
   size?: 'small' | 'medium' | 'large' | string; // TODO
   variant?: 'text' | 'outlined' | 'contained' | string; // TODO

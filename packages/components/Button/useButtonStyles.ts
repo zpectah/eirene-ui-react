@@ -9,7 +9,6 @@ export const useButtonStyles = ({
   style,
   jss,
   isLoading,
-  isDisabled,
   isActive,
   startIconProps,
   endIconProps,
@@ -46,11 +45,10 @@ export const useButtonStyles = ({
     root: {
       className: clsx(
         classes[CLASSNAMES.BUTTON.root],
-        `${CLASSNAMES.BUTTON.root}--${size}`,
-        `${CLASSNAMES.BUTTON.root}--${variant}`,
-        `${CLASSNAMES.BUTTON.root}--${color}`,
+        `size--${size}`,
+        `variant--${variant}`,
+        `color--${color}`,
         isLoading && CLASSNAMES.__STATE.loading,
-        isDisabled && CLASSNAMES.__STATE.disabled,
         isActive && CLASSNAMES.__STATE.active,
         fullWidth &&
           `${CLASSNAMES.BUTTON.root}${CLASSNAMES.__SUFFIX.fullWidth}`,

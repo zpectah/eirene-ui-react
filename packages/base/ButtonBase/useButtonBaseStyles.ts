@@ -8,6 +8,7 @@ export const useButtonBaseStyles = ({
   className,
   style,
   jss,
+  isDisabled,
 }: UseButtonBaseStyles): UseButtonBaseStylesReturn => {
   const { theme } = useUiContext();
 
@@ -22,7 +23,11 @@ export const useButtonBaseStyles = ({
 
   return {
     root: {
-      className: clsx(classes[CLASSNAMES.BUTTON.base], className),
+      className: clsx(
+        classes[CLASSNAMES.BUTTON.base],
+        isDisabled && CLASSNAMES.__STATE.disabled,
+        className
+      ),
       style,
     },
   };
