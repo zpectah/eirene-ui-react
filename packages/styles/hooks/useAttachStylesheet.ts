@@ -6,4 +6,4 @@ jss.setup(preset());
 export const useAttachStylesheet = (
   stylesheet: Partial<Styles<string | number, any, undefined>>,
   options?: StyleSheetFactoryOptions
-): StyleSheet => jss.createStyleSheet(stylesheet, options).attach();
+): StyleSheet => jss.createStyleSheet(stylesheet, options);

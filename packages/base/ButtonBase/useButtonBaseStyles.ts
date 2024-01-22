@@ -18,7 +18,7 @@ export const useButtonBaseStyles = ({
     ),
   };
 
-  const { classes } = useAttachStylesheet(stylesheet);
+  const { classes } = useAttachStylesheet(stylesheet).attach();
 
   return {
     root: {

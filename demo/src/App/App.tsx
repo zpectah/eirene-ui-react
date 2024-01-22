@@ -2,12 +2,16 @@ import React from 'react';
 import { ButtonBase } from 'base';
 import { Button } from 'components';
 import { UiProvider } from 'styles';
+import View from './View.tsx';
 
 const App = () => {
   return (
     <UiProvider withGlobalStyles>
       <main>
         mein app
+        <br />
+        <br />
+        <View />
         <br />
         <br />
         <Button>My Button</Button>

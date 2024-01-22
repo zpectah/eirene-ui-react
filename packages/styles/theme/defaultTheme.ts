@@ -1,3 +1,4 @@
+import color from 'color';
 import { Theme, themeDirectionKeys, themeModeKeys } from 'types';
 import { CLASSNAMES } from 'core';
 import { deepMerge } from 'utils';
@@ -10,7 +11,17 @@ const __isLoading = `&.${CLASSNAMES.__STATE.loading}`;
 const __isDisabled = `&.${CLASSNAMES.__STATE.disabled}`;
 const __isActive = `&.${CLASSNAMES.__STATE.active}`;
 
-export const getTheme = (theme?: Partial<Theme>): Theme => {
+export const createTheme = (theme?: Partial<Theme>): Theme => {
+  const preparedPalette = {
+    primary: theme?.palette?.primary.main || colorPalette.primary,
+    secondary: theme?.palette?.secondary.main || colorPalette.secondary,
+    tertiary: theme?.palette?.tertiary.main || colorPalette.tertiary,
+    error: theme?.palette?.error.main || colorPalette.error,
+    warning: theme?.palette?.warning.main || colorPalette.warning,
+    info: theme?.palette?.info.main || colorPalette.info,
+    success: theme?.palette?.success.main || colorPalette.success,
+  };
+
   const breakpoints: Theme['breakpoints'] = {};
   const palette: Theme['palette'] = {
     mode: themeModeKeys.light,
@@ -19,45 +30,45 @@ export const getTheme = (theme?: Partial<Theme>): Theme => {
       white: colorPalette.white,
     },
     primary: {
-      main: colorPalette.primary,
-      light: '',
-      dark: '',
+      main: preparedPalette.primary,
+      light: color(preparedPalette.primary).lighten(0.5).string(),
+      dark: color(preparedPalette.primary).darken(0.5).string(),
       text: colorPalette.light,
     },
     secondary: {
-      main: colorPalette.secondary,
-      light: '',
-      dark: '',
+      main: preparedPalette.secondary,
+      light: color(preparedPalette.secondary).lighten(0.5).string(),
+      dark: color(preparedPalette.secondary).darken(0.5).string(),
       text: colorPalette.light,
     },
     tertiary: {
-      main: colorPalette.tertiary,
-      light: '',
-      dark: '',
+      main: preparedPalette.tertiary,
+      light: color(preparedPalette.tertiary).lighten(0.5).string(),
+      dark: color(preparedPalette.tertiary).darken(0.5).string(),
       text: colorPalette.light,
     },
     error: {
-      main: colorPalette.error,
-      light: '',
-      dark: '',
+      main: preparedPalette.error,
+      light: color(preparedPalette.error).lighten(0.5).string(),
+      dark: color(preparedPalette.error).darken(0.5).string(),
       text: colorPalette.light,
     },
     warning: {
-      main: colorPalette.warning,
-      light: '',
-      dark: '',
+      main: preparedPalette.warning,
+      light: color(preparedPalette.warning).lighten(0.5).string(),
+      dark: color(preparedPalette.warning).darken(0.5).string(),
       text: colorPalette.light,
     },
     info: {
-      main: colorPalette.info,
-      light: '',
-      dark: '',
+      main: preparedPalette.info,
+      light: color(preparedPalette.info).lighten(0.5).string(),
+      dark: color(preparedPalette.info).darken(0.5).string(),
       text: colorPalette.light,
     },
     success: {
-      main: colorPalette.success,
-      light: '',
-      dark: '',
+      main: preparedPalette.success,
+      light: color(preparedPalette.success).lighten(0.5).string(),
+      dark: color(preparedPalette.success).darken(0.5).string(),
       text: colorPalette.light,
     },
     action: {
@@ -150,6 +161,6 @@ export const getTheme = (theme?: Partial<Theme>): Theme => {
   return deepMerge(composedTheme, theme);
 };
 
-const defaultTheme: Theme = getTheme();
+const defaultTheme: Theme = createTheme();
 
 export default defaultTheme;

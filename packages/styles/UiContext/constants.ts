@@ -5,4 +5,5 @@ export const defaultUiContext: UiContextProps = {
   theme: defaultTheme,
   setTheme: () => {},
   setThemeMode: () => {},
+  toggleThemeMode: () => {},
 };

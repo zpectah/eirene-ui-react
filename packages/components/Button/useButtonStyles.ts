@@ -40,7 +40,7 @@ export const useButtonStyles = ({
     ),
   };
 
-  const { classes } = useAttachStylesheet(stylesheet);
+  const { classes } = useAttachStylesheet(stylesheet).attach();
 
   return {
     root: {

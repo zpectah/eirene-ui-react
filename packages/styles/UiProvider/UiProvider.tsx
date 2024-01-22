@@ -1,55 +1,57 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { UiProviderProps, Theme, ThemeMode } from 'types';
+import { deepMerge } from 'utils';
 import { globalStyle } from '../global';
-import { defaultTheme } from '../theme';
+import { defaultTheme, createTheme } from '../theme';
 import { useAttachStylesheet } from '../hooks';
 import { UiContextProvider } from '../UiContext';
 
 const UiProvider = ({ children, theme, withGlobalStyles }: UiProviderProps) => {
-  /*
-   *
-   * TODO
-   * Tady bude výchozí Theme objekt
-   * Pokud přijdou nějaké změny v theme - opatrně mergnout celý objekt a nahradit nové údaje
-   *
-   * */
   const [uiTheme, setUiTheme] = useState<Theme>({
     ...defaultTheme,
     ...theme,
   });
 
   const setThemeHandler = (theme: Partial<Theme>) => {
-    const composedTheme = {
-      ...defaultTheme,
-      ...theme,
-    };
-    // console.log('composedTheme', composedTheme); // TODO #delete
-    setUiTheme(composedTheme);
-  };
-  const setThemeModeHandler = (mode: ThemeMode) => {
-    const composedTheme = {
-      ...uiTheme,
-      palette: {
-        mode,
-      },
-    };
-    // console.log('composedTheme', composedTheme); // TODO #delete
+    const newTheme = createTheme(theme);
+    const composedTheme = deepMerge(defaultTheme, newTheme);
+
     setUiTheme(composedTheme);
   };
 
-  const defaultProviderValues = {
-    theme: uiTheme,
-    setTheme: setThemeHandler,
-    setThemeMode: setThemeModeHandler,
-  };
+  const setThemeModeHandler = useCallback(
+    (mode: ThemeMode) => {
+      const composedTheme = deepMerge(uiTheme, {
+        palette: { ...uiTheme.palette, mode },
+      });
 
-  console.log('Ui provider is loaded', defaultProviderValues); // TODO #delete
+      setUiTheme(composedTheme);
+    },
+    [uiTheme]
+  );
 
-  const styles = useAttachStylesheet(globalStyle).toString();
+  const toggleThemeModeHandler = useCallback(() => {
+    const mode = uiTheme.palette.mode === 'light' ? 'dark' : 'light'; // TODO
+    const composedTheme = deepMerge(uiTheme, {
+      palette: { ...uiTheme.palette, mode },
+    });
+
+    setUiTheme(composedTheme);
+  }, [uiTheme]);
+
+  const defaultProviderValues = useMemo(() => {
+    return {
+      theme: uiTheme,
+      setTheme: setThemeHandler,
+      setThemeMode: setThemeModeHandler,
+      toggleThemeMode: toggleThemeModeHandler,
+    };
+  }, [uiTheme]);
+
+  if (withGlobalStyles) useAttachStylesheet(globalStyle).attach();
 
   return (
     <UiContextProvider value={defaultProviderValues}>
-      {withGlobalStyles && <style>{styles}</style>}
       {children}
     </UiContextProvider>
   );

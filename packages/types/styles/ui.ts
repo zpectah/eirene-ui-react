@@ -5,6 +5,7 @@ export interface UiContextProps {
   theme: Theme;
   setTheme: (theme: Partial<Theme>) => void;
   setThemeMode: (mode: ThemeMode) => void;
+  toggleThemeMode: () => void;
 }
 
 export interface UiProviderProps extends WithChildren {
