@@ -1,31 +1,39 @@
+export const CLASSNAME_PREFIX = {
+  size: 'size--',
+  variant: 'variant--',
+  color: 'color--',
+  is: 'is--',
+};
+
+export const CLASSNAME_SUFFIX = {
+  fullWidth: '--fullWidth',
+};
+
 export const CLASSNAMES = {
-  __SUFFIX: {
-    fullWidth: '--fullWidth',
-  },
   __STATE: {
-    disabled: 'is--disabled',
-    loading: 'is--loading',
-    active: 'is--active',
+    disabled: `${CLASSNAME_PREFIX.is}disabled`,
+    loading: `${CLASSNAME_PREFIX.is}loading`,
+    active: `${CLASSNAME_PREFIX.is}active`,
   },
   __VARIANT: {
-    contained: 'variant--contained',
-    outlined: 'variant--outlined',
-    text: 'variant--text',
+    contained: `${CLASSNAME_PREFIX.variant}contained`,
+    outlined: `${CLASSNAME_PREFIX.variant}outlined`,
+    text: `${CLASSNAME_PREFIX.variant}text`,
   },
   __COLOR: {
-    primary: 'color--primary',
-    secondary: 'color--secondary',
-    tertiary: 'color--tertiary',
-    error: 'color--error',
-    warning: 'color--warning',
-    info: 'color--info',
-    success: 'color--success',
-    inverted: 'color--inverted',
+    primary: `${CLASSNAME_PREFIX.color}primary`,
+    secondary: `${CLASSNAME_PREFIX.color}secondary`,
+    tertiary: `${CLASSNAME_PREFIX.color}tertiary`,
+    error: `${CLASSNAME_PREFIX.color}error`,
+    warning: `${CLASSNAME_PREFIX.color}warning`,
+    info: `${CLASSNAME_PREFIX.color}info`,
+    success: `${CLASSNAME_PREFIX.color}success`,
+    inverted: `${CLASSNAME_PREFIX.color}inverted`,
   },
   __SIZE: {
-    small: 'size--small',
-    medium: 'size--medium',
-    large: 'size-large',
+    small: `${CLASSNAME_PREFIX.size}small`,
+    medium: `${CLASSNAME_PREFIX.size}medium`,
+    large: `${CLASSNAME_PREFIX.size}large`,
   },
   BUTTON: {
     base: 'ButtonBase',

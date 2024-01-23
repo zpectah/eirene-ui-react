@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { UseButtonStyles, UseButtonStylesReturn } from 'types';
-import { CLASSNAMES } from 'core';
+import { CLASSNAMES, CLASSNAME_PREFIX, CLASSNAME_SUFFIX } from 'core';
 import { deepMerge } from 'utils';
 import { useAttachStylesheet, useUiContext } from 'styles';
 
@@ -45,13 +45,12 @@ export const useButtonStyles = ({
     root: {
       className: clsx(
         classes[CLASSNAMES.BUTTON.root],
-        `size--${size}`,
-        `variant--${variant}`,
-        `color--${color}`,
+        `${CLASSNAME_PREFIX.size}${size}`,
+        `${CLASSNAME_PREFIX.variant}${variant}`,
+        `${CLASSNAME_PREFIX.color}${color}`,
         isLoading && CLASSNAMES.__STATE.loading,
         isActive && CLASSNAMES.__STATE.active,
-        fullWidth &&
-          `${CLASSNAMES.BUTTON.root}${CLASSNAMES.__SUFFIX.fullWidth}`,
+        fullWidth && `${CLASSNAMES.BUTTON.root}${CLASSNAME_SUFFIX.fullWidth}`,
         className
       ),
       style,

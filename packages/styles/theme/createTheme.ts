@@ -1,114 +1,18 @@
 import color from 'color';
 import { Theme, themeDirectionKeys, themeModeKeys } from 'types';
-import { CLASSNAMES, SELECTORS, PSEUDO_SELECTORS } from 'core';
+import {
+  CLASSNAMES,
+  CLASSNAME_PREFIX,
+  CLASSNAME_SUFFIX,
+  SELECTORS,
+  PSEUDO_SELECTORS,
+} from 'core';
 import { deepMerge } from 'utils';
 import { defaultColorPalette } from './palette';
 
 // Style common prefixes
 const _withAllDisabled = `&${PSEUDO_SELECTORS.DISABLED}, &${SELECTORS.DISABLED}, &.${CLASSNAMES.__STATE.disabled}`;
-
 const _onHoverFocusNotDisabled = `&${PSEUDO_SELECTORS.HOVER}:not(${_withAllDisabled}), &${PSEUDO_SELECTORS.FOCUS}:not(${_withAllDisabled})`;
-
-const getButtonLikeVariants = (
-  key:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'error'
-    | 'warning'
-    | 'info'
-    | 'success'
-    | 'inverted',
-  palette: Theme['palette']
-) => {
-  const main = palette[key].main;
-  const text = palette[key].text;
-  const hover = palette.action.hover;
-  const disabled = palette.action.disabled;
-
-  const shadowPrefix = 'inset 0 0 0 2.5rem';
-  const isInverted = key === 'inverted';
-
-  return {
-    [`&.${CLASSNAMES.__VARIANT.contained}`]: {
-      backgroundColor: main,
-      color: text,
-      borderColor: main,
-
-      [`${_onHoverFocusNotDisabled}`]: !isInverted
-        ? {
-            boxShadow: `${shadowPrefix} ${hover}`,
-          }
-        : {
-            boxShadow: `${shadowPrefix} ${hover}`,
-            borderColor: color(hover).darken(0.1).toString(),
-          },
-      [_withAllDisabled]: !isInverted
-        ? {
-            backgroundColor: color(disabled).lighten(3.5).toString(),
-            color: color(disabled).darken(5).toString(),
-            borderColor: color(disabled).lighten(3.5).toString(),
-          }
-        : {
-            /* Inverted without special definition for disabled */
-          },
-    },
-    [`&.${CLASSNAMES.__VARIANT.outlined}`]: {
-      backgroundColor: 'transparent',
-      color: main,
-      borderColor: main,
-
-      [`${_onHoverFocusNotDisabled}`]: !isInverted
-        ? {
-            boxShadow: `${shadowPrefix} ${color(main)
-              .alpha(palette.action.hoverOpacity)
-              .toString()}`,
-            color: color(main).darken(palette.action.hoverOpacity).toString(),
-            borderColor: color(main)
-              .darken(palette.action.hoverOpacity)
-              .toString(),
-          }
-        : {
-            boxShadow: `${shadowPrefix} ${hover}`,
-            borderColor: hover,
-            color: palette.inverted.text,
-          },
-      [_withAllDisabled]: !isInverted
-        ? {
-            borderColor: disabled,
-            color: disabled,
-          }
-        : {
-            /* Inverted without special definition for disabled */
-          },
-    },
-    [`&.${CLASSNAMES.__VARIANT.text}`]: {
-      backgroundColor: 'transparent',
-      color: main,
-      borderColor: 'transparent',
-
-      [`${_onHoverFocusNotDisabled}`]: !isInverted
-        ? {
-            boxShadow: `${shadowPrefix} ${color(main)
-              .alpha(palette.action.hoverOpacity)
-              .toString()}`,
-            color: color(main).darken(palette.action.hoverOpacity).toString(),
-          }
-        : {
-            boxShadow: `${shadowPrefix} ${hover}`,
-            color: palette.inverted.text,
-            borderColor: hover,
-          },
-      [_withAllDisabled]: !isInverted
-        ? {
-            color: disabled,
-          }
-        : {
-            /* Inverted without special definition for disabled */
-          },
-    },
-  };
-};
 
 export const createTheme = (theme?: Partial<Theme>): Theme => {
   // Theme prepared objects
@@ -133,6 +37,9 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
     disabledOpacity: theme?.palette?.action.disabledOpacity || 0.25,
     activeOpacity: theme?.palette?.action.activeOpacity || 0.25,
   };
+
+  // Helpers methods
+  // TODO
 
   // Theme sub-objects
   const breakpoints: Theme['breakpoints'] = {};
@@ -215,6 +122,105 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
   };
   const transitions: Theme['transitions'] = {};
   const zIndex: Theme['zIndex'] = {};
+
+  // Components helpers methods
+  const getButtonLikeVariants = (
+    key:
+      | 'primary'
+      | 'secondary'
+      | 'tertiary'
+      | 'error'
+      | 'warning'
+      | 'info'
+      | 'success'
+      | 'inverted'
+  ) => {
+    const main = palette[key].main;
+    const text = palette[key].text;
+    const hover = palette.action.hover;
+    const disabled = palette.action.disabled;
+    const shadowPrefix = 'inset 0 0 0 2.5rem';
+    const isInverted = key === 'inverted';
+
+    return {
+      [`&.${CLASSNAMES.__VARIANT.contained}`]: {
+        backgroundColor: main,
+        color: text,
+        borderColor: main,
+        [`${_onHoverFocusNotDisabled}`]: !isInverted
+          ? {
+              boxShadow: `${shadowPrefix} ${hover}`,
+            }
+          : {
+              boxShadow: `${shadowPrefix} ${hover}`,
+              borderColor: color(hover).darken(0.1).toString(),
+            },
+        [_withAllDisabled]: !isInverted
+          ? {
+              backgroundColor: color(disabled).lighten(3.5).toString(),
+              color: color(disabled).darken(5).toString(),
+              borderColor: color(disabled).lighten(3.5).toString(),
+            }
+          : {
+              /* Inverted without special definition for disabled */
+            },
+      },
+      [`&.${CLASSNAMES.__VARIANT.outlined}`]: {
+        backgroundColor: 'transparent',
+        color: main,
+        borderColor: main,
+        [`${_onHoverFocusNotDisabled}`]: !isInverted
+          ? {
+              boxShadow: `${shadowPrefix} ${color(main)
+                .alpha(palette.action.hoverOpacity)
+                .toString()}`,
+              color: color(main).darken(palette.action.hoverOpacity).toString(),
+              borderColor: color(main)
+                .darken(palette.action.hoverOpacity)
+                .toString(),
+            }
+          : {
+              boxShadow: `${shadowPrefix} ${hover}`,
+              borderColor: hover,
+              color: palette.inverted.text,
+            },
+        [_withAllDisabled]: !isInverted
+          ? {
+              borderColor: disabled,
+              color: disabled,
+            }
+          : {
+              /* Inverted without special definition for disabled */
+            },
+      },
+      [`&.${CLASSNAMES.__VARIANT.text}`]: {
+        backgroundColor: 'transparent',
+        color: main,
+        borderColor: 'transparent',
+        [`${_onHoverFocusNotDisabled}`]: !isInverted
+          ? {
+              boxShadow: `${shadowPrefix} ${color(main)
+                .alpha(palette.action.hoverOpacity)
+                .toString()}`,
+              color: color(main).darken(palette.action.hoverOpacity).toString(),
+            }
+          : {
+              boxShadow: `${shadowPrefix} ${hover}`,
+              color: palette.inverted.text,
+              borderColor: hover,
+            },
+        [_withAllDisabled]: !isInverted
+          ? {
+              color: disabled,
+            }
+          : {
+              /* Inverted without special definition for disabled */
+            },
+      },
+    };
+  };
+
+  // Components style definitions
   const components: Theme['components'] = {
     ButtonBase: {
       root: {
@@ -240,10 +246,6 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
       root: {
         margin: 0,
 
-        // [`&.${PSEUDO_SELECTORS.HOVER}`]: {},
-        // [`&.${PSEUDO_SELECTORS.ACTIVE}`]: {},
-        // [`&.${PSEUDO_SELECTORS.FOCUS}`]: {},
-
         // TODO
         borderWidth: '1px',
         borderStyle: 'solid',
@@ -264,7 +266,7 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
         [`&.${CLASSNAMES.__STATE.active}`]: {},
 
         // Button isFullWidth
-        [`&.${CLASSNAMES.BUTTON.root}${CLASSNAMES.__SUFFIX.fullWidth}`]: {
+        [`&.${CLASSNAMES.BUTTON.root}${CLASSNAME_SUFFIX.fullWidth}`]: {
           width: '100%',
         },
 
@@ -286,38 +288,15 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
         },
 
         // Button colors & variants
-        [`&.${CLASSNAMES.__COLOR.primary}`]: getButtonLikeVariants(
-          'primary',
-          palette
-        ),
-        [`&.${CLASSNAMES.__COLOR.secondary}`]: getButtonLikeVariants(
-          'secondary',
-          palette
-        ),
-        [`&.${CLASSNAMES.__COLOR.tertiary}`]: getButtonLikeVariants(
-          'tertiary',
-          palette
-        ),
-        [`&.${CLASSNAMES.__COLOR.error}`]: getButtonLikeVariants(
-          'error',
-          palette
-        ),
-        [`&.${CLASSNAMES.__COLOR.warning}`]: getButtonLikeVariants(
-          'warning',
-          palette
-        ),
-        [`&.${CLASSNAMES.__COLOR.info}`]: getButtonLikeVariants(
-          'info',
-          palette
-        ),
-        [`&.${CLASSNAMES.__COLOR.success}`]: getButtonLikeVariants(
-          'success',
-          palette
-        ),
-        [`&.${CLASSNAMES.__COLOR.inverted}`]: getButtonLikeVariants(
-          'inverted',
-          palette
-        ),
+        [`&.${CLASSNAMES.__COLOR.primary}`]: getButtonLikeVariants('primary'),
+        [`&.${CLASSNAMES.__COLOR.secondary}`]:
+          getButtonLikeVariants('secondary'),
+        [`&.${CLASSNAMES.__COLOR.tertiary}`]: getButtonLikeVariants('tertiary'),
+        [`&.${CLASSNAMES.__COLOR.error}`]: getButtonLikeVariants('error'),
+        [`&.${CLASSNAMES.__COLOR.warning}`]: getButtonLikeVariants('warning'),
+        [`&.${CLASSNAMES.__COLOR.info}`]: getButtonLikeVariants('info'),
+        [`&.${CLASSNAMES.__COLOR.success}`]: getButtonLikeVariants('success'),
+        [`&.${CLASSNAMES.__COLOR.inverted}`]: getButtonLikeVariants('inverted'),
       },
       startIcon: {},
       endIcon: {},
@@ -349,7 +328,3 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
 
   return deepMerge(composedTheme, theme);
 };
-
-const defaultTheme: Theme = createTheme();
-
-export default defaultTheme;

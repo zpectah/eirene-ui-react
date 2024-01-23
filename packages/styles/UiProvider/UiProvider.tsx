@@ -1,20 +1,16 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { UiProviderProps, Theme, ThemeMode } from 'types';
+import { UiProviderProps, Theme, ThemeMode, themeModeKeys } from 'types';
 import { deepMerge } from 'utils';
 import { globalStyle } from '../global';
-import { defaultTheme, createTheme } from '../theme';
+import { createTheme } from '../theme';
 import { useAttachStylesheet } from '../hooks';
 import { UiContextProvider } from '../UiContext';
 
 const UiProvider = ({ children, theme, withGlobalStyles }: UiProviderProps) => {
-  const [uiTheme, setUiTheme] = useState<Theme>({
-    ...defaultTheme,
-    ...theme,
-  });
+  const [uiTheme, setUiTheme] = useState<Theme>(createTheme(theme));
 
   const setThemeHandler = (theme: Partial<Theme>) => {
-    const newTheme = createTheme(theme);
-    const composedTheme = deepMerge(defaultTheme, newTheme);
+    const composedTheme = createTheme(theme);
 
     setUiTheme(composedTheme);
   };
@@ -31,7 +27,10 @@ const UiProvider = ({ children, theme, withGlobalStyles }: UiProviderProps) => {
   );
 
   const toggleThemeModeHandler = useCallback(() => {
-    const mode = uiTheme.palette.mode === 'light' ? 'dark' : 'light'; // TODO
+    const mode =
+      uiTheme.palette.mode === themeModeKeys.light
+        ? themeModeKeys.dark
+        : themeModeKeys.light;
     const composedTheme = deepMerge(uiTheme, {
       palette: { ...uiTheme.palette, mode },
     });
