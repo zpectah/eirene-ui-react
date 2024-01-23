@@ -1,15 +1,15 @@
-export const palette = {
-  primary: 'hsl(252, 5.9%, 16.7%)', // rgb(41,40,45)
+export const defaultColorPalette = {
+  primary: 'rgb(230,74,25)', // rgb(93,64,55)
   secondary: 'hsl(324, 2.6%, 37.5%)', // rgb(98,93,96)
   tertiary: 'hsl(199, 18.3%, 33.1%)', // rgb(69,90,100)
 
   error: 'hsl(0, 65.1%, 50.6%)', // rgb(211,47,47)
-  warning: 'hsl(38, 100.0%, 50.0%)', // rgb(255,160,0)
+  warning: 'hsl(30, 100.0%, 48.0%)', // rgb(245,124,0)
   info: 'hsl(210, 78.7%, 46.1%)', // rgb(25,118,210)
   success: 'hsl(123, 43.4%, 38.8%)', // rgb(56,142,60)
 
   hover: 'hsl(0, 0.0%, 9.8%)',
-  disabled: 'hsl(0, 0.0%, 85%)',
+  disabled: 'hsl(0, 0.0%, 9.8%)',
   active: 'hsl(186, 100.0%, 32.7%)',
 
   grey: 'hsl(0, 0.0%, 38.0%)', // rgb(97,97,97)

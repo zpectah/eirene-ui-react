@@ -1,22 +1,13 @@
 import color from 'color';
 import { Theme, themeDirectionKeys, themeModeKeys } from 'types';
-import { CLASSNAMES } from 'core';
+import { CLASSNAMES, SELECTORS, PSEUDO_SELECTORS } from 'core';
 import { deepMerge } from 'utils';
-import { palette as colorPalette } from './palette';
-import Color from 'color';
+import { defaultColorPalette } from './palette';
 
 // Style common prefixes
-const __onDisabled = '&:disabled';
-const __onHover = '&:hover';
-const __onFocus = '&:focus';
-const __onActive = '&:active';
-const __onHoverFocus = '&:hover, &:focus';
-const __onHoverFocusActive = '&:hover, &:focus, &:active';
-
-const __isLoading = `&.${CLASSNAMES.__STATE.loading}`;
-const __isActive = `&.${CLASSNAMES.__STATE.active}`;
-const __isDisabled = `&.${CLASSNAMES.__STATE.disabled}`;
-const __isDisabledAlt = `${__onDisabled}, &.${CLASSNAMES.__STATE.disabled}`;
+const __onHoverFocus = `&${PSEUDO_SELECTORS.HOVER}, &${PSEUDO_SELECTORS.FOCUS}`;
+const __onHoverFocusActive = `&${PSEUDO_SELECTORS.HOVER}, &${PSEUDO_SELECTORS.FOCUS}, &${PSEUDO_SELECTORS.ACTIVE}`;
+const __isDisabledAlt = `&${PSEUDO_SELECTORS.DISABLED}, &${SELECTORS.DISABLED}, &.${CLASSNAMES.__STATE.disabled}`;
 
 const getButtonLikeVariants = (
   key:
@@ -30,38 +21,90 @@ const getButtonLikeVariants = (
     | 'inverted',
   palette: Theme['palette']
 ) => {
+  const main = palette[key].main;
+  const text = palette[key].text;
+  const hover = palette.action.hover;
+  const disabled = palette.action.disabled;
+
+  const isInverted = key === 'inverted';
+
   return {
-    [`&.variant--contained`]: {
-      backgroundColor: palette[key].main,
-      color: palette[key].text,
-      borderColor: palette[key].main,
+    [`&.${CLASSNAMES.__VARIANT.contained}`]: {
+      backgroundColor: main,
+      color: text,
+      borderColor: main,
 
-      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: {},
-      [__isDisabledAlt]: {
-        backgroundColor: palette.action.disabled,
-        color: color(palette.action.disabled).darken(0.5).toString(),
-        borderColor: palette.action.disabled,
-      },
+      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: !isInverted
+        ? {
+            boxShadow: `inset 0 0 0 3rem ${hover}`,
+          }
+        : {
+            boxShadow: `inset 0 0 0 2.5rem ${hover}`,
+            borderColor: color(hover).darken(0.1).toString(),
+          },
+      [__isDisabledAlt]: !isInverted
+        ? {
+            backgroundColor: color(disabled).lighten(3.5).toString(),
+            color: color(disabled).darken(5).toString(),
+            borderColor: color(disabled).lighten(3.5).toString(),
+          }
+        : {
+            /* Inverted without special definition for disabled */
+          },
     },
-    [`&.variant--outlined`]: {
+    [`&.${CLASSNAMES.__VARIANT.outlined}`]: {
       backgroundColor: 'transparent',
-      color: palette[key].main,
-      borderColor: palette[key].main,
+      color: main,
+      borderColor: main,
 
-      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: {},
-      [__isDisabledAlt]: {
-        borderColor: palette[key].main,
-      },
+      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: !isInverted
+        ? {
+            boxShadow: `inset 0 0 0 3rem ${color(main)
+              .alpha(palette.action.hoverOpacity)
+              .toString()}`,
+            color: color(main).darken(palette.action.hoverOpacity).toString(),
+            borderColor: color(main)
+              .darken(palette.action.hoverOpacity)
+              .toString(),
+          }
+        : {
+            boxShadow: `inset 0 0 0 2.5rem ${hover}`,
+            borderColor: hover,
+            color: palette.inverted.text,
+          },
+      [__isDisabledAlt]: !isInverted
+        ? {
+            borderColor: disabled,
+            color: disabled,
+          }
+        : {
+            /* Inverted without special definition for disabled */
+          },
     },
-    [`&.variant--text`]: {
+    [`&.${CLASSNAMES.__VARIANT.text}`]: {
       backgroundColor: 'transparent',
-      color: palette[key].main,
+      color: main,
       borderColor: 'transparent',
 
-      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: {},
-      [__isDisabledAlt]: {
-        borderColor: palette[key].main,
-      },
+      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: !isInverted
+        ? {
+            boxShadow: `inset 0 0 0 3rem ${color(main)
+              .alpha(palette.action.hoverOpacity)
+              .toString()}`,
+            color: color(main).darken(palette.action.hoverOpacity).toString(),
+          }
+        : {
+            boxShadow: `inset 0 0 0 2.5rem ${hover}`,
+            color: palette.inverted.text,
+            borderColor: hover,
+          },
+      [__isDisabledAlt]: !isInverted
+        ? {
+            color: disabled,
+          }
+        : {
+            /* Inverted without special definition for disabled */
+          },
     },
   };
 };
@@ -70,81 +113,81 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
   // Theme prepared objects
   // What comes from theme props will be processed, so there are default values
   const preparedPalette = {
-    primary: theme?.palette?.primary.main || colorPalette.primary,
-    secondary: theme?.palette?.secondary.main || colorPalette.secondary,
-    tertiary: theme?.palette?.tertiary.main || colorPalette.tertiary,
-    error: theme?.palette?.error.main || colorPalette.error,
-    warning: theme?.palette?.warning.main || colorPalette.warning,
-    info: theme?.palette?.info.main || colorPalette.info,
-    success: theme?.palette?.success.main || colorPalette.success,
-    inverted: theme?.palette?.inverted.main || colorPalette.light,
+    primary: theme?.palette?.primary.main || defaultColorPalette.primary,
+    secondary: theme?.palette?.secondary.main || defaultColorPalette.secondary,
+    tertiary: theme?.palette?.tertiary.main || defaultColorPalette.tertiary,
+    error: theme?.palette?.error.main || defaultColorPalette.error,
+    warning: theme?.palette?.warning.main || defaultColorPalette.warning,
+    info: theme?.palette?.info.main || defaultColorPalette.info,
+    success: theme?.palette?.success.main || defaultColorPalette.success,
+    inverted: theme?.palette?.inverted.main || defaultColorPalette.light,
   };
   const preparedActionColors = {
-    hover: theme?.palette?.action.hover || colorPalette.hover,
-    disabled: theme?.palette?.action.disabled || colorPalette.disabled,
-    active: theme?.palette?.action.active || colorPalette.active,
+    hover: theme?.palette?.action.hover || defaultColorPalette.hover,
+    disabled: theme?.palette?.action.disabled || defaultColorPalette.disabled,
+    active: theme?.palette?.action.active || defaultColorPalette.active,
   };
   const preparedActionOpacities = {
     hoverOpacity: theme?.palette?.action.hoverOpacity || 0.075,
-    disabledOpacity: theme?.palette?.action.disabledOpacity || 0.5,
+    disabledOpacity: theme?.palette?.action.disabledOpacity || 0.25,
     activeOpacity: theme?.palette?.action.activeOpacity || 0.25,
   };
 
   // Theme sub-objects
   const breakpoints: Theme['breakpoints'] = {};
   const palette: Theme['palette'] = {
-    mode: themeModeKeys.light,
+    mode: themeModeKeys.light, // TODO - make switcher for incoming mode
     common: {
-      black: colorPalette.black,
-      white: colorPalette.white,
+      black: defaultColorPalette.black,
+      white: defaultColorPalette.white,
     },
     primary: {
       main: preparedPalette.primary,
       light: color(preparedPalette.primary).lighten(0.5).string(),
       dark: color(preparedPalette.primary).darken(0.5).string(),
-      text: colorPalette.light,
+      text: defaultColorPalette.light,
     },
     secondary: {
       main: preparedPalette.secondary,
       light: color(preparedPalette.secondary).lighten(0.5).string(),
       dark: color(preparedPalette.secondary).darken(0.5).string(),
-      text: colorPalette.light,
+      text: defaultColorPalette.light,
     },
     tertiary: {
       main: preparedPalette.tertiary,
       light: color(preparedPalette.tertiary).lighten(0.5).string(),
       dark: color(preparedPalette.tertiary).darken(0.5).string(),
-      text: colorPalette.light,
+      text: defaultColorPalette.light,
     },
     error: {
       main: preparedPalette.error,
       light: color(preparedPalette.error).lighten(0.5).string(),
       dark: color(preparedPalette.error).darken(0.5).string(),
-      text: colorPalette.light,
+      text: defaultColorPalette.light,
     },
     warning: {
       main: preparedPalette.warning,
       light: color(preparedPalette.warning).lighten(0.5).string(),
       dark: color(preparedPalette.warning).darken(0.5).string(),
-      text: colorPalette.light,
+      text: defaultColorPalette.light,
     },
     info: {
       main: preparedPalette.info,
       light: color(preparedPalette.info).lighten(0.5).string(),
       dark: color(preparedPalette.info).darken(0.5).string(),
-      text: colorPalette.light,
+      text: defaultColorPalette.light,
     },
     success: {
       main: preparedPalette.success,
       light: color(preparedPalette.success).lighten(0.5).string(),
       dark: color(preparedPalette.success).darken(0.5).string(),
-      text: colorPalette.light,
+      text: defaultColorPalette.light,
     },
     inverted: {
       main: preparedPalette.inverted,
       light: color(preparedPalette.inverted).lighten(0.5).string(),
       dark: color(preparedPalette.inverted).darken(0.5).string(),
-      text: colorPalette.dark,
+      text: defaultColorPalette.dark,
     },
     action: {
       hover: color(preparedActionColors.hover)
@@ -190,18 +233,9 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
       root: {
         margin: 0,
 
-        // TODO
         borderWidth: '1px',
         borderStyle: 'solid',
-        // TODO
-        // fontSize: 16,
-        // color: 'rgb(255,255,255)',
-        // backgroundColor: 'rgb(250,0,0)',
 
-        // TODO
-        // '@media (min-width: 1024px)': {
-        //   fontSize: 12,
-        // },
         // TODO
         borderRadius: '.25rem',
 
@@ -212,23 +246,21 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
         //   appearance: 'button',
         // },
 
-        [__onHover]: {},
-        [__onActive]: {},
-        [__onFocus]: {},
+        [`&.${PSEUDO_SELECTORS.HOVER}`]: {},
+        [`&.${PSEUDO_SELECTORS.ACTIVE}`]: {},
+        [`&.${PSEUDO_SELECTORS.FOCUS}`]: {},
 
-        // [`${__onHoverFocus}:not(${__isDisabledAlt})`]: {
-        //   boxShadow: `inset 0 0 0 3rem ${palette.action.hover}`,
-        // },
+        // TODO
+        transition: `background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`,
 
-        [__isLoading]: {
+        // Button is loading
+        [`&.${CLASSNAMES.__STATE.loading}`]: {
           position: 'relative',
           overflow: 'hidden',
         },
-        [__isActive]: {},
-        // [__isDisabledAlt]: {
-        //   boxShadow: `inset 0 0 0 3rem ${palette.action.disabled}`,
-        //   borderColor: palette.action.disabled,
-        // },
+
+        // Button is active
+        [`&.${CLASSNAMES.__STATE.active}`]: {},
 
         // Button isFullWidth
         [`&.${CLASSNAMES.BUTTON.root}${CLASSNAMES.__SUFFIX.fullWidth}`]: {
@@ -236,57 +268,55 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
         },
 
         // Button sizes
-        [`&.size--small`]: {
+        [`&.${CLASSNAMES.__SIZE.small}`]: {
           padding: '0.125rem 0.25rem',
           fontSize: '0.8rem',
           lineHeight: '0.9rem',
         },
-        [`&.size--medium`]: {
+        [`&.${CLASSNAMES.__SIZE.medium}`]: {
           padding: '0.25rem 0.5rem',
           fontSize: '1rem',
           lineHeight: '1.125rem',
         },
-        [`&.size--large`]: {
+        [`&.${CLASSNAMES.__SIZE.large}`]: {
           padding: '0.35rem 0.75rem',
           fontSize: '1rem',
           lineHeight: '1.125rem',
         },
 
         // Button colors & variants
-        [`&.color--primary`]: getButtonLikeVariants('primary', palette),
-        [`&.color--secondary`]: getButtonLikeVariants('secondary', palette),
-        [`&.color--tertiary`]: getButtonLikeVariants('tertiary', palette),
-        [`&.color--error`]: getButtonLikeVariants('error', palette),
-        [`&.color--warning`]: getButtonLikeVariants('warning', palette),
-        [`&.color--info`]: getButtonLikeVariants('info', palette),
-        [`&.color--success`]: getButtonLikeVariants('success', palette),
-        // TODO
-        [`&.color--inverted`]: {
-          [`&.variant--contained`]: {
-            backgroundColor: palette.inverted.main,
-            color: palette.inverted.text,
-            borderColor: palette.inverted.main,
-
-            [`${__onHoverFocus}:not(${__isDisabledAlt})`]: {},
-            [__isDisabledAlt]: {},
-          },
-          [`&.variant--outlined`]: {
-            backgroundColor: 'transparent',
-            color: palette.inverted.main,
-            borderColor: palette.inverted.main,
-
-            [`${__onHoverFocus}:not(${__isDisabledAlt})`]: {},
-            [__isDisabledAlt]: {},
-          },
-          [`&.variant--text`]: {
-            backgroundColor: 'transparent',
-            color: palette.inverted.main,
-            borderColor: 'transparent',
-
-            [`${__onHoverFocus}:not(${__isDisabledAlt})`]: {},
-            [__isDisabledAlt]: {},
-          },
-        },
+        [`&.${CLASSNAMES.__COLOR.primary}`]: getButtonLikeVariants(
+          'primary',
+          palette
+        ),
+        [`&.${CLASSNAMES.__COLOR.secondary}`]: getButtonLikeVariants(
+          'secondary',
+          palette
+        ),
+        [`&.${CLASSNAMES.__COLOR.tertiary}`]: getButtonLikeVariants(
+          'tertiary',
+          palette
+        ),
+        [`&.${CLASSNAMES.__COLOR.error}`]: getButtonLikeVariants(
+          'error',
+          palette
+        ),
+        [`&.${CLASSNAMES.__COLOR.warning}`]: getButtonLikeVariants(
+          'warning',
+          palette
+        ),
+        [`&.${CLASSNAMES.__COLOR.info}`]: getButtonLikeVariants(
+          'info',
+          palette
+        ),
+        [`&.${CLASSNAMES.__COLOR.success}`]: getButtonLikeVariants(
+          'success',
+          palette
+        ),
+        [`&.${CLASSNAMES.__COLOR.inverted}`]: getButtonLikeVariants(
+          'inverted',
+          palette
+        ),
       },
       startIcon: {},
       endIcon: {},
