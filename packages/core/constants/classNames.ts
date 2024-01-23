@@ -1,5 +1,4 @@
 export const CLASSNAMES = {
-  GLOBAL: '@global',
   __SUFFIX: {
     fullWidth: '--fullWidth',
   },

@@ -5,9 +5,9 @@ import { deepMerge } from 'utils';
 import { defaultColorPalette } from './palette';
 
 // Style common prefixes
-const __onHoverFocus = `&${PSEUDO_SELECTORS.HOVER}, &${PSEUDO_SELECTORS.FOCUS}`;
-const __onHoverFocusActive = `&${PSEUDO_SELECTORS.HOVER}, &${PSEUDO_SELECTORS.FOCUS}, &${PSEUDO_SELECTORS.ACTIVE}`;
-const __isDisabledAlt = `&${PSEUDO_SELECTORS.DISABLED}, &${SELECTORS.DISABLED}, &.${CLASSNAMES.__STATE.disabled}`;
+const _withAllDisabled = `&${PSEUDO_SELECTORS.DISABLED}, &${SELECTORS.DISABLED}, &.${CLASSNAMES.__STATE.disabled}`;
+
+const _onHoverFocusNotDisabled = `&${PSEUDO_SELECTORS.HOVER}:not(${_withAllDisabled}), &${PSEUDO_SELECTORS.FOCUS}:not(${_withAllDisabled})`;
 
 const getButtonLikeVariants = (
   key:
@@ -26,6 +26,7 @@ const getButtonLikeVariants = (
   const hover = palette.action.hover;
   const disabled = palette.action.disabled;
 
+  const shadowPrefix = 'inset 0 0 0 2.5rem';
   const isInverted = key === 'inverted';
 
   return {
@@ -34,15 +35,15 @@ const getButtonLikeVariants = (
       color: text,
       borderColor: main,
 
-      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: !isInverted
+      [`${_onHoverFocusNotDisabled}`]: !isInverted
         ? {
-            boxShadow: `inset 0 0 0 3rem ${hover}`,
+            boxShadow: `${shadowPrefix} ${hover}`,
           }
         : {
-            boxShadow: `inset 0 0 0 2.5rem ${hover}`,
+            boxShadow: `${shadowPrefix} ${hover}`,
             borderColor: color(hover).darken(0.1).toString(),
           },
-      [__isDisabledAlt]: !isInverted
+      [_withAllDisabled]: !isInverted
         ? {
             backgroundColor: color(disabled).lighten(3.5).toString(),
             color: color(disabled).darken(5).toString(),
@@ -57,9 +58,9 @@ const getButtonLikeVariants = (
       color: main,
       borderColor: main,
 
-      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: !isInverted
+      [`${_onHoverFocusNotDisabled}`]: !isInverted
         ? {
-            boxShadow: `inset 0 0 0 3rem ${color(main)
+            boxShadow: `${shadowPrefix} ${color(main)
               .alpha(palette.action.hoverOpacity)
               .toString()}`,
             color: color(main).darken(palette.action.hoverOpacity).toString(),
@@ -68,11 +69,11 @@ const getButtonLikeVariants = (
               .toString(),
           }
         : {
-            boxShadow: `inset 0 0 0 2.5rem ${hover}`,
+            boxShadow: `${shadowPrefix} ${hover}`,
             borderColor: hover,
             color: palette.inverted.text,
           },
-      [__isDisabledAlt]: !isInverted
+      [_withAllDisabled]: !isInverted
         ? {
             borderColor: disabled,
             color: disabled,
@@ -86,19 +87,19 @@ const getButtonLikeVariants = (
       color: main,
       borderColor: 'transparent',
 
-      [`${__onHoverFocus}:not(${__isDisabledAlt})`]: !isInverted
+      [`${_onHoverFocusNotDisabled}`]: !isInverted
         ? {
-            boxShadow: `inset 0 0 0 3rem ${color(main)
+            boxShadow: `${shadowPrefix} ${color(main)
               .alpha(palette.action.hoverOpacity)
               .toString()}`,
             color: color(main).darken(palette.action.hoverOpacity).toString(),
           }
         : {
-            boxShadow: `inset 0 0 0 2.5rem ${hover}`,
+            boxShadow: `${shadowPrefix} ${hover}`,
             color: palette.inverted.text,
             borderColor: hover,
           },
-      [__isDisabledAlt]: !isInverted
+      [_withAllDisabled]: !isInverted
         ? {
             color: disabled,
           }
@@ -189,6 +190,11 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
       dark: color(preparedPalette.inverted).darken(0.5).string(),
       text: defaultColorPalette.dark,
     },
+
+    // TODO - typography
+    // TODO - background
+    // TODO - border / divider
+
     action: {
       hover: color(preparedActionColors.hover)
         .alpha(preparedActionOpacities.hoverOpacity)
@@ -220,10 +226,11 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
         verticalAlign: 'middle',
         userSelect: 'none',
         cursor: 'pointer',
-        [__onHoverFocusActive]: {
-          textDecoration: 'none',
-        },
-        [__isDisabledAlt]: {
+        [`&${PSEUDO_SELECTORS.HOVER}, &${PSEUDO_SELECTORS.FOCUS}, &${PSEUDO_SELECTORS.ACTIVE}`]:
+          {
+            textDecoration: 'none',
+          },
+        [`${_withAllDisabled}`]: {
           pointerEvents: 'none',
           cursor: 'default',
         },
@@ -233,22 +240,16 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
       root: {
         margin: 0,
 
+        // [`&.${PSEUDO_SELECTORS.HOVER}`]: {},
+        // [`&.${PSEUDO_SELECTORS.ACTIVE}`]: {},
+        // [`&.${PSEUDO_SELECTORS.FOCUS}`]: {},
+
+        // TODO
         borderWidth: '1px',
         borderStyle: 'solid',
 
         // TODO
         borderRadius: '.25rem',
-
-        // TODO
-        // [`&[a]`]: {
-        //   '-webkit-appearance': 'button',
-        //   '-moz-appearance': 'button',
-        //   appearance: 'button',
-        // },
-
-        [`&.${PSEUDO_SELECTORS.HOVER}`]: {},
-        [`&.${PSEUDO_SELECTORS.ACTIVE}`]: {},
-        [`&.${PSEUDO_SELECTORS.FOCUS}`]: {},
 
         // TODO
         transition: `background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`,

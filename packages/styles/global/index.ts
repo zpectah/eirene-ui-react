@@ -1,4 +1,4 @@
-import { CLASSNAMES } from 'core';
+import { SELECTORS } from 'core';
 
 export const globalStyleReset = {
   [`*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))`]:
@@ -60,7 +60,7 @@ export const globalStyleReset = {
 };
 
 export const globalStyle = {
-  [CLASSNAMES.GLOBAL]: {
+  [SELECTORS.GLOBAL]: {
     html: {
       margin: 0,
       padding: 0,
@@ -69,7 +69,7 @@ export const globalStyle = {
     body: {
       margin: 0,
       padding: 0,
-      fontFamily: '"Barlow", sans-serif', // TODO
+      fontFamily: '"Barlow", "Helvetica", "Arial", sans-serif', // TODO
       fontSize: '1rem', // TODO
       fontWeight: 400,
     },

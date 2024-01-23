@@ -1,5 +1,5 @@
 export const defaultColorPalette = {
-  primary: 'rgb(230,74,25)', // rgb(93,64,55)
+  primary: 'hsl(14, 25.7%, 29.0%)', // rgb(93,64,55)
   secondary: 'hsl(324, 2.6%, 37.5%)', // rgb(98,93,96)
   tertiary: 'hsl(199, 18.3%, 33.1%)', // rgb(69,90,100)
 
