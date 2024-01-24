@@ -35,7 +35,7 @@ const App = () => {
             },
           }}
         >
-          My Button
+          My custom styled Button
         </Button>
         <br />
         <br />
