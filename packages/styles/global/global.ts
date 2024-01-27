@@ -1,18 +1,19 @@
 import { css } from '@emotion/react';
+import { Theme } from 'types';
 
-export const createGlobalStyles = () => {
+export const createGlobalStyles = (theme: Theme) => {
   return css({
     html: {
       margin: 0,
       padding: 0,
-      fontSize: '16px', // TODO
+      fontSize: theme.typography.fontSize,
     },
     body: {
       margin: 0,
       padding: 0,
-      fontSize: '1rem', // TODO
-      fontFamily: '"Barlow", "Helvetica", "Arial", sans-serif', // TODO
-      fontWeight: 400, // TODO
+      fontSize: '1rem',
+      fontFamily: theme.typography.fontFamily,
+      fontWeight: theme.typography.fontWeightRegular,
     },
   });
 };

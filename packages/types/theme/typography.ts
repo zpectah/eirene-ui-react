@@ -1,9 +1,12 @@
+import { TextTransform } from '../common';
+
 export interface ThemeTypographyCluster {
   fontFamily: string;
   fontWeight: number;
   fontSize: string;
   lineHeight: number;
   letterSpacing: string;
+  textTransform: TextTransform;
 }
 
 export interface ThemeTypography {
@@ -12,6 +15,7 @@ export interface ThemeTypography {
   fontWeightLight: number;
   fontWeightRegular: number;
   fontWeightMedium: number;
+  fontWeightSemiBold: number;
   fontWeightBold: number;
 
   h1: ThemeTypographyCluster;

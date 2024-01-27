@@ -7,6 +7,7 @@ export interface CreateThemeComponent {
   palette: ThemePalette;
   shape: ThemeShape;
   typography: ThemeTypography;
+  components?: ThemeComponents;
 }
 
 export interface Theme {
@@ -14,10 +15,9 @@ export interface Theme {
   components: ThemeComponents;
   shape: ThemeShape;
   typography: ThemeTypography;
-
-  breakpoints?: {}; // TODO
-  spacing?: {}; // TODO
-  transitions?: {}; // TODO
-  zIndex?: {}; // TODO
-  shadows?: {}; // TODO
+  // breakpoints?: {}; // TODO
+  // spacing?: {}; // TODO
+  // transitions?: {}; // TODO
+  // zIndex?: {}; // TODO
+  // shadows?: {}; // TODO
 }

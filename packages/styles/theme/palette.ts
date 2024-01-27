@@ -43,11 +43,11 @@ export const createThemePalette = (
       surface: '',
     },
     action: {
-      active: '', // TODO #computed-value
+      active: defaultPalette.active, // TODO #computed-value
       activeOpacity: 0.12, // TODO #computed-value
-      hover: '', // TODO #computed-value
+      hover: defaultPalette.hover, // TODO #computed-value
       hoverOpacity: 0.04, // TODO #computed-value
-      disabled: '', // TODO #computed-value
+      disabled: defaultPalette.disabled, // TODO #computed-value
       disabledOpacity: 0.35, // TODO #computed-value
     },
     primary: {

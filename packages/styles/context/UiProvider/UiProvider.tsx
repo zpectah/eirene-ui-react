@@ -24,7 +24,7 @@ const UiProvider = ({
 
   const defaultGlobalStyles = css([
     applyCSSReset && cssReset,
-    applyGlobalStyles && createGlobalStyles(),
+    applyGlobalStyles && createGlobalStyles(defaultProviderValues.theme),
     styles as SerializedStyles,
   ]);
 

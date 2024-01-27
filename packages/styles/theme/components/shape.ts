@@ -86,7 +86,7 @@ export const getSizeShape = (
   spacingY: string,
   spacingX: string,
   fontSize: string,
-  lineHeight: string
+  lineHeight: string | number
 ) => {
   return {
     padding: `${spacingY} ${spacingX}`,

@@ -38,6 +38,12 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
   };
 
   const variantClassName = {
+    text: textClassName,
+    contained: containedClassName,
+    outlined: outlinedClassName,
+  };
+
+  const colorVariantClassName = {
     text: `${textClassName}${capitalizeFirstLetter(color)}`,
     contained: `${containedClassName}${capitalizeFirstLetter(color)}`,
     outlined: `${outlinedClassName}${capitalizeFirstLetter(color)}`,
@@ -47,6 +53,7 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
     root: {
       className: clsx(
         variantClassName[variant],
+        colorVariantClassName[variant],
         sizeClassName[size],
         isLoading && loadingClassName,
         isDisabled && disabledClassName,
