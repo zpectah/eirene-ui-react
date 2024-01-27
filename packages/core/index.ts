@@ -1,1 +1,1 @@
-export const someCoreMethod = () => 'Some string';
+export * from './constants';

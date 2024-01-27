@@ -18,7 +18,7 @@ const App = () => {
               root: {
                 padding: '2rem', // Will not work
                 '&:hover': { backgroundColor: 'purple' },
-                '&.Button--sizeMedium': {
+                '&.Button-sizeMedium': {
                   padding: '2rem', // Will work
                 },
               },

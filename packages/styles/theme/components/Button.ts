@@ -1,104 +1,13 @@
-import { ThemeComponents } from 'types';
+import {
+  getSizeShape,
+  getTextShapeVariant,
+  getOutlinedShapeVariant,
+  getContainedShapeVariant,
+} from './shape';
+import { ButtonStyles } from 'types';
 
-const getContainedShapeVariant = (
-  background: string,
-  contrast: string,
-  disabled: string,
-  inverted?: boolean
-) => {
+export const getThemeComponentsButton = (): ButtonStyles => {
   return {
-    backgroundColor: background,
-    color: contrast,
-    borderColor: background,
-
-    '&:hover:not(&.Button--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${background}`,
-      borderColor: background,
-    },
-
-    '&:disabled, &[disabled], &.Button--disabled': inverted
-      ? {
-          backgroundColor: background,
-          color: contrast,
-          borderColor: background,
-        }
-      : {
-          boxShadow: `inset 0 0 0 2.5rem ${disabled}`,
-          borderColor: disabled,
-        },
-  };
-};
-
-const getOutlinedShapeVariant = (
-  background: string,
-  contrast: string,
-  disabled: string,
-  inverted?: boolean
-) => {
-  return {
-    backgroundColor: 'transparent',
-    color: background,
-    borderColor: background,
-
-    '&:hover:not(&.Button--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${background}`,
-      color: contrast,
-      borderColor: background,
-    },
-
-    '&:disabled, &[disabled], &.Button--disabled': inverted
-      ? {
-          color: background,
-          borderColor: background,
-        }
-      : {
-          color: disabled,
-          borderColor: disabled,
-        },
-  };
-};
-
-const getTextShapeVariant = (
-  background: string,
-  contrast: string,
-  disabled: string,
-  inverted?: boolean
-) => {
-  return {
-    backgroundColor: 'transparent',
-    color: background,
-    borderColor: 'transparent',
-
-    '&:hover:not(&.Button--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${background}`,
-      color: contrast,
-    },
-
-    '&:disabled, &[disabled], &.Button--disabled': inverted
-      ? {
-          color: background,
-        }
-      : {
-          color: disabled,
-        },
-  };
-};
-
-const getSizeShape = (
-  spacingX: string,
-  spacingY: string,
-  fontSize: string,
-  lineHeight: string
-) => {
-  return {
-    padding: `${spacingX} ${spacingY}`,
-    fontSize,
-    lineHeight,
-  };
-};
-
-export const themeComponents: ThemeComponents = {
-  Button: {
     root: [
       {
         display: 'inline-flex',
@@ -114,7 +23,7 @@ export const themeComponents: ThemeComponents = {
           textDecoration: 'none',
         },
 
-        '&:disabled, &[disabled], &.Button--disabled': {
+        '&:disabled, &[disabled], &.is--disabled': {
           pointerEvents: 'none',
           cursor: 'default',
         },
@@ -131,7 +40,7 @@ export const themeComponents: ThemeComponents = {
         // TODO
         transition: `background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`,
 
-        '&.Button--loading': {
+        '&.is--loading': {
           position: 'relative',
           overflow: 'hidden',
         },
@@ -139,28 +48,26 @@ export const themeComponents: ThemeComponents = {
         // TODO #demo
         // TODO ...by @mui
 
-        // '&.Button--disabled': {},
-
-        '&.Button--fullWidth': {
+        '&.is--fullWidth': {
           width: '100%',
         },
 
-        '&.Button--active': {},
+        '&.is--active': {},
 
         // Button sizes
-        '&.Button--sizeLarge': getSizeShape(
+        '&.Button-sizeLarge': getSizeShape(
           '0.35rem',
           '0.75rem',
           '1rem',
           '1.125rem'
         ),
-        '&.Button--sizeMedium': getSizeShape(
+        '&.Button-sizeMedium': getSizeShape(
           '0.25rem',
           '0.5rem',
           '1rem',
           '1.125rem'
         ),
-        '&.Button--sizeSmall': getSizeShape(
+        '&.Button-sizeSmall': getSizeShape(
           '0.125rem',
           '0.25rem',
           '0.8rem',
@@ -168,42 +75,42 @@ export const themeComponents: ThemeComponents = {
         ),
 
         // Button contained
-        '&.Button--containedPrimary': getContainedShapeVariant(
+        '&.Button-containedPrimary': getContainedShapeVariant(
           'hsl(261, 58%, 47%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--containedSecondary': getContainedShapeVariant(
+        '&.Button-containedSecondary': getContainedShapeVariant(
           'hsl(324, 2.6%, 37.5%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--containedTertiary': getContainedShapeVariant(
+        '&.Button-containedTertiary': getContainedShapeVariant(
           'hsl(199, 18.3%, 33.1%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--containedError': getContainedShapeVariant(
+        '&.Button-containedError': getContainedShapeVariant(
           'hsl(0, 65.1%, 50.6%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--containedWarning': getContainedShapeVariant(
+        '&.Button-containedWarning': getContainedShapeVariant(
           'hsl(30, 100.0%, 48.0%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--containedInfo': getContainedShapeVariant(
+        '&.Button-containedInfo': getContainedShapeVariant(
           'hsl(210, 78.7%, 46.1%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--containedSuccess': getContainedShapeVariant(
+        '&.Button-containedSuccess': getContainedShapeVariant(
           'hsl(123, 43.4%, 38.8%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--containedInverted': getContainedShapeVariant(
+        '&.Button-containedInverted': getContainedShapeVariant(
           'hsl(0, 0.0%, 94.1%)',
           'hsl(0, 0.0%, 9.8%)',
           'hsl(177, 0%, 64%)',
@@ -211,42 +118,42 @@ export const themeComponents: ThemeComponents = {
         ),
 
         // Button outlined
-        '&.Button--outlinedPrimary': getOutlinedShapeVariant(
+        '&.Button-outlinedPrimary': getOutlinedShapeVariant(
           'hsl(261, 58%, 47%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--outlinedSecondary': getOutlinedShapeVariant(
+        '&.Button-outlinedSecondary': getOutlinedShapeVariant(
           'hsl(324, 2.6%, 37.5%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--outlinedTertiary': getOutlinedShapeVariant(
+        '&.Button-outlinedTertiary': getOutlinedShapeVariant(
           'hsl(199, 18.3%, 33.1%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--outlinedError': getOutlinedShapeVariant(
+        '&.Button-outlinedError': getOutlinedShapeVariant(
           'hsl(0, 65.1%, 50.6%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--outlinedWarning': getOutlinedShapeVariant(
+        '&.Button-outlinedWarning': getOutlinedShapeVariant(
           'hsl(30, 100.0%, 48.0%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--outlinedInfo': getOutlinedShapeVariant(
+        '&.Button-outlinedInfo': getOutlinedShapeVariant(
           'hsl(210, 78.7%, 46.1%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--outlinedSuccess': getOutlinedShapeVariant(
+        '&.Button-outlinedSuccess': getOutlinedShapeVariant(
           'hsl(123, 43.4%, 38.8%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--outlinedInverted': getOutlinedShapeVariant(
+        '&.Button-outlinedInverted': getOutlinedShapeVariant(
           'hsl(0, 0.0%, 94.1%)',
           'hsl(0, 0.0%, 9.8%)',
           'hsl(177, 0%, 64%)',
@@ -254,42 +161,42 @@ export const themeComponents: ThemeComponents = {
         ),
 
         // Button text
-        '&.Button--textPrimary': getTextShapeVariant(
+        '&.Button-textPrimary': getTextShapeVariant(
           'hsl(261, 58%, 47%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--textSecondary': getTextShapeVariant(
+        '&.Button-textSecondary': getTextShapeVariant(
           'hsl(324, 2.6%, 37.5%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--textTertiary': getTextShapeVariant(
+        '&.Button-textTertiary': getTextShapeVariant(
           'hsl(199, 18.3%, 33.1%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--textError': getTextShapeVariant(
+        '&.Button-textError': getTextShapeVariant(
           'hsl(0, 65.1%, 50.6%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--textWarning': getTextShapeVariant(
+        '&.Button-textWarning': getTextShapeVariant(
           'hsl(30, 100.0%, 48.0%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--textInfo': getTextShapeVariant(
+        '&.Button-textInfo': getTextShapeVariant(
           'hsl(210, 78.7%, 46.1%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--textSuccess': getTextShapeVariant(
+        '&.Button-textSuccess': getTextShapeVariant(
           'hsl(123, 43.4%, 38.8%)',
           'hsl(0, 0.0%, 99.2%)',
           'hsl(177, 0%, 64%)'
         ),
-        '&.Button--textInverted': getTextShapeVariant(
+        '&.Button-textInverted': getTextShapeVariant(
           'hsl(0, 0.0%, 94.1%)',
           'hsl(0, 0.0%, 9.8%)',
           'hsl(177, 0%, 64%)',
@@ -311,5 +218,5 @@ export const themeComponents: ThemeComponents = {
       color: 'white',
       backgroundColor: 'rgba(25,25,25, .5)',
     },
-  },
+  };
 };

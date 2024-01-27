@@ -1,6 +1,10 @@
 import { Theme } from 'types';
-import { themeComponents } from './components';
+import { getThemeComponents } from './components';
+import { getThemePalette } from './palette';
+
+// TODO: make this as function
 
 export const theme: Theme = {
-  components: themeComponents,
+  palette: getThemePalette(),
+  components: getThemeComponents(),
 };

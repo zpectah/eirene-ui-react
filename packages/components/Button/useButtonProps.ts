@@ -16,20 +16,20 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
     color = buttonDefaultValues.color,
   } = props;
 
+  const disabledClassName = `is--disabled`;
+  const activeClassName = `is--active`;
+  const fullWidthClassName = `is--fullWidth`;
+  const loadingClassName = `is--loading`;
+
   const rootPrefix = 'Button';
 
-  const disabledClassName = `${rootPrefix}--disabled`;
-  const activeClassName = `${rootPrefix}--active`;
-  const fullWidthClassName = `${rootPrefix}--fullWidth`;
-  const loadingClassName = `${rootPrefix}--loading`;
+  const sizeLargeClassName = `${rootPrefix}-sizeLarge`;
+  const sizeMediumClassName = `${rootPrefix}-sizeMedium`;
+  const sizeSmallClassName = `${rootPrefix}-sizeSmall`;
 
-  const sizeLargeClassName = `${rootPrefix}--sizeLarge`;
-  const sizeMediumClassName = `${rootPrefix}--sizeMedium`;
-  const sizeSmallClassName = `${rootPrefix}--sizeSmall`;
-
-  const containedClassName = `${rootPrefix}--contained`;
-  const outlinedClassName = `${rootPrefix}--outlined`;
-  const textClassName = `${rootPrefix}--text`;
+  const containedClassName = `${rootPrefix}-contained`;
+  const outlinedClassName = `${rootPrefix}-outlined`;
+  const textClassName = `${rootPrefix}-text`;
 
   const sizeClassName = {
     large: sizeLargeClassName,
@@ -48,10 +48,10 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
       className: clsx(
         variantClassName[variant],
         sizeClassName[size],
-        isLoading ? loadingClassName : '',
-        isDisabled ? disabledClassName : '',
-        isActive ? activeClassName : '',
-        fullWidth ? fullWidthClassName : '',
+        isLoading && loadingClassName,
+        isDisabled && disabledClassName,
+        isActive && activeClassName,
+        fullWidth && fullWidthClassName,
         className
       ),
       style: { ...style },
