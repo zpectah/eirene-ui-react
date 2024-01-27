@@ -2,9 +2,13 @@ import { Theme } from 'types';
 import { getThemeComponents } from './components';
 import { getThemePalette } from './palette';
 
-// TODO: make this as function
+// eslint-disable-next-line
+export const createTheme = (theme?: Partial<Theme>): Theme => {
+  const palette = getThemePalette();
+  const components = getThemeComponents();
 
-export const theme: Theme = {
-  palette: getThemePalette(),
-  components: getThemeComponents(),
+  return {
+    palette,
+    components,
+  };
 };

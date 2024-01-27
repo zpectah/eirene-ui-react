@@ -33,5 +33,6 @@ module.exports = {
   rules: {
     'react/no-unknown-property': ['error', { ignore: ['css'] }],
     'react/display-name': ['off'],
+    '@typescript-eslint/no-unused-vars': ['warn'],
   },
 };

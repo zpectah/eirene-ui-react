@@ -2,6 +2,7 @@ import { defaultPalette } from 'core';
 import { ThemePalette, themeModeKeys } from 'types';
 
 export const getThemePalette = (
+  // eslint-disable-next-line
   palette?: Partial<ThemePalette>
 ): ThemePalette => {
   return {

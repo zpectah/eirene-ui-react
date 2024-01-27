@@ -1,8 +1,8 @@
 import { UiContextProps } from 'types';
-import { theme } from '../../theme';
+import { createTheme } from '../../theme';
 
 export const defaultUiContext: UiContextProps = {
-  theme: theme,
+  theme: createTheme(),
   setTheme: () => {},
   setThemeMode: () => {},
   toggleThemeMode: () => {},
