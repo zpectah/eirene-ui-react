@@ -1,5 +1,6 @@
 import { WithChildren } from '../common';
-import { Theme, ThemeMode } from './theme';
+import { Theme, ThemeMode } from '../theme';
+import { GlobalStyles } from './interpolation';
 
 export interface UiContextProps {
   theme: Theme;
@@ -10,5 +11,7 @@ export interface UiContextProps {
 
 export interface UiProviderProps extends WithChildren {
   theme?: Partial<Theme>;
-  withGlobalStyles?: boolean;
+  styles?: GlobalStyles;
+  applyCSSReset?: boolean;
+  applyGlobalStyles?: boolean;
 }

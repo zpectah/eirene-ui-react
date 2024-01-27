@@ -1,69 +1,56 @@
 import { ElementType, ReactNode } from 'react';
-import {
-  ComponentStyleProps,
-  PolymorphicComponentPropsWithRef,
-} from '../common';
-import { JssPropertyValue } from '../styles';
+import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
+import { ComponentStyles, Color, ShapeSize, ShapeVariant } from '../styles';
 
-export interface ButtonJssProps {
-  jss: {
-    root: JssPropertyValue;
-    startIcon: JssPropertyValue;
-    endIcon: JssPropertyValue;
-    loadingIcon: JssPropertyValue;
-  };
+export interface ButtonStyles {
+  root: ComponentStyles;
+  iconStart: ComponentStyles;
+  iconEnd: ComponentStyles;
+  iconLoading: ComponentStyles;
 }
 
-export interface ButtonIconProps {
+export type ButtonInitialProps<T extends ElementType> = NonNullable<unknown> &
+  PolymorphicComponentPropsWithRef<T>;
+
+export interface ButtonElementaryProps extends Partial<WithStyle> {
   startIcon?: ReactNode;
-  startIconProps?: Partial<ComponentStyleProps>;
   endIcon?: ReactNode;
-  endIconProps?: Partial<ComponentStyleProps>;
-}
-
-export interface ButtonLoadingProps {
-  isLoading?: boolean;
   loadingIcon?: ReactNode;
-  loadingIconProps?: Partial<ComponentStyleProps>;
 }
 
-export interface ButtonElementaryProps {
-  fullWidth?: boolean;
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'error'
-    | 'warning'
-    | 'info'
-    | 'success'
-    | 'inverted'
-    | string; // TODO
-  size?: 'small' | 'medium' | 'large' | string; // TODO
-  variant?: 'text' | 'outlined' | 'contained' | string; // TODO
+export interface ButtonStateProps {
+  isLoading?: boolean;
   isDisabled?: boolean;
   isActive?: boolean;
 }
 
-export type ButtonInitialProps<T extends ElementType> =
-  {} & PolymorphicComponentPropsWithRef<T>;
+export interface ButtonShapeProps {
+  fullWidth?: boolean;
+  color?: Color;
+  size?: ShapeSize;
+  variant?: ShapeVariant;
+}
 
-export type ButtonProps<T extends ElementType> = {} & ButtonInitialProps<T> &
-  Partial<ButtonJssProps> &
-  ButtonIconProps &
-  ButtonLoadingProps &
-  ButtonElementaryProps;
+export type ButtonProps<T extends ElementType> = {
+  styles?: Partial<ButtonStyles>;
+} & ButtonInitialProps<T> &
+  ButtonElementaryProps &
+  ButtonStateProps &
+  ButtonShapeProps;
 
-export interface UseButtonStyles
-  extends ComponentStyleProps,
-    ButtonJssProps,
-    Omit<ButtonIconProps, 'startIcon' | 'endIcon'>,
-    Omit<ButtonLoadingProps, 'loadingIcon'>,
-    ButtonElementaryProps {}
+export interface UseButtonStyles {
+  styles?: Partial<ButtonStyles>;
+}
 
 export interface UseButtonStylesReturn {
-  root: ComponentStyleProps;
-  startIcon: ComponentStyleProps;
-  endIcon: ComponentStyleProps;
-  loadingIcon: ComponentStyleProps;
+  composedCss: ButtonStyles;
+}
+
+export interface UseButtonProps
+  extends ButtonStateProps,
+    ButtonShapeProps,
+    Partial<WithStyle> {}
+
+export interface UseButtonPropsReturn {
+  root: WithStyle;
 }

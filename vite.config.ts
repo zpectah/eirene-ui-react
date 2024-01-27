@@ -6,16 +6,5 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'demo/dist',
-    rollupOptions: {
-      input: {
-        index: './demo/src/index.tsx',
-      },
-      output: {
-        entryFileNames: '[name].js',
-      },
-    },
-  },
-  server: {
-    open: '/demo/',
   },
 });

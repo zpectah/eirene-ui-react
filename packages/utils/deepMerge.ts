@@ -1,7 +1,7 @@
 // Credit: https://github.com/sindresorhus/is-plain-obj/blob/main/index.js
 export const isPlainObject = (
   item: unknown
-): item is Record<keyof any, unknown> => {
+): item is Record<keyof never, unknown> => {
   if (typeof item !== 'object' || item === null) {
     return false;
   }
@@ -20,12 +20,12 @@ export interface DeepmergeOptions {
   clone?: boolean;
 }
 
-export const deepClone = <T>(source: T): T | Record<keyof any, unknown> => {
+export const deepClone = <T>(source: T): T | Record<keyof never, unknown> => {
   if (!isPlainObject(source)) {
     return source;
   }
 
-  const output: Record<keyof any, unknown> = {};
+  const output: Record<keyof never, unknown> = {};
 
   Object.keys(source).forEach((key) => {
     output[key] = deepClone(source[key]);
@@ -54,17 +54,19 @@ export const deepMerge = <T>(
         isPlainObject(target[key])
       ) {
         // Since `output` is a clone of `target` and we have narrowed `target` in this block we can cast to the same type.
-        (output as Record<keyof any, unknown>)[key] = deepMerge(
+        (output as Record<keyof never, unknown>)[key] = deepMerge(
           target[key],
           source[key],
           options
         );
       } else if (options.clone) {
-        (output as Record<keyof any, unknown>)[key] = isPlainObject(source[key])
+        (output as Record<keyof never, unknown>)[key] = isPlainObject(
+          source[key]
+        )
           ? deepClone(source[key])
           : source[key];
       } else {
-        (output as Record<keyof any, unknown>)[key] = source[key];
+        (output as Record<keyof never, unknown>)[key] = source[key];
       }
     });
   }

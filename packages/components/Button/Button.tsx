@@ -1,78 +1,56 @@
-import React, { forwardRef, ElementType, useMemo } from 'react';
+import React, { forwardRef, ElementType } from 'react';
 import { ButtonProps, PolymorphicIntrinsicElementRef } from 'types';
-import { ButtonBase } from 'base';
 import { useButtonStyles } from './useButtonStyles';
+import { useButtonProps } from './useButtonProps';
+import { buttonDefaultValues } from './constants';
 
-const Button = forwardRef(
-  <T extends ElementType>(
-    props: ButtonProps<T>,
-    ref: PolymorphicIntrinsicElementRef<T>
-  ) => {
-    const {
-      children,
-      className,
-      style,
-      jss,
-      startIcon,
-      endIcon,
-      startIconProps,
-      endIconProps,
-      isLoading,
-      isActive,
-      loadingIcon,
-      loadingIconProps,
-      fullWidth,
-      color = 'primary',
-      size = 'medium',
-      variant = 'contained',
-      ...rest
-    } = props;
+const Button = <T extends ElementType>(
+  props: ButtonProps<T>,
+  ref: PolymorphicIntrinsicElementRef<T>
+) => {
+  const {
+    as: Component = 'button',
+    styles,
+    style,
+    className,
+    children,
+    startIcon,
+    loadingIcon,
+    endIcon,
+    isLoading,
+    isActive,
+    isDisabled,
+    fullWidth,
+    size = buttonDefaultValues.size,
+    variant = buttonDefaultValues.variant,
+    color = buttonDefaultValues.color,
+    ...rest
+  } = props;
+  const { composedCss } = useButtonStyles({ styles });
+  const { root: composedProps } = useButtonProps({
+    style,
+    className,
+    isLoading,
+    isActive,
+    isDisabled,
+    fullWidth,
+    variant,
+    color,
+    size,
+  });
 
-    const {
-      root,
-      startIcon: startIconStyleProps,
-      endIcon: endIconStyleProps,
-      loadingIcon: loadingIconStyleProps,
-    } = useButtonStyles({
-      className,
-      style,
-      jss,
-      isLoading,
-      isActive,
-      startIconProps,
-      endIconProps,
-      loadingIconProps,
-      fullWidth,
-      color,
-      size,
-      variant,
-    });
+  return (
+    <Component ref={ref} css={composedCss.root} {...composedProps} {...rest}>
+      {isLoading && (
+        <span css={composedCss.iconLoading}>
+          {loadingIcon ? loadingIcon : <>loading</>}
+        </span>
+      )}
+      {startIcon && <span css={composedCss.iconStart}>{startIcon}</span>}
+      {children}
+      {endIcon && <span css={composedCss.iconEnd}>{endIcon}</span>}
+    </Component>
+  );
+};
 
-    const renderChildrenNode = useMemo(() => {
-      return (
-        <>
-          {isLoading && <span {...loadingIconStyleProps}>Loading</span>}
-          {startIcon && <span {...startIconStyleProps}>{startIcon}</span>}
-          {children}
-          {endIcon && <span {...endIconStyleProps}>{endIcon}</span>}
-        </>
-      );
-    }, [
-      children,
-      startIcon,
-      endIcon,
-      startIconStyleProps,
-      endIconStyleProps,
-      isLoading,
-      loadingIconStyleProps,
-    ]);
-
-    return (
-      <ButtonBase ref={ref} {...root} {...rest}>
-        {renderChildrenNode}
-      </ButtonBase>
-    );
-  }
-);
-
-export default Button;
+export default forwardRef(Button);

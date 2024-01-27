@@ -26,12 +26,5 @@
       ]
     }
   },
-  "generators": {
-    "@nx/react": {
-      "application": {
-        "babel": true
-      },
-      "library": {}
-    }
-  }
+  "nxCloudAccessToken": "MzhlZjZjY2UtZmQ3Yy00NTcwLTliZWUtMGM4OWI3YzlkMDJjfHJlYWQtd3JpdGU="
 }

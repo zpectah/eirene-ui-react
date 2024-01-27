@@ -5,6 +5,7 @@
     "outDir": "../../dist/components",
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "jsxImportSource": "@emotion/react",
   },
   "include": ["./**/*"],
 }

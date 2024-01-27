@@ -1,3 +1,4 @@
-export * from './jss';
-export * from './theme';
+export * from './color';
+export * from './interpolation';
+export * from './shape';
 export * from './ui';
