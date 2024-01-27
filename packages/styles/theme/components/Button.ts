@@ -5,14 +5,22 @@ import {
   getTextShapeVariant,
   getOutlinedShapeVariant,
   getContainedShapeVariant,
-} from './shape';
+  getElementTransitions,
+} from '../utils';
 
 export const createThemeComponentsButton = ({
   palette,
   shape,
   typography,
+  transitions,
   components,
 }: CreateThemeComponent): ButtonStyles => {
+  const transition = getElementTransitions(
+    ['background-color', 'color', 'border-color', 'box-shadow'],
+    transitions.duration.shortest,
+    transitions.easing.easeInOut
+  ).join(', ');
+
   return {
     root: [
       {
@@ -39,8 +47,7 @@ export const createThemeComponentsButton = ({
         borderStyle: 'solid',
         borderColor: 'transparent',
 
-        // TODO
-        transition: `background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`,
+        transition: transition,
 
         fontWeight: typography.button.fontWeight,
         textTransform: typography.button.textTransform,
