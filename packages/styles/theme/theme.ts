@@ -1,14 +1,19 @@
 import { Theme } from 'types';
-import { getThemeComponents } from './components';
-import { getThemePalette } from './palette';
+import { createThemeComponents } from './components';
+import { createThemePalette } from './palette';
+import { createThemeShape } from './shape';
+import { createThemeTypography } from './typography';
 
-// eslint-disable-next-line
 export const createTheme = (theme?: Partial<Theme>): Theme => {
-  const palette = getThemePalette();
-  const components = getThemeComponents();
+  const palette = createThemePalette(theme?.palette);
+  const shape = createThemeShape(theme?.shape);
+  const typography = createThemeTypography(theme?.typography);
+  const components = createThemeComponents({ palette, shape, typography });
 
   return {
     palette,
     components,
+    shape,
+    typography,
   };
 };

@@ -1,8 +1,10 @@
-import { ThemeComponents } from 'types';
-import { getThemeComponentsButton } from './Button';
+import { ThemeComponents, CreateThemeComponent } from 'types';
+import { createThemeComponentsButton } from './Button';
 
-export const getThemeComponents = (): ThemeComponents => {
+export const createThemeComponents = (
+  props: CreateThemeComponent
+): ThemeComponents => {
   return {
-    Button: getThemeComponentsButton(),
+    Button: createThemeComponentsButton(props),
   };
 };

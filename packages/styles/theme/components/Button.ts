@@ -1,12 +1,16 @@
+import { ButtonStyles, CreateThemeComponent } from 'types';
 import {
   getSizeShape,
   getTextShapeVariant,
   getOutlinedShapeVariant,
   getContainedShapeVariant,
 } from './shape';
-import { ButtonStyles } from 'types';
 
-export const getThemeComponentsButton = (): ButtonStyles => {
+export const createThemeComponentsButton = ({
+  palette,
+  shape,
+  typography,
+}: CreateThemeComponent): ButtonStyles => {
   return {
     root: [
       {

@@ -1,8 +1,7 @@
-import { defaultPalette } from 'core';
 import { ThemePalette, themeModeKeys } from 'types';
+import { defaultPalette } from 'core';
 
-export const getThemePalette = (
-  // eslint-disable-next-line
+export const createThemePalette = (
   palette?: Partial<ThemePalette>
 ): ThemePalette => {
   return {
