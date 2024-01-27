@@ -1,3 +1,3 @@
-export * from './base';
 export * from './context';
+export * from './global';
 export * from './theme';
