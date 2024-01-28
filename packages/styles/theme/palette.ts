@@ -3,79 +3,97 @@ import { ThemePalette, ThemeMode, themeModeKeys } from 'types';
 import { defaultPalette } from 'core';
 
 const getPropsByTheme = (mode: ThemeMode, palette?: Partial<ThemePalette>) => {
+  const coefficients = {
+    textSecondary: 25,
+    textTertiary: 35,
+    shapeDivider: 65,
+    shapeBorder: 75,
+    backgroundSurface: 0.025,
+  };
+
   switch (mode) {
     case themeModeKeys.dark:
+      const textPrimaryDark = palette?.text?.primary || defaultPalette.white;
+      const backgroundBodyDark =
+        palette?.background?.body || defaultPalette.dark;
+
       return {
-        grey: {
-          5: '',
-          10: '',
-          20: '',
-          30: '',
-          40: '',
-          50: '',
-          60: '',
-          70: '',
-          80: '',
-          90: '',
-          100: '',
-        },
         text: {
-          primary: 'hsl(0, 0.0%, 99.2%)',
-          secondary: '',
-          tertiary: '',
-          disabled: '',
+          primary: textPrimaryDark,
+          secondary:
+            palette?.text?.secondary ||
+            Color(textPrimaryDark).darken(25).toString(),
+          tertiary:
+            palette?.text?.tertiary ||
+            Color(textPrimaryDark).darken(50).toString(),
+          disabled: palette?.text?.disabled || defaultPalette.disabled,
         },
         shape: {
-          divider: '',
-          border: '',
+          divider:
+            palette?.shape?.divider ||
+            Color(textPrimaryDark).darken(65).toString(),
+          border:
+            palette?.shape?.border ||
+            Color(textPrimaryDark).darken(75).toString(),
         },
         background: {
-          body: 'hsl(0, 0.0%, 0.8%)',
-          surface: '',
+          body: backgroundBodyDark,
+          surface:
+            palette?.background?.surface ||
+            Color(backgroundBodyDark).lighten(0.025).toString(),
         },
         inverted: {
-          main: '', // TODO #depends on mode
-          dark: '', // TODO #depends on mode
-          light: '', // TODO #depends on mode
-          contrast: '', // TODO #depends on mode
+          main: backgroundBodyDark,
+          dark:
+            palette?.inverted?.dark ||
+            Color(backgroundBodyDark).darken(0.25).toString(),
+          light:
+            palette?.inverted?.light ||
+            Color(backgroundBodyDark).lighten(0.25).toString(),
+          contrast: palette?.inverted?.contrast || defaultPalette.light,
         },
       };
 
     case themeModeKeys.light:
     default:
+      const textPrimaryLight = palette?.text?.primary || defaultPalette.black;
+      const backgroundBodyLight =
+        palette?.background?.body || defaultPalette.light;
+
       return {
-        grey: {
-          5: '',
-          10: '',
-          20: '',
-          30: '',
-          40: '',
-          50: '',
-          60: '',
-          70: '',
-          80: '',
-          90: '',
-          100: '',
-        },
         text: {
-          primary: 'hsl(0, 0.0%, 0.8%)',
-          secondary: '',
-          tertiary: '',
-          disabled: '',
+          primary: textPrimaryLight,
+          secondary:
+            palette?.text?.secondary ||
+            Color(textPrimaryLight).lighten(25).toString(),
+          tertiary:
+            palette?.text?.tertiary ||
+            Color(textPrimaryLight).lighten(50).toString(),
+          disabled: palette?.text?.disabled || defaultPalette.disabled,
         },
         shape: {
-          divider: '',
-          border: '',
+          divider:
+            palette?.shape?.divider ||
+            Color(textPrimaryLight).lighten(65).toString(),
+          border:
+            palette?.shape?.border ||
+            Color(textPrimaryLight).lighten(75).toString(),
         },
         background: {
-          body: 'hsl(0, 0.0%, 99.2%)',
-          surface: '',
+          body: backgroundBodyLight,
+          surface:
+            palette?.background?.surface ||
+            Color(backgroundBodyLight).darken(0.025).toString(),
         },
         inverted: {
-          main: '', // TODO #depends on mode
-          dark: '', // TODO #depends on mode
-          light: '', // TODO #depends on mode
-          contrast: '', // TODO #depends on mode
+          main: backgroundBodyLight,
+          dark:
+            palette?.inverted?.dark ||
+            Color(backgroundBodyLight).darken(0.25).toString(),
+          light:
+            palette?.inverted?.light ||
+            Color(backgroundBodyLight).lighten(0.25).toString(),
+          contrast: palette?.inverted?.contrast || defaultPalette.dark,
         },
       };
   }
@@ -95,47 +113,56 @@ export const createThemePalette = (
   const infoColorMain = palette?.info?.main || defaultPalette.info;
   const successColorMain = palette?.success?.main || defaultPalette.success;
 
-  const blackColor = palette?.common?.black || defaultPalette.black;
-  const whiteColor = palette?.common?.white || defaultPalette.white;
-  const darkColor = palette?.common?.dark || defaultPalette.dark;
-  const lightColor = palette?.common?.light || defaultPalette.light;
-
   const actionActiveOpacity = palette?.action?.activeOpacity || 0.12;
   const actionHoverOpacity = palette?.action?.hoverOpacity || 0.25;
   const actionDisabledOpacity = palette?.action?.disabledOpacity || 0.35;
-
   const actionActive = palette?.action?.active || defaultPalette.active;
   const actionHover = palette?.action?.hover || defaultPalette.hover;
   const actionDisabled = palette?.action?.disabled || defaultPalette.disabled;
 
-  // TODO - Sem se musí dostat už skoro hotový objekt !!!
-  // TODO - Takže je potřeba poskládal ještě před
-  const { text, shape, background, inverted, grey } = getPropsByTheme(
+  const greyColorBase =
+    (palette?.grey && palette?.grey['100']) || defaultPalette.grey;
+
+  const common = {
+    black: palette?.common?.black || defaultPalette.black,
+    white: palette?.common?.white || defaultPalette.white,
+    dark: palette?.common?.dark || defaultPalette.dark,
+    light: palette?.common?.light || defaultPalette.light,
+  };
+  const grey = {
+    5: Color(greyColorBase).lighten(0.95).toString(),
+    10: Color(greyColorBase).lighten(0.9).toString(),
+    20: Color(greyColorBase).lighten(0.8).toString(),
+    30: Color(greyColorBase).lighten(0.7).toString(),
+    40: Color(greyColorBase).lighten(0.6).toString(),
+    50: Color(greyColorBase).lighten(0.5).toString(),
+    60: Color(greyColorBase).lighten(0.4).toString(),
+    70: Color(greyColorBase).lighten(0.3).toString(),
+    80: Color(greyColorBase).lighten(0.2).toString(),
+    90: Color(greyColorBase).lighten(0.1).toString(),
+    100: greyColorBase,
+  };
+  const action = {
+    active: Color(actionActive).alpha(actionActiveOpacity).toString(),
+    activeOpacity: actionActiveOpacity,
+    hover: Color(actionHover).alpha(actionHoverOpacity).toString(),
+    hoverOpacity: actionHoverOpacity,
+    disabled: Color(actionDisabled).alpha(actionDisabledOpacity).toString(),
+    disabledOpacity: actionDisabledOpacity,
+  };
+
+  const themePrimary = {
     mode,
-    palette
-  ); // TODO
+    common,
+    action,
+  };
+
+  const themeSecondary = getPropsByTheme(mode, palette);
 
   return {
-    mode,
-    text,
-    shape,
-    background,
+    ...themePrimary,
+    ...themeSecondary,
     grey,
-    inverted,
-    common: {
-      black: blackColor,
-      white: whiteColor,
-      dark: darkColor,
-      light: lightColor,
-    },
-    action: {
-      active: Color(actionActive).alpha(actionActiveOpacity).toString(),
-      activeOpacity: actionActiveOpacity,
-      hover: Color(actionHover).alpha(actionHoverOpacity).toString(),
-      hoverOpacity: actionHoverOpacity,
-      disabled: Color(actionDisabled).alpha(actionDisabledOpacity).toString(),
-      disabledOpacity: actionDisabledOpacity,
-    },
     primary: {
       main: primaryColorMain,
       dark:

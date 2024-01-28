@@ -8,7 +8,14 @@ const Theme = () => {
     <div>
       ...Theme view...
       <div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
+        <div
+          style={{
+            padding: '1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '.5rem',
+          }}
+        >
           <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
             <div
               style={{
@@ -329,6 +336,241 @@ const Theme = () => {
               inverted
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        style={{
+          padding: '1rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '.5rem',
+        }}
+      >
+        <p style={{ color: theme.palette.text.primary }}>
+          [primary] Lorem ipsum dolor sit amet ...
+        </p>
+        <p style={{ color: theme.palette.text.secondary }}>
+          [secondary] Lorem ipsum dolor sit amet ...
+        </p>
+        <p style={{ color: theme.palette.text.tertiary }}>
+          [tertiary] Lorem ipsum dolor sit amet ...
+        </p>
+        <p style={{ color: theme.palette.text.disabled }}>
+          [disabled] Lorem ipsum dolor sit amet ...
+        </p>
+      </div>
+      <div
+        style={{
+          padding: '1rem',
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '.5rem',
+        }}
+      >
+        <div
+          style={{
+            width: '4rem',
+            height: '2rem',
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: theme.palette.shape.border,
+          }}
+        ></div>
+        <div
+          style={{
+            width: '4rem',
+            height: '2rem',
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: theme.palette.shape.divider,
+          }}
+        ></div>
+        <div
+          style={{
+            width: '4rem',
+            height: '2rem',
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: theme.palette.common.black,
+          }}
+        ></div>
+      </div>
+      <div
+        style={{
+          padding: '1rem',
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '.5rem',
+        }}
+      >
+        <div
+          style={{
+            width: '4rem',
+            height: '4rem',
+            backgroundColor: theme.palette.background.body,
+            border: `1px solid ${theme.palette.shape.border}`,
+          }}
+        ></div>
+        <div
+          style={{
+            width: '4rem',
+            height: '4rem',
+            borderWidth: '1px',
+            backgroundColor: theme.palette.background.surface,
+            border: `1px solid ${theme.palette.shape.border}`,
+          }}
+        ></div>
+      </div>
+      <div
+        style={{
+          padding: '1rem',
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '.5rem',
+        }}
+      >
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[5],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          5
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[10],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          10
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[20],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          20
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[30],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          30
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[40],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          40
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[50],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          50
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[60],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          60
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[70],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          70
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[80],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          80
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[90],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          90
+        </div>
+        <div
+          style={{
+            width: '2rem',
+            height: '2rem',
+            backgroundColor: theme.palette.grey[100],
+            border: `1px solid ${theme.palette.shape.border}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          100
         </div>
       </div>
     </div>

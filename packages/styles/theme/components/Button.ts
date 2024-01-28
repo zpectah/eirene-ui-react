@@ -1,4 +1,3 @@
-// import color from 'color';
 import { ButtonStyles, CreateThemeComponent } from 'types';
 import {
   getSizeShape,
@@ -129,9 +128,9 @@ export const createThemeComponentsButton = ({
           palette.action.disabled
         ),
         '&.Button-containedInverted': getContainedShapeVariant(
-          'hsl(0, 0.0%, 94.1%)', // TODO
-          'hsl(0, 0.0%, 94.1%)', // TODO
-          'hsl(0, 0.0%, 9.8%)', // TODO
+          palette.inverted.main,
+          palette.inverted.light,
+          palette.inverted.contrast,
           palette.action.disabled,
           true
         ),
@@ -180,10 +179,10 @@ export const createThemeComponentsButton = ({
           palette.action.disabled
         ),
         '&.Button-outlinedInverted': getOutlinedShapeVariant(
-          'hsl(0, 0.0%, 94.1%)', // TODO
-          'hsl(0, 0.0%, 94.1%)', // TODO
-          'hsl(0, 0.0%, 9.8%)', // TODO
-          palette.action.disabled, // TODO
+          palette.inverted.main,
+          palette.inverted.light,
+          palette.inverted.contrast,
+          palette.action.disabled,
           true
         ),
 
@@ -231,10 +230,10 @@ export const createThemeComponentsButton = ({
           palette.action.disabled
         ),
         '&.Button-textInverted': getTextShapeVariant(
-          'hsl(0, 0.0%, 94.1%)', // TODO
-          'hsl(0, 0.0%, 94.1%)', // TODO
-          'hsl(0, 0.0%, 9.8%)', // TODO
-          palette.action.disabled, // TODO
+          palette.inverted.main,
+          palette.inverted.light,
+          palette.inverted.contrast,
+          palette.action.disabled,
           true
         ),
       },
