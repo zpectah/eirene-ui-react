@@ -31,27 +31,22 @@ export const createThemeComponentsButton = ({
         verticalAlign: 'middle',
         userSelect: 'none',
         cursor: 'pointer',
+        borderStyle: 'solid',
+        borderColor: 'transparent',
+        borderWidth: shape.borderWidth.button,
+        borderRadius: shape.borderRadius.medium,
+        fontWeight: typography.button.fontWeight,
+        textTransform: typography.button.textTransform,
+        letterSpacing: typography.button.letterSpacing,
+        transition: transition,
 
         '&:hover, &:focus, &:active': {
           textDecoration: 'none',
         },
-
         '&:disabled, &[disabled], &.is--disabled': {
           pointerEvents: 'none',
           cursor: 'default',
         },
-
-        borderStyle: 'solid',
-        borderColor: 'transparent',
-
-        transition: transition,
-
-        fontWeight: typography.button.fontWeight,
-        textTransform: typography.button.textTransform,
-        letterSpacing: typography.button.letterSpacing,
-
-        borderWidth: shape.borderWidth.button,
-        borderRadius: shape.borderRadius.medium,
 
         '&.is--active': {
           // TODO

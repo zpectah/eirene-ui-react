@@ -22,8 +22,9 @@ export const getContainedShapeVariant = (
           borderColor: background,
         }
       : {
-          boxShadow: `inset 0 0 0 2.5rem ${disabled}`,
-          borderColor: disabled,
+          backgroundColor: disabled,
+          borderColor: 'transparent',
+          textShadow: `0 1px .25rem ${disabled}`,
         },
   };
 };
