@@ -1,4 +1,4 @@
-export const defaultPalette = {
+export const DEFAULT_PALETTE = {
   primary: 'hsl(261, 58%, 47%)',
   secondary: 'hsl(324, 2.6%, 37.5%)',
   tertiary: 'hsl(199, 18.3%, 33.1%)',

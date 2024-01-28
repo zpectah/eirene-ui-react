@@ -1,99 +1,107 @@
 import Color from 'color';
 import { ThemePalette, ThemeMode, themeModeKeys } from 'types';
-import { defaultPalette } from 'core';
+import { DEFAULT_PALETTE, PALETTE_RATIO } from 'core';
 
 const getPropsByTheme = (mode: ThemeMode, palette?: Partial<ThemePalette>) => {
-  const coefficients = {
-    textSecondary: 25,
-    textTertiary: 35,
-    shapeDivider: 65,
-    shapeBorder: 75,
-    backgroundSurface: 0.025,
+  let textPrimaryDark,
+    backgroundBodyDark,
+    textPrimaryLight,
+    backgroundBodyLight;
+  const ratio = {
+    textSecondary: palette?.ratio?.textSecondary || PALETTE_RATIO.textSecondary,
+    textTertiary: palette?.ratio?.textTertiary || PALETTE_RATIO.textTertiary,
+    shapeDivider: palette?.ratio?.shapeDivider || PALETTE_RATIO.shapeDivider,
+    shapeBorder: palette?.ratio?.shapeBorder || PALETTE_RATIO.shapeBorder,
+    backgroundSurface:
+      palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
+    shapeAction: palette?.ratio?.shapeAction || PALETTE_RATIO.shapeAction,
   };
 
   switch (mode) {
     case themeModeKeys.dark:
-      const textPrimaryDark = palette?.text?.primary || defaultPalette.white;
-      const backgroundBodyDark =
-        palette?.background?.body || defaultPalette.dark;
+      textPrimaryDark = palette?.text?.primary || DEFAULT_PALETTE.white;
+      backgroundBodyDark = palette?.background?.body || DEFAULT_PALETTE.dark;
 
       return {
         text: {
           primary: textPrimaryDark,
           secondary:
             palette?.text?.secondary ||
-            Color(textPrimaryDark).darken(25).toString(),
+            Color(textPrimaryDark).darken(ratio.textSecondary).toString(),
           tertiary:
             palette?.text?.tertiary ||
-            Color(textPrimaryDark).darken(50).toString(),
-          disabled: palette?.text?.disabled || defaultPalette.disabled,
+            Color(textPrimaryDark).darken(ratio.textTertiary).toString(),
+          disabled: palette?.text?.disabled || DEFAULT_PALETTE.disabled,
         },
         shape: {
           divider:
             palette?.shape?.divider ||
-            Color(textPrimaryDark).darken(65).toString(),
+            Color(textPrimaryDark).darken(ratio.shapeDivider).toString(),
           border:
             palette?.shape?.border ||
-            Color(textPrimaryDark).darken(75).toString(),
+            Color(textPrimaryDark).darken(ratio.shapeBorder).toString(),
         },
         background: {
           body: backgroundBodyDark,
           surface:
             palette?.background?.surface ||
-            Color(backgroundBodyDark).lighten(0.025).toString(),
+            Color(backgroundBodyDark)
+              .lighten(ratio.backgroundSurface)
+              .toString(),
         },
         inverted: {
           main: backgroundBodyDark,
           dark:
             palette?.inverted?.dark ||
-            Color(backgroundBodyDark).darken(0.25).toString(),
+            Color(backgroundBodyDark).darken(ratio.shapeAction).toString(),
           light:
             palette?.inverted?.light ||
-            Color(backgroundBodyDark).lighten(0.25).toString(),
-          contrast: palette?.inverted?.contrast || defaultPalette.light,
+            Color(backgroundBodyDark).lighten(ratio.shapeAction).toString(),
+          contrast: palette?.inverted?.contrast || DEFAULT_PALETTE.light,
         },
       };
 
     case themeModeKeys.light:
     default:
-      const textPrimaryLight = palette?.text?.primary || defaultPalette.black;
-      const backgroundBodyLight =
-        palette?.background?.body || defaultPalette.light;
+      textPrimaryLight = palette?.text?.primary || DEFAULT_PALETTE.black;
+      backgroundBodyLight = palette?.background?.body || DEFAULT_PALETTE.light;
 
       return {
         text: {
           primary: textPrimaryLight,
           secondary:
             palette?.text?.secondary ||
-            Color(textPrimaryLight).lighten(25).toString(),
+            Color(textPrimaryLight).lighten(ratio.textSecondary).toString(),
           tertiary:
             palette?.text?.tertiary ||
-            Color(textPrimaryLight).lighten(50).toString(),
-          disabled: palette?.text?.disabled || defaultPalette.disabled,
+            Color(textPrimaryLight).lighten(ratio.textTertiary).toString(),
+          disabled: palette?.text?.disabled || DEFAULT_PALETTE.disabled,
         },
         shape: {
           divider:
             palette?.shape?.divider ||
-            Color(textPrimaryLight).lighten(65).toString(),
+            Color(textPrimaryLight).lighten(ratio.shapeDivider).toString(),
           border:
             palette?.shape?.border ||
-            Color(textPrimaryLight).lighten(75).toString(),
+            Color(textPrimaryLight).lighten(ratio.shapeBorder).toString(),
         },
         background: {
           body: backgroundBodyLight,
           surface:
             palette?.background?.surface ||
-            Color(backgroundBodyLight).darken(0.025).toString(),
+            Color(backgroundBodyLight)
+              .darken(ratio.backgroundSurface)
+              .toString(),
         },
         inverted: {
           main: backgroundBodyLight,
           dark:
             palette?.inverted?.dark ||
-            Color(backgroundBodyLight).darken(0.25).toString(),
+            Color(backgroundBodyLight).darken(ratio.shapeAction).toString(),
           light:
             palette?.inverted?.light ||
-            Color(backgroundBodyLight).lighten(0.25).toString(),
-          contrast: palette?.inverted?.contrast || defaultPalette.dark,
+            Color(backgroundBodyLight).lighten(ratio.shapeAction).toString(),
+          contrast: palette?.inverted?.contrast || DEFAULT_PALETTE.dark,
         },
       };
   }
@@ -104,30 +112,54 @@ export const createThemePalette = (
 ): ThemePalette => {
   const mode = palette?.mode || themeModeKeys.light;
 
-  const primaryColorMain = palette?.primary?.main || defaultPalette.primary;
+  const primaryColorMain = palette?.primary?.main || DEFAULT_PALETTE.primary;
   const secondaryColorMain =
-    palette?.secondary?.main || defaultPalette.secondary;
-  const tertiaryColorMain = palette?.tertiary?.main || defaultPalette.tertiary;
-  const errorColorMain = palette?.error?.main || defaultPalette.error;
-  const warningColorMain = palette?.warning?.main || defaultPalette.warning;
-  const infoColorMain = palette?.info?.main || defaultPalette.info;
-  const successColorMain = palette?.success?.main || defaultPalette.success;
-
-  const actionActiveOpacity = palette?.action?.activeOpacity || 0.12;
-  const actionHoverOpacity = palette?.action?.hoverOpacity || 0.25;
-  const actionDisabledOpacity = palette?.action?.disabledOpacity || 0.35;
-  const actionActive = palette?.action?.active || defaultPalette.active;
-  const actionHover = palette?.action?.hover || defaultPalette.hover;
-  const actionDisabled = palette?.action?.disabled || defaultPalette.disabled;
+    palette?.secondary?.main || DEFAULT_PALETTE.secondary;
+  const tertiaryColorMain = palette?.tertiary?.main || DEFAULT_PALETTE.tertiary;
+  const errorColorMain = palette?.error?.main || DEFAULT_PALETTE.error;
+  const warningColorMain = palette?.warning?.main || DEFAULT_PALETTE.warning;
+  const infoColorMain = palette?.info?.main || DEFAULT_PALETTE.info;
+  const successColorMain = palette?.success?.main || DEFAULT_PALETTE.success;
 
   const greyColorBase =
-    (palette?.grey && palette?.grey['100']) || defaultPalette.grey;
+    (palette?.grey && palette?.grey['100']) || DEFAULT_PALETTE.grey;
 
+  const ratio = {
+    activeOpacity: palette?.ratio?.activeOpacity || PALETTE_RATIO.activeOpacity,
+    hoverOpacity: palette?.ratio?.hoverOpacity || PALETTE_RATIO.hoverOpacity,
+    disabledOpacity:
+      palette?.ratio?.disabledOpacity || PALETTE_RATIO.disabledOpacity,
+    textSecondary: palette?.ratio?.textSecondary || PALETTE_RATIO.textSecondary,
+    textTertiary: palette?.ratio?.textTertiary || PALETTE_RATIO.textTertiary,
+    shapeDivider: palette?.ratio?.shapeDivider || PALETTE_RATIO.shapeDivider,
+    shapeBorder: palette?.ratio?.shapeBorder || PALETTE_RATIO.shapeBorder,
+    backgroundSurface:
+      palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
+    shapeAction: palette?.ratio?.shapeAction || PALETTE_RATIO.shapeAction,
+  };
   const common = {
-    black: palette?.common?.black || defaultPalette.black,
-    white: palette?.common?.white || defaultPalette.white,
-    dark: palette?.common?.dark || defaultPalette.dark,
-    light: palette?.common?.light || defaultPalette.light,
+    black: palette?.common?.black || DEFAULT_PALETTE.black,
+    white: palette?.common?.white || DEFAULT_PALETTE.white,
+    dark: palette?.common?.dark || DEFAULT_PALETTE.dark,
+    light: palette?.common?.light || DEFAULT_PALETTE.light,
+    red: palette?.common?.red || DEFAULT_PALETTE.red,
+    pink: palette?.common?.pink || DEFAULT_PALETTE.pink,
+    purple: palette?.common?.purple || DEFAULT_PALETTE.purple,
+    deepPurple: palette?.common?.deepPurple || DEFAULT_PALETTE.deepPurple,
+    indigo: palette?.common?.indigo || DEFAULT_PALETTE.indigo,
+    blue: palette?.common?.blue || DEFAULT_PALETTE.blue,
+    lightBlue: palette?.common?.lightBlue || DEFAULT_PALETTE.lightBlue,
+    cyan: palette?.common?.cyan || DEFAULT_PALETTE.cyan,
+    teal: palette?.common?.teal || DEFAULT_PALETTE.teal,
+    green: palette?.common?.green || DEFAULT_PALETTE.green,
+    lightGreen: palette?.common?.lightGreen || DEFAULT_PALETTE.lightGreen,
+    lime: palette?.common?.lime || DEFAULT_PALETTE.lime,
+    yellow: palette?.common?.yellow || DEFAULT_PALETTE.yellow,
+    amber: palette?.common?.amber || DEFAULT_PALETTE.amber,
+    orange: palette?.common?.orange || DEFAULT_PALETTE.orange,
+    deepOrange: palette?.common?.deepOrange || DEFAULT_PALETTE.deepOrange,
+    brown: palette?.common?.brown || DEFAULT_PALETTE.brown,
+    blueGrey: palette?.common?.blueGrey || DEFAULT_PALETTE.blueGrey,
   };
   const grey = {
     5: Color(greyColorBase).lighten(0.95).toString(),
@@ -142,91 +174,98 @@ export const createThemePalette = (
     90: Color(greyColorBase).lighten(0.1).toString(),
     100: greyColorBase,
   };
+
+  const actionActive = palette?.action?.active || DEFAULT_PALETTE.active;
+  const actionHover = palette?.action?.hover || DEFAULT_PALETTE.hover;
+  const actionDisabled = palette?.action?.disabled || DEFAULT_PALETTE.disabled;
+
   const action = {
-    active: Color(actionActive).alpha(actionActiveOpacity).toString(),
-    activeOpacity: actionActiveOpacity,
-    hover: Color(actionHover).alpha(actionHoverOpacity).toString(),
-    hoverOpacity: actionHoverOpacity,
-    disabled: Color(actionDisabled).alpha(actionDisabledOpacity).toString(),
-    disabledOpacity: actionDisabledOpacity,
+    active: Color(actionActive).alpha(ratio.activeOpacity).toString(),
+    hover: Color(actionHover).alpha(ratio.hoverOpacity).toString(),
+    disabled: Color(actionDisabled).alpha(ratio.disabledOpacity).toString(),
   };
 
   const themePrimary = {
     mode,
     common,
     action,
+    ratio,
+    grey,
   };
-
-  const themeSecondary = getPropsByTheme(mode, palette);
+  const themeSecondary = getPropsByTheme(mode, { ...palette, ...themePrimary });
 
   return {
     ...themePrimary,
     ...themeSecondary,
-    grey,
     primary: {
       main: primaryColorMain,
       dark:
         palette?.primary?.dark ||
-        Color(primaryColorMain).darken(0.25).toString(),
+        Color(primaryColorMain).darken(ratio.shapeAction).toString(),
       light:
         palette?.primary?.light ||
-        Color(primaryColorMain).lighten(0.25).toString(),
-      contrast: palette?.primary?.contrast || defaultPalette.white,
+        Color(primaryColorMain).lighten(ratio.shapeAction).toString(),
+      contrast: palette?.primary?.contrast || DEFAULT_PALETTE.white,
     },
     secondary: {
       main: secondaryColorMain,
       dark:
         palette?.secondary?.dark ||
-        Color(secondaryColorMain).darken(0.25).toString(),
+        Color(secondaryColorMain).darken(ratio.shapeAction).toString(),
       light:
         palette?.secondary?.light ||
-        Color(secondaryColorMain).lighten(0.25).toString(),
-      contrast: palette?.secondary?.contrast || defaultPalette.white,
+        Color(secondaryColorMain).lighten(ratio.shapeAction).toString(),
+      contrast: palette?.secondary?.contrast || DEFAULT_PALETTE.white,
     },
     tertiary: {
       main: tertiaryColorMain,
       dark:
         palette?.tertiary?.dark ||
-        Color(tertiaryColorMain).darken(0.25).toString(),
+        Color(tertiaryColorMain).darken(ratio.shapeAction).toString(),
       light:
         palette?.tertiary?.light ||
-        Color(tertiaryColorMain).lighten(0.25).toString(),
-      contrast: palette?.tertiary?.contrast || defaultPalette.white,
+        Color(tertiaryColorMain).lighten(ratio.shapeAction).toString(),
+      contrast: palette?.tertiary?.contrast || DEFAULT_PALETTE.white,
     },
     error: {
       main: errorColorMain,
       dark:
-        palette?.error?.dark || Color(errorColorMain).darken(0.25).toString(),
+        palette?.error?.dark ||
+        Color(errorColorMain).darken(ratio.shapeAction).toString(),
       light:
-        palette?.error?.light || Color(errorColorMain).lighten(0.25).toString(),
-      contrast: palette?.error?.contrast || defaultPalette.white,
+        palette?.error?.light ||
+        Color(errorColorMain).lighten(ratio.shapeAction).toString(),
+      contrast: palette?.error?.contrast || DEFAULT_PALETTE.white,
     },
     warning: {
       main: warningColorMain,
       dark:
         palette?.warning?.dark ||
-        Color(warningColorMain).darken(0.25).toString(),
+        Color(warningColorMain).darken(ratio.shapeAction).toString(),
       light:
         palette?.warning?.light ||
-        Color(warningColorMain).lighten(0.25).toString(),
-      contrast: palette?.warning?.contrast || defaultPalette.white,
+        Color(warningColorMain).lighten(ratio.shapeAction).toString(),
+      contrast: palette?.warning?.contrast || DEFAULT_PALETTE.white,
     },
     info: {
       main: infoColorMain,
-      dark: palette?.info?.dark || Color(infoColorMain).darken(0.25).toString(),
+      dark:
+        palette?.info?.dark ||
+        Color(infoColorMain).darken(ratio.shapeAction).toString(),
       light:
-        palette?.info?.light || Color(infoColorMain).lighten(0.25).toString(),
-      contrast: palette?.info?.contrast || defaultPalette.white,
+        palette?.info?.light ||
+        Color(infoColorMain).lighten(ratio.shapeAction).toString(),
+      contrast: palette?.info?.contrast || DEFAULT_PALETTE.white,
     },
     success: {
       main: successColorMain,
       dark:
         palette?.success?.dark ||
-        Color(successColorMain).darken(0.25).toString(),
+        Color(successColorMain).darken(ratio.shapeAction).toString(),
       light:
         palette?.success?.light ||
-        Color(successColorMain).lighten(0.25).toString(),
-      contrast: palette?.success?.contrast || defaultPalette.white,
+        Color(successColorMain).lighten(ratio.shapeAction).toString(),
+      contrast: palette?.success?.contrast || DEFAULT_PALETTE.white,
     },
   };
 };

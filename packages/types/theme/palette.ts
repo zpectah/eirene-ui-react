@@ -11,11 +11,41 @@ export interface ThemePaletteCluster {
 
 export interface ThemePalette {
   mode: ThemeMode;
+  ratio: {
+    activeOpacity: number;
+    hoverOpacity: number;
+    disabledOpacity: number;
+    textSecondary: number;
+    textTertiary: number;
+    shapeDivider: number;
+    shapeBorder: number;
+    backgroundSurface: number;
+    shapeAction: number;
+  };
   common: {
     black: string;
     white: string;
     dark: string;
     light: string;
+
+    red: string;
+    pink: string;
+    purple: string;
+    deepPurple: string;
+    indigo: string;
+    blue: string;
+    lightBlue: string;
+    cyan: string;
+    teal: string;
+    green: string;
+    lightGreen: string;
+    lime: string;
+    yellow: string;
+    amber: string;
+    orange: string;
+    deepOrange: string;
+    brown: string;
+    blueGrey: string;
   };
   grey: {
     5: string;
@@ -46,11 +76,8 @@ export interface ThemePalette {
   };
   action: {
     active: string;
-    activeOpacity: number;
     hover: string;
-    hoverOpacity: number;
     disabled: string;
-    disabledOpacity: number;
   };
   primary: ThemePaletteCluster;
   secondary: ThemePaletteCluster;
