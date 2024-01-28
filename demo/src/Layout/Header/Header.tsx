@@ -1,15 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useUiContext } from 'styles';
+import { primaryNavigation } from '../../config';
+import { HEADER_DESKTOP_HEIGHT } from '../../constants';
 
 const Header = () => {
+  const { theme } = useUiContext();
+
   return (
-    <header style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-      <div>Eirine UI</div>
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
-        <Link to="/">Home</Link>
-        <Link to="/components">Components</Link>
-        <Link to="/theme">Theme</Link>
-        <Link to="/usage">Usage</Link>
+    <header
+      style={{
+        width: '100%',
+        height: HEADER_DESKTOP_HEIGHT,
+        padding: '0 .5rem',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.primary.contrast,
+      }}
+    >
+      <Link to="/" style={{ padding: '0 .25rem' }}>
+        <h1 style={{ ...theme.typography.h5 }}>Eirine UI</h1>
+      </Link>
+      <div>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
+          {primaryNavigation.map((item) => (
+            <Link key={item.key} to={item.path}>
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </header>
   );

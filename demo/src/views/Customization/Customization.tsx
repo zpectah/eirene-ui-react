@@ -1,7 +1,7 @@
 import React from 'react';
 import { useUiContext } from 'styles';
 
-const Theme = () => {
+const Customization = () => {
   const { theme } = useUiContext();
 
   return (
@@ -577,4 +577,4 @@ const Theme = () => {
   );
 };
 
-export default Theme;
+export default Customization;
