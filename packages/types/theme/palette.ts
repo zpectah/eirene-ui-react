@@ -15,6 +15,7 @@ export interface ThemePalette {
     activeOpacity: number;
     hoverOpacity: number;
     disabledOpacity: number;
+    loadingOpacity: number;
     textSecondary: number;
     textTertiary: number;
     shapeDivider: number;
@@ -77,6 +78,8 @@ export interface ThemePalette {
     active: string;
     hover: string;
     disabled: string;
+    loading: string;
+    loadingContrast: string;
   };
   primary: ThemePaletteCluster;
   secondary: ThemePaletteCluster;

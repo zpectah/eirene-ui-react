@@ -23,7 +23,14 @@ const ButtonView = () => {
           Button with custom padding
         </Button>
       </div>
-      <div>
+      <div
+        style={{
+          padding: '.5rem',
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '.5rem',
+        }}
+      >
         <Button startIcon={<>000</>} endIcon={<>000</>}>
           Buttonek
         </Button>

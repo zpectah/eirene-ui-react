@@ -41,8 +41,6 @@ export const createThemeComponentsButton = ({
           cursor: 'default',
         },
 
-        // TODO
-        borderWidth: '1px',
         borderStyle: 'solid',
         borderColor: 'transparent',
 
@@ -52,13 +50,17 @@ export const createThemeComponentsButton = ({
         textTransform: typography.button.textTransform,
         letterSpacing: typography.button.letterSpacing,
 
+        borderWidth: shape.borderWidth.button,
         borderRadius: shape.borderRadius.medium,
 
-        // TODO
-        '&.is--active': {},
+        '&.is--active': {
+          // TODO
+        },
         '&.is--loading': {
           position: 'relative',
           overflow: 'hidden',
+          pointerEvents: 'none',
+          cursor: 'default',
         },
         '&.is--fullWidth': {
           width: '100%',
@@ -66,23 +68,33 @@ export const createThemeComponentsButton = ({
 
         // Button sizes
         '&.Button-sizeLarge': getSizeShape(
-          '0.35rem',
-          '0.75rem',
+          '0.35rem', // TODO
+          '0.75rem', // TODO
           '1rem', // TODO
           '1.125rem' // TODO
         ),
         '&.Button-sizeMedium': getSizeShape(
-          '0.5rem',
-          '0.75rem',
-          typography.button.fontSize,
-          typography.button.lineHeight
+          '0.5rem', // TODO
+          '0.75rem', // TODO
+          typography.button.fontSize, // TODO
+          typography.button.lineHeight // TODO
         ),
         '&.Button-sizeSmall': getSizeShape(
-          '0.125rem',
-          '0.25rem',
+          '0.125rem', // TODO
+          '0.25rem', // TODO
           '0.8rem', // TODO
           '0.9rem' // TODO
         ),
+
+        // '.Button-contained &': {
+        //   /* TODO */
+        // },
+        // '.Button-outlined &': {
+        //   /* TODO */
+        // },
+        // '.Button-text &': {
+        //   /* TODO */
+        // },
 
         // Button contained
         '&.Button-containedPrimary': getContainedShapeVariant(
@@ -261,13 +273,10 @@ export const createThemeComponentsButton = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-
-        color: 'white', // TODO
-        backgroundColor: 'rgba(25,25,25, .5)', // TODO
-
-        '.Button-contained &': {},
-        '.Button-outlined &': {},
-        '.Button-text &': {},
+        color: palette.action.loadingContrast,
+        backgroundColor: palette.action.loading,
+        borderRadius: shape.borderRadius.medium,
+        backdropFilter: 'blur(.5rem)',
       },
       components?.Button?.iconLoading,
     ],

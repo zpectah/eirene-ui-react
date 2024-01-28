@@ -4,4 +4,9 @@ export interface ThemeShape {
     medium: string;
     large: string;
   };
+  borderWidth: {
+    button: string;
+    input: string;
+    divider: string;
+  };
 }

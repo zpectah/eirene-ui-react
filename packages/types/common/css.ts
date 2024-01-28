@@ -1,7 +1,5 @@
-export type TextTransform =
-  | 'none'
-  | 'capitalize'
-  | 'uppercase'
-  | 'lowercase'
-  | 'full-width'
-  | 'full-size-kana';
+import { textTransformKeys, textDirectionKeys } from '../enums';
+
+export type TextTransform = keyof typeof textTransformKeys;
+
+export type TextDirection = keyof typeof textDirectionKeys;

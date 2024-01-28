@@ -1,4 +1,4 @@
-import { ThemeTypography } from 'types';
+import { ThemeTypography, textDirectionKeys } from 'types';
 
 export const createThemeTypography = (
   typography?: ThemeTypography
@@ -11,6 +11,7 @@ export const createThemeTypography = (
   const fontWeightMedium = typography?.fontWeightMedium || 500;
   const fontWeightSemiBold = typography?.fontWeightMedium || 600;
   const fontWeightBold = typography?.fontWeightBold || 800;
+  const direction = typography?.direction || textDirectionKeys.ltr;
 
   return {
     fontSize,
@@ -20,7 +21,7 @@ export const createThemeTypography = (
     fontWeightMedium,
     fontWeightSemiBold,
     fontWeightBold,
-
+    direction,
     h1: {
       fontFamily: typography?.h1.fontFamily || fontFamily,
       fontWeight: fontWeightLight,

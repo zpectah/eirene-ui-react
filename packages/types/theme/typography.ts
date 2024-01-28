@@ -1,4 +1,4 @@
-import { TextTransform } from '../common';
+import { TextTransform, TextDirection } from '../common';
 
 export interface ThemeTypographyCluster {
   fontFamily: string;
@@ -17,7 +17,7 @@ export interface ThemeTypography {
   fontWeightMedium: number;
   fontWeightSemiBold: number;
   fontWeightBold: number;
-
+  direction: TextDirection;
   h1: ThemeTypographyCluster;
   h2: ThemeTypographyCluster;
   h3: ThemeTypographyCluster;

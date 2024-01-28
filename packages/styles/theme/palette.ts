@@ -129,6 +129,8 @@ export const createThemePalette = (
     hoverOpacity: palette?.ratio?.hoverOpacity || PALETTE_RATIO.hoverOpacity,
     disabledOpacity:
       palette?.ratio?.disabledOpacity || PALETTE_RATIO.disabledOpacity,
+    loadingOpacity:
+      palette?.ratio?.loadingOpacity || PALETTE_RATIO.loadingOpacity,
     textSecondary: palette?.ratio?.textSecondary || PALETTE_RATIO.textSecondary,
     textTertiary: palette?.ratio?.textTertiary || PALETTE_RATIO.textTertiary,
     shapeDivider: palette?.ratio?.shapeDivider || PALETTE_RATIO.shapeDivider,
@@ -178,11 +180,16 @@ export const createThemePalette = (
   const actionActive = palette?.action?.active || DEFAULT_PALETTE.active;
   const actionHover = palette?.action?.hover || DEFAULT_PALETTE.hover;
   const actionDisabled = palette?.action?.disabled || DEFAULT_PALETTE.disabled;
+  const actionLoading = palette?.action?.loading || DEFAULT_PALETTE.black;
+  const actionLoadingContrast =
+    palette?.action?.loadingContrast || DEFAULT_PALETTE.white;
 
   const action = {
     active: Color(actionActive).alpha(ratio.activeOpacity).toString(),
     hover: Color(actionHover).alpha(ratio.hoverOpacity).toString(),
     disabled: Color(actionDisabled).alpha(ratio.disabledOpacity).toString(),
+    loading: Color(actionLoading).alpha(ratio.loadingOpacity).toString(),
+    loadingContrast: actionLoadingContrast,
   };
 
   const themePrimary = {
