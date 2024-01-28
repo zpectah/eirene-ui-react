@@ -23,7 +23,6 @@
     "color": "^4.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.21.3",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
@@ -35,15 +34,13 @@
     "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
-    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "nx": "17.2.8",
     "prettier": "^3.2.4",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12"
+    "typescript": "^5.3.3"
   },
   "workspaces": [
     "packages/*",

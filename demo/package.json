@@ -6,6 +6,11 @@
     "start:demo": "vite",
     "build:demo": "vite build"
   },
-  "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "react-router-dom": "^6.21.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.12"
+  }
 }
