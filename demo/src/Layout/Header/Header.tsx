@@ -8,6 +8,7 @@ const Header = () => {
       <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
         <Link to="/">Home</Link>
         <Link to="/components">Components</Link>
+        <Link to="/theme">Theme</Link>
         <Link to="/usage">Usage</Link>
       </div>
     </header>

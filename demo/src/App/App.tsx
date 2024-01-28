@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UiProvider } from 'styles';
 import { Layout } from '../Layout';
-import { Error, Welcome, Components, Usage } from '../views';
+import { Error, Welcome, Components, Usage, Theme } from '../views';
 
 const App = () => {
   return (
@@ -13,6 +13,7 @@ const App = () => {
             <Route index element={<Welcome />} />
             <Route path="components/" element={<Components />} />
             <Route path="components/:id" element={<Components />} />
+            <Route path="theme" element={<Theme />} />
             <Route path="usage" element={<Usage />} />
             <Route path="*" element={<Error />} />
           </Route>

@@ -19,7 +19,7 @@ export const createThemeComponentsButton = ({
     ['background-color', 'color', 'border-color', 'box-shadow'],
     transitions.duration.shortest,
     transitions.easing.easeInOut
-  ).join(', ');
+  );
 
   return {
     root: [
@@ -88,40 +88,48 @@ export const createThemeComponentsButton = ({
         // Button contained
         '&.Button-containedPrimary': getContainedShapeVariant(
           palette.primary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.primary.dark,
+          palette.primary.contrast,
           palette.action.disabled
         ),
         '&.Button-containedSecondary': getContainedShapeVariant(
           palette.secondary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.secondary.dark,
+          palette.secondary.contrast,
           palette.action.disabled
         ),
         '&.Button-containedTertiary': getContainedShapeVariant(
           palette.tertiary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.tertiary.dark,
+          palette.tertiary.contrast,
           palette.action.disabled
         ),
         '&.Button-containedError': getContainedShapeVariant(
           palette.error.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.error.dark,
+          palette.error.contrast,
           palette.action.disabled
         ),
         '&.Button-containedWarning': getContainedShapeVariant(
           palette.warning.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.warning.dark,
+          palette.warning.contrast,
           palette.action.disabled
         ),
         '&.Button-containedInfo': getContainedShapeVariant(
           palette.info.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.info.dark,
+          palette.info.contrast,
           palette.action.disabled
         ),
         '&.Button-containedSuccess': getContainedShapeVariant(
           palette.success.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.success.dark,
+          palette.success.contrast,
           palette.action.disabled
         ),
         '&.Button-containedInverted': getContainedShapeVariant(
+          'hsl(0, 0.0%, 94.1%)', // TODO
           'hsl(0, 0.0%, 94.1%)', // TODO
           'hsl(0, 0.0%, 9.8%)', // TODO
           palette.action.disabled,
@@ -131,40 +139,48 @@ export const createThemeComponentsButton = ({
         // Button outlined
         '&.Button-outlinedPrimary': getOutlinedShapeVariant(
           palette.primary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.primary.dark,
+          palette.primary.contrast,
           palette.action.disabled
         ),
         '&.Button-outlinedSecondary': getOutlinedShapeVariant(
           palette.secondary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.secondary.dark,
+          palette.secondary.contrast,
           palette.action.disabled
         ),
         '&.Button-outlinedTertiary': getOutlinedShapeVariant(
           palette.tertiary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.tertiary.dark,
+          palette.tertiary.contrast,
           palette.action.disabled
         ),
         '&.Button-outlinedError': getOutlinedShapeVariant(
           palette.error.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.error.dark,
+          palette.error.contrast,
           palette.action.disabled
         ),
         '&.Button-outlinedWarning': getOutlinedShapeVariant(
           palette.warning.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.warning.dark,
+          palette.warning.contrast,
           palette.action.disabled
         ),
         '&.Button-outlinedInfo': getOutlinedShapeVariant(
           palette.info.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.info.dark,
+          palette.info.contrast,
           palette.action.disabled
         ),
         '&.Button-outlinedSuccess': getOutlinedShapeVariant(
           palette.success.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.success.dark,
+          palette.success.contrast,
           palette.action.disabled
         ),
         '&.Button-outlinedInverted': getOutlinedShapeVariant(
+          'hsl(0, 0.0%, 94.1%)', // TODO
           'hsl(0, 0.0%, 94.1%)', // TODO
           'hsl(0, 0.0%, 9.8%)', // TODO
           palette.action.disabled, // TODO
@@ -174,40 +190,48 @@ export const createThemeComponentsButton = ({
         // Button text
         '&.Button-textPrimary': getTextShapeVariant(
           palette.primary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.primary.dark,
+          palette.primary.contrast,
           palette.action.disabled
         ),
         '&.Button-textSecondary': getTextShapeVariant(
           palette.secondary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.secondary.dark,
+          palette.secondary.contrast,
           palette.action.disabled
         ),
         '&.Button-textTertiary': getTextShapeVariant(
           palette.tertiary.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.tertiary.dark,
+          palette.tertiary.contrast,
           palette.action.disabled
         ),
         '&.Button-textError': getTextShapeVariant(
           palette.error.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.error.dark,
+          palette.error.contrast,
           palette.action.disabled
         ),
         '&.Button-textWarning': getTextShapeVariant(
           palette.warning.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.warning.dark,
+          palette.warning.contrast,
           palette.action.disabled
         ),
         '&.Button-textInfo': getTextShapeVariant(
           palette.info.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.info.dark,
+          palette.info.contrast,
           palette.action.disabled
         ),
         '&.Button-textSuccess': getTextShapeVariant(
           palette.success.main,
-          'hsl(0, 0.0%, 99.2%)',
+          palette.success.dark,
+          palette.success.contrast,
           palette.action.disabled
         ),
         '&.Button-textInverted': getTextShapeVariant(
+          'hsl(0, 0.0%, 94.1%)', // TODO
           'hsl(0, 0.0%, 94.1%)', // TODO
           'hsl(0, 0.0%, 9.8%)', // TODO
           palette.action.disabled, // TODO
@@ -238,8 +262,9 @@ export const createThemeComponentsButton = ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'white',
-        backgroundColor: 'rgba(25,25,25, .5)',
+
+        color: 'white', // TODO
+        backgroundColor: 'rgba(25,25,25, .5)', // TODO
 
         '.Button-contained &': {},
         '.Button-outlined &': {},

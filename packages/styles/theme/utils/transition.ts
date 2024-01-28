@@ -9,5 +9,5 @@ export const getElementTransitions = (
     tmp.push(`${prop} ${duration}ms ${easing} ${delay}ms`);
   });
 
-  return tmp;
+  return tmp.join(', ');
 };

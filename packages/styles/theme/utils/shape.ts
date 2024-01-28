@@ -1,5 +1,6 @@
 export const getContainedShapeVariant = (
   background: string,
+  hover: string,
   contrast: string,
   disabled: string,
   inverted?: boolean
@@ -10,8 +11,8 @@ export const getContainedShapeVariant = (
     borderColor: background,
 
     '&:hover:not(&.is--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${background}`,
-      borderColor: background,
+      boxShadow: `inset 0 0 0 2.5rem ${hover}`,
+      borderColor: hover,
     },
 
     '&:disabled, &[disabled], &.is--disabled': inverted
@@ -29,6 +30,7 @@ export const getContainedShapeVariant = (
 
 export const getOutlinedShapeVariant = (
   background: string,
+  hover: string,
   contrast: string,
   disabled: string,
   inverted?: boolean
@@ -39,9 +41,9 @@ export const getOutlinedShapeVariant = (
     borderColor: background,
 
     '&:hover:not(&.is--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${background}`,
+      boxShadow: `inset 0 0 0 2.5rem ${hover}`,
       color: contrast,
-      borderColor: background,
+      borderColor: hover,
     },
 
     '&:disabled, &[disabled], &.is--disabled': inverted
@@ -58,6 +60,7 @@ export const getOutlinedShapeVariant = (
 
 export const getTextShapeVariant = (
   background: string,
+  hover: string,
   contrast: string,
   disabled: string,
   inverted?: boolean
@@ -68,7 +71,7 @@ export const getTextShapeVariant = (
     borderColor: 'transparent',
 
     '&:hover:not(&.is--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${background}`,
+      boxShadow: `inset 0 0 0 2.5rem ${hover}`,
       color: contrast,
     },
 
