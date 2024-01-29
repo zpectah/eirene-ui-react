@@ -1,23 +1,20 @@
+import { routes } from './routes';
+
 export const primaryNavigation = [
   {
     key: 1,
-    label: 'Welcome',
-    path: '/',
+    label: 'Components',
+    path: routes.components.path,
   },
   {
     key: 2,
-    label: 'Components',
-    path: '/components',
+    label: 'Customization',
+    path: routes.customization.path,
   },
   {
     key: 3,
-    label: 'Customization',
-    path: '/customization/theme',
-  },
-  {
-    key: 4,
     label: 'Usage',
-    path: '/usage',
+    path: routes.usage.path,
   },
 ];
 
@@ -25,7 +22,7 @@ export const componentsSidebarNavigation = [
   {
     key: 1,
     label: 'Button',
-    path: '/components/button',
+    path: routes.components.routes.button,
   },
 ];
 
@@ -33,26 +30,26 @@ export const customizationSidebarNavigation = [
   {
     key: 1,
     label: 'Theme',
-    path: '/components/theme',
+    path: routes.customization.routes.theme,
   },
   {
     key: 2,
     label: 'Palette',
-    path: '/components/palette',
+    path: routes.customization.routes.palette,
   },
   {
     key: 3,
     label: 'Typography',
-    path: '/components/typography',
+    path: routes.customization.routes.typography,
   },
   {
     key: 4,
     label: 'Breakpoints',
-    path: '/components/breakpoints',
+    path: routes.customization.routes.breakpoints,
   },
   {
     key: 5,
     label: 'Components',
-    path: '/components/components',
+    path: routes.customization.routes.components,
   },
 ];

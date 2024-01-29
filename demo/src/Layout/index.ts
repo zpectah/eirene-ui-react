@@ -1,3 +1,3 @@
-export { default as Layout } from './Layout.tsx';
+export * from './PageLayout';
 export * from './Header';
 export * from './Footer';

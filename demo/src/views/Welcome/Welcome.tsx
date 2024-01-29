@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useUiContext } from 'styles';
 import { Button } from 'components';
+import { meta, routes } from '../../config';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
 
 const Welcome = () => {
@@ -29,11 +30,9 @@ const Welcome = () => {
         }}
       >
         <h2 style={{ ...theme.typography.h1, textTransform: 'uppercase' }}>
-          Eirene UI
+          {meta.name}
         </h2>
-        <h4 style={{ ...theme.typography.h3 }}>
-          Modern, Intuitive, Customizable ... React UI tools
-        </h4>
+        <h4 style={{ ...theme.typography.h3 }}>{meta.title}</h4>
         <p
           style={{
             ...theme.typography.body1,
@@ -41,9 +40,7 @@ const Welcome = () => {
             textAlign: 'center',
           }}
         >
-          Justo vulputate, nulla iaculis bibendum sem lobortis elementum luctus
-          tempus a et elit, nunc euismod curabitur vitae. A lacinia et iaculis,
-          auctor condimentum et eget sed fermentum
+          {meta.description}
         </p>
         <div
           style={{
@@ -53,12 +50,12 @@ const Welcome = () => {
             gap: '1rem',
           }}
         >
-          <Button as={Link} to="/components">
+          <Button as={Link} to={routes.components.path}>
             Try it yourself
           </Button>
           <Button
             as="a"
-            href={`https://github.com/zpectah/eirene-ui-react`}
+            href={meta.gitHubRepository}
             target="_blank"
             variant="outlined"
             color="secondary"

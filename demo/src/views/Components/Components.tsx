@@ -1,46 +1,67 @@
 import React, { useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import Claim from './Claim';
-import ButtonView from './views/Button';
+import { Link, useParams } from 'react-router-dom';
+import { routes } from '../../config';
+import { componentRouteKeys } from '../../enums';
+import { ButtonView, ContainerView, StackView, LinkView } from './views';
 
 const Components = () => {
   const { id } = useParams();
 
-  const renderSidebarMenu = useMemo(() => {
-    if (!id) return null;
-
-    return (
-      <aside>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
-          <Link to="/components">Overview</Link>
-          <Link to="/components/button">Button</Link>
-        </div>
-      </aside>
-    );
-  }, [id]);
-
-  const renderSecondarySidebarMenu = useMemo(() => {
-    if (!id) return null;
-
-    return <aside>secondary menu</aside>;
-  }, [id]);
+  const components = [
+    {
+      key: 1,
+      label: 'Button',
+      path: routes.components.routes.button,
+    },
+    {
+      key: 2,
+      label: 'Link',
+      path: routes.components.routes.link,
+    },
+    {
+      key: 3,
+      label: 'Container',
+      path: routes.components.routes.container,
+    },
+    {
+      key: 4,
+      label: 'Stack',
+      path: routes.components.routes.stack,
+    },
+  ];
 
   const renderView = useMemo(() => {
     switch (id) {
-      case 'button':
+      case componentRouteKeys.button:
         return <ButtonView />;
+
+      case componentRouteKeys.link:
+        return <LinkView />;
+
+      case componentRouteKeys.container:
+        return <ContainerView />;
+
+      case componentRouteKeys.stack:
+        return <StackView />;
 
       case undefined:
       default:
-        return <Claim />;
+        return <>Error, no component selected</>;
     }
   }, [id]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-      {renderSidebarMenu}
+      <aside>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
+          {components.map(({ key, label, path }) => (
+            <Link key={key} to={path}>
+              {label}
+            </Link>
+          ))}
+        </div>
+      </aside>
       <div style={{ flex: 1 }}>{renderView}</div>
-      {renderSecondarySidebarMenu}
     </div>
   );
 };
