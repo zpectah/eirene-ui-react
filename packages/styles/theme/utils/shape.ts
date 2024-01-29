@@ -20,7 +20,7 @@ export const getContainedButtonVariant = (
     },
 
     '&:focus': {
-      outline: `2px solid ${Color(hover).alpha(focusOutlineAlpha).toString()}`,
+      outline: `2px solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
     },
 
     '&:disabled, &[disabled], &.is--disabled': inverted
@@ -59,7 +59,7 @@ export const getOutlinedButtonVariant = (
     },
 
     '&:focus': {
-      outline: `2px solid ${Color(hover).alpha(focusOutlineAlpha).toString()}`,
+      outline: `2px solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
     },
 
     '&:disabled, &[disabled], &.is--disabled': inverted
@@ -95,7 +95,7 @@ export const getTextButtonVariant = (
     },
 
     '&:focus': {
-      outline: `2px solid ${Color(hover).alpha(focusOutlineAlpha).toString()}`,
+      outline: `2px solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
     },
 
     '&:disabled, &[disabled], &.is--disabled': inverted

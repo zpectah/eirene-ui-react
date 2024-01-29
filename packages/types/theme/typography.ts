@@ -17,6 +17,7 @@ export interface ThemeTypography {
   fontWeightMedium: number;
   fontWeightSemiBold: number;
   fontWeightBold: number;
+  fontWeightExtraBold: number;
   direction: TextDirection;
   h1: ThemeTypographyCluster;
   h2: ThemeTypographyCluster;

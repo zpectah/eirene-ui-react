@@ -10,6 +10,7 @@ export const createThemeShape = (shape?: Partial<ThemeShape>): ThemeShape => {
     button: shape?.borderWidth?.button || '1px', // TODO #default-values
     input: shape?.borderWidth?.input || '1px', // TODO #default-values
     divider: shape?.borderWidth?.divider || '1px', // TODO #default-values
+    outline: shape?.borderWidth?.outline || '2px', // TODO #default-values
   };
 
   return {

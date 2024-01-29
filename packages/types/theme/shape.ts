@@ -8,5 +8,6 @@ export interface ThemeShape {
     button: string;
     input: string;
     divider: string;
+    outline: string;
   };
 }

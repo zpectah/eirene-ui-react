@@ -9,4 +9,6 @@ export const PALETTE_RATIO = {
   shapeBorder: 75,
   backgroundSurface: 0.025,
   shapeAction: 0.25,
+  hoverShadowOpacity: 0.025,
+  focusOutlineOpacity: 0.25,
 };

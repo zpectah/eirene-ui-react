@@ -3,15 +3,16 @@ import { ThemeTypography, textDirectionKeys } from 'types';
 export const createThemeTypography = (
   typography?: ThemeTypography
 ): ThemeTypography => {
-  const fontSize = typography?.fontSize || 16;
+  const fontSize = typography?.fontSize || 16; // TODO #default-values
   const fontFamily =
-    typography?.fontFamily || '"Barlow", "Helvetica", "Arial", sans-serif';
-  const fontWeightLight = typography?.fontWeightLight || 300;
-  const fontWeightRegular = typography?.fontWeightRegular || 400;
-  const fontWeightMedium = typography?.fontWeightMedium || 500;
-  const fontWeightSemiBold = typography?.fontWeightMedium || 600;
-  const fontWeightBold = typography?.fontWeightBold || 800;
-  const direction = typography?.direction || textDirectionKeys.ltr;
+    typography?.fontFamily || '"Open Sans", "Helvetica", "Arial", sans-serif'; // TODO #default-values
+  const fontWeightLight = typography?.fontWeightLight || 300; // TODO #default-values
+  const fontWeightRegular = typography?.fontWeightRegular || 400; // TODO #default-values
+  const fontWeightMedium = typography?.fontWeightMedium || 500; // TODO #default-values
+  const fontWeightSemiBold = typography?.fontWeightMedium || 600; // TODO #default-values
+  const fontWeightBold = typography?.fontWeightBold || 700; // TODO #default-values
+  const fontWeightExtraBold = typography?.fontWeightExtraBold || 800; // TODO #default-values
+  const direction = typography?.direction || textDirectionKeys.ltr; // TODO #default-values
 
   return {
     fontSize,
@@ -21,6 +22,7 @@ export const createThemeTypography = (
     fontWeightMedium,
     fontWeightSemiBold,
     fontWeightBold,
+    fontWeightExtraBold,
     direction,
     h1: {
       fontFamily: typography?.h1.fontFamily || fontFamily,

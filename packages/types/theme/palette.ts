@@ -22,6 +22,8 @@ export interface ThemePalette {
     shapeBorder: number;
     backgroundSurface: number;
     shapeAction: number;
+    hoverShadowOpacity: number;
+    focusOutlineOpacity: number;
   };
   common: {
     black: string;
@@ -48,7 +50,6 @@ export interface ThemePalette {
     blueGrey: string;
   };
   grey: {
-    5: string;
     10: string;
     20: string;
     30: string;
@@ -89,4 +90,7 @@ export interface ThemePalette {
   info: ThemePaletteCluster;
   success: ThemePaletteCluster;
   inverted: ThemePaletteCluster;
+  getContrastColor: (primary: string, secondary: string) => string;
+  lightenColor: (color: string, ratio: number) => string;
+  darkenColor: (color: string, ratio: number) => string;
 }

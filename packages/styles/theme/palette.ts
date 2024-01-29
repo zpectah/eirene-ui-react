@@ -138,6 +138,10 @@ export const createThemePalette = (
     backgroundSurface:
       palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
     shapeAction: palette?.ratio?.shapeAction || PALETTE_RATIO.shapeAction,
+    hoverShadowOpacity:
+      palette?.ratio?.hoverShadowOpacity || PALETTE_RATIO.hoverShadowOpacity,
+    focusOutlineOpacity:
+      palette?.ratio?.focusOutlineOpacity || PALETTE_RATIO.focusOutlineOpacity,
   };
   const common = {
     black: palette?.common?.black || DEFAULT_PALETTE.black,
@@ -164,7 +168,6 @@ export const createThemePalette = (
     blueGrey: palette?.common?.blueGrey || DEFAULT_PALETTE.blueGrey,
   };
   const grey = {
-    5: Color(greyColorBase).lighten(0.95).toString(),
     10: Color(greyColorBase).lighten(0.9).toString(),
     20: Color(greyColorBase).lighten(0.8).toString(),
     30: Color(greyColorBase).lighten(0.7).toString(),
@@ -192,6 +195,15 @@ export const createThemePalette = (
     loadingContrast: actionLoadingContrast,
   };
 
+  const utils = {
+    getContrastColor: (primary: string, secondary: string) =>
+      Color(primary).contrast(Color(secondary)).toString(),
+    lightenColor: (color: string, ratio: number) =>
+      Color(color).lighten(ratio).toString(),
+    darkenColor: (color: string, ratio: number) =>
+      Color(color).darken(ratio).toString(),
+  };
+
   const themePrimary = {
     mode,
     common,
@@ -204,6 +216,7 @@ export const createThemePalette = (
   return {
     ...themePrimary,
     ...themeSecondary,
+    ...utils,
     primary: {
       main: primaryColorMain,
       dark:
