@@ -1,9 +1,9 @@
 import { ButtonStyles, CreateThemeComponent } from 'types';
 import {
   getSizeShape,
-  getTextShapeVariant,
-  getOutlinedShapeVariant,
-  getContainedShapeVariant,
+  getTextButtonVariant,
+  getOutlinedButtonVariant,
+  getContainedButtonVariant,
   getElementTransitions,
 } from '../utils';
 
@@ -19,6 +19,10 @@ export const createThemeComponentsButton = ({
     transitions.duration.shortest,
     transitions.easing.easeInOut
   );
+
+  const hoverShadowAlpha = 0.025; // TODO #theme ?
+  const focusOutlineAlpha = 0.25; // TODO #theme ?
+  const focusOutlineWidth = '2px'; // TODO #theme ?
 
   return {
     root: [
@@ -92,155 +96,219 @@ export const createThemeComponentsButton = ({
         // },
 
         // Button contained
-        '&.Button-containedPrimary': getContainedShapeVariant(
+        '&.Button-containedPrimary': getContainedButtonVariant(
           palette.primary.main,
           palette.primary.dark,
           palette.primary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha
         ),
-        '&.Button-containedSecondary': getContainedShapeVariant(
+        '&.Button-containedSecondary': getContainedButtonVariant(
           palette.secondary.main,
           palette.secondary.dark,
           palette.secondary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha
         ),
-        '&.Button-containedTertiary': getContainedShapeVariant(
+        '&.Button-containedTertiary': getContainedButtonVariant(
           palette.tertiary.main,
           palette.tertiary.dark,
           palette.tertiary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha
         ),
-        '&.Button-containedError': getContainedShapeVariant(
+        '&.Button-containedError': getContainedButtonVariant(
           palette.error.main,
           palette.error.dark,
           palette.error.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha
         ),
-        '&.Button-containedWarning': getContainedShapeVariant(
+        '&.Button-containedWarning': getContainedButtonVariant(
           palette.warning.main,
           palette.warning.dark,
           palette.warning.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha
         ),
-        '&.Button-containedInfo': getContainedShapeVariant(
+        '&.Button-containedInfo': getContainedButtonVariant(
           palette.info.main,
           palette.info.dark,
           palette.info.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha
         ),
-        '&.Button-containedSuccess': getContainedShapeVariant(
+        '&.Button-containedSuccess': getContainedButtonVariant(
           palette.success.main,
           palette.success.dark,
           palette.success.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha
         ),
-        '&.Button-containedInverted': getContainedShapeVariant(
+        '&.Button-containedInverted': getContainedButtonVariant(
           palette.inverted.main,
           palette.inverted.light,
           palette.inverted.contrast,
           palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
           true
         ),
 
         // Button outlined
-        '&.Button-outlinedPrimary': getOutlinedShapeVariant(
+        '&.Button-outlinedPrimary': getOutlinedButtonVariant(
           palette.primary.main,
           palette.primary.dark,
           palette.primary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-outlinedSecondary': getOutlinedShapeVariant(
+        '&.Button-outlinedSecondary': getOutlinedButtonVariant(
           palette.secondary.main,
           palette.secondary.dark,
           palette.secondary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-outlinedTertiary': getOutlinedShapeVariant(
+        '&.Button-outlinedTertiary': getOutlinedButtonVariant(
           palette.tertiary.main,
           palette.tertiary.dark,
           palette.tertiary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-outlinedError': getOutlinedShapeVariant(
+        '&.Button-outlinedError': getOutlinedButtonVariant(
           palette.error.main,
           palette.error.dark,
           palette.error.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-outlinedWarning': getOutlinedShapeVariant(
+        '&.Button-outlinedWarning': getOutlinedButtonVariant(
           palette.warning.main,
           palette.warning.dark,
           palette.warning.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-outlinedInfo': getOutlinedShapeVariant(
+        '&.Button-outlinedInfo': getOutlinedButtonVariant(
           palette.info.main,
           palette.info.dark,
           palette.info.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-outlinedSuccess': getOutlinedShapeVariant(
+        '&.Button-outlinedSuccess': getOutlinedButtonVariant(
           palette.success.main,
           palette.success.dark,
           palette.success.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-outlinedInverted': getOutlinedShapeVariant(
+        '&.Button-outlinedInverted': getOutlinedButtonVariant(
           palette.inverted.main,
           palette.inverted.light,
           palette.inverted.contrast,
           palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha,
           true
         ),
 
         // Button text
-        '&.Button-textPrimary': getTextShapeVariant(
+        '&.Button-textPrimary': getTextButtonVariant(
           palette.primary.main,
           palette.primary.dark,
           palette.primary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-textSecondary': getTextShapeVariant(
+        '&.Button-textSecondary': getTextButtonVariant(
           palette.secondary.main,
           palette.secondary.dark,
           palette.secondary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-textTertiary': getTextShapeVariant(
+        '&.Button-textTertiary': getTextButtonVariant(
           palette.tertiary.main,
           palette.tertiary.dark,
           palette.tertiary.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-textError': getTextShapeVariant(
+        '&.Button-textError': getTextButtonVariant(
           palette.error.main,
           palette.error.dark,
           palette.error.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-textWarning': getTextShapeVariant(
+        '&.Button-textWarning': getTextButtonVariant(
           palette.warning.main,
           palette.warning.dark,
           palette.warning.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-textInfo': getTextShapeVariant(
+        '&.Button-textInfo': getTextButtonVariant(
           palette.info.main,
           palette.info.dark,
           palette.info.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-textSuccess': getTextShapeVariant(
+        '&.Button-textSuccess': getTextButtonVariant(
           palette.success.main,
           palette.success.dark,
           palette.success.contrast,
-          palette.action.disabled
+          palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha
         ),
-        '&.Button-textInverted': getTextShapeVariant(
+        '&.Button-textInverted': getTextButtonVariant(
           palette.inverted.main,
           palette.inverted.light,
           palette.inverted.contrast,
           palette.action.disabled,
+          focusOutlineWidth,
+          focusOutlineAlpha,
+          hoverShadowAlpha,
           true
         ),
       },

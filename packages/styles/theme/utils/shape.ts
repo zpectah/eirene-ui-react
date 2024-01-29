@@ -1,8 +1,12 @@
-export const getContainedShapeVariant = (
+import Color from 'color';
+
+export const getContainedButtonVariant = (
   background: string,
   hover: string,
   contrast: string,
   disabled: string,
+  focusOutlineWidth: string,
+  focusOutlineAlpha: number,
   inverted?: boolean
 ) => {
   return {
@@ -13,6 +17,10 @@ export const getContainedShapeVariant = (
     '&:hover:not(&.is--disabled)': {
       boxShadow: `inset 0 0 0 2.5rem ${hover}`,
       borderColor: hover,
+    },
+
+    '&:focus': {
+      outline: `2px solid ${Color(hover).alpha(focusOutlineAlpha).toString()}`,
     },
 
     '&:disabled, &[disabled], &.is--disabled': inverted
@@ -29,11 +37,14 @@ export const getContainedShapeVariant = (
   };
 };
 
-export const getOutlinedShapeVariant = (
+export const getOutlinedButtonVariant = (
   background: string,
   hover: string,
   contrast: string,
   disabled: string,
+  focusOutlineWidth: string,
+  focusOutlineAlpha: number,
+  hoverShadowAlpha: number,
   inverted?: boolean
 ) => {
   return {
@@ -42,9 +53,13 @@ export const getOutlinedShapeVariant = (
     borderColor: background,
 
     '&:hover:not(&.is--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${hover}`,
-      color: contrast,
+      boxShadow: `inset 0 0 0 2.5rem ${Color(hover).alpha(hoverShadowAlpha).toString()}`,
+      color: hover,
       borderColor: hover,
+    },
+
+    '&:focus': {
+      outline: `2px solid ${Color(hover).alpha(focusOutlineAlpha).toString()}`,
     },
 
     '&:disabled, &[disabled], &.is--disabled': inverted
@@ -59,11 +74,14 @@ export const getOutlinedShapeVariant = (
   };
 };
 
-export const getTextShapeVariant = (
+export const getTextButtonVariant = (
   background: string,
   hover: string,
   contrast: string,
   disabled: string,
+  focusOutlineWidth: string,
+  focusOutlineAlpha: number,
+  hoverShadowAlpha: number,
   inverted?: boolean
 ) => {
   return {
@@ -72,8 +90,12 @@ export const getTextShapeVariant = (
     borderColor: 'transparent',
 
     '&:hover:not(&.is--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${hover}`,
-      color: contrast,
+      boxShadow: `inset 0 0 0 2.5rem ${Color(hover).alpha(hoverShadowAlpha).toString()}`,
+      color: hover,
+    },
+
+    '&:focus': {
+      outline: `2px solid ${Color(hover).alpha(focusOutlineAlpha).toString()}`,
     },
 
     '&:disabled, &[disabled], &.is--disabled': inverted
