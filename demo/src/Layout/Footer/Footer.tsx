@@ -14,7 +14,7 @@ const Footer = () => {
         alignItems: 'center',
         justifyContent: 'center',
         gap: '.5rem',
-        color: theme.palette.text.disabled,
+        color: theme.palette.text.muted,
         ...theme.typography.caption,
       }}
     >

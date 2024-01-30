@@ -66,7 +66,7 @@ export interface ThemePalette {
     primary: string;
     secondary: string;
     tertiary: string;
-    // muted: string; // TODO
+    muted: string;
     disabled: string;
   };
   shape: {
@@ -92,7 +92,7 @@ export interface ThemePalette {
   info: ThemePaletteCluster;
   success: ThemePaletteCluster;
   inverted: ThemePaletteCluster;
-  getContrastColor: (primary: string, secondary: string) => string;
+  contrastColor: (primary: string, secondary: string) => string;
   lightenColor: (color: string, ratio: number) => string;
   darkenColor: (color: string, ratio: number) => string;
 }

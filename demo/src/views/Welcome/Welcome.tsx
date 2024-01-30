@@ -32,7 +32,7 @@ const Welcome = () => {
         <h2 style={{ ...theme.typography.h1, textTransform: 'uppercase' }}>
           {meta.name}
         </h2>
-        <h4 style={{ ...theme.typography.h3 }}>{meta.title}</h4>
+        <h4 style={{ ...theme.typography.subtitle1 }}>{meta.title}</h4>
         <p
           style={{
             ...theme.typography.body1,

@@ -1,6 +1,6 @@
 import Color from 'color';
 import { ThemePalette, ThemeMode, themeModeKeys } from 'types';
-import { DEFAULT_PALETTE, PALETTE_RATIO } from 'core';
+import { PALETTE, PALETTE_RATIO } from 'core';
 
 const getPropsByTheme = (mode: ThemeMode, palette?: Partial<ThemePalette>) => {
   let textPrimaryDark,
@@ -15,12 +15,14 @@ const getPropsByTheme = (mode: ThemeMode, palette?: Partial<ThemePalette>) => {
     backgroundSurface:
       palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
     shapeAction: palette?.ratio?.shapeAction || PALETTE_RATIO.shapeAction,
+    disabledOpacity:
+      palette?.ratio?.disabledOpacity || PALETTE_RATIO.disabledOpacity,
   };
 
   switch (mode) {
     case themeModeKeys.dark:
-      textPrimaryDark = palette?.text?.primary || DEFAULT_PALETTE.white;
-      backgroundBodyDark = palette?.background?.body || DEFAULT_PALETTE.dark;
+      textPrimaryDark = palette?.text?.primary || PALETTE.white;
+      backgroundBodyDark = palette?.background?.body || PALETTE.dark;
 
       return {
         text: {
@@ -31,7 +33,10 @@ const getPropsByTheme = (mode: ThemeMode, palette?: Partial<ThemePalette>) => {
           tertiary:
             palette?.text?.tertiary ||
             Color(textPrimaryDark).darken(ratio.textTertiary).toString(),
-          disabled: palette?.text?.disabled || DEFAULT_PALETTE.disabled,
+          muted: palette?.text?.muted || PALETTE.muted,
+          disabled:
+            palette?.text?.disabled ||
+            Color(PALETTE.muted).alpha(ratio.disabledOpacity).toString(),
         },
         shape: {
           divider:
@@ -57,14 +62,14 @@ const getPropsByTheme = (mode: ThemeMode, palette?: Partial<ThemePalette>) => {
           light:
             palette?.inverted?.light ||
             Color(backgroundBodyDark).lighten(ratio.shapeAction).toString(),
-          contrast: palette?.inverted?.contrast || DEFAULT_PALETTE.light,
+          contrast: palette?.inverted?.contrast || PALETTE.light,
         },
       };
 
     case themeModeKeys.light:
     default:
-      textPrimaryLight = palette?.text?.primary || DEFAULT_PALETTE.black;
-      backgroundBodyLight = palette?.background?.body || DEFAULT_PALETTE.light;
+      textPrimaryLight = palette?.text?.primary || PALETTE.black;
+      backgroundBodyLight = palette?.background?.body || PALETTE.light;
 
       return {
         text: {
@@ -75,7 +80,10 @@ const getPropsByTheme = (mode: ThemeMode, palette?: Partial<ThemePalette>) => {
           tertiary:
             palette?.text?.tertiary ||
             Color(textPrimaryLight).lighten(ratio.textTertiary).toString(),
-          disabled: palette?.text?.disabled || DEFAULT_PALETTE.disabled,
+          muted: palette?.text?.muted || PALETTE.muted,
+          disabled:
+            palette?.text?.disabled ||
+            Color(PALETTE.muted).alpha(ratio.disabledOpacity).toString(),
         },
         shape: {
           divider:
@@ -101,7 +109,7 @@ const getPropsByTheme = (mode: ThemeMode, palette?: Partial<ThemePalette>) => {
           light:
             palette?.inverted?.light ||
             Color(backgroundBodyLight).lighten(ratio.shapeAction).toString(),
-          contrast: palette?.inverted?.contrast || DEFAULT_PALETTE.dark,
+          contrast: palette?.inverted?.contrast || PALETTE.dark,
         },
       };
   }
@@ -112,39 +120,38 @@ export const createThemePalette = (
 ): ThemePalette => {
   const mode = palette?.mode || themeModeKeys.light;
 
-  const primaryColorMain = palette?.primary?.main || DEFAULT_PALETTE.primary;
-  const secondaryColorMain =
-    palette?.secondary?.main || DEFAULT_PALETTE.secondary;
-  const tertiaryColorMain = palette?.tertiary?.main || DEFAULT_PALETTE.tertiary;
-  const errorColorMain = palette?.error?.main || DEFAULT_PALETTE.error;
-  const warningColorMain = palette?.warning?.main || DEFAULT_PALETTE.warning;
-  const infoColorMain = palette?.info?.main || DEFAULT_PALETTE.info;
-  const successColorMain = palette?.success?.main || DEFAULT_PALETTE.success;
+  const primaryColorMain = palette?.primary?.main || PALETTE.primary;
+  const secondaryColorMain = palette?.secondary?.main || PALETTE.secondary;
+  const tertiaryColorMain = palette?.tertiary?.main || PALETTE.tertiary;
+  const errorColorMain = palette?.error?.main || PALETTE.error;
+  const warningColorMain = palette?.warning?.main || PALETTE.warning;
+  const infoColorMain = palette?.info?.main || PALETTE.info;
+  const successColorMain = palette?.success?.main || PALETTE.success;
 
   const common = {
-    black: palette?.common?.black || DEFAULT_PALETTE.black,
-    white: palette?.common?.white || DEFAULT_PALETTE.white,
-    dark: palette?.common?.dark || DEFAULT_PALETTE.dark,
-    light: palette?.common?.light || DEFAULT_PALETTE.light,
-    grey: palette?.common?.grey || DEFAULT_PALETTE.grey,
-    red: palette?.common?.red || DEFAULT_PALETTE.red,
-    pink: palette?.common?.pink || DEFAULT_PALETTE.pink,
-    purple: palette?.common?.purple || DEFAULT_PALETTE.purple,
-    deepPurple: palette?.common?.deepPurple || DEFAULT_PALETTE.deepPurple,
-    indigo: palette?.common?.indigo || DEFAULT_PALETTE.indigo,
-    blue: palette?.common?.blue || DEFAULT_PALETTE.blue,
-    lightBlue: palette?.common?.lightBlue || DEFAULT_PALETTE.lightBlue,
-    cyan: palette?.common?.cyan || DEFAULT_PALETTE.cyan,
-    teal: palette?.common?.teal || DEFAULT_PALETTE.teal,
-    green: palette?.common?.green || DEFAULT_PALETTE.green,
-    lightGreen: palette?.common?.lightGreen || DEFAULT_PALETTE.lightGreen,
-    lime: palette?.common?.lime || DEFAULT_PALETTE.lime,
-    yellow: palette?.common?.yellow || DEFAULT_PALETTE.yellow,
-    amber: palette?.common?.amber || DEFAULT_PALETTE.amber,
-    orange: palette?.common?.orange || DEFAULT_PALETTE.orange,
-    deepOrange: palette?.common?.deepOrange || DEFAULT_PALETTE.deepOrange,
-    brown: palette?.common?.brown || DEFAULT_PALETTE.brown,
-    blueGrey: palette?.common?.blueGrey || DEFAULT_PALETTE.blueGrey,
+    black: palette?.common?.black || PALETTE.black,
+    white: palette?.common?.white || PALETTE.white,
+    dark: palette?.common?.dark || PALETTE.dark,
+    light: palette?.common?.light || PALETTE.light,
+    grey: palette?.common?.grey || PALETTE.grey,
+    red: palette?.common?.red || PALETTE.red,
+    pink: palette?.common?.pink || PALETTE.pink,
+    purple: palette?.common?.purple || PALETTE.purple,
+    deepPurple: palette?.common?.deepPurple || PALETTE.deepPurple,
+    indigo: palette?.common?.indigo || PALETTE.indigo,
+    blue: palette?.common?.blue || PALETTE.blue,
+    lightBlue: palette?.common?.lightBlue || PALETTE.lightBlue,
+    cyan: palette?.common?.cyan || PALETTE.cyan,
+    teal: palette?.common?.teal || PALETTE.teal,
+    green: palette?.common?.green || PALETTE.green,
+    lightGreen: palette?.common?.lightGreen || PALETTE.lightGreen,
+    lime: palette?.common?.lime || PALETTE.lime,
+    yellow: palette?.common?.yellow || PALETTE.yellow,
+    amber: palette?.common?.amber || PALETTE.amber,
+    orange: palette?.common?.orange || PALETTE.orange,
+    deepOrange: palette?.common?.deepOrange || PALETTE.deepOrange,
+    brown: palette?.common?.brown || PALETTE.brown,
+    blueGrey: palette?.common?.blueGrey || PALETTE.blueGrey,
   };
   const grey = {
     10: Color(common.grey).lighten(0.9).toString(),
@@ -179,9 +186,9 @@ export const createThemePalette = (
       palette?.ratio?.focusOutlineOpacity || PALETTE_RATIO.focusOutlineOpacity,
   };
 
-  const actionActive = palette?.action?.active || DEFAULT_PALETTE.active;
-  const actionHover = palette?.action?.hover || DEFAULT_PALETTE.hover;
-  const actionDisabled = palette?.action?.disabled || DEFAULT_PALETTE.disabled;
+  const actionActive = palette?.action?.active || PALETTE.active;
+  const actionHover = palette?.action?.hover || PALETTE.hover;
+  const actionDisabled = palette?.action?.disabled || PALETTE.muted;
   const actionLoading = palette?.action?.loading || common.black;
   const actionLoadingContrast =
     palette?.action?.loadingContrast || common.white;
@@ -195,7 +202,7 @@ export const createThemePalette = (
   };
 
   const utils = {
-    getContrastColor: (primary: string, secondary: string) =>
+    contrastColor: (primary: string, secondary: string) =>
       Color(primary).contrast(Color(secondary)).toString(),
     lightenColor: (color: string, ratio: number) =>
       Color(color).lighten(ratio).toString(),
@@ -224,7 +231,7 @@ export const createThemePalette = (
       light:
         palette?.primary?.light ||
         Color(primaryColorMain).lighten(ratio.shapeAction).toString(),
-      contrast: palette?.primary?.contrast || DEFAULT_PALETTE.white,
+      contrast: palette?.primary?.contrast || PALETTE.white,
     },
     secondary: {
       main: secondaryColorMain,
@@ -234,7 +241,7 @@ export const createThemePalette = (
       light:
         palette?.secondary?.light ||
         Color(secondaryColorMain).lighten(ratio.shapeAction).toString(),
-      contrast: palette?.secondary?.contrast || DEFAULT_PALETTE.white,
+      contrast: palette?.secondary?.contrast || PALETTE.white,
     },
     tertiary: {
       main: tertiaryColorMain,
@@ -244,7 +251,7 @@ export const createThemePalette = (
       light:
         palette?.tertiary?.light ||
         Color(tertiaryColorMain).lighten(ratio.shapeAction).toString(),
-      contrast: palette?.tertiary?.contrast || DEFAULT_PALETTE.white,
+      contrast: palette?.tertiary?.contrast || PALETTE.white,
     },
     error: {
       main: errorColorMain,
@@ -254,7 +261,7 @@ export const createThemePalette = (
       light:
         palette?.error?.light ||
         Color(errorColorMain).lighten(ratio.shapeAction).toString(),
-      contrast: palette?.error?.contrast || DEFAULT_PALETTE.white,
+      contrast: palette?.error?.contrast || PALETTE.white,
     },
     warning: {
       main: warningColorMain,
@@ -264,7 +271,7 @@ export const createThemePalette = (
       light:
         palette?.warning?.light ||
         Color(warningColorMain).lighten(ratio.shapeAction).toString(),
-      contrast: palette?.warning?.contrast || DEFAULT_PALETTE.white,
+      contrast: palette?.warning?.contrast || PALETTE.white,
     },
     info: {
       main: infoColorMain,
@@ -274,7 +281,7 @@ export const createThemePalette = (
       light:
         palette?.info?.light ||
         Color(infoColorMain).lighten(ratio.shapeAction).toString(),
-      contrast: palette?.info?.contrast || DEFAULT_PALETTE.white,
+      contrast: palette?.info?.contrast || PALETTE.white,
     },
     success: {
       main: successColorMain,
@@ -284,7 +291,7 @@ export const createThemePalette = (
       light:
         palette?.success?.light ||
         Color(successColorMain).lighten(ratio.shapeAction).toString(),
-      contrast: palette?.success?.contrast || DEFAULT_PALETTE.white,
+      contrast: palette?.success?.contrast || PALETTE.white,
     },
   };
 };

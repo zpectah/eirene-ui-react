@@ -27,9 +27,9 @@ export const createThemeTypography = (
     h1: {
       fontFamily: typography?.h1.fontFamily || fontFamily,
       fontWeight: typography?.h1.fontWeight || fontWeightLight,
-      fontSize: typography?.h1.fontSize || '2.25rem',
-      lineHeight: typography?.h1.lineHeight || 1.125,
-      letterSpacing: typography?.h1.letterSpacing || '0',
+      fontSize: typography?.h1.fontSize || '2.25rem', // TODO #default-values
+      lineHeight: typography?.h1.lineHeight || 1.125, // TODO #default-values
+      letterSpacing: typography?.h1.letterSpacing || '0', // TODO #default-values
     },
     h2: {
       fontFamily: typography?.h2.fontFamily || fontFamily,
@@ -68,17 +68,17 @@ export const createThemeTypography = (
     },
     subtitle1: {
       fontFamily: typography?.subtitle1.fontFamily || fontFamily,
-      fontWeight: typography?.subtitle1.fontWeight || fontWeightRegular,
+      fontWeight: typography?.subtitle1.fontWeight || fontWeightMedium,
       fontSize: typography?.subtitle1.fontSize || '1rem',
       lineHeight: typography?.subtitle1.lineHeight || 1.75,
-      letterSpacing: typography?.subtitle1.letterSpacing || '0',
+      letterSpacing: typography?.subtitle1.letterSpacing || '0.025rem',
     },
     subtitle2: {
       fontFamily: typography?.subtitle2.fontFamily || fontFamily,
-      fontWeight: typography?.subtitle2.fontWeight || fontWeightMedium,
+      fontWeight: typography?.subtitle2.fontWeight || fontWeightSemiBold,
       fontSize: typography?.subtitle2.fontSize || '0.875rem',
       lineHeight: typography?.subtitle2.lineHeight || 1.57,
-      letterSpacing: typography?.subtitle2.letterSpacing || '0',
+      letterSpacing: typography?.subtitle2.letterSpacing || '0.125rem',
     },
     body1: {
       fontFamily: typography?.body1.fontFamily || fontFamily,

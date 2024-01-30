@@ -24,6 +24,9 @@ const TypographyView = () => {
           <p style={{ color: theme.palette.text.tertiary }}>
             [tertiary] Lorem ipsum dolor sit amet ...
           </p>
+          <p style={{ color: theme.palette.text.muted }}>
+            [muted] Lorem ipsum dolor sit amet ...
+          </p>
           <p style={{ color: theme.palette.text.disabled }}>
             [disabled] Lorem ipsum dolor sit amet ...
           </p>

@@ -1,4 +1,4 @@
-export const DEFAULT_PALETTE = {
+export const PALETTE = {
   primary: 'hsl(261, 58%, 47%)',
   secondary: 'hsl(324, 2.6%, 37.5%)',
   tertiary: 'hsl(199, 18.3%, 33.1%)',
@@ -9,7 +9,7 @@ export const DEFAULT_PALETTE = {
   success: 'hsl(123, 43.4%, 38.8%)',
 
   hover: 'hsl(0, 0.0%, 9.8%)',
-  disabled: 'hsl(177, 0%, 64%)',
+  muted: 'hsl(177, 0%, 64%)',
   active: 'hsl(186, 100.0%, 32.7%)',
 
   grey: 'hsl(0, 0.0%, 38.0%)',
