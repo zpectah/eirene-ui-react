@@ -338,6 +338,69 @@ const ButtonView = () => {
           </div>
         </div>
       </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
+        <div
+          style={{
+            padding: '.5rem',
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '.5rem',
+          }}
+        >
+          <Button size="small" color="primary">
+            Small Primary
+          </Button>
+          <Button size="small" color="secondary">
+            Small Secondary
+          </Button>
+          <Button size="small" color="tertiary">
+            Small Tertiary
+          </Button>
+          <Button size="small" color="error">
+            Small Error
+          </Button>
+          <Button size="small" color="warning">
+            Small Warning
+          </Button>
+          <Button size="small" color="info">
+            Small Info
+          </Button>
+          <Button size="small" color="success">
+            Small Success
+          </Button>
+        </div>
+        <div
+          style={{
+            padding: '.5rem',
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '.5rem',
+          }}
+        >
+          <Button size="large" color="primary">
+            Large Primary
+          </Button>
+          <Button size="large" color="secondary">
+            Large Secondary
+          </Button>
+          <Button size="large" color="tertiary">
+            Large Tertiary
+          </Button>
+          <Button size="large" color="error">
+            Large Error
+          </Button>
+          <Button size="large" color="warning">
+            Large Warning
+          </Button>
+          <Button size="large" color="info">
+            Large Info
+          </Button>
+          <Button size="large" color="success">
+            Large Success
+          </Button>
+        </div>
+      </div>
     </article>
   );
 };

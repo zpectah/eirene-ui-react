@@ -25,9 +25,15 @@ export interface ThemeTypography {
   h4: ThemeTypographyCluster;
   h5: ThemeTypographyCluster;
   h6: ThemeTypographyCluster;
+  subtitle1: ThemeTypographyCluster;
+  subtitle2: ThemeTypographyCluster;
   body1: ThemeTypographyCluster;
   body2: ThemeTypographyCluster;
   caption: ThemeTypographyCluster;
   overline: ThemeTypographyCluster;
-  button: ThemeTypographyCluster;
+  button: {
+    small: ThemeTypographyCluster;
+    medium: ThemeTypographyCluster;
+    large: ThemeTypographyCluster;
+  };
 }

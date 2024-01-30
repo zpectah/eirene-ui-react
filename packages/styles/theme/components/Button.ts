@@ -31,8 +31,11 @@ export const createThemeComponentsButton = ({
         verticalAlign: 'middle',
         userSelect: 'none',
         cursor: 'pointer',
+        boxSizing: 'border-box',
         borderStyle: 'solid',
         borderColor: 'transparent',
+        outline: 0,
+        appearance: 'none',
         borderWidth: shape.borderWidth.button,
         borderRadius: shape.borderRadius.medium,
         transition: transition,
@@ -58,40 +61,23 @@ export const createThemeComponentsButton = ({
           width: '100%',
         },
 
-        ...typography.button,
+        // ...typography.button,
 
         // Button sizes
-        // '&.Button-sizeLarge': getSizeShape(
-        //   '0.35rem', // TODO
-        //   '0.75rem', // TODO
-        //   '1rem', // TODO
-        //   '1.125rem' // TODO
-        // ),
-        // '&.Button-sizeMedium': getSizeShape(
-        //   '0.5rem', // TODO
-        //   '0.75rem' // TODO
-        //   // typography.button.fontSize, // TODO
-        //   // typography.button.lineHeight // TODO
-        // ),
-        // '&.Button-sizeSmall': getSizeShape(
-        //   '0.125rem', // TODO
-        //   '0.25rem', // TODO
-        //   '0.8rem', // TODO
-        //   '0.9rem' // TODO
-        // ),
-
         '&.Button-sizeSmall': {
-          padding: spacing.get(1, 2),
-          fontSize: '.85rem',
-          lineHeight: 0.85,
+          padding: spacing.get(2),
+          gap: spacing.get(2),
+          ...typography.button.small,
         },
         '&.Button-sizeMedium': {
           padding: spacing.get(2, 3),
+          gap: spacing.get(2),
+          ...typography.button.medium,
         },
         '&.Button-sizeLarge': {
           padding: spacing.get(3, 4),
-          fontSize: '1.15rem',
-          lineHeight: 1.25,
+          gap: spacing.get(3),
+          ...typography.button.large,
         },
 
         // '.Button-contained &': {
