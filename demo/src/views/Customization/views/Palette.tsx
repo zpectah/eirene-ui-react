@@ -344,27 +344,7 @@ const PaletteView = () => {
             </div>
           </div>
         </div>
-        <div
-          style={{
-            padding: '1rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '.5rem',
-          }}
-        >
-          <p style={{ color: theme.palette.text.primary }}>
-            [primary] Lorem ipsum dolor sit amet ...
-          </p>
-          <p style={{ color: theme.palette.text.secondary }}>
-            [secondary] Lorem ipsum dolor sit amet ...
-          </p>
-          <p style={{ color: theme.palette.text.tertiary }}>
-            [tertiary] Lorem ipsum dolor sit amet ...
-          </p>
-          <p style={{ color: theme.palette.text.disabled }}>
-            [disabled] Lorem ipsum dolor sit amet ...
-          </p>
-        </div>
+
         <div
           style={{
             padding: '1rem',
@@ -435,19 +415,6 @@ const PaletteView = () => {
             gap: '.5rem',
           }}
         >
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[5],
-              border: `1px solid ${theme.palette.shape.border}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            5
-          </div>
           <div
             style={{
               width: '2rem',

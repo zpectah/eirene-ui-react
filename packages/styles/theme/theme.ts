@@ -24,6 +24,7 @@ export const createTheme = (theme?: Partial<Theme>): Theme => {
     shape,
     typography,
     transitions,
+    spacing,
     components: theme?.components,
   });
 

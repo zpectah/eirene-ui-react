@@ -1,4 +1,4 @@
-import { ThemeBreakpoints, BreakpointKeys } from 'types';
+import { breakpointKeys, ThemeBreakpoints, BreakpointKeys } from 'types';
 import { DEFAULT_BREAKPOINTS } from 'core';
 
 export const createThemeBreakpoints = (
@@ -14,41 +14,41 @@ export const createThemeBreakpoints = (
   };
   const unit = 'px';
 
-  const upMixinHandler = (min: BreakpointKeys) =>
+  const up = (min: BreakpointKeys) =>
     `@media (min-width: ${values[min]}${unit})`;
-  const downMixinHandler = (max: BreakpointKeys) =>
+  const down = (max: BreakpointKeys) =>
     `@media (max-width: ${values[max]}${unit})`;
-  const betweenMixinHandler = (min: BreakpointKeys, max: BreakpointKeys) =>
+  const between = (min: BreakpointKeys, max: BreakpointKeys) =>
     `@media (min-width: ${values[min]}${unit}) and (max-width: ${values[max]}${unit})`;
-  const onlyMixinHandler = (key: BreakpointKeys) => {
+  const only = (key: BreakpointKeys) => {
     let min, max;
     switch (key) {
-      case 'xs':
+      case breakpointKeys.xs:
         min = `${values.xs}${unit}`;
         max = `${values.sm - 1}${unit}`;
         break;
 
-      case 'sm':
+      case breakpointKeys.sm:
         min = `${values.sm}${unit}`;
         max = `${values.md - 1}${unit}`;
         break;
 
-      case 'md':
+      case breakpointKeys.md:
         min = `${values.md}${unit}`;
         max = `${values.lg - 1}${unit}`;
         break;
 
-      case 'lg':
+      case breakpointKeys.lg:
         min = `${values.lg}${unit}`;
         max = `${values.xl - 1}${unit}`;
         break;
 
-      case 'xl':
+      case breakpointKeys.xl:
         min = `${values.xl}${unit}`;
         max = `${values.xxl - 1}${unit}`;
         break;
 
-      case 'xxl':
+      case breakpointKeys.xxl:
         min = `${values.xxl}${unit}`;
         max = '100%';
         break;
@@ -60,9 +60,9 @@ export const createThemeBreakpoints = (
   return {
     values,
     unit,
-    up: upMixinHandler,
-    down: downMixinHandler,
-    between: betweenMixinHandler,
-    only: onlyMixinHandler,
+    up,
+    down,
+    between,
+    only,
   };
 };

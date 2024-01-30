@@ -30,6 +30,7 @@ export interface ThemePalette {
     white: string;
     dark: string;
     light: string;
+    grey: string;
     red: string;
     pink: string;
     purple: string;
@@ -65,6 +66,7 @@ export interface ThemePalette {
     primary: string;
     secondary: string;
     tertiary: string;
+    // muted: string; // TODO
     disabled: string;
   };
   shape: {

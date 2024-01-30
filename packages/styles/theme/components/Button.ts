@@ -1,6 +1,5 @@
 import { ButtonStyles, CreateThemeComponent } from 'types';
 import {
-  getSizeShape,
   getTextButtonVariant,
   getOutlinedButtonVariant,
   getContainedButtonVariant,
@@ -13,16 +12,13 @@ export const createThemeComponentsButton = ({
   typography,
   transitions,
   components,
+  spacing,
 }: CreateThemeComponent): ButtonStyles => {
   const transition = getElementTransitions(
     ['background-color', 'color', 'border-color', 'box-shadow'],
     transitions.duration.shortest,
     transitions.easing.easeInOut
   );
-
-  const hoverShadowAlpha = 0.025; // TODO #theme ?
-  const focusOutlineAlpha = 0.25; // TODO #theme ?
-  const focusOutlineWidth = '2px'; // TODO #theme ?
 
   return {
     root: [
@@ -39,9 +35,6 @@ export const createThemeComponentsButton = ({
         borderColor: 'transparent',
         borderWidth: shape.borderWidth.button,
         borderRadius: shape.borderRadius.medium,
-        fontWeight: typography.button.fontWeight,
-        textTransform: typography.button.textTransform,
-        letterSpacing: typography.button.letterSpacing,
         transition: transition,
 
         '&:hover, &:focus, &:active': {
@@ -65,25 +58,41 @@ export const createThemeComponentsButton = ({
           width: '100%',
         },
 
+        ...typography.button,
+
         // Button sizes
-        '&.Button-sizeLarge': getSizeShape(
-          '0.35rem', // TODO
-          '0.75rem', // TODO
-          '1rem', // TODO
-          '1.125rem' // TODO
-        ),
-        '&.Button-sizeMedium': getSizeShape(
-          '0.5rem', // TODO
-          '0.75rem', // TODO
-          typography.button.fontSize, // TODO
-          typography.button.lineHeight // TODO
-        ),
-        '&.Button-sizeSmall': getSizeShape(
-          '0.125rem', // TODO
-          '0.25rem', // TODO
-          '0.8rem', // TODO
-          '0.9rem' // TODO
-        ),
+        // '&.Button-sizeLarge': getSizeShape(
+        //   '0.35rem', // TODO
+        //   '0.75rem', // TODO
+        //   '1rem', // TODO
+        //   '1.125rem' // TODO
+        // ),
+        // '&.Button-sizeMedium': getSizeShape(
+        //   '0.5rem', // TODO
+        //   '0.75rem' // TODO
+        //   // typography.button.fontSize, // TODO
+        //   // typography.button.lineHeight // TODO
+        // ),
+        // '&.Button-sizeSmall': getSizeShape(
+        //   '0.125rem', // TODO
+        //   '0.25rem', // TODO
+        //   '0.8rem', // TODO
+        //   '0.9rem' // TODO
+        // ),
+
+        '&.Button-sizeSmall': {
+          padding: spacing.get(1, 2),
+          fontSize: '.85rem',
+          lineHeight: 0.85,
+        },
+        '&.Button-sizeMedium': {
+          padding: spacing.get(2, 3),
+        },
+        '&.Button-sizeLarge': {
+          padding: spacing.get(3, 4),
+          fontSize: '1.15rem',
+          lineHeight: 1.25,
+        },
 
         // '.Button-contained &': {
         //   /* TODO */

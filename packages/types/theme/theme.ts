@@ -9,11 +9,12 @@ import { ThemeTypography } from './typography';
 import { ThemeZIndex } from './zIndex';
 
 export interface CreateThemeComponent {
+  components?: ThemeComponents;
   palette: ThemePalette;
   shape: ThemeShape;
-  typography: ThemeTypography;
+  spacing: ThemeSpacing;
   transitions: ThemeTransitions;
-  components?: ThemeComponents;
+  typography: ThemeTypography;
 }
 
 export interface Theme {

@@ -121,33 +121,12 @@ export const createThemePalette = (
   const infoColorMain = palette?.info?.main || DEFAULT_PALETTE.info;
   const successColorMain = palette?.success?.main || DEFAULT_PALETTE.success;
 
-  const greyColorBase =
-    (palette?.grey && palette?.grey['100']) || DEFAULT_PALETTE.grey;
-
-  const ratio = {
-    activeOpacity: palette?.ratio?.activeOpacity || PALETTE_RATIO.activeOpacity,
-    hoverOpacity: palette?.ratio?.hoverOpacity || PALETTE_RATIO.hoverOpacity,
-    disabledOpacity:
-      palette?.ratio?.disabledOpacity || PALETTE_RATIO.disabledOpacity,
-    loadingOpacity:
-      palette?.ratio?.loadingOpacity || PALETTE_RATIO.loadingOpacity,
-    textSecondary: palette?.ratio?.textSecondary || PALETTE_RATIO.textSecondary,
-    textTertiary: palette?.ratio?.textTertiary || PALETTE_RATIO.textTertiary,
-    shapeDivider: palette?.ratio?.shapeDivider || PALETTE_RATIO.shapeDivider,
-    shapeBorder: palette?.ratio?.shapeBorder || PALETTE_RATIO.shapeBorder,
-    backgroundSurface:
-      palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
-    shapeAction: palette?.ratio?.shapeAction || PALETTE_RATIO.shapeAction,
-    hoverShadowOpacity:
-      palette?.ratio?.hoverShadowOpacity || PALETTE_RATIO.hoverShadowOpacity,
-    focusOutlineOpacity:
-      palette?.ratio?.focusOutlineOpacity || PALETTE_RATIO.focusOutlineOpacity,
-  };
   const common = {
     black: palette?.common?.black || DEFAULT_PALETTE.black,
     white: palette?.common?.white || DEFAULT_PALETTE.white,
     dark: palette?.common?.dark || DEFAULT_PALETTE.dark,
     light: palette?.common?.light || DEFAULT_PALETTE.light,
+    grey: palette?.common?.grey || DEFAULT_PALETTE.grey,
     red: palette?.common?.red || DEFAULT_PALETTE.red,
     pink: palette?.common?.pink || DEFAULT_PALETTE.pink,
     purple: palette?.common?.purple || DEFAULT_PALETTE.purple,
@@ -168,24 +147,44 @@ export const createThemePalette = (
     blueGrey: palette?.common?.blueGrey || DEFAULT_PALETTE.blueGrey,
   };
   const grey = {
-    10: Color(greyColorBase).lighten(0.9).toString(),
-    20: Color(greyColorBase).lighten(0.8).toString(),
-    30: Color(greyColorBase).lighten(0.7).toString(),
-    40: Color(greyColorBase).lighten(0.6).toString(),
-    50: Color(greyColorBase).lighten(0.5).toString(),
-    60: Color(greyColorBase).lighten(0.4).toString(),
-    70: Color(greyColorBase).lighten(0.3).toString(),
-    80: Color(greyColorBase).lighten(0.2).toString(),
-    90: Color(greyColorBase).lighten(0.1).toString(),
-    100: greyColorBase,
+    10: Color(common.grey).lighten(0.9).toString(),
+    20: Color(common.grey).lighten(0.8).toString(),
+    30: Color(common.grey).lighten(0.7).toString(),
+    40: Color(common.grey).lighten(0.6).toString(),
+    50: Color(common.grey).lighten(0.5).toString(),
+    60: Color(common.grey).lighten(0.4).toString(),
+    70: Color(common.grey).lighten(0.3).toString(),
+    80: Color(common.grey).lighten(0.2).toString(),
+    90: Color(common.grey).lighten(0.1).toString(),
+    100: common.grey,
+  };
+
+  const ratio = {
+    activeOpacity: palette?.ratio?.activeOpacity || PALETTE_RATIO.activeOpacity,
+    hoverOpacity: palette?.ratio?.hoverOpacity || PALETTE_RATIO.hoverOpacity,
+    disabledOpacity:
+      palette?.ratio?.disabledOpacity || PALETTE_RATIO.disabledOpacity,
+    loadingOpacity:
+      palette?.ratio?.loadingOpacity || PALETTE_RATIO.loadingOpacity,
+    textSecondary: palette?.ratio?.textSecondary || PALETTE_RATIO.textSecondary,
+    textTertiary: palette?.ratio?.textTertiary || PALETTE_RATIO.textTertiary,
+    shapeDivider: palette?.ratio?.shapeDivider || PALETTE_RATIO.shapeDivider,
+    shapeBorder: palette?.ratio?.shapeBorder || PALETTE_RATIO.shapeBorder,
+    backgroundSurface:
+      palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
+    shapeAction: palette?.ratio?.shapeAction || PALETTE_RATIO.shapeAction,
+    hoverShadowOpacity:
+      palette?.ratio?.hoverShadowOpacity || PALETTE_RATIO.hoverShadowOpacity,
+    focusOutlineOpacity:
+      palette?.ratio?.focusOutlineOpacity || PALETTE_RATIO.focusOutlineOpacity,
   };
 
   const actionActive = palette?.action?.active || DEFAULT_PALETTE.active;
   const actionHover = palette?.action?.hover || DEFAULT_PALETTE.hover;
   const actionDisabled = palette?.action?.disabled || DEFAULT_PALETTE.disabled;
-  const actionLoading = palette?.action?.loading || DEFAULT_PALETTE.black;
+  const actionLoading = palette?.action?.loading || common.black;
   const actionLoadingContrast =
-    palette?.action?.loadingContrast || DEFAULT_PALETTE.white;
+    palette?.action?.loadingContrast || common.white;
 
   const action = {
     active: Color(actionActive).alpha(ratio.activeOpacity).toString(),

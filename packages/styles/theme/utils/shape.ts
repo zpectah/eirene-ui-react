@@ -1,5 +1,15 @@
 import Color from 'color';
 
+export const getFocusPropertyValue = (
+  background: string,
+  focusOutlineAlpha: number,
+  focusOutlineWidth: string
+) => {
+  return {
+    outline: `${focusOutlineWidth} solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
+  };
+};
+
 export const getContainedButtonVariant = (
   background: string,
   hover: string,
@@ -19,9 +29,11 @@ export const getContainedButtonVariant = (
       borderColor: hover,
     },
 
-    '&:focus': {
-      outline: `2px solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
-    },
+    '&:focus': getFocusPropertyValue(
+      background,
+      focusOutlineAlpha,
+      focusOutlineWidth
+    ),
 
     '&:disabled, &[disabled], &.is--disabled': inverted
       ? {
@@ -58,9 +70,11 @@ export const getOutlinedButtonVariant = (
       borderColor: hover,
     },
 
-    '&:focus': {
-      outline: `2px solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
-    },
+    '&:focus': getFocusPropertyValue(
+      background,
+      focusOutlineAlpha,
+      focusOutlineWidth
+    ),
 
     '&:disabled, &[disabled], &.is--disabled': inverted
       ? {
@@ -94,9 +108,11 @@ export const getTextButtonVariant = (
       color: hover,
     },
 
-    '&:focus': {
-      outline: `2px solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
-    },
+    '&:focus': getFocusPropertyValue(
+      background,
+      focusOutlineAlpha,
+      focusOutlineWidth
+    ),
 
     '&:disabled, &[disabled], &.is--disabled': inverted
       ? {
@@ -105,18 +121,5 @@ export const getTextButtonVariant = (
       : {
           color: disabled,
         },
-  };
-};
-
-export const getSizeShape = (
-  spacingY: string,
-  spacingX: string,
-  fontSize: string,
-  lineHeight: string | number
-) => {
-  return {
-    padding: `${spacingY} ${spacingX}`,
-    fontSize,
-    lineHeight,
   };
 };
