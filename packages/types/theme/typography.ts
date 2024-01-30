@@ -6,7 +6,7 @@ export interface ThemeTypographyCluster {
   fontSize: string;
   lineHeight: number;
   letterSpacing: string;
-  textTransform: TextTransform;
+  textTransform?: TextTransform;
 }
 
 export interface ThemeTypography {
@@ -31,9 +31,7 @@ export interface ThemeTypography {
   body2: ThemeTypographyCluster;
   caption: ThemeTypographyCluster;
   overline: ThemeTypographyCluster;
-  button: {
-    small: ThemeTypographyCluster;
-    medium: ThemeTypographyCluster;
-    large: ThemeTypographyCluster;
-  };
+  shapeSmall: ThemeTypographyCluster;
+  shapeMedium: ThemeTypographyCluster;
+  shapeLarge: ThemeTypographyCluster;
 }

@@ -11,5 +11,7 @@ export enum typographyVariantKeys {
   body2 = 'body2',
   caption = 'caption',
   overline = 'overline',
-  button = 'button',
+  shapeSmall = 'shapeSmall',
+  shapeMedium = 'shapeMedium',
+  shapeLarge = 'shapeLarge',
 }

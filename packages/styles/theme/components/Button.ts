@@ -61,23 +61,21 @@ export const createThemeComponentsButton = ({
           width: '100%',
         },
 
-        // ...typography.button,
-
         // Button sizes
         '&.Button-sizeSmall': {
+          ...typography.shapeSmall,
           padding: spacing.get(2),
           gap: spacing.get(2),
-          ...typography.button.small,
         },
         '&.Button-sizeMedium': {
+          ...typography.shapeMedium,
           padding: spacing.get(2, 3),
           gap: spacing.get(2),
-          ...typography.button.medium,
         },
         '&.Button-sizeLarge': {
+          ...typography.shapeLarge,
           padding: spacing.get(3, 4),
           gap: spacing.get(3),
-          ...typography.button.large,
         },
 
         // '.Button-contained &': {
