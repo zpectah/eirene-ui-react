@@ -38,6 +38,23 @@ const ButtonView = () => {
         <Button startIcon={<>000</>} endIcon={<>000</>} isLoading>
           Buttonek
         </Button>
+
+        <Button
+          variant="outlined"
+          startIcon={<>000</>}
+          endIcon={<>000</>}
+          isLoading
+        >
+          outlined
+        </Button>
+        <Button
+          variant="text"
+          startIcon={<>000</>}
+          endIcon={<>000</>}
+          isLoading
+        >
+          text
+        </Button>
       </div>
       <div>
         <div

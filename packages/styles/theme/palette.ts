@@ -186,13 +186,20 @@ export const createThemePalette = (
       palette?.ratio?.focusOutlineOpacity || PALETTE_RATIO.focusOutlineOpacity,
   };
 
-  const actionActive = palette?.action?.active || PALETTE.active;
+  const actionActive = palette?.action?.active || primaryColorMain;
   const actionHover = palette?.action?.hover || PALETTE.hover;
   const actionDisabled = palette?.action?.disabled || PALETTE.muted;
   const actionLoading = palette?.action?.loading || common.black;
   const actionLoadingContrast =
     palette?.action?.loadingContrast || common.white;
 
+  const _action = {
+    active: '',
+    hover: '',
+    disabled: '',
+    loading: '',
+    loadingContrast: '',
+  };
   const action = {
     active: Color(actionActive).alpha(ratio.activeOpacity).toString(),
     hover: Color(actionHover).alpha(ratio.hoverOpacity).toString(),

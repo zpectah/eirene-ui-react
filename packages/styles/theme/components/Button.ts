@@ -4,7 +4,10 @@ import {
   getOutlinedButtonVariant,
   getContainedButtonVariant,
   getElementTransitions,
+  getLoadingContainedPropsByVariant,
+  getLoadingOutlinedPropsByVariant,
 } from '../utils';
+import Color from 'color';
 
 export const createThemeComponentsButton = ({
   palette,
@@ -95,7 +98,8 @@ export const createThemeComponentsButton = ({
           palette.primary.contrast,
           palette.action.disabled,
           shape.borderWidth.outline,
-          palette.ratio.focusOutlineOpacity
+          palette.ratio.focusOutlineOpacity,
+          spacing.get(5)
         ),
         '&.Button-containedSecondary': getContainedButtonVariant(
           palette.secondary.main,
@@ -103,7 +107,8 @@ export const createThemeComponentsButton = ({
           palette.secondary.contrast,
           palette.action.disabled,
           shape.borderWidth.outline,
-          palette.ratio.focusOutlineOpacity
+          palette.ratio.focusOutlineOpacity,
+          spacing.get(5)
         ),
         '&.Button-containedTertiary': getContainedButtonVariant(
           palette.tertiary.main,
@@ -111,7 +116,8 @@ export const createThemeComponentsButton = ({
           palette.tertiary.contrast,
           palette.action.disabled,
           shape.borderWidth.outline,
-          palette.ratio.focusOutlineOpacity
+          palette.ratio.focusOutlineOpacity,
+          spacing.get(5)
         ),
         '&.Button-containedError': getContainedButtonVariant(
           palette.error.main,
@@ -119,7 +125,8 @@ export const createThemeComponentsButton = ({
           palette.error.contrast,
           palette.action.disabled,
           shape.borderWidth.outline,
-          palette.ratio.focusOutlineOpacity
+          palette.ratio.focusOutlineOpacity,
+          spacing.get(5)
         ),
         '&.Button-containedWarning': getContainedButtonVariant(
           palette.warning.main,
@@ -127,7 +134,8 @@ export const createThemeComponentsButton = ({
           palette.warning.contrast,
           palette.action.disabled,
           shape.borderWidth.outline,
-          palette.ratio.focusOutlineOpacity
+          palette.ratio.focusOutlineOpacity,
+          spacing.get(5)
         ),
         '&.Button-containedInfo': getContainedButtonVariant(
           palette.info.main,
@@ -135,7 +143,8 @@ export const createThemeComponentsButton = ({
           palette.info.contrast,
           palette.action.disabled,
           shape.borderWidth.outline,
-          palette.ratio.focusOutlineOpacity
+          palette.ratio.focusOutlineOpacity,
+          spacing.get(5)
         ),
         '&.Button-containedSuccess': getContainedButtonVariant(
           palette.success.main,
@@ -143,7 +152,8 @@ export const createThemeComponentsButton = ({
           palette.success.contrast,
           palette.action.disabled,
           shape.borderWidth.outline,
-          palette.ratio.focusOutlineOpacity
+          palette.ratio.focusOutlineOpacity,
+          spacing.get(5)
         ),
         '&.Button-containedInverted': getContainedButtonVariant(
           palette.inverted.main,
@@ -152,6 +162,7 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
+          spacing.get(5),
           true
         ),
 
@@ -163,7 +174,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-outlinedSecondary': getOutlinedButtonVariant(
           palette.secondary.main,
@@ -172,7 +184,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-outlinedTertiary': getOutlinedButtonVariant(
           palette.tertiary.main,
@@ -181,7 +194,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-outlinedError': getOutlinedButtonVariant(
           palette.error.main,
@@ -190,7 +204,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-outlinedWarning': getOutlinedButtonVariant(
           palette.warning.main,
@@ -199,7 +214,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-outlinedInfo': getOutlinedButtonVariant(
           palette.info.main,
@@ -208,7 +224,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-outlinedSuccess': getOutlinedButtonVariant(
           palette.success.main,
@@ -217,7 +234,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-outlinedInverted': getOutlinedButtonVariant(
           palette.inverted.main,
@@ -227,6 +245,7 @@ export const createThemeComponentsButton = ({
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
           palette.ratio.hoverShadowOpacity,
+          spacing.get(5),
           true
         ),
 
@@ -238,7 +257,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-textSecondary': getTextButtonVariant(
           palette.secondary.main,
@@ -247,7 +267,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-textTertiary': getTextButtonVariant(
           palette.tertiary.main,
@@ -256,7 +277,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-textError': getTextButtonVariant(
           palette.error.main,
@@ -265,7 +287,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-textWarning': getTextButtonVariant(
           palette.warning.main,
@@ -274,7 +297,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-textInfo': getTextButtonVariant(
           palette.info.main,
@@ -283,7 +307,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-textSuccess': getTextButtonVariant(
           palette.success.main,
@@ -292,7 +317,8 @@ export const createThemeComponentsButton = ({
           palette.action.disabled,
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
-          palette.ratio.hoverShadowOpacity
+          palette.ratio.hoverShadowOpacity,
+          spacing.get(5)
         ),
         '&.Button-textInverted': getTextButtonVariant(
           palette.inverted.main,
@@ -302,6 +328,7 @@ export const createThemeComponentsButton = ({
           shape.borderWidth.outline,
           palette.ratio.focusOutlineOpacity,
           palette.ratio.hoverShadowOpacity,
+          spacing.get(5),
           true
         ),
       },
@@ -326,13 +353,134 @@ export const createThemeComponentsButton = ({
         position: 'absolute',
         top: 0,
         left: 0,
+        overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: palette.action.loadingContrast,
-        backgroundColor: palette.action.loading,
         borderRadius: shape.borderRadius.medium,
-        backdropFilter: 'blur(.5rem)',
+
+        '.Button-containedPrimary &': getLoadingContainedPropsByVariant(
+          palette.primary.main,
+          palette.primary.contrast,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-containedSecondary &': getLoadingContainedPropsByVariant(
+          palette.secondary.main,
+          palette.secondary.contrast,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-containedTertiary &': getLoadingContainedPropsByVariant(
+          palette.tertiary.main,
+          palette.tertiary.contrast,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-containedError &': getLoadingContainedPropsByVariant(
+          palette.error.main,
+          palette.error.contrast,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-containedWarning &': getLoadingContainedPropsByVariant(
+          palette.warning.main,
+          palette.warning.contrast,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-containedInfo &': getLoadingContainedPropsByVariant(
+          palette.info.main,
+          palette.info.contrast,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-containedSuccess &': getLoadingContainedPropsByVariant(
+          palette.success.main,
+          palette.success.contrast,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-containedInverted &': getLoadingContainedPropsByVariant(
+          palette.inverted.main,
+          palette.inverted.contrast,
+          palette.ratio.loadingOpacity
+        ),
+
+        '.Button-outlinedPrimary &': getLoadingOutlinedPropsByVariant(
+          palette.primary.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-outlinedSecondary &': getLoadingOutlinedPropsByVariant(
+          palette.secondary.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-outlinedTertiary &': getLoadingOutlinedPropsByVariant(
+          palette.tertiary.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-outlinedError &': getLoadingOutlinedPropsByVariant(
+          palette.error.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-outlinedWarning &': getLoadingOutlinedPropsByVariant(
+          palette.warning.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-outlinedInfo &': getLoadingOutlinedPropsByVariant(
+          palette.info.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-outlinedSuccess &': getLoadingOutlinedPropsByVariant(
+          palette.success.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-outlinedInverted &': getLoadingOutlinedPropsByVariant(
+          palette.inverted.main,
+          palette.inverted.contrast,
+          palette.ratio.loadingOpacity
+        ),
+
+        '.Button-textPrimary &': getLoadingOutlinedPropsByVariant(
+          palette.primary.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-textSecondary &': getLoadingOutlinedPropsByVariant(
+          palette.secondary.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-textTertiary &': getLoadingOutlinedPropsByVariant(
+          palette.tertiary.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-textError &': getLoadingOutlinedPropsByVariant(
+          palette.error.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-textWarning &': getLoadingOutlinedPropsByVariant(
+          palette.warning.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-textInfo &': getLoadingOutlinedPropsByVariant(
+          palette.info.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-textSuccess &': getLoadingOutlinedPropsByVariant(
+          palette.success.main,
+          palette.background.body,
+          palette.ratio.loadingOpacity
+        ),
+        '.Button-textInverted &': getLoadingOutlinedPropsByVariant(
+          palette.inverted.main,
+          palette.inverted.contrast,
+          palette.ratio.loadingOpacity
+        ),
       },
       components?.Button?.iconLoading,
     ],

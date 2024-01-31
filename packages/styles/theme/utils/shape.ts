@@ -17,6 +17,7 @@ export const getContainedButtonVariant = (
   disabled: string,
   focusOutlineWidth: string,
   focusOutlineAlpha: number,
+  hoverShadowWidth: string,
   inverted?: boolean
 ) => {
   return {
@@ -25,7 +26,7 @@ export const getContainedButtonVariant = (
     borderColor: background,
 
     '&:hover:not(&.is--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${hover}`,
+      boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${hover}`,
       borderColor: hover,
     },
 
@@ -57,6 +58,7 @@ export const getOutlinedButtonVariant = (
   focusOutlineWidth: string,
   focusOutlineAlpha: number,
   hoverShadowAlpha: number,
+  hoverShadowWidth: string,
   inverted?: boolean
 ) => {
   return {
@@ -65,7 +67,7 @@ export const getOutlinedButtonVariant = (
     borderColor: background,
 
     '&:hover:not(&.is--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${Color(hover).alpha(hoverShadowAlpha).toString()}`,
+      boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(hover).alpha(hoverShadowAlpha).toString()}`,
       color: hover,
       borderColor: hover,
     },
@@ -96,6 +98,7 @@ export const getTextButtonVariant = (
   focusOutlineWidth: string,
   focusOutlineAlpha: number,
   hoverShadowAlpha: number,
+  hoverShadowWidth: string,
   inverted?: boolean
 ) => {
   return {
@@ -104,7 +107,7 @@ export const getTextButtonVariant = (
     borderColor: 'transparent',
 
     '&:hover:not(&.is--disabled)': {
-      boxShadow: `inset 0 0 0 2.5rem ${Color(hover).alpha(hoverShadowAlpha).toString()}`,
+      boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(hover).alpha(hoverShadowAlpha).toString()}`,
       color: hover,
     },
 
@@ -121,5 +124,27 @@ export const getTextButtonVariant = (
       : {
           color: disabled,
         },
+  };
+};
+
+export const getLoadingContainedPropsByVariant = (
+  background: string,
+  color: string,
+  opacity: number
+) => {
+  return {
+    backgroundColor: Color(background).alpha(opacity).toString(),
+    color,
+  };
+};
+
+export const getLoadingOutlinedPropsByVariant = (
+  color: string,
+  background: string,
+  opacity: number
+) => {
+  return {
+    backgroundColor: Color(background).alpha(opacity).toString(),
+    color,
   };
 };

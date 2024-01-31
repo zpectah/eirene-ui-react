@@ -2,7 +2,7 @@ export const PALETTE_RATIO = {
   activeOpacity: 0.12,
   hoverOpacity: 0.25,
   disabledOpacity: 0.5,
-  loadingOpacity: 0.35,
+  loadingOpacity: 0.55,
   textSecondary: 25,
   textTertiary: 50,
   shapeDivider: 65,

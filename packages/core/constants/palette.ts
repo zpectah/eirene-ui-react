@@ -10,7 +10,6 @@ export const PALETTE = {
 
   hover: 'hsl(0, 0.0%, 9.8%)',
   muted: 'hsl(177, 0%, 64%)',
-  active: 'hsl(186, 100.0%, 32.7%)',
 
   grey: 'hsl(0, 0.0%, 38.0%)',
   dark: 'hsl(0, 0.0%, 9.8%)',
@@ -36,4 +35,19 @@ export const PALETTE = {
   deepOrange: 'hsl(15, 80%, 50%)',
   brown: 'hsl(19, 25%, 30%)',
   blueGrey: 'hsl(200, 18%, 30%)',
+};
+
+export const PALETTE_RATIO = {
+  activeOpacity: 0.12,
+  hoverOpacity: 0.25,
+  disabledOpacity: 0.5,
+  loadingOpacity: 0.55,
+  textSecondary: 25,
+  textTertiary: 50,
+  shapeDivider: 65,
+  shapeBorder: 75,
+  backgroundSurface: 0.025,
+  shapeAction: 0.25,
+  hoverShadowOpacity: 0.025,
+  focusOutlineOpacity: 0.25,
 };
