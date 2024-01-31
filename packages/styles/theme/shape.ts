@@ -1,16 +1,17 @@
 import { ThemeShape } from 'types';
+import { BORDER_RADIUS, BORDER_WIDTH } from 'core';
 
 export const createThemeShape = (shape?: Partial<ThemeShape>): ThemeShape => {
   const borderRadius = {
-    small: shape?.borderRadius?.small || '0.125rem', // TODO #default-values
-    medium: shape?.borderRadius?.medium || '0.25rem', // TODO #default-values
-    large: shape?.borderRadius?.large || '0.5rem', // TODO #default-values
+    small: shape?.borderRadius?.small || BORDER_RADIUS.small,
+    medium: shape?.borderRadius?.medium || BORDER_RADIUS.medium,
+    large: shape?.borderRadius?.large || BORDER_RADIUS.large,
   };
   const borderWidth = {
-    button: shape?.borderWidth?.button || '1px', // TODO #default-values
-    input: shape?.borderWidth?.input || '1px', // TODO #default-values
-    divider: shape?.borderWidth?.divider || '1px', // TODO #default-values
-    outline: shape?.borderWidth?.outline || '2px', // TODO #default-values
+    button: shape?.borderWidth?.button || BORDER_WIDTH.button,
+    input: shape?.borderWidth?.input || BORDER_WIDTH.input,
+    divider: shape?.borderWidth?.divider || BORDER_WIDTH.divider,
+    outline: shape?.borderWidth?.outline || BORDER_WIDTH.outline,
   };
 
   return {

@@ -1,3 +1,5 @@
+export const SPACING_UNIT = 'rem';
+
 export const SPACING_RATIO = 2;
 
 export const SPACING_VALUES = {

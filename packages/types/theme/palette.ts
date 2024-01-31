@@ -81,8 +81,6 @@ export interface ThemePalette {
     active: string;
     hover: string;
     disabled: string;
-    loading: string;
-    loadingContrast: string;
   };
   primary: ThemePaletteCluster;
   secondary: ThemePaletteCluster;

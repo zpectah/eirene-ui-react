@@ -1,5 +1,6 @@
-export const DEFAULT_BREAKPOINTS = {
-  // These are min values
+export const BREAKPOINTS_UNIT = 'px';
+
+export const BREAKPOINTS = {
   xs: 0,
   sm: 576,
   md: 768,

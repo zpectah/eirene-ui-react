@@ -1,137 +1,108 @@
-import { ThemeTypography, textDirectionKeys } from 'types';
+import { ThemeTypography } from 'types';
+import {
+  TYPOGRAPHY_FONT_SIZE,
+  TYPOGRAPHY_FONT_FAMILY,
+  TYPOGRAPHY_DIRECTION,
+  TYPOGRAPHY_FONT_WEIGHT_LIGHT,
+  TYPOGRAPHY_FONT_WEIGHT_REGULAR,
+  TYPOGRAPHY_FONT_WEIGHT_MEDIUM,
+  TYPOGRAPHY_FONT_WEIGHT_SEMI_BOLD,
+  TYPOGRAPHY_FONT_WEIGHT_BOLD,
+  TYPOGRAPHY_FONT_WEIGHT_EXTRA_BOLD,
+  TYPOGRAPHY_H1,
+  TYPOGRAPHY_H2,
+  TYPOGRAPHY_H3,
+  TYPOGRAPHY_H4,
+  TYPOGRAPHY_H5,
+  TYPOGRAPHY_H6,
+  TYPOGRAPHY_SUBTITLE1,
+  TYPOGRAPHY_SUBTITLE2,
+  TYPOGRAPHY_BODY1,
+  TYPOGRAPHY_BODY2,
+  TYPOGRAPHY_CAPTION,
+  TYPOGRAPHY_OVERLINE,
+  TYPOGRAPHY_SHAPE_SMALL,
+  TYPOGRAPHY_SHAPE_MEDIUM,
+  TYPOGRAPHY_SHAPE_LARGE,
+} from 'core';
 
 export const createThemeTypography = (
   typography?: ThemeTypography
 ): ThemeTypography => {
-  const fontSize = typography?.fontSize || 16; // TODO #default-values
-  const fontFamily =
-    typography?.fontFamily || '"Open Sans", "Helvetica", "Arial", sans-serif'; // TODO #default-values
-  const fontWeightLight = typography?.fontWeightLight || 300; // TODO #default-values
-  const fontWeightRegular = typography?.fontWeightRegular || 400; // TODO #default-values
-  const fontWeightMedium = typography?.fontWeightMedium || 500; // TODO #default-values
-  const fontWeightSemiBold = typography?.fontWeightMedium || 600; // TODO #default-values
-  const fontWeightBold = typography?.fontWeightBold || 700; // TODO #default-values
-  const fontWeightExtraBold = typography?.fontWeightExtraBold || 800; // TODO #default-values
-  const direction = typography?.direction || textDirectionKeys.ltr; // TODO #default-values
-
   return {
-    fontSize,
-    fontFamily,
-    fontWeightLight,
-    fontWeightRegular,
-    fontWeightMedium,
-    fontWeightSemiBold,
-    fontWeightBold,
-    fontWeightExtraBold,
-    direction,
+    fontSize: typography?.fontSize || TYPOGRAPHY_FONT_SIZE,
+    fontFamily: typography?.fontFamily || TYPOGRAPHY_FONT_FAMILY,
+    fontWeightLight:
+      typography?.fontWeightLight || TYPOGRAPHY_FONT_WEIGHT_LIGHT,
+    fontWeightRegular:
+      typography?.fontWeightRegular || TYPOGRAPHY_FONT_WEIGHT_REGULAR,
+    fontWeightMedium:
+      typography?.fontWeightMedium || TYPOGRAPHY_FONT_WEIGHT_MEDIUM,
+    fontWeightSemiBold:
+      typography?.fontWeightSemiBold || TYPOGRAPHY_FONT_WEIGHT_SEMI_BOLD,
+    fontWeightBold: typography?.fontWeightBold || TYPOGRAPHY_FONT_WEIGHT_BOLD,
+    fontWeightExtraBold:
+      typography?.fontWeightExtraBold || TYPOGRAPHY_FONT_WEIGHT_EXTRA_BOLD,
+    direction: typography?.direction || TYPOGRAPHY_DIRECTION,
     h1: {
-      fontFamily: typography?.h1.fontFamily || fontFamily,
-      fontWeight: typography?.h1.fontWeight || fontWeightLight,
-      fontSize: typography?.h1.fontSize || '2.25rem', // TODO #default-values
-      lineHeight: typography?.h1.lineHeight || 1.125, // TODO #default-values
-      letterSpacing: typography?.h1.letterSpacing || '0', // TODO #default-values
+      ...TYPOGRAPHY_H1,
+      ...typography?.h1,
     },
     h2: {
-      fontFamily: typography?.h2.fontFamily || fontFamily,
-      fontWeight: typography?.h2.fontWeight || fontWeightLight,
-      fontSize: typography?.h2.fontSize || '2.125rem',
-      lineHeight: typography?.h2.lineHeight || 1.125,
-      letterSpacing: typography?.h2.letterSpacing || '0',
+      ...TYPOGRAPHY_H2,
+      ...typography?.h2,
     },
     h3: {
-      fontFamily: typography?.h3.fontFamily || fontFamily,
-      fontWeight: typography?.h3.fontWeight || fontWeightRegular,
-      fontSize: typography?.h3.fontSize || '2rem',
-      lineHeight: typography?.h3.lineHeight || 1.15,
-      letterSpacing: typography?.h3.letterSpacing || '0',
+      ...TYPOGRAPHY_H3,
+      ...typography?.h3,
     },
     h4: {
-      fontFamily: typography?.h4.fontFamily || fontFamily,
-      fontWeight: typography?.h4.fontWeight || fontWeightRegular,
-      fontSize: typography?.h4.fontSize || '1.75rem',
-      lineHeight: typography?.h4.lineHeight || 1.25,
-      letterSpacing: typography?.h4.letterSpacing || '0',
+      ...TYPOGRAPHY_H4,
+      ...typography?.h4,
     },
     h5: {
-      fontFamily: typography?.h5.fontFamily || fontFamily,
-      fontWeight: typography?.h5.fontWeight || fontWeightMedium,
-      fontSize: typography?.h5.fontSize || '1.5rem',
-      lineHeight: typography?.h5.lineHeight || 1.334,
-      letterSpacing: typography?.h5.letterSpacing || '0',
+      ...TYPOGRAPHY_H5,
+      ...typography?.h5,
     },
     h6: {
-      fontFamily: typography?.h6.fontFamily || fontFamily,
-      fontWeight: typography?.h6.fontWeight || fontWeightMedium,
-      fontSize: typography?.h6.fontSize || '1.25rem',
-      lineHeight: typography?.h6.lineHeight || 1.6,
-      letterSpacing: typography?.h6.letterSpacing || '0',
+      ...TYPOGRAPHY_H6,
+      ...typography?.h6,
     },
     subtitle1: {
-      fontFamily: typography?.subtitle1.fontFamily || fontFamily,
-      fontWeight: typography?.subtitle1.fontWeight || fontWeightMedium,
-      fontSize: typography?.subtitle1.fontSize || '1rem',
-      lineHeight: typography?.subtitle1.lineHeight || 1.75,
-      letterSpacing: typography?.subtitle1.letterSpacing || '0.025rem',
+      ...TYPOGRAPHY_SUBTITLE1,
+      ...typography?.subtitle1,
     },
     subtitle2: {
-      fontFamily: typography?.subtitle2.fontFamily || fontFamily,
-      fontWeight: typography?.subtitle2.fontWeight || fontWeightSemiBold,
-      fontSize: typography?.subtitle2.fontSize || '0.875rem',
-      lineHeight: typography?.subtitle2.lineHeight || 1.57,
-      letterSpacing: typography?.subtitle2.letterSpacing || '0.125rem',
+      ...TYPOGRAPHY_SUBTITLE2,
+      ...typography?.subtitle2,
     },
     body1: {
-      fontFamily: typography?.body1.fontFamily || fontFamily,
-      fontWeight: typography?.body1.fontWeight || fontWeightRegular,
-      fontSize: typography?.body1.fontSize || '1rem',
-      lineHeight: typography?.body1.lineHeight || 1.45,
-      letterSpacing: typography?.body1.letterSpacing || '0',
+      ...TYPOGRAPHY_BODY1,
+      ...typography?.body1,
     },
     body2: {
-      fontFamily: typography?.body2.fontFamily || fontFamily,
-      fontWeight: typography?.body2.fontWeight || fontWeightRegular,
-      fontSize: typography?.body2.fontSize || '0.875rem',
-      lineHeight: typography?.body2.lineHeight || 1.25,
-      letterSpacing: typography?.body2.letterSpacing || '0',
+      ...TYPOGRAPHY_BODY2,
+      ...typography?.body2,
     },
     caption: {
-      fontFamily: typography?.caption.fontFamily || fontFamily,
-      fontWeight: typography?.caption.fontWeight || fontWeightMedium,
-      fontSize: typography?.caption.fontSize || '0.75rem',
-      lineHeight: typography?.caption.lineHeight || 1.55,
-      letterSpacing: typography?.caption.letterSpacing || '0',
+      ...TYPOGRAPHY_CAPTION,
+      ...typography?.caption,
     },
     overline: {
-      fontFamily: typography?.overline.fontFamily || fontFamily,
-      fontWeight: typography?.overline.fontWeight || fontWeightMedium,
-      fontSize: typography?.overline.fontSize || '0.75rem',
-      lineHeight: typography?.overline.lineHeight || 2.25,
-      textTransform: typography?.overline.textTransform || 'uppercase',
-      letterSpacing: typography?.overline.letterSpacing || '0',
+      ...TYPOGRAPHY_OVERLINE,
+      ...typography?.overline,
     },
     shapeSmall: {
-      fontFamily: typography?.shapeSmall.fontFamily || fontFamily,
-      fontWeight: typography?.shapeSmall.fontWeight || fontWeightSemiBold,
-      fontSize: typography?.shapeSmall.fontSize || '0.85rem',
-      lineHeight: typography?.shapeSmall.lineHeight || 1.07,
-      textTransform: typography?.shapeSmall.textTransform || 'none',
-      letterSpacing: typography?.shapeSmall.letterSpacing || '0',
+      ...TYPOGRAPHY_SHAPE_SMALL,
+      ...typography?.shapeSmall,
     },
     shapeMedium: {
-      fontFamily: typography?.shapeMedium.fontFamily || fontFamily,
-      fontWeight: typography?.shapeMedium.fontWeight || fontWeightSemiBold,
-      fontSize: typography?.shapeMedium.fontSize || '0.975rem',
-      lineHeight: typography?.shapeMedium.lineHeight || 1.158,
-      textTransform: typography?.shapeMedium.textTransform || 'none',
-      letterSpacing: typography?.shapeMedium.letterSpacing || '0',
+      ...TYPOGRAPHY_SHAPE_MEDIUM,
+      ...typography?.shapeMedium,
     },
     shapeLarge: {
-      fontFamily: typography?.shapeLarge.fontFamily || fontFamily,
-      fontWeight: typography?.shapeLarge.fontWeight || fontWeightSemiBold,
-      fontSize: typography?.shapeLarge.fontSize || '1rem',
-      lineHeight: typography?.shapeLarge.lineHeight || 1.19,
-      textTransform: typography?.shapeLarge.textTransform || 'none',
-      letterSpacing: typography?.shapeLarge.letterSpacing || '0',
+      ...TYPOGRAPHY_SHAPE_LARGE,
+      ...typography?.shapeLarge,
     },
   };
 };

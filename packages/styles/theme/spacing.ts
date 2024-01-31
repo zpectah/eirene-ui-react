@@ -1,5 +1,5 @@
 import { ThemeSpacing, SpacingValues } from 'types';
-import { SPACING_RATIO, SPACING_VALUES } from 'core';
+import { SPACING_UNIT, SPACING_RATIO, SPACING_VALUES } from 'core';
 
 export const createThemeSpacing = (
   spacing?: Partial<ThemeSpacing>
@@ -28,7 +28,7 @@ export const createThemeSpacing = (
   const get = (...args: SpacingValues[]) => {
     const array: string[] = [];
     args.forEach((arg) => {
-      array.push(`${values[arg] * ratio}rem`);
+      array.push(`${values[arg] * ratio}${SPACING_UNIT}`);
     });
 
     return array.join(' ');

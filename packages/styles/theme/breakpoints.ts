@@ -1,18 +1,18 @@
 import { breakpointKeys, ThemeBreakpoints, BreakpointKeys } from 'types';
-import { DEFAULT_BREAKPOINTS } from 'core';
+import { BREAKPOINTS, BREAKPOINTS_UNIT } from 'core';
 
 export const createThemeBreakpoints = (
   breakpoints?: Partial<ThemeBreakpoints>
 ): ThemeBreakpoints => {
   const values = {
-    xs: breakpoints?.values?.xs || DEFAULT_BREAKPOINTS.xs,
-    sm: breakpoints?.values?.sm || DEFAULT_BREAKPOINTS.sm,
-    md: breakpoints?.values?.md || DEFAULT_BREAKPOINTS.md,
-    lg: breakpoints?.values?.lg || DEFAULT_BREAKPOINTS.lg,
-    xl: breakpoints?.values?.xl || DEFAULT_BREAKPOINTS.xl,
-    xxl: breakpoints?.values?.xxl || DEFAULT_BREAKPOINTS.xxl,
+    xs: breakpoints?.values?.xs || BREAKPOINTS.xs,
+    sm: breakpoints?.values?.sm || BREAKPOINTS.sm,
+    md: breakpoints?.values?.md || BREAKPOINTS.md,
+    lg: breakpoints?.values?.lg || BREAKPOINTS.lg,
+    xl: breakpoints?.values?.xl || BREAKPOINTS.xl,
+    xxl: breakpoints?.values?.xxl || BREAKPOINTS.xxl,
   };
-  const unit = 'px';
+  const unit = breakpoints?.unit || BREAKPOINTS_UNIT;
 
   const up = (min: BreakpointKeys) =>
     `@media (min-width: ${values[min]}${unit})`;
