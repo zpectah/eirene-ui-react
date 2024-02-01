@@ -1,23 +1,28 @@
 import React from 'react';
 import { useUiContext } from 'styles';
+import { View } from '../../../../Layout';
+import { Article, Section } from '../../../../components';
 
 const PaletteView = () => {
   const { theme } = useUiContext();
 
   return (
-    <article>
-      <div>
-        <div>
+    <View title="Palette">
+      <Article>
+        <Section title="Default palette">
           <div
             style={{
-              padding: '1rem',
               display: 'flex',
               flexDirection: 'column',
               gap: '.5rem',
             }}
           >
             <div
-              style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '.5rem',
+              }}
             >
               <div
                 style={{
@@ -126,7 +131,11 @@ const PaletteView = () => {
             </div>
 
             <div
-              style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '.5rem',
+              }}
             >
               <div
                 style={{
@@ -235,7 +244,11 @@ const PaletteView = () => {
             </div>
 
             <div
-              style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '.5rem',
+              }}
             >
               <div
                 style={{
@@ -343,211 +356,211 @@ const PaletteView = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Section>
 
-        <div
-          style={{
-            padding: '1rem',
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '.5rem',
-          }}
-        >
+        <Section title="Border">
           <div
             style={{
-              width: '4rem',
-              height: '2rem',
-              borderWidth: '1px',
-              borderStyle: 'solid',
-              borderColor: theme.palette.shape.border,
-            }}
-          ></div>
-          <div
-            style={{
-              width: '4rem',
-              height: '2rem',
-              borderWidth: '1px',
-              borderStyle: 'solid',
-              borderColor: theme.palette.shape.divider,
-            }}
-          ></div>
-          <div
-            style={{
-              width: '4rem',
-              height: '2rem',
-              borderWidth: '1px',
-              borderStyle: 'solid',
-              borderColor: theme.palette.common.black,
-            }}
-          ></div>
-        </div>
-        <div
-          style={{
-            padding: '1rem',
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '.5rem',
-          }}
-        >
-          <div
-            style={{
-              width: '4rem',
-              height: '4rem',
-              backgroundColor: theme.palette.background.body,
-              border: `1px solid ${theme.palette.shape.border}`,
-            }}
-          ></div>
-          <div
-            style={{
-              width: '4rem',
-              height: '4rem',
-              borderWidth: '1px',
-              backgroundColor: theme.palette.background.surface,
-              border: `1px solid ${theme.palette.shape.border}`,
-            }}
-          ></div>
-        </div>
-        <div
-          style={{
-            padding: '1rem',
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '.5rem',
-          }}
-        >
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[10],
-              border: `1px solid ${theme.palette.shape.border}`,
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              flexDirection: 'row',
+              gap: '.5rem',
             }}
           >
-            10
+            <div
+              style={{
+                width: '4rem',
+                height: '2rem',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: theme.palette.shape.border,
+              }}
+            ></div>
+            <div
+              style={{
+                width: '4rem',
+                height: '2rem',
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: theme.palette.shape.divider,
+              }}
+            ></div>
           </div>
+        </Section>
+
+        <Section title="Background">
           <div
             style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[20],
-              border: `1px solid ${theme.palette.shape.border}`,
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              flexDirection: 'row',
+              gap: '.5rem',
             }}
           >
-            20
+            <div
+              style={{
+                width: '4rem',
+                height: '4rem',
+                backgroundColor: theme.palette.background.body,
+                border: `1px solid ${theme.palette.shape.border}`,
+              }}
+            ></div>
+            <div
+              style={{
+                width: '4rem',
+                height: '4rem',
+                borderWidth: '1px',
+                backgroundColor: theme.palette.background.surface,
+                border: `1px solid ${theme.palette.shape.border}`,
+              }}
+            ></div>
           </div>
+        </Section>
+
+        <Section title="Grey">
           <div
             style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[30],
-              border: `1px solid ${theme.palette.shape.border}`,
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              flexDirection: 'row',
+              gap: '.5rem',
             }}
           >
-            30
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[10],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              10
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[20],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              20
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[30],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              30
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[40],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              40
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[50],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              50
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[60],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              60
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[70],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              70
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[80],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              80
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[90],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              90
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[100],
+                border: `1px solid ${theme.palette.shape.border}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              100
+            </div>
           </div>
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[40],
-              border: `1px solid ${theme.palette.shape.border}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            40
-          </div>
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[50],
-              border: `1px solid ${theme.palette.shape.border}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            50
-          </div>
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[60],
-              border: `1px solid ${theme.palette.shape.border}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            60
-          </div>
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[70],
-              border: `1px solid ${theme.palette.shape.border}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            70
-          </div>
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[80],
-              border: `1px solid ${theme.palette.shape.border}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            80
-          </div>
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[90],
-              border: `1px solid ${theme.palette.shape.border}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            90
-          </div>
-          <div
-            style={{
-              width: '2rem',
-              height: '2rem',
-              backgroundColor: theme.palette.grey[100],
-              border: `1px solid ${theme.palette.shape.border}`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            100
-          </div>
-        </div>
-      </div>
-    </article>
+        </Section>
+
+        <Section title="Common">
+          <div>...todo</div>
+        </Section>
+      </Article>
+    </View>
   );
 };
 
