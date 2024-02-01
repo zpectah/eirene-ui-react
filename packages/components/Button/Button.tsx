@@ -25,12 +25,19 @@ const Button = <T extends ElementType>(
     styles,
     ...rest
   } = props;
+  const buttonStyleProps = {
+    isLoading,
+    isDisabled,
+    isActive,
+    fullWidth,
+    size,
+    variant,
+    color,
+  };
+
   const {
     composedStyles: { root, iconStart, iconEnd, iconLoading },
-  } = useButtonStyles(
-    { styles },
-    { isLoading, isDisabled, isActive, fullWidth, size, variant, color }
-  );
+  } = useButtonStyles({ styles }, { ...buttonStyleProps });
   const {
     root: rootProps,
     iconStart: iconStartProps,
@@ -39,15 +46,15 @@ const Button = <T extends ElementType>(
   } = useButtonProps({
     style,
     className,
-    isDisabled,
+    ...buttonStyleProps,
   });
 
   return (
     <Component ref={ref} css={root} {...rootProps} {...rest}>
       {isLoading && (
         <span css={iconLoading} {...iconLoadingProps}>
-          {/* TODO */}
-          {loadingIcon ? loadingIcon : <>loading</>}
+          {/* TODO #loading-icon */}
+          {loadingIcon ? loadingIcon : <>loading icon</>}
         </span>
       )}
       {startIcon && (
