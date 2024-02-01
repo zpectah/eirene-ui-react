@@ -43,7 +43,7 @@ export interface UseButtonStyles {
 }
 
 export interface UseButtonStylesReturn {
-  composedCss: ButtonStyles;
+  composedStyles: ButtonStyles;
 }
 
 export interface UseButtonProps
@@ -53,9 +53,9 @@ export interface UseButtonProps
 
 export interface UseButtonPropsReturn {
   root: WithStyle & { disabled?: boolean };
-  iconStart: {}; // TODO
-  iconEnd: {}; // TODO
-  iconLoading: {}; // TODO
+  iconStart: WithStyle;
+  iconEnd: WithStyle;
+  iconLoading: WithStyle;
 }
 
-export interface ButtonClassProps extends ButtonStateProps, ButtonShapeProps {}
+export interface ButtonStylesProps extends ButtonStateProps, ButtonShapeProps {}

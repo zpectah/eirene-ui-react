@@ -1,4 +1,4 @@
-import { Theme, ButtonClassProps } from 'types';
+import { Theme, ButtonStylesProps } from 'types';
 import {
   getContainedButtonVariant,
   getElementTransitions,
@@ -8,11 +8,11 @@ import {
 
 export const useCreateButtonStyles = (
   theme: Theme,
-  classProps: ButtonClassProps
+  stylesProps: ButtonStylesProps
 ) => {
   const { transitions, palette, spacing, shape, typography } = theme;
   const { isLoading, isActive, isDisabled, fullWidth, size, variant, color } =
-    classProps;
+    stylesProps;
 
   const transition = getElementTransitions(
     ['background-color', 'color', 'border-color', 'box-shadow'],
@@ -365,9 +365,9 @@ export const useCreateButtonStyles = (
     // TODO
   };
 
-  // Final classes object
-  const classes = {
-    root: {
+  // Final styles object
+  const styles = {
+    root: Object.assign({
       ...rootBase,
       ...rootIsDisabled,
       ...rootIsActive,
@@ -375,19 +375,19 @@ export const useCreateButtonStyles = (
       ...rootIsFullWidth,
       ...getRootSize(),
       ...getRootVariant(),
-    },
-    iconStart: {
+    }),
+    iconStart: Object.assign({
       ...iconStartBase,
-    },
-    iconEnd: {
+    }),
+    iconEnd: Object.assign({
       ...iconEndBase,
-    },
-    iconLoading: {
+    }),
+    iconLoading: Object.assign({
       ...iconLoadingBase,
-    },
+    }),
   };
 
   return {
-    classes,
+    styles,
   };
 };

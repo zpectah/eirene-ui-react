@@ -1,4 +1,5 @@
 import Color from 'color';
+import { STATUS_CLASS_NAMES } from 'core';
 
 export const getFocusPropertyValue = (
   background: string,
@@ -25,7 +26,7 @@ export const getContainedButtonVariant = (
     color: contrast,
     borderColor: background,
 
-    '&:hover:not(&.is--disabled)': {
+    [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled})`]: {
       boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${hover}`,
       borderColor: hover,
     },
@@ -36,7 +37,7 @@ export const getContainedButtonVariant = (
       focusOutlineWidth
     ),
 
-    '&:disabled, &[disabled], &.is--disabled': inverted
+    [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: inverted
       ? {
           backgroundColor: background,
           color: contrast,
@@ -66,7 +67,7 @@ export const getOutlinedButtonVariant = (
     color: background,
     borderColor: background,
 
-    '&:hover:not(&.is--disabled)': {
+    [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled})`]: {
       boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(hover).alpha(hoverShadowAlpha).toString()}`,
       color: hover,
       borderColor: hover,
@@ -78,7 +79,7 @@ export const getOutlinedButtonVariant = (
       focusOutlineWidth
     ),
 
-    '&:disabled, &[disabled], &.is--disabled': inverted
+    [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: inverted
       ? {
           color: background,
           borderColor: background,
@@ -106,7 +107,7 @@ export const getTextButtonVariant = (
     color: background,
     borderColor: 'transparent',
 
-    '&:hover:not(&.is--disabled)': {
+    [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled})`]: {
       boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(hover).alpha(hoverShadowAlpha).toString()}`,
       color: hover,
     },
@@ -117,34 +118,12 @@ export const getTextButtonVariant = (
       focusOutlineWidth
     ),
 
-    '&:disabled, &[disabled], &.is--disabled': inverted
+    [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: inverted
       ? {
           color: background,
         }
       : {
           color: disabled,
         },
-  };
-};
-
-export const getLoadingContainedPropsByVariant = (
-  background: string,
-  color: string,
-  opacity: number
-) => {
-  return {
-    backgroundColor: Color(background).alpha(opacity).toString(),
-    color,
-  };
-};
-
-export const getLoadingOutlinedPropsByVariant = (
-  color: string,
-  background: string,
-  opacity: number
-) => {
-  return {
-    backgroundColor: Color(background).alpha(opacity).toString(),
-    color,
   };
 };

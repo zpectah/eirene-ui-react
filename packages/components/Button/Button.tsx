@@ -1,52 +1,66 @@
 import React, { forwardRef, ElementType } from 'react';
 import { ButtonProps, PolymorphicIntrinsicElementRef } from 'types';
 import { BUTTON_DEFAULT_VALUES } from 'core';
-import { useButtonStyles } from './useButtonStyles';
-import { useButtonProps } from './useButtonProps';
+import { useButtonStyles, useButtonProps } from './hooks';
 
 const Button = <T extends ElementType>(
   props: ButtonProps<T>,
   ref: PolymorphicIntrinsicElementRef<T>
 ) => {
   const {
-    as: Component = 'button',
-    styles,
-    style,
-    className,
-    children,
-    startIcon,
-    loadingIcon,
-    endIcon,
-    isLoading,
-    isActive,
-    isDisabled,
-    fullWidth,
+    as: Component = BUTTON_DEFAULT_VALUES.as,
+    color = BUTTON_DEFAULT_VALUES.color,
     size = BUTTON_DEFAULT_VALUES.size,
     variant = BUTTON_DEFAULT_VALUES.variant,
-    color = BUTTON_DEFAULT_VALUES.color,
+    children,
+    className,
+    endIcon,
+    fullWidth,
+    isActive,
+    isDisabled,
+    isLoading,
+    loadingIcon,
+    startIcon,
+    style,
+    styles,
     ...rest
   } = props;
-  const { composedCss } = useButtonStyles(
+  const {
+    composedStyles: { root, iconStart, iconEnd, iconLoading },
+  } = useButtonStyles(
     { styles },
     { isLoading, isDisabled, isActive, fullWidth, size, variant, color }
   );
-  const { root: composedProps } = useButtonProps({
+  const {
+    root: rootProps,
+    iconStart: iconStartProps,
+    iconEnd: iconEndProps,
+    iconLoading: iconLoadingProps,
+  } = useButtonProps({
     style,
     className,
     isDisabled,
   });
 
   return (
-    <Component ref={ref} css={composedCss.root} {...composedProps} {...rest}>
+    <Component ref={ref} css={root} {...rootProps} {...rest}>
       {isLoading && (
-        <span css={composedCss.iconLoading}>
+        <span css={iconLoading} {...iconLoadingProps}>
           {/* TODO */}
           {loadingIcon ? loadingIcon : <>loading</>}
         </span>
       )}
-      {startIcon && <span css={composedCss.iconStart}>{startIcon}</span>}
+      {startIcon && (
+        <span css={iconStart} {...iconStartProps}>
+          {startIcon}
+        </span>
+      )}
       {children}
-      {endIcon && <span css={composedCss.iconEnd}>{endIcon}</span>}
+      {endIcon && (
+        <span css={iconEnd} {...iconEndProps}>
+          {endIcon}
+        </span>
+      )}
     </Component>
   );
 };
