@@ -1,8 +1,8 @@
 import React, { forwardRef, ElementType } from 'react';
 import { ButtonProps, PolymorphicIntrinsicElementRef } from 'types';
+import { BUTTON_DEFAULT_VALUES } from 'core';
 import { useButtonStyles } from './useButtonStyles';
 import { useButtonProps } from './useButtonProps';
-import { buttonDefaultValues } from './constants';
 
 const Button = <T extends ElementType>(
   props: ButtonProps<T>,
@@ -21,9 +21,9 @@ const Button = <T extends ElementType>(
     isActive,
     isDisabled,
     fullWidth,
-    size = buttonDefaultValues.size,
-    variant = buttonDefaultValues.variant,
-    color = buttonDefaultValues.color,
+    size = BUTTON_DEFAULT_VALUES.size,
+    variant = BUTTON_DEFAULT_VALUES.variant,
+    color = BUTTON_DEFAULT_VALUES.color,
     ...rest
   } = props;
   const { composedCss } = useButtonStyles(
@@ -33,19 +33,14 @@ const Button = <T extends ElementType>(
   const { root: composedProps } = useButtonProps({
     style,
     className,
-    isLoading,
-    isActive,
     isDisabled,
-    fullWidth,
-    variant,
-    color,
-    size,
   });
 
   return (
     <Component ref={ref} css={composedCss.root} {...composedProps} {...rest}>
       {isLoading && (
         <span css={composedCss.iconLoading}>
+          {/* TODO */}
           {loadingIcon ? loadingIcon : <>loading</>}
         </span>
       )}

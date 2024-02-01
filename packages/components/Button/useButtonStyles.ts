@@ -8,7 +8,7 @@ import { useCreateButtonStyles } from './useCreateButtonStyles';
 
 export const useButtonStyles = (
   { styles }: UseButtonStyles,
-  buttonClasses: ButtonClassProps
+  { ...buttonClasses }: ButtonClassProps
 ): UseButtonStylesReturn => {
   const { theme } = useUiContext();
   const { classes } = useCreateButtonStyles(theme, buttonClasses);

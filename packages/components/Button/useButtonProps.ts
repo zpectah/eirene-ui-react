@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { UseButtonProps, UseButtonPropsReturn } from 'types';
+import { BUTTON_DEFAULT_VALUES } from 'core';
 import { capitalizeFirstLetter } from 'utils';
-import { buttonDefaultValues } from './constants';
 
 export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
   const {
@@ -11,9 +11,9 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
     isActive,
     isDisabled,
     fullWidth,
-    size = buttonDefaultValues.size,
-    variant = buttonDefaultValues.variant,
-    color = buttonDefaultValues.color,
+    size = BUTTON_DEFAULT_VALUES.size,
+    variant = BUTTON_DEFAULT_VALUES.variant,
+    color = BUTTON_DEFAULT_VALUES.color,
   } = props;
 
   const disabledClassName = `is--disabled`;
@@ -52,6 +52,7 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
   return {
     root: {
       className: clsx(
+        rootPrefix,
         variantClassName[variant],
         colorVariantClassName[variant],
         sizeClassName[size],
@@ -62,6 +63,10 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
         className
       ),
       style: { ...style },
+      disabled: isDisabled,
     },
+    iconStart: {},
+    iconEnd: {},
+    iconLoading: {},
   };
 };

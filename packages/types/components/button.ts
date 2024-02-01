@@ -52,7 +52,10 @@ export interface UseButtonProps
     Partial<WithStyle> {}
 
 export interface UseButtonPropsReturn {
-  root: WithStyle;
+  root: WithStyle & { disabled?: boolean };
+  iconStart: {}; // TODO
+  iconEnd: {}; // TODO
+  iconLoading: {}; // TODO
 }
 
 export interface ButtonClassProps extends ButtonStateProps, ButtonShapeProps {}
