@@ -1,7 +1,7 @@
 import Color from 'color';
 import { ThemePalette, themeModeKeys } from 'types';
 import { PALETTE, PALETTE_RATIO } from 'core';
-import { getThemePaletteProps } from './utils';
+import { getThemePaletteProps } from '../utils';
 
 export const createThemePalette = (
   palette?: Partial<ThemePalette>
