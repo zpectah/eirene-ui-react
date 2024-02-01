@@ -1,5 +1,4 @@
 export * from './components';
-export * from './utils';
 export * from './breakpoints';
 export * from './palette';
 export * from './shadows';

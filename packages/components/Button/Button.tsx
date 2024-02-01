@@ -26,7 +26,10 @@ const Button = <T extends ElementType>(
     color = buttonDefaultValues.color,
     ...rest
   } = props;
-  const { composedCss } = useButtonStyles({ styles });
+  const { composedCss } = useButtonStyles(
+    { styles },
+    { isLoading, isDisabled, isActive, fullWidth, size, variant, color }
+  );
   const { root: composedProps } = useButtonProps({
     style,
     className,

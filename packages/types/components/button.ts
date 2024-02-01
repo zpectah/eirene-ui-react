@@ -19,24 +19,24 @@ export interface ButtonElementaryProps extends Partial<WithStyle> {
 }
 
 export interface ButtonStateProps {
-  isLoading?: boolean;
-  isDisabled?: boolean;
-  isActive?: boolean;
+  isLoading: boolean;
+  isDisabled: boolean;
+  isActive: boolean;
 }
 
 export interface ButtonShapeProps {
-  fullWidth?: boolean;
-  color?: Color;
-  size?: ShapeSize;
-  variant?: ShapeVariant;
+  fullWidth: boolean;
+  color: Color;
+  size: ShapeSize;
+  variant: ShapeVariant;
 }
 
 export type ButtonProps<T extends ElementType> = {
   styles?: Partial<ButtonStyles>;
 } & ButtonInitialProps<T> &
   ButtonElementaryProps &
-  ButtonStateProps &
-  ButtonShapeProps;
+  Partial<ButtonStateProps> &
+  Partial<ButtonShapeProps>;
 
 export interface UseButtonStyles {
   styles?: Partial<ButtonStyles>;
@@ -47,10 +47,12 @@ export interface UseButtonStylesReturn {
 }
 
 export interface UseButtonProps
-  extends ButtonStateProps,
-    ButtonShapeProps,
+  extends Partial<ButtonStateProps>,
+    Partial<ButtonShapeProps>,
     Partial<WithStyle> {}
 
 export interface UseButtonPropsReturn {
   root: WithStyle;
 }
+
+export interface ButtonClassProps extends ButtonStateProps, ButtonShapeProps {}
