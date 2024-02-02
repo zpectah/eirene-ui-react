@@ -1,10 +1,10 @@
 import Color from 'color';
-import { ThemeMode, themeModeKeys, ThemePalette } from 'types';
+import { DeepPartial, ThemeMode, themeModeKeys, ThemePalette } from 'types';
 import { PALETTE, PALETTE_RATIO } from 'core';
 
 export const getThemePaletteProps = (
   mode: ThemeMode,
-  palette?: Partial<ThemePalette>
+  palette?: DeepPartial<ThemePalette>
 ) => {
   let textPrimaryDark,
     backgroundBodyDark,

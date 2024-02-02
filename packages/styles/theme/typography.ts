@@ -1,4 +1,4 @@
-import { ThemeTypography } from 'types';
+import { DeepPartial, ThemeTypography } from 'types';
 import {
   TYPOGRAPHY_FONT_SIZE,
   TYPOGRAPHY_FONT_FAMILY,
@@ -27,7 +27,7 @@ import {
 } from 'core';
 
 export const createThemeTypography = (
-  typography?: ThemeTypography
+  typography?: DeepPartial<ThemeTypography>
 ): ThemeTypography => {
   return {
     fontSize: typography?.fontSize || TYPOGRAPHY_FONT_SIZE,

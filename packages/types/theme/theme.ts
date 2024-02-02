@@ -1,3 +1,4 @@
+import { DeepPartial } from '../common';
 import { ThemeBreakpoints } from './breakpoints';
 import { ThemeComponents } from './components';
 import { ThemePalette } from './palette';
@@ -19,3 +20,5 @@ export interface Theme {
   typography: ThemeTypography;
   zIndex: ThemeZIndex;
 }
+
+export type PartialTheme = DeepPartial<Theme>;

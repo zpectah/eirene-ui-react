@@ -1,8 +1,8 @@
-import { ThemePalette, ThemeShadows } from 'types';
+import { DeepPartial, ThemePalette, ThemeShadows } from 'types';
 
 export const createThemeShadows = (
   palette: ThemePalette,
-  shadows?: Partial<ThemeShadows>
+  shadows?: DeepPartial<ThemeShadows>
 ): ThemeShadows => {
   return {};
 };

@@ -1,8 +1,8 @@
-import { ThemeTransitions } from 'types';
+import { DeepPartial, ThemeTransitions } from 'types';
 import { TRANSITIONS_EASING, TRANSITIONS_DURATION } from 'core';
 
 export const createThemeTransitions = (
-  transitions?: Partial<ThemeTransitions>
+  transitions?: DeepPartial<ThemeTransitions>
 ): ThemeTransitions => {
   return {
     easing: {

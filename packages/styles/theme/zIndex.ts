@@ -1,7 +1,7 @@
-import { ThemeZIndex } from 'types';
+import { DeepPartial, ThemeZIndex } from 'types';
 
 export const createThemeZIndex = (
-  zIndex?: Partial<ThemeZIndex>
+  zIndex?: DeepPartial<ThemeZIndex>
 ): ThemeZIndex => {
   return {};
 };

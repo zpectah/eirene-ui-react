@@ -7,7 +7,14 @@ import { Error, Welcome, Components, Usage, Customization } from '../views';
 
 const App = () => {
   return (
-    <UiProvider applyCSSReset applyGlobalStyles>
+    <UiProvider
+      // theme={{
+      //   palette: { mode: 'dark' },
+      //   components: { Button: { root: { padding: '5rem', margin: '2rem' } } },
+      // }}
+      applyCSSReset
+      applyGlobalStyles
+    >
       <BrowserRouter>
         <Routes>
           <Route path={routes.welcome.route} element={<PageLayout />}>

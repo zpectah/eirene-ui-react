@@ -1,8 +1,13 @@
-import { breakpointKeys, ThemeBreakpoints, BreakpointKeys } from 'types';
+import {
+  DeepPartial,
+  breakpointKeys,
+  ThemeBreakpoints,
+  BreakpointKeys,
+} from 'types';
 import { BREAKPOINTS, BREAKPOINTS_UNIT } from 'core';
 
 export const createThemeBreakpoints = (
-  breakpoints?: Partial<ThemeBreakpoints>
+  breakpoints?: DeepPartial<ThemeBreakpoints>
 ): ThemeBreakpoints => {
   const values = {
     xs: breakpoints?.values?.xs || BREAKPOINTS.xs,

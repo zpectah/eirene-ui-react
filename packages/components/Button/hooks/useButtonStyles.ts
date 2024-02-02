@@ -16,10 +16,18 @@ export const useButtonStyles = (
   } = useCreateButtonStyles(theme, buttonStyles);
 
   const composedStyles = {
-    root: [root, styles?.root],
-    iconStart: [iconStart, styles?.iconStart],
-    iconEnd: [iconEnd, styles?.iconEnd],
-    iconLoading: [iconLoading, styles?.iconLoading],
+    root: [root, theme.components.Button.root, styles?.root],
+    iconStart: [
+      iconStart,
+      theme.components.Button.iconStart,
+      styles?.iconStart,
+    ],
+    iconEnd: [iconEnd, theme.components.Button.iconEnd, styles?.iconEnd],
+    iconLoading: [
+      iconLoading,
+      theme.components.Button.iconLoading,
+      styles?.iconLoading,
+    ],
   };
 
   return { composedStyles };

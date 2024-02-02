@@ -1,10 +1,10 @@
 import Color from 'color';
-import { ThemePalette, themeModeKeys } from 'types';
+import { DeepPartial, ThemePalette, themeModeKeys } from 'types';
 import { PALETTE, PALETTE_RATIO } from 'core';
 import { getThemePaletteProps } from '../utils';
 
 export const createThemePalette = (
-  palette?: Partial<ThemePalette>
+  palette?: DeepPartial<ThemePalette>
 ): ThemePalette => {
   const mode = palette?.mode || themeModeKeys.light;
 
