@@ -8,15 +8,6 @@ import { ThemeTransitions } from './transitions';
 import { ThemeTypography } from './typography';
 import { ThemeZIndex } from './zIndex';
 
-export interface CreateThemeComponent {
-  components?: ThemeComponents;
-  palette: ThemePalette;
-  shape: ThemeShape;
-  spacing: ThemeSpacing;
-  transitions: ThemeTransitions;
-  typography: ThemeTypography;
-}
-
 export interface Theme {
   breakpoints: ThemeBreakpoints;
   components: ThemeComponents;

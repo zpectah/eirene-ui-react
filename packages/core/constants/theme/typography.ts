@@ -1,4 +1,5 @@
 import { textDirectionKeys } from 'types';
+import * as constants from 'constants';
 
 export const TYPOGRAPHY_FONT_SIZE = 16;
 export const TYPOGRAPHY_FONT_FAMILY =
@@ -93,7 +94,7 @@ export const TYPOGRAPHY_OVERLINE = {
   fontWeight: TYPOGRAPHY_FONT_WEIGHT_MEDIUM,
   fontSize: '0.75rem',
   lineHeight: 2.25,
-  textTransform: 'uppercase',
+  textTransform: 'uppercase' as const,
   letterSpacing: '0',
 };
 export const TYPOGRAPHY_SHAPE_SMALL = {

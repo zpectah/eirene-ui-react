@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { useUiContext } from 'styles';
 import { primaryNavigation } from '../../config';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
+import { Button } from 'components';
 
 const Header = () => {
-  const { theme } = useUiContext();
+  const { theme, toggleThemeMode } = useUiContext();
 
   return (
     <header
@@ -34,6 +35,11 @@ const Header = () => {
               {item.label}
             </Link>
           ))}
+        </div>
+        <div>
+          <Button onClick={toggleThemeMode}>
+            Toggle theme [{theme.palette.mode}]
+          </Button>
         </div>
       </div>
     </header>

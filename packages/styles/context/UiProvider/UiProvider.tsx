@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Global, css, SerializedStyles } from '@emotion/react';
-import { Theme, UiProviderProps } from 'types';
+import { Theme, ThemeMode, themeModeKeys, UiProviderProps } from 'types';
 import { createTheme } from '../../theme';
 import { UiContextProvider } from '../UiContext';
 import { cssReset, createGlobalStyles } from '../../global';
@@ -12,23 +12,38 @@ const UiProvider = ({
   applyCSSReset,
   applyGlobalStyles,
 }: UiProviderProps) => {
+  const [uiTheme, setUiTheme] = useState<Theme>(createTheme(theme));
+
+  const setThemeHandler = (theme: Partial<Theme>) =>
+    setUiTheme(createTheme(theme));
+
   const defaultProviderValues = useMemo(() => {
     return {
-      theme: createTheme(theme),
-      setTheme: (theme: Partial<Theme>) => createTheme(theme),
-      // TODO
-      setThemeMode: () => {},
-      toggleThemeMode: () => {},
+      theme: uiTheme,
+      setTheme: setThemeHandler,
+      setThemeMode: (themeMode: ThemeMode) => {
+        setUiTheme(
+          createTheme(Object.assign({ palette: { mode: themeMode } }))
+        );
+      },
+      toggleThemeMode: () => {
+        const newMode =
+          uiTheme.palette.mode === themeModeKeys.light
+            ? themeModeKeys.dark
+            : themeModeKeys.light;
+
+        setUiTheme(createTheme(Object.assign({ palette: { mode: newMode } })));
+      },
     };
-  }, [theme]);
+  }, [uiTheme]);
 
   const defaultGlobalStyles = css([
     applyCSSReset && cssReset,
-    applyGlobalStyles && createGlobalStyles(defaultProviderValues.theme),
+    applyGlobalStyles && createGlobalStyles(uiTheme),
     styles as SerializedStyles,
   ]);
 
-  console.log('Provider is loaded', defaultProviderValues);
+  useEffect(() => setUiTheme(createTheme(theme)), [theme]);
 
   return (
     <UiContextProvider value={defaultProviderValues}>
