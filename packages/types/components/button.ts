@@ -9,8 +9,7 @@ export interface ButtonStyles {
   iconLoading: ComponentStyles;
 }
 
-export type ButtonInitialProps<T extends ElementType> = NonNullable<unknown> &
-  PolymorphicComponentPropsWithRef<T>;
+export type ButtonInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 
 export interface ButtonElementaryProps extends Partial<WithStyle> {
   startIcon?: ReactNode;
@@ -46,10 +45,7 @@ export interface UseButtonStylesReturn {
   composedStyles: ButtonStyles;
 }
 
-export interface UseButtonProps
-  extends Partial<ButtonStateProps>,
-    Partial<ButtonShapeProps>,
-    Partial<WithStyle> {}
+export interface UseButtonProps extends Partial<ButtonStateProps>, Partial<ButtonShapeProps>, Partial<WithStyle> {}
 
 export interface UseButtonPropsReturn {
   root: WithStyle & { disabled?: boolean };

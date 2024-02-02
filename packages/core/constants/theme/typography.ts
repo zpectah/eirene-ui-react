@@ -2,8 +2,7 @@ import { textDirectionKeys } from 'types';
 import * as constants from 'constants';
 
 export const TYPOGRAPHY_FONT_SIZE = 16;
-export const TYPOGRAPHY_FONT_FAMILY =
-  '"Open Sans", "Helvetica", "Arial", sans-serif';
+export const TYPOGRAPHY_FONT_FAMILY = '"Open Sans", "Helvetica", "Arial", sans-serif';
 export const TYPOGRAPHY_DIRECTION = textDirectionKeys.ltr;
 export const TYPOGRAPHY_FONT_WEIGHT_LIGHT = 300;
 export const TYPOGRAPHY_FONT_WEIGHT_REGULAR = 400;

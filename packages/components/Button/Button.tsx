@@ -3,10 +3,7 @@ import { ButtonProps, PolymorphicIntrinsicElementRef } from 'types';
 import { BUTTON_DEFAULT_VALUES } from 'core';
 import { useButtonStyles, useButtonProps } from './hooks';
 
-const Button = <T extends ElementType>(
-  props: ButtonProps<T>,
-  ref: PolymorphicIntrinsicElementRef<T>
-) => {
+const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIntrinsicElementRef<T>) => {
   const {
     as: Component = BUTTON_DEFAULT_VALUES.as,
     color = BUTTON_DEFAULT_VALUES.color,

@@ -1,11 +1,6 @@
 import clsx from 'clsx';
 import { UseButtonProps, UseButtonPropsReturn } from 'types';
-import {
-  BUTTON_DEFAULT_VALUES,
-  STATUS_CLASS_NAMES,
-  SHAPE_SIZE_CLASS_NAMES,
-  SHAPE_VARIANT_CLASS_NAME,
-} from 'core';
+import { BUTTON_DEFAULT_VALUES, STATUS_CLASS_NAMES, SHAPE_SIZE_CLASS_NAMES, SHAPE_VARIANT_CLASS_NAME } from 'core';
 import { capitalizeFirstLetter } from 'utils';
 
 export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {

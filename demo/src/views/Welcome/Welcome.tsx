@@ -29,9 +29,7 @@ const Welcome = () => {
           gap: '1rem',
         }}
       >
-        <h2 style={{ ...theme.typography.h1, textTransform: 'uppercase' }}>
-          {meta.name}
-        </h2>
+        <h2 style={{ ...theme.typography.h1, textTransform: 'uppercase' }}>{meta.name}</h2>
         <h4 style={{ ...theme.typography.subtitle1 }}>{meta.title}</h4>
         <p
           style={{
@@ -53,13 +51,7 @@ const Welcome = () => {
           <Button as={Link} to={routes.components.path}>
             Try it yourself
           </Button>
-          <Button
-            as="a"
-            href={meta.gitHubRepository}
-            target="_blank"
-            variant="outlined"
-            color="secondary"
-          >
+          <Button as="a" href={meta.gitHubRepository} target="_blank" variant="outlined" color="secondary">
             Github
           </Button>
         </div>

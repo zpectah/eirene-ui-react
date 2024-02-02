@@ -1,8 +1,4 @@
-import {
-  UseButtonStyles,
-  UseButtonStylesReturn,
-  ButtonStylesProps,
-} from 'types';
+import { UseButtonStyles, UseButtonStylesReturn, ButtonStylesProps } from 'types';
 import { useUiContext } from 'styles';
 import { useCreateButtonStyles } from './useCreateButtonStyles';
 
@@ -17,17 +13,9 @@ export const useButtonStyles = (
 
   const composedStyles = {
     root: [root, theme.components.Button.root, styles?.root],
-    iconStart: [
-      iconStart,
-      theme.components.Button.iconStart,
-      styles?.iconStart,
-    ],
+    iconStart: [iconStart, theme.components.Button.iconStart, styles?.iconStart],
     iconEnd: [iconEnd, theme.components.Button.iconEnd, styles?.iconEnd],
-    iconLoading: [
-      iconLoading,
-      theme.components.Button.iconLoading,
-      styles?.iconLoading,
-    ],
+    iconLoading: [iconLoading, theme.components.Button.iconLoading, styles?.iconLoading],
   };
 
   return { composedStyles };

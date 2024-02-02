@@ -11,9 +11,7 @@ const ContainerView = () => {
       <Article>
         <Section title="Container default">
           ...Section default...
-          <div style={{ padding: theme.spacing.get(2, 3) }}>
-            some spaced container
-          </div>
+          <div style={{ padding: theme.spacing.get(2, 3) }}>some spaced container</div>
         </Section>
       </Article>
     </View>

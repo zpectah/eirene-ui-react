@@ -3,13 +3,7 @@ import React from 'react';
 // Credit: https://www.svgrepo.com/svg/509382/menu
 const DemoMenu = () => {
   return (
-    <svg
-      width="800px"
-      height="800px"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-    >
+    <svg width="800px" height="800px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
       <path
         fill="currentColor"
         fillRule="evenodd"

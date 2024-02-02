@@ -1,9 +1,7 @@
 import { DeepPartial, ThemeSpacing, SpacingValues } from 'types';
 import { SPACING_UNIT, SPACING_RATIO, SPACING_VALUES } from 'core';
 
-export const createThemeSpacing = (
-  spacing?: DeepPartial<ThemeSpacing>
-): ThemeSpacing => {
+export const createThemeSpacing = (spacing?: DeepPartial<ThemeSpacing>): ThemeSpacing => {
   const ratio = spacing?.ratio || SPACING_RATIO;
   const values = {
     0: spacing?.['0'] || SPACING_VALUES['0'],

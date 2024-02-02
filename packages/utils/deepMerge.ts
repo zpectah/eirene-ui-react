@@ -1,16 +1,12 @@
 // Credit: https://github.com/sindresorhus/is-plain-obj/blob/main/index.js
-export const isPlainObject = (
-  item: unknown
-): item is Record<keyof never, unknown> => {
+export const isPlainObject = (item: unknown): item is Record<keyof never, unknown> => {
   if (typeof item !== 'object' || item === null) {
     return false;
   }
 
   const prototype = Object.getPrototypeOf(item);
   return (
-    (prototype === null ||
-      prototype === Object.prototype ||
-      Object.getPrototypeOf(prototype) === null) &&
+    (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null) &&
     !(Symbol.toStringTag in item) &&
     !(Symbol.iterator in item)
   );
@@ -34,11 +30,7 @@ export const deepClone = <T>(source: T): T | Record<keyof never, unknown> => {
   return output;
 };
 
-export const deepMerge = <T>(
-  target: T,
-  source: unknown,
-  options: DeepmergeOptions = { clone: true }
-): T => {
+export const deepMerge = <T>(target: T, source: unknown, options: DeepmergeOptions = { clone: true }): T => {
   const output = options.clone ? { ...target } : target;
 
   if (isPlainObject(target) && isPlainObject(source)) {
@@ -48,21 +40,11 @@ export const deepMerge = <T>(
         return;
       }
 
-      if (
-        isPlainObject(source[key]) &&
-        key in target &&
-        isPlainObject(target[key])
-      ) {
+      if (isPlainObject(source[key]) && key in target && isPlainObject(target[key])) {
         // Since `output` is a clone of `target` and we have narrowed `target` in this block we can cast to the same type.
-        (output as Record<keyof never, unknown>)[key] = deepMerge(
-          target[key],
-          source[key],
-          options
-        );
+        (output as Record<keyof never, unknown>)[key] = deepMerge(target[key], source[key], options);
       } else if (options.clone) {
-        (output as Record<keyof never, unknown>)[key] = isPlainObject(
-          source[key]
-        )
+        (output as Record<keyof never, unknown>)[key] = isPlainObject(source[key])
           ? deepClone(source[key])
           : source[key];
       } else {

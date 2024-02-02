@@ -2,13 +2,7 @@ import React, { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { routes } from '../../config';
 import { customizationRouteKeys } from '../../enums';
-import {
-  ThemeView,
-  BreakpointsView,
-  PaletteView,
-  TypographyView,
-  ComponentsView,
-} from './views';
+import { ThemeView, BreakpointsView, PaletteView, TypographyView, ComponentsView } from './views';
 
 const Customization = () => {
   const { id } = useParams();

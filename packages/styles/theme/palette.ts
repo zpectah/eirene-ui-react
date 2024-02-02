@@ -3,9 +3,7 @@ import { DeepPartial, ThemePalette, themeModeKeys } from 'types';
 import { PALETTE, PALETTE_RATIO } from 'core';
 import { getThemePaletteProps } from '../utils';
 
-export const createThemePalette = (
-  palette?: DeepPartial<ThemePalette>
-): ThemePalette => {
+export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePalette => {
   const mode = palette?.mode || themeModeKeys.light;
 
   const primaryColorMain = palette?.primary?.main || PALETTE.primary;
@@ -57,21 +55,16 @@ export const createThemePalette = (
   const ratio = {
     activeOpacity: palette?.ratio?.activeOpacity || PALETTE_RATIO.activeOpacity,
     hoverOpacity: palette?.ratio?.hoverOpacity || PALETTE_RATIO.hoverOpacity,
-    disabledOpacity:
-      palette?.ratio?.disabledOpacity || PALETTE_RATIO.disabledOpacity,
-    loadingOpacity:
-      palette?.ratio?.loadingOpacity || PALETTE_RATIO.loadingOpacity,
+    disabledOpacity: palette?.ratio?.disabledOpacity || PALETTE_RATIO.disabledOpacity,
+    loadingOpacity: palette?.ratio?.loadingOpacity || PALETTE_RATIO.loadingOpacity,
     textSecondary: palette?.ratio?.textSecondary || PALETTE_RATIO.textSecondary,
     textTertiary: palette?.ratio?.textTertiary || PALETTE_RATIO.textTertiary,
     shapeDivider: palette?.ratio?.shapeDivider || PALETTE_RATIO.shapeDivider,
     shapeBorder: palette?.ratio?.shapeBorder || PALETTE_RATIO.shapeBorder,
-    backgroundSurface:
-      palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
+    backgroundSurface: palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
     shapeAction: palette?.ratio?.shapeAction || PALETTE_RATIO.shapeAction,
-    hoverShadowOpacity:
-      palette?.ratio?.hoverShadowOpacity || PALETTE_RATIO.hoverShadowOpacity,
-    focusOutlineOpacity:
-      palette?.ratio?.focusOutlineOpacity || PALETTE_RATIO.focusOutlineOpacity,
+    hoverShadowOpacity: palette?.ratio?.hoverShadowOpacity || PALETTE_RATIO.hoverShadowOpacity,
+    focusOutlineOpacity: palette?.ratio?.focusOutlineOpacity || PALETTE_RATIO.focusOutlineOpacity,
   };
 
   const _action = {
@@ -86,12 +79,9 @@ export const createThemePalette = (
   };
 
   const utils = {
-    contrastColor: (primary: string, secondary: string) =>
-      Color(primary).contrast(Color(secondary)).toString(),
-    lightenColor: (color: string, ratio: number) =>
-      Color(color).lighten(ratio).toString(),
-    darkenColor: (color: string, ratio: number) =>
-      Color(color).darken(ratio).toString(),
+    contrastColor: (primary: string, secondary: string) => Color(primary).contrast(Color(secondary)).toString(),
+    lightenColor: (color: string, ratio: number) => Color(color).lighten(ratio).toString(),
+    darkenColor: (color: string, ratio: number) => Color(color).darken(ratio).toString(),
   };
 
   const themePrimary = {
@@ -112,72 +102,44 @@ export const createThemePalette = (
     ...utils,
     primary: {
       main: primaryColorMain,
-      dark:
-        palette?.primary?.dark ||
-        Color(primaryColorMain).darken(ratio.shapeAction).toString(),
-      light:
-        palette?.primary?.light ||
-        Color(primaryColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.primary?.dark || Color(primaryColorMain).darken(ratio.shapeAction).toString(),
+      light: palette?.primary?.light || Color(primaryColorMain).lighten(ratio.shapeAction).toString(),
       contrast: palette?.primary?.contrast || PALETTE.white,
     },
     secondary: {
       main: secondaryColorMain,
-      dark:
-        palette?.secondary?.dark ||
-        Color(secondaryColorMain).darken(ratio.shapeAction).toString(),
-      light:
-        palette?.secondary?.light ||
-        Color(secondaryColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.secondary?.dark || Color(secondaryColorMain).darken(ratio.shapeAction).toString(),
+      light: palette?.secondary?.light || Color(secondaryColorMain).lighten(ratio.shapeAction).toString(),
       contrast: palette?.secondary?.contrast || PALETTE.white,
     },
     tertiary: {
       main: tertiaryColorMain,
-      dark:
-        palette?.tertiary?.dark ||
-        Color(tertiaryColorMain).darken(ratio.shapeAction).toString(),
-      light:
-        palette?.tertiary?.light ||
-        Color(tertiaryColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.tertiary?.dark || Color(tertiaryColorMain).darken(ratio.shapeAction).toString(),
+      light: palette?.tertiary?.light || Color(tertiaryColorMain).lighten(ratio.shapeAction).toString(),
       contrast: palette?.tertiary?.contrast || PALETTE.white,
     },
     error: {
       main: errorColorMain,
-      dark:
-        palette?.error?.dark ||
-        Color(errorColorMain).darken(ratio.shapeAction).toString(),
-      light:
-        palette?.error?.light ||
-        Color(errorColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.error?.dark || Color(errorColorMain).darken(ratio.shapeAction).toString(),
+      light: palette?.error?.light || Color(errorColorMain).lighten(ratio.shapeAction).toString(),
       contrast: palette?.error?.contrast || PALETTE.white,
     },
     warning: {
       main: warningColorMain,
-      dark:
-        palette?.warning?.dark ||
-        Color(warningColorMain).darken(ratio.shapeAction).toString(),
-      light:
-        palette?.warning?.light ||
-        Color(warningColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.warning?.dark || Color(warningColorMain).darken(ratio.shapeAction).toString(),
+      light: palette?.warning?.light || Color(warningColorMain).lighten(ratio.shapeAction).toString(),
       contrast: palette?.warning?.contrast || PALETTE.white,
     },
     info: {
       main: infoColorMain,
-      dark:
-        palette?.info?.dark ||
-        Color(infoColorMain).darken(ratio.shapeAction).toString(),
-      light:
-        palette?.info?.light ||
-        Color(infoColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.info?.dark || Color(infoColorMain).darken(ratio.shapeAction).toString(),
+      light: palette?.info?.light || Color(infoColorMain).lighten(ratio.shapeAction).toString(),
       contrast: palette?.info?.contrast || PALETTE.white,
     },
     success: {
       main: successColorMain,
-      dark:
-        palette?.success?.dark ||
-        Color(successColorMain).darken(ratio.shapeAction).toString(),
-      light:
-        palette?.success?.light ||
-        Color(successColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.success?.dark || Color(successColorMain).darken(ratio.shapeAction).toString(),
+      light: palette?.success?.light || Color(successColorMain).lighten(ratio.shapeAction).toString(),
       contrast: palette?.success?.contrast || PALETTE.white,
     },
   };

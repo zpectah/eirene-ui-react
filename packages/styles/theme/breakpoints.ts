@@ -1,14 +1,7 @@
-import {
-  DeepPartial,
-  breakpointKeys,
-  ThemeBreakpoints,
-  BreakpointKeys,
-} from 'types';
+import { DeepPartial, breakpointKeys, ThemeBreakpoints, BreakpointKeys } from 'types';
 import { BREAKPOINTS, BREAKPOINTS_UNIT } from 'core';
 
-export const createThemeBreakpoints = (
-  breakpoints?: DeepPartial<ThemeBreakpoints>
-): ThemeBreakpoints => {
+export const createThemeBreakpoints = (breakpoints?: DeepPartial<ThemeBreakpoints>): ThemeBreakpoints => {
   const values = {
     xs: breakpoints?.values?.xs || BREAKPOINTS.xs,
     sm: breakpoints?.values?.sm || BREAKPOINTS.sm,
@@ -19,10 +12,8 @@ export const createThemeBreakpoints = (
   };
   const unit = breakpoints?.unit || BREAKPOINTS_UNIT;
 
-  const up = (min: BreakpointKeys) =>
-    `@media (min-width: ${values[min]}${unit})`;
-  const down = (max: BreakpointKeys) =>
-    `@media (max-width: ${values[max]}${unit})`;
+  const up = (min: BreakpointKeys) => `@media (min-width: ${values[min]}${unit})`;
+  const down = (max: BreakpointKeys) => `@media (max-width: ${values[max]}${unit})`;
   const between = (min: BreakpointKeys, max: BreakpointKeys) =>
     `@media (min-width: ${values[min]}${unit}) and (max-width: ${values[max]}${unit})`;
   const only = (key: BreakpointKeys) => {

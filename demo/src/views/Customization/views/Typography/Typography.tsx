@@ -17,21 +17,11 @@ const TypographyView = () => {
               gap: '.5rem',
             }}
           >
-            <p style={{ color: theme.palette.text.primary }}>
-              [primary] Lorem ipsum dolor sit amet ...
-            </p>
-            <p style={{ color: theme.palette.text.secondary }}>
-              [secondary] Lorem ipsum dolor sit amet ...
-            </p>
-            <p style={{ color: theme.palette.text.tertiary }}>
-              [tertiary] Lorem ipsum dolor sit amet ...
-            </p>
-            <p style={{ color: theme.palette.text.muted }}>
-              [muted] Lorem ipsum dolor sit amet ...
-            </p>
-            <p style={{ color: theme.palette.text.disabled }}>
-              [disabled] Lorem ipsum dolor sit amet ...
-            </p>
+            <p style={{ color: theme.palette.text.primary }}>[primary] Lorem ipsum dolor sit amet ...</p>
+            <p style={{ color: theme.palette.text.secondary }}>[secondary] Lorem ipsum dolor sit amet ...</p>
+            <p style={{ color: theme.palette.text.tertiary }}>[tertiary] Lorem ipsum dolor sit amet ...</p>
+            <p style={{ color: theme.palette.text.muted }}>[muted] Lorem ipsum dolor sit amet ...</p>
+            <p style={{ color: theme.palette.text.disabled }}>[disabled] Lorem ipsum dolor sit amet ...</p>
           </div>
         </Section>
       </Article>

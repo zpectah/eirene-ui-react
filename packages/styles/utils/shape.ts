@@ -1,11 +1,7 @@
 import Color from 'color';
 import { STATUS_CLASS_NAMES } from 'core';
 
-export const getFocusPropertyValue = (
-  background: string,
-  focusOutlineAlpha: number,
-  focusOutlineWidth: string
-) => {
+export const getFocusPropertyValue = (background: string, focusOutlineAlpha: number, focusOutlineWidth: string) => {
   return {
     outline: `${focusOutlineWidth} solid ${Color(background).alpha(focusOutlineAlpha).toString()}`,
   };
@@ -31,11 +27,7 @@ export const getContainedButtonVariant = (
       borderColor: hover,
     },
 
-    '&:focus': getFocusPropertyValue(
-      background,
-      focusOutlineAlpha,
-      focusOutlineWidth
-    ),
+    '&:focus': getFocusPropertyValue(background, focusOutlineAlpha, focusOutlineWidth),
 
     [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: inverted
       ? {
@@ -73,11 +65,7 @@ export const getOutlinedButtonVariant = (
       borderColor: hover,
     },
 
-    '&:focus': getFocusPropertyValue(
-      background,
-      focusOutlineAlpha,
-      focusOutlineWidth
-    ),
+    '&:focus': getFocusPropertyValue(background, focusOutlineAlpha, focusOutlineWidth),
 
     [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: inverted
       ? {
@@ -112,11 +100,7 @@ export const getTextButtonVariant = (
       color: hover,
     },
 
-    '&:focus': getFocusPropertyValue(
-      background,
-      focusOutlineAlpha,
-      focusOutlineWidth
-    ),
+    '&:focus': getFocusPropertyValue(background, focusOutlineAlpha, focusOutlineWidth),
 
     [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: inverted
       ? {

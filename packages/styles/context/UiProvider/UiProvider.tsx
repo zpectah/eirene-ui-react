@@ -1,23 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Global, css, SerializedStyles } from '@emotion/react';
-import {
-  Theme,
-  PartialTheme,
-  ThemeMode,
-  themeModeKeys,
-  UiProviderProps,
-} from 'types';
+import { Theme, PartialTheme, ThemeMode, themeModeKeys, UiProviderProps } from 'types';
 import { createTheme } from '../../theme';
 import { UiContextProvider } from '../UiContext';
 import { cssReset, createGlobalStyles } from '../../global';
 
-const UiProvider = ({
-  children,
-  theme,
-  styles,
-  applyCSSReset,
-  applyGlobalStyles,
-}: UiProviderProps) => {
+const UiProvider = ({ children, theme, styles, applyCSSReset, applyGlobalStyles }: UiProviderProps) => {
   const [uiTheme, setUiTheme] = useState<Theme>(createTheme(theme));
 
   const defaultProviderValues = useMemo(() => {
@@ -28,10 +16,7 @@ const UiProvider = ({
         setUiTheme(createTheme({ palette: { mode } }));
       },
       toggleThemeMode: () => {
-        const mode =
-          uiTheme.palette.mode === themeModeKeys.light
-            ? themeModeKeys.dark
-            : themeModeKeys.light;
+        const mode = uiTheme.palette.mode === themeModeKeys.light ? themeModeKeys.dark : themeModeKeys.light;
 
         setUiTheme(createTheme(Object.assign({ palette: { mode } })));
       },

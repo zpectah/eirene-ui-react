@@ -6,13 +6,9 @@ import {
   getTextButtonVariant,
 } from 'styles';
 
-export const useCreateButtonStyles = (
-  theme: Theme,
-  stylesProps: ButtonStylesProps
-) => {
+export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
   const { transitions, palette, spacing, shape, typography } = theme;
-  const { isLoading, isActive, isDisabled, fullWidth, size, variant, color } =
-    stylesProps;
+  const { isLoading, isActive, isDisabled, fullWidth, size, variant, color } = stylesProps;
 
   const transition = getElementTransitions(
     ['background-color', 'color', 'border-color', 'box-shadow'],

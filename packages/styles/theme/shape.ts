@@ -1,9 +1,7 @@
 import { DeepPartial, ThemeShape } from 'types';
 import { BORDER_RADIUS, BORDER_WIDTH } from 'core';
 
-export const createThemeShape = (
-  shape?: DeepPartial<ThemeShape>
-): ThemeShape => {
+export const createThemeShape = (shape?: DeepPartial<ThemeShape>): ThemeShape => {
   const borderRadius = {
     small: shape?.borderRadius?.small || BORDER_RADIUS.small,
     medium: shape?.borderRadius?.medium || BORDER_RADIUS.medium,

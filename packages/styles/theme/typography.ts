@@ -26,23 +26,16 @@ import {
   TYPOGRAPHY_SHAPE_LARGE,
 } from 'core';
 
-export const createThemeTypography = (
-  typography?: DeepPartial<ThemeTypography>
-): ThemeTypography => {
+export const createThemeTypography = (typography?: DeepPartial<ThemeTypography>): ThemeTypography => {
   return {
     fontSize: typography?.fontSize || TYPOGRAPHY_FONT_SIZE,
     fontFamily: typography?.fontFamily || TYPOGRAPHY_FONT_FAMILY,
-    fontWeightLight:
-      typography?.fontWeightLight || TYPOGRAPHY_FONT_WEIGHT_LIGHT,
-    fontWeightRegular:
-      typography?.fontWeightRegular || TYPOGRAPHY_FONT_WEIGHT_REGULAR,
-    fontWeightMedium:
-      typography?.fontWeightMedium || TYPOGRAPHY_FONT_WEIGHT_MEDIUM,
-    fontWeightSemiBold:
-      typography?.fontWeightSemiBold || TYPOGRAPHY_FONT_WEIGHT_SEMI_BOLD,
+    fontWeightLight: typography?.fontWeightLight || TYPOGRAPHY_FONT_WEIGHT_LIGHT,
+    fontWeightRegular: typography?.fontWeightRegular || TYPOGRAPHY_FONT_WEIGHT_REGULAR,
+    fontWeightMedium: typography?.fontWeightMedium || TYPOGRAPHY_FONT_WEIGHT_MEDIUM,
+    fontWeightSemiBold: typography?.fontWeightSemiBold || TYPOGRAPHY_FONT_WEIGHT_SEMI_BOLD,
     fontWeightBold: typography?.fontWeightBold || TYPOGRAPHY_FONT_WEIGHT_BOLD,
-    fontWeightExtraBold:
-      typography?.fontWeightExtraBold || TYPOGRAPHY_FONT_WEIGHT_EXTRA_BOLD,
+    fontWeightExtraBold: typography?.fontWeightExtraBold || TYPOGRAPHY_FONT_WEIGHT_EXTRA_BOLD,
     direction: typography?.direction || TYPOGRAPHY_DIRECTION,
     h1: {
       ...TYPOGRAPHY_H1,

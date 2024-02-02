@@ -1,11 +1,10 @@
 import { css } from '@emotion/react';
 
 export const cssReset = css({
-  [`*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))`]:
-    {
-      all: 'unset',
-      display: 'revert',
-    },
+  [`*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))`]: {
+    all: 'unset',
+    display: 'revert',
+  },
   [`*, *::before, *::after`]: {
     boxSizing: 'border-box',
   },

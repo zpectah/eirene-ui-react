@@ -20,10 +20,7 @@ const App = () => {
           <Route path={routes.welcome.route} element={<PageLayout />}>
             <Route index element={<Welcome />} />
             <Route path={routes.components.route} element={<Components />} />
-            <Route
-              path={routes.customization.route}
-              element={<Customization />}
-            />
+            <Route path={routes.customization.route} element={<Customization />} />
             <Route path={routes.usage.route} element={<Usage />} />
             <Route path="*" element={<Error />} />
           </Route>
