@@ -31,7 +31,6 @@ const UiProvider = ({ children, theme, styles, applyCSSReset, applyGlobalStyles 
 
   useEffect(() => {
     const newTheme = createTheme(theme);
-    console.log('loaded theme', newTheme);
     setUiTheme(newTheme);
   }, [theme]);
 
