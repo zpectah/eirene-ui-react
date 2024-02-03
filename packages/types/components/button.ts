@@ -54,4 +54,4 @@ export interface UseButtonPropsReturn {
   iconLoading: WithStyle;
 }
 
-export interface ButtonStylesProps extends ButtonStateProps, ButtonShapeProps {}
+export interface ButtonStylesProps extends Partial<ButtonStateProps>, ButtonShapeProps {}

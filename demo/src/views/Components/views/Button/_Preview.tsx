@@ -48,6 +48,19 @@ const Preview = () => {
           </Button>
         </div>
       </Section>
+      <Section title="Active Button">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
+          <Button variant="text" isActive>
+            Text
+          </Button>
+          <Button variant="outlined" isActive>
+            Outlined
+          </Button>
+          <Button variant="contained" isActive>
+            Contained
+          </Button>
+        </div>
+      </Section>
       <Section title="Color">
         <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
           <Button variant="contained" color="primary">
@@ -92,6 +105,71 @@ const Preview = () => {
             Outlined
           </Button>
           <Button variant="contained" color="inverted">
+            Contained
+          </Button>
+        </div>
+      </Section>
+      <Section title="Loading">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
+          <Button variant="text" isLoading>
+            Text
+          </Button>
+          <Button variant="outlined" isLoading>
+            Outlined
+          </Button>
+          <Button variant="contained" isLoading>
+            Contained
+          </Button>
+        </div>
+      </Section>
+      <Section title="Loading with custom icon">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
+          <Button variant="text" isLoading loadingIcon={<>icon</>}>
+            Text
+          </Button>
+          <Button variant="outlined" isLoading loadingIcon={<>icon</>}>
+            Outlined
+          </Button>
+          <Button variant="contained" isLoading loadingIcon={<>icon</>}>
+            Contained
+          </Button>
+        </div>
+      </Section>
+      <Section title="startIcon">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
+          <Button variant="text" startIcon={<>icon</>}>
+            Text
+          </Button>
+          <Button variant="outlined" startIcon={<>icon</>}>
+            Outlined
+          </Button>
+          <Button variant="contained" startIcon={<>icon</>}>
+            Contained
+          </Button>
+        </div>
+      </Section>
+      <Section title="endIcon">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
+          <Button variant="text" endIcon={<>icon</>}>
+            Text
+          </Button>
+          <Button variant="outlined" endIcon={<>icon</>}>
+            Outlined
+          </Button>
+          <Button variant="contained" endIcon={<>icon</>}>
+            Contained
+          </Button>
+        </div>
+      </Section>
+      <Section title="Icon start and end">
+        <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
+          <Button variant="text" startIcon={<>icon</>} endIcon={<>icon</>}>
+            Text
+          </Button>
+          <Button variant="outlined" startIcon={<>icon</>} endIcon={<>icon</>}>
+            Outlined
+          </Button>
+          <Button variant="contained" startIcon={<>icon</>} endIcon={<>icon</>}>
             Contained
           </Button>
         </div>

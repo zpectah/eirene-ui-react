@@ -1,9 +1,9 @@
 import { Theme, ButtonStylesProps } from 'types';
 import {
-  getContainedButtonVariant,
   getElementTransitions,
-  getOutlinedButtonVariant,
-  getTextButtonVariant,
+  getContainedButtonLikeVariant,
+  getOutlinedButtonLikeVariant,
+  getTextButtonLikeVariant,
 } from 'styles';
 
 export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
@@ -59,284 +59,41 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
         width: '100%',
       }
     : {};
-  const rootSizeSmall = {
-    ...typography.shapeSmall,
-    padding: spacing.get(2),
-    gap: spacing.get(2),
-  };
-  const rootSizeMedium = {
-    ...typography.shapeMedium,
-    padding: spacing.get(2, 3),
-    gap: spacing.get(2),
-  };
-  const rootSizeLarge = {
-    ...typography.shapeLarge,
-    padding: spacing.get(3, 4),
-    gap: spacing.get(3),
-  };
-  const rootVariantContained = {
-    primary: getContainedButtonVariant(
-      palette.primary.main,
-      palette.primary.dark,
-      palette.primary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      spacing.get(5)
-    ),
-    secondary: getContainedButtonVariant(
-      palette.secondary.main,
-      palette.secondary.dark,
-      palette.secondary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      spacing.get(5)
-    ),
-    tertiary: getContainedButtonVariant(
-      palette.tertiary.main,
-      palette.tertiary.dark,
-      palette.tertiary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      spacing.get(5)
-    ),
-    error: getContainedButtonVariant(
-      palette.error.main,
-      palette.error.dark,
-      palette.error.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      spacing.get(5)
-    ),
-    warning: getContainedButtonVariant(
-      palette.warning.main,
-      palette.warning.dark,
-      palette.warning.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      spacing.get(5)
-    ),
-    info: getContainedButtonVariant(
-      palette.info.main,
-      palette.info.dark,
-      palette.info.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      spacing.get(5)
-    ),
-    success: getContainedButtonVariant(
-      palette.success.main,
-      palette.success.dark,
-      palette.success.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      spacing.get(5)
-    ),
-    inverted: getContainedButtonVariant(
-      palette.inverted.main,
-      palette.inverted.light,
-      palette.inverted.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      spacing.get(5),
-      true
-    ),
-  };
-  const rootVariantOutlined = {
-    primary: getOutlinedButtonVariant(
-      palette.primary.main,
-      palette.primary.dark,
-      palette.primary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    secondary: getOutlinedButtonVariant(
-      palette.secondary.main,
-      palette.secondary.dark,
-      palette.secondary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    tertiary: getOutlinedButtonVariant(
-      palette.tertiary.main,
-      palette.tertiary.dark,
-      palette.tertiary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    error: getOutlinedButtonVariant(
-      palette.error.main,
-      palette.error.dark,
-      palette.error.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    warning: getOutlinedButtonVariant(
-      palette.warning.main,
-      palette.warning.dark,
-      palette.warning.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    info: getOutlinedButtonVariant(
-      palette.info.main,
-      palette.info.dark,
-      palette.info.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    success: getOutlinedButtonVariant(
-      palette.success.main,
-      palette.success.dark,
-      palette.success.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    inverted: getOutlinedButtonVariant(
-      palette.inverted.main,
-      palette.inverted.light,
-      palette.inverted.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5),
-      true
-    ),
-  };
-  const rootVariantText = {
-    primary: getTextButtonVariant(
-      palette.primary.main,
-      palette.primary.dark,
-      palette.primary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    secondary: getTextButtonVariant(
-      palette.secondary.main,
-      palette.secondary.dark,
-      palette.secondary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    tertiary: getTextButtonVariant(
-      palette.tertiary.main,
-      palette.tertiary.dark,
-      palette.tertiary.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    error: getTextButtonVariant(
-      palette.error.main,
-      palette.error.dark,
-      palette.error.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    warning: getTextButtonVariant(
-      palette.warning.main,
-      palette.warning.dark,
-      palette.warning.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    info: getTextButtonVariant(
-      palette.info.main,
-      palette.info.dark,
-      palette.info.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    success: getTextButtonVariant(
-      palette.success.main,
-      palette.success.dark,
-      palette.success.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5)
-    ),
-    inverted: getTextButtonVariant(
-      palette.inverted.main,
-      palette.inverted.light,
-      palette.inverted.contrast,
-      palette.action.disabled,
-      shape.borderWidth.outline,
-      palette.ratio.focusOutlineOpacity,
-      palette.ratio.hoverShadowOpacity,
-      spacing.get(5),
-      true
-    ),
-  };
+
   const getRootSize = () => {
     switch (size) {
       case 'small':
-        return rootSizeSmall;
+        return {
+          ...typography.shapeSmall,
+          padding: spacing.get(2),
+          gap: spacing.get(2),
+        };
 
       case 'medium':
-        return rootSizeMedium;
+        return {
+          ...typography.shapeMedium,
+          padding: spacing.get(2, 3),
+          gap: spacing.get(2),
+        };
 
       case 'large':
-        return rootSizeLarge;
+        return {
+          ...typography.shapeLarge,
+          padding: spacing.get(3, 4),
+          gap: spacing.get(3),
+        };
     }
   };
   const getRootVariant = () => {
     switch (variant) {
       case 'contained':
-        return rootVariantContained[color];
+        return getContainedButtonLikeVariant(palette, stylesProps);
 
       case 'outlined':
-        return rootVariantOutlined[color];
+        return getOutlinedButtonLikeVariant(palette, stylesProps);
 
       case 'text':
-        return rootVariantText[color];
+        return getTextButtonLikeVariant(palette, stylesProps);
     }
   };
 
