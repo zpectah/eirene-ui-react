@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from 'components';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
 
 const Error = () => {
@@ -13,7 +14,19 @@ const Error = () => {
         justifyContent: 'center',
       }}
     >
-      error view
+      <Container>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '1rem',
+          }}
+        >
+          Error view
+        </div>
+      </Container>
     </article>
   );
 };

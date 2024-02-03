@@ -1,32 +1,32 @@
 import React, { useMemo, ComponentType } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export interface UseRenderHashViewProps {
   defaultView: ComponentType;
-  documentationView: ComponentType;
+  apiView: ComponentType;
   playgroundView: ComponentType;
 }
 
-export const useRenderHashView = ({
+export const useRenderPanelView = ({
   defaultView: DefaultView,
-  documentationView: DocumentationView,
+  apiView: ApiView,
   playgroundView: PlaygroundView,
 }: UseRenderHashViewProps) => {
-  const { hash } = useLocation();
+  const { panel } = useParams();
 
   const renderHashView = useMemo(() => {
-    switch (hash) {
-      case '#api':
-        return <DocumentationView />;
+    switch (panel) {
+      case 'api':
+        return <ApiView />;
 
-      case '#playground':
+      case 'playground':
         return <PlaygroundView />;
 
       case undefined:
       default:
         return <DefaultView />;
     }
-  }, [hash]);
+  }, [panel]);
 
   return { renderHashView };
 };

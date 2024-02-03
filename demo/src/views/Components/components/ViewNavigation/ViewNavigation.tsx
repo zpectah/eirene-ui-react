@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { UiComponentsList } from 'types';
 import { Button } from 'components';
 import { routes } from '../../../../config';
@@ -9,22 +9,22 @@ export interface ViewNavigationProps {
 }
 
 const ViewNavigation = ({ route }: ViewNavigationProps) => {
-  const { hash } = useLocation();
+  const { panel } = useParams();
 
   const menuItems = [
     {
       key: 1,
-      hash: '',
+      panel: '',
       label: 'Preview',
     },
     {
       key: 2,
-      hash: '#api',
+      panel: '/api',
       label: 'API',
     },
     {
       key: 3,
-      hash: '#playground',
+      panel: '/playground',
       label: 'Playground',
     },
   ];
@@ -35,8 +35,8 @@ const ViewNavigation = ({ route }: ViewNavigationProps) => {
         <Button
           key={item.key}
           as={Link}
-          to={`${routes.components.routes[route]}${item.hash}`}
-          variant={hash === item.hash ? 'contained' : 'outlined'}
+          to={`${routes.components.routes[route]}${item.panel}`}
+          variant={panel === item.panel.slice(1) ? 'contained' : 'outlined'}
           size="small"
         >
           {item.label}

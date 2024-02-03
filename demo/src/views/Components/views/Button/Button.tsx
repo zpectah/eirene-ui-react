@@ -1,15 +1,15 @@
 import React from 'react';
 import { View } from '../../../../Layout';
-import { useRenderHashView } from '../../hooks';
+import { useRenderPanelView } from '../../hooks';
 import { ViewNavigation } from '../../components/index';
 import Preview from './_Preview';
-import Documentation from './_Documentation';
+import Api from './_Api';
 import Playground from './_Playground';
 
 const ButtonView = () => {
-  const { renderHashView } = useRenderHashView({
+  const { renderHashView } = useRenderPanelView({
     defaultView: Preview,
-    documentationView: Documentation,
+    apiView: Api,
     playgroundView: Playground,
   });
 

@@ -1,1 +1,1 @@
-export * from './useRenderHashView';
+export * from './useRenderPanelView.tsx';

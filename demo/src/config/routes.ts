@@ -10,7 +10,7 @@ export const routes = {
   },
   components: {
     path: `${componentsRootPath}/${componentRouteKeys.button}`,
-    route: 'components/:id',
+    route: 'components/:id/:panel?',
     routes: {
       button: `${componentsRootPath}/${componentRouteKeys.button}`,
       link: `${componentsRootPath}/${componentRouteKeys.link}`,
