@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { routes } from '../../../../config';
 import { View } from '../../../../Layout';
-import { useRenderHashView } from '../hooks';
+import { useRenderHashView } from '../../hooks';
+import { ViewNavigation } from '../../components/index';
 import Preview from './_Preview';
 import Documentation from './_Documentation';
 import Playground from './_Playground';
@@ -16,11 +15,7 @@ const ButtonView = () => {
 
   return (
     <View title="Button">
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
-        <Link to={routes.components.routes.button}>Preview</Link>
-        <Link to={`${routes.components.routes.button}#documentation`}>Documentation</Link>
-        <Link to={`${routes.components.routes.button}#playground`}>Playground</Link>
-      </div>
+      <ViewNavigation route="button" />
       {renderHashView}
     </View>
   );

@@ -16,7 +16,7 @@ export const useRenderHashView = ({
 
   const renderHashView = useMemo(() => {
     switch (hash) {
-      case '#documentation':
+      case '#api':
         return <DocumentationView />;
 
       case '#playground':
