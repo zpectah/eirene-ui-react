@@ -1,6 +1,15 @@
 import clsx from 'clsx';
 import { UseButtonProps, UseButtonPropsReturn } from 'types';
-import { BUTTON_DEFAULT_VALUES, STATUS_CLASS_NAMES, SHAPE_SIZE_CLASS_NAMES, SHAPE_VARIANT_CLASS_NAME } from 'core';
+import {
+  BUTTON_DEFAULT_VALUES,
+  STATUS_CLASS_NAMES,
+  SHAPE_SIZE_CLASS_NAMES,
+  SHAPE_VARIANT_CLASS_NAME,
+  BUTTON_ROOT,
+  BUTTON_ICON_START,
+  BUTTON_ICON_END,
+  BUTTON_ICON_LOADING,
+} from 'core';
 import { capitalizeFirstLetter } from 'utils';
 
 export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
@@ -16,11 +25,6 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
     color = BUTTON_DEFAULT_VALUES.color,
   } = props;
 
-  const rootPrefix = 'Button';
-  const iconStartPrefix = `${rootPrefix}-iconStart`;
-  const iconEndPrefix = `${rootPrefix}-iconEnd`;
-  const iconLoadingPrefix = `${rootPrefix}-iconLoading`;
-
   const colorVariantClassName = {
     text: `${SHAPE_VARIANT_CLASS_NAME.text}${capitalizeFirstLetter(color)}`,
     contained: `${SHAPE_VARIANT_CLASS_NAME.contained}${capitalizeFirstLetter(color)}`,
@@ -30,7 +34,7 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
   return {
     root: {
       className: clsx(
-        rootPrefix,
+        BUTTON_ROOT,
         SHAPE_VARIANT_CLASS_NAME[variant],
         SHAPE_SIZE_CLASS_NAMES[size],
         colorVariantClassName[variant],
@@ -43,15 +47,15 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
       style: { ...style },
     },
     iconStart: {
-      className: iconStartPrefix,
+      className: BUTTON_ICON_START,
       style: {},
     },
     iconEnd: {
-      className: iconEndPrefix,
+      className: BUTTON_ICON_END,
       style: {},
     },
     iconLoading: {
-      className: iconLoadingPrefix,
+      className: BUTTON_ICON_LOADING,
       style: {},
     },
   };

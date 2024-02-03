@@ -35,11 +35,6 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     borderRadius: shape.borderRadius.medium,
     transition: transition,
   };
-  const rootIsActive = isActive
-    ? {
-        /* TODO */
-      }
-    : {};
   const rootIsDisabled = isDisabled
     ? {
         pointerEvents: 'none',
@@ -123,7 +118,6 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     root: Object.assign({
       ...rootBase,
       ...rootIsDisabled,
-      ...rootIsActive,
       ...rootIsLoading,
       ...rootIsFullWidth,
       ...getRootSize(),

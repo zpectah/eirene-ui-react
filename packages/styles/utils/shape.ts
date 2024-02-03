@@ -1,5 +1,5 @@
 import Color from 'color';
-import { STATUS_CLASS_NAMES } from 'core';
+import { STATUS_CLASS_NAMES, BUTTON_ICON_LOADING } from 'core';
 import { ButtonStylesProps, ThemePalette } from 'types';
 
 export const getFocusPropertyValue = (background: string, focusOutlineAlpha: number, focusOutlineWidth: string) => {
@@ -53,7 +53,7 @@ export const getContainedButtonLikeVariant = (palette: ThemePalette, { color }: 
           borderColor: 'transparent',
           textShadow: `0 1px .25rem ${bgDisabled}`,
         },
-    [`&.${STATUS_CLASS_NAMES.isLoading} .Button-iconLoading`]: {
+    [`&.${STATUS_CLASS_NAMES.isLoading} .${BUTTON_ICON_LOADING}`]: {
       color: bgContrast,
       backgroundColor: Color(bgMain).alpha(LOADING_ALPHA).toString(),
     },
@@ -112,7 +112,7 @@ export const getOutlinedButtonLikeVariant = (palette: ThemePalette, { color }: B
           color: bgDisabled,
           borderColor: bgDisabled,
         },
-    [`&.${STATUS_CLASS_NAMES.isLoading}`]: {
+    [`&.${STATUS_CLASS_NAMES.isLoading} .${BUTTON_ICON_LOADING}`]: {
       color: bgMain,
       backgroundColor: Color(bgMain).alpha(LOADING_ALPHA).toString(),
     },
@@ -167,7 +167,7 @@ export const getTextButtonLikeVariant = (palette: ThemePalette, { color }: Butto
       : {
           color: bgDisabled,
         },
-    [`&.${STATUS_CLASS_NAMES.isLoading}`]: {
+    [`&.${STATUS_CLASS_NAMES.isLoading} .${BUTTON_ICON_LOADING}`]: {
       color: bgMain,
       backgroundColor: Color(bgMain).alpha(LOADING_ALPHA).toString(),
     },
