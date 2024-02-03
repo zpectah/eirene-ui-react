@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Container } from 'components';
 import { routes } from '../../config';
 import { componentRouteKeys } from '../../enums';
 import { ButtonView, ContainerView, StackView, LinkView } from './views';
@@ -61,7 +62,9 @@ const Components = () => {
           ))}
         </div>
       </aside>
-      <div style={{ flex: 1 }}>{renderView}</div>
+      <div style={{ flex: 1 }}>
+        <Container>{renderView}</Container>
+      </div>
     </div>
   );
 };

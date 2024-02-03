@@ -8,3 +8,12 @@ export const BREAKPOINTS = {
   xl: 1200,
   xxl: 1400,
 };
+
+export const CONTAINER_WIDTH = {
+  xs: 320,
+  sm: 540,
+  md: 720,
+  lg: 960,
+  xl: 1140,
+  xxl: 1320,
+};

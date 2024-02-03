@@ -1,15 +1,20 @@
 import React from 'react';
-import { useUiContext } from 'styles';
+// import { useUiContext } from 'styles';
+import { Container } from 'components';
 import { Article, Section } from '../../../../components';
 
 const Preview = () => {
-  const { theme } = useUiContext();
+  // const { theme } = useUiContext();
 
   return (
     <Article>
       <Section title="Container default">
         ...Section default...
-        <div style={{ padding: theme.spacing.get(2, 3) }}>some spaced container</div>
+        <Container maxWidth="xs">XS container</Container>
+        <Container maxWidth="sm">SM container</Container>
+        <Container maxWidth="md">MD container</Container>
+        <Container maxWidth="lg">LG container</Container>
+        <Container isFluid>Fluid container</Container>
       </Section>
     </Article>
   );
