@@ -12,7 +12,16 @@ const Section = ({ children, title }: SectionProps) => {
   return (
     <section style={{ padding: theme.spacing.get(2, 0) }}>
       {title && <div>{title}</div>}
-      <div>{children}</div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: theme.spacing.get(2, 0),
+          gap: theme.spacing.get(2),
+        }}
+      >
+        {children}
+      </div>
     </section>
   );
 };
