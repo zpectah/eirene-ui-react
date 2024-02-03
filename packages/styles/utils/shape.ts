@@ -42,7 +42,7 @@ export const getContainedButtonLikeVariant = (palette: ThemePalette, { color }: 
           borderColor: isLightMode ? bgDark : bgLight,
         },
     ['&:focus']: getFocusPropertyValue(bgLight, FOCUS_OUTLINE_ALPHA, FOCUS_OUTLINE_WIDTH),
-    [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
       ? {
           backgroundColor: bgDisabled,
           color: Color(bgMain).alpha(DISABLED_INVERTED_ALPHA).toString(),
@@ -103,7 +103,7 @@ export const getOutlinedButtonLikeVariant = (palette: ThemePalette, { color }: B
           borderColor: isLightMode ? bgDark : bgLight,
         },
     ['&:focus']: getFocusPropertyValue(bgLight, FOCUS_OUTLINE_ALPHA, FOCUS_OUTLINE_WIDTH),
-    [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
       ? {
           color: bgDisabled,
           borderColor: bgDisabled,
@@ -160,7 +160,7 @@ export const getTextButtonLikeVariant = (palette: ThemePalette, { color }: Butto
           color: isLightMode ? bgDark : bgLight,
         },
     ['&:focus']: getFocusPropertyValue(bgLight, FOCUS_OUTLINE_ALPHA, FOCUS_OUTLINE_WIDTH),
-    [`&:disabled, &[disabled], &.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
+    [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
       ? {
           color: bgDisabled,
         }

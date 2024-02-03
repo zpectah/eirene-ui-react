@@ -1,4 +1,4 @@
-import { Theme, ButtonStylesProps } from 'types';
+import { Theme, ButtonStylesProps, shapeSizeKeys, shapeVariantKeys } from 'types';
 import {
   getElementTransitions,
   getContainedButtonLikeVariant,
@@ -62,21 +62,21 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
 
   const getRootSize = () => {
     switch (size) {
-      case 'small':
+      case shapeSizeKeys.small:
         return {
           ...typography.shapeSmall,
           padding: spacing.get(2),
           gap: spacing.get(2),
         };
 
-      case 'medium':
+      case shapeSizeKeys.medium:
         return {
           ...typography.shapeMedium,
           padding: spacing.get(2, 3),
           gap: spacing.get(2),
         };
 
-      case 'large':
+      case shapeSizeKeys.large:
         return {
           ...typography.shapeLarge,
           padding: spacing.get(3, 4),
@@ -86,13 +86,13 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
   };
   const getRootVariant = () => {
     switch (variant) {
-      case 'contained':
+      case shapeVariantKeys.contained:
         return getContainedButtonLikeVariant(palette, stylesProps);
 
-      case 'outlined':
+      case shapeVariantKeys.outlined:
         return getOutlinedButtonLikeVariant(palette, stylesProps);
 
-      case 'text':
+      case shapeVariantKeys.text:
         return getTextButtonLikeVariant(palette, stylesProps);
     }
   };

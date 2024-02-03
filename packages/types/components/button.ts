@@ -48,7 +48,7 @@ export interface UseButtonStylesReturn {
 export interface UseButtonProps extends Partial<ButtonStateProps>, Partial<ButtonShapeProps>, Partial<WithStyle> {}
 
 export interface UseButtonPropsReturn {
-  root: WithStyle & { disabled?: boolean };
+  root: WithStyle;
   iconStart: WithStyle;
   iconEnd: WithStyle;
   iconLoading: WithStyle;

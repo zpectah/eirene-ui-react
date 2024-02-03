@@ -41,7 +41,6 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
         className
       ),
       style: { ...style },
-      disabled: isDisabled,
     },
     iconStart: {
       className: iconStartPrefix,
