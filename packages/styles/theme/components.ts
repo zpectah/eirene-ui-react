@@ -9,5 +9,8 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
       iconEnd: components?.Button?.iconEnd,
       iconLoading: components?.Button?.iconLoading,
     },
+    Stack: {
+      root: components?.Stack?.root,
+    },
   };
 };

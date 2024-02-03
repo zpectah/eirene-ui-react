@@ -1,8 +1,21 @@
 import React from 'react';
-import { Article } from '../../../../components';
+import { Stack } from 'components';
+import { Article, Section } from '../../../../components';
 
 const Preview = () => {
-  return <Article>ContainerPreview</Article>;
+  return (
+    <Article>
+      <Section>
+        <Stack gap={4} spacingX={4} direction="row">
+          <div>item 1</div>
+          <div>item 2</div>
+          <div>item 3</div>
+          <div>item 4</div>
+          <div>item 5</div>
+        </Stack>
+      </Section>
+    </Article>
+  );
 };
 
 export default Preview;
