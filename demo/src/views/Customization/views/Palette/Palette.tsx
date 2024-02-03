@@ -400,7 +400,14 @@ const PaletteView = () => {
                 width: '4rem',
                 height: '4rem',
                 backgroundColor: theme.palette.background.body,
-                border: `1px solid ${theme.palette.shape.border}`,
+              }}
+            ></div>
+            <div
+              style={{
+                width: '4rem',
+                height: '4rem',
+                borderWidth: '1px',
+                backgroundColor: theme.palette.background.surface,
               }}
             ></div>
             <div

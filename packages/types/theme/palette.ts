@@ -21,7 +21,7 @@ export interface ThemePalette {
     textTertiary: number;
     shapeDivider: number;
     shapeBorder: number;
-    surfaceBackground: number;
+    backgroundSurface: number;
     hoverShadowAlpha: number;
     focusOutlineAlpha: number;
     disabledInvertedAlpha: number;

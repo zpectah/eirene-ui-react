@@ -13,7 +13,7 @@ export const getRatio = (ratio?: Partial<ThemePalette['ratio']>) => {
     textTertiary: ratio?.textTertiary || PALETTE_RATIO.textTertiary,
     shapeDivider: ratio?.shapeDivider || PALETTE_RATIO.shapeDivider,
     shapeBorder: ratio?.shapeBorder || PALETTE_RATIO.shapeBorder,
-    surfaceBackground: ratio?.surfaceBackground || PALETTE_RATIO.surfaceBackground,
+    backgroundSurface: ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
     hoverShadowAlpha: ratio?.hoverShadowAlpha || PALETTE_RATIO.hoverShadowAlpha,
     focusOutlineAlpha: ratio?.focusOutlineAlpha || PALETTE_RATIO.focusOutlineAlpha,
     disabledInvertedAlpha: ratio?.disabledInvertedAlpha || PALETTE_RATIO.disabledInvertedAlpha,
@@ -22,65 +22,83 @@ export const getRatio = (ratio?: Partial<ThemePalette['ratio']>) => {
 };
 
 export const getThemePaletteProps = (mode: ThemeMode, palette?: DeepPartial<ThemePalette>) => {
-  let textPrimaryDark, backgroundBodyDark, textPrimaryLight, backgroundBodyLight;
   const ratio = getRatio(palette?.ratio);
+  let textColor, backgroundColor;
 
   switch (mode) {
     case themeModeKeys.dark:
-      textPrimaryDark = palette?.text?.primary || PALETTE.white;
-      backgroundBodyDark = palette?.background?.body || PALETTE.dark;
+      textColor = palette?.text?.primary || PALETTE.white;
+      backgroundColor = palette?.background?.body || PALETTE.dark;
 
       return {
         text: {
-          primary: textPrimaryDark,
-          secondary: palette?.text?.secondary || Color(textPrimaryDark).darken(ratio.textSecondary).toString(),
-          tertiary: palette?.text?.tertiary || Color(textPrimaryDark).darken(ratio.textTertiary).toString(),
+          primary: textColor,
+          secondary:
+            palette?.text?.secondary ||
+            Color(textColor)
+              .darken(ratio.textSecondary / 100)
+              .toString(),
+          tertiary:
+            palette?.text?.tertiary ||
+            Color(textColor)
+              .darken(ratio.textTertiary / 100)
+              .toString(),
           muted: palette?.text?.muted || PALETTE.muted,
           disabled: palette?.text?.disabled || Color(PALETTE.muted).alpha(ratio.disabledAlpha).toString(),
         },
         shape: {
-          divider: palette?.shape?.divider || Color(textPrimaryDark).darken(ratio.shapeDivider).toString(),
-          border: palette?.shape?.border || Color(textPrimaryDark).darken(ratio.shapeBorder).toString(),
+          divider:
+            palette?.shape?.divider ||
+            Color(textColor)
+              .darken(ratio.shapeDivider / 100)
+              .toString(),
+          border:
+            palette?.shape?.border ||
+            Color(textColor)
+              .darken(ratio.shapeBorder / 100)
+              .toString(),
         },
         background: {
-          body: backgroundBodyDark,
+          body: backgroundColor,
           surface:
-            palette?.background?.surface || Color(backgroundBodyDark).lighten(ratio.surfaceBackground).toString(),
+            palette?.background?.surface ||
+            Color(backgroundColor)
+              .lighten(ratio.backgroundSurface * 4)
+              .toString(),
         },
         inverted: {
-          main: backgroundBodyDark,
-          dark: palette?.inverted?.dark || Color(backgroundBodyDark).darken(ratio.backgroundDarken).toString(),
-          light: palette?.inverted?.light || Color(backgroundBodyDark).lighten(ratio.backgroundLighten).toString(),
+          main: backgroundColor,
+          dark: palette?.inverted?.dark || Color(backgroundColor).darken(ratio.backgroundDarken).toString(),
+          light: palette?.inverted?.light || Color(backgroundColor).lighten(ratio.backgroundLighten).toString(),
           contrast: palette?.inverted?.contrast || PALETTE.light,
         },
       };
 
     case themeModeKeys.light:
     default:
-      textPrimaryLight = palette?.text?.primary || PALETTE.black;
-      backgroundBodyLight = palette?.background?.body || PALETTE.light;
+      textColor = palette?.text?.primary || PALETTE.black;
+      backgroundColor = palette?.background?.body || PALETTE.light;
 
       return {
         text: {
-          primary: textPrimaryLight,
-          secondary: palette?.text?.secondary || Color(textPrimaryLight).lighten(ratio.textSecondary).toString(),
-          tertiary: palette?.text?.tertiary || Color(textPrimaryLight).lighten(ratio.textTertiary).toString(),
+          primary: textColor,
+          secondary: palette?.text?.secondary || Color(textColor).lighten(ratio.textSecondary).toString(),
+          tertiary: palette?.text?.tertiary || Color(textColor).lighten(ratio.textTertiary).toString(),
           muted: palette?.text?.muted || PALETTE.muted,
           disabled: palette?.text?.disabled || Color(PALETTE.muted).alpha(ratio.disabledAlpha).toString(),
         },
         shape: {
-          divider: palette?.shape?.divider || Color(textPrimaryLight).lighten(ratio.shapeDivider).toString(),
-          border: palette?.shape?.border || Color(textPrimaryLight).lighten(ratio.shapeBorder).toString(),
+          divider: palette?.shape?.divider || Color(textColor).lighten(ratio.shapeDivider).toString(),
+          border: palette?.shape?.border || Color(textColor).lighten(ratio.shapeBorder).toString(),
         },
         background: {
-          body: backgroundBodyLight,
-          surface:
-            palette?.background?.surface || Color(backgroundBodyLight).darken(ratio.surfaceBackground).toString(),
+          body: backgroundColor,
+          surface: palette?.background?.surface || Color(backgroundColor).darken(ratio.backgroundSurface).toString(),
         },
         inverted: {
-          main: backgroundBodyLight,
-          dark: palette?.inverted?.dark || Color(backgroundBodyLight).darken(ratio.backgroundDarken).toString(),
-          light: palette?.inverted?.light || Color(backgroundBodyLight).lighten(ratio.backgroundLighten).toString(),
+          main: backgroundColor,
+          dark: palette?.inverted?.dark || Color(backgroundColor).darken(ratio.backgroundDarken).toString(),
+          light: palette?.inverted?.light || Color(backgroundColor).lighten(ratio.backgroundLighten).toString(),
           contrast: palette?.inverted?.contrast || PALETTE.dark,
         },
       };
