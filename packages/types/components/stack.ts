@@ -22,8 +22,6 @@ export interface StackElementaryProps extends Partial<WithStyle> {}
 
 export interface StackShapeProps {
   direction: FlexDirection;
-  spacingX: SpacingValues;
-  spacingY: SpacingValues;
   gap: SpacingValues;
   alignItems: FlexAlignItems;
   justifyItems: FlexJustifyItems;
