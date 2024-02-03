@@ -6,7 +6,7 @@ const Preview = () => {
   return (
     <Article>
       <Section>
-        <Stack gap={4} spacingX={4} direction="row">
+        <Stack gap={4} direction="row">
           <div>item 1</div>
           <div>item 2</div>
           <div>item 3</div>
