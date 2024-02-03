@@ -3,4 +3,5 @@ export enum uiComponentsListKeys {
   container = 'container',
   link = 'link',
   stack = 'stack',
+  typography = 'typography',
 }

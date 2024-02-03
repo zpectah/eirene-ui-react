@@ -11,3 +11,12 @@ export enum emotionColorKeys {
   info = 'info',
   success = 'success',
 }
+
+export enum textColorKeys {
+  'text-primary' = 'text-primary',
+  'text-secondary' = 'text-secondary',
+  'text-tertiary' = 'text-tertiary',
+  'text-muted' = 'text-muted',
+  'text-disabled' = 'text-disabled',
+  inherit = 'inherit',
+}

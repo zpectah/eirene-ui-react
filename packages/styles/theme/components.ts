@@ -15,5 +15,8 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     Stack: {
       root: components?.Stack?.root,
     },
+    Typography: {
+      root: components?.Typography?.root,
+    },
   };
 };

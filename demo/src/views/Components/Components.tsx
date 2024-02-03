@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Container } from 'components';
 import { routes } from '../../config';
 import { componentRouteKeys } from '../../enums';
-import { ButtonView, ContainerView, StackView, LinkView } from './views';
+import { ButtonView, ContainerView, StackView, LinkView, TypographyView } from './views';
 
 const Components = () => {
   const { id } = useParams();
@@ -29,6 +29,11 @@ const Components = () => {
       label: 'Stack',
       path: routes.components.routes.stack,
     },
+    {
+      key: 5,
+      label: 'Typography',
+      path: routes.components.routes.typography,
+    },
   ];
 
   const renderView = useMemo(() => {
@@ -44,6 +49,9 @@ const Components = () => {
 
       case componentRouteKeys.stack:
         return <StackView />;
+
+      case componentRouteKeys.typography:
+        return <TypographyView />;
 
       case undefined:
       default:

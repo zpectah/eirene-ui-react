@@ -16,6 +16,7 @@ export const routes = {
       link: `${componentsRootPath}/${componentRouteKeys.link}`,
       container: `${componentsRootPath}/${componentRouteKeys.container}`,
       stack: `${componentsRootPath}/${componentRouteKeys.stack}`,
+      typography: `${componentsRootPath}/${componentRouteKeys.typography}`,
     },
   },
   customization: {

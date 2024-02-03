@@ -3,4 +3,5 @@ export enum componentRouteKeys {
   link = 'link',
   container = 'container',
   stack = 'stack',
+  typography = 'typography',
 }
