@@ -9,15 +9,13 @@ import { BUTTON_LABEL } from 'core';
 
 export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
   const { transitions, palette, spacing, shape, typography } = theme;
-  const { isLoading, isActive, isDisabled, fullWidth, size, variant, color } = stylesProps;
+  const { isLoading, isDisabled, fullWidth, size, variant } = stylesProps;
 
   const transition = getElementTransitions(
     ['background-color', 'color', 'border-color', 'box-shadow'],
     transitions.duration.shortest,
     transitions.easing.easeInOut
   );
-
-  const LOADING_LABEL_OPACITY = 0.25; // TODO
 
   // root
   const rootBase = {
@@ -51,7 +49,7 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
         cursor: 'wait',
 
         [`& .${BUTTON_LABEL}`]: {
-          opacity: LOADING_LABEL_OPACITY,
+          opacity: palette.ratio.loadingLabelAlpha,
         },
       }
     : {};
@@ -88,13 +86,13 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
   const getRootVariant = () => {
     switch (variant) {
       case shapeVariantKeys.contained:
-        return getContainedButtonVariant(palette, stylesProps);
+        return getContainedButtonVariant(palette, shape, spacing, stylesProps);
 
       case shapeVariantKeys.outlined:
-        return getOutlinedButtonVariant(palette, stylesProps);
+        return getOutlinedButtonVariant(palette, shape, spacing, stylesProps);
 
       case shapeVariantKeys.text:
-        return getTextButtonVariant(palette, stylesProps);
+        return getTextButtonVariant(palette, shape, spacing, stylesProps);
     }
   };
 
@@ -123,7 +121,6 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: shape.borderRadius.medium,
-    // TODO
   };
 
   // Final styles object
@@ -136,18 +133,10 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
       ...getRootSize(),
       ...getRootVariant(),
     }),
-    label: Object.assign({
-      ...labelBase,
-    }),
-    iconStart: Object.assign({
-      ...iconStartBase,
-    }),
-    iconEnd: Object.assign({
-      ...iconEndBase,
-    }),
-    iconLoading: Object.assign({
-      ...iconLoadingBase,
-    }),
+    label: Object.assign(labelBase),
+    iconStart: Object.assign(iconStartBase),
+    iconEnd: Object.assign(iconEndBase),
+    iconLoading: Object.assign(iconLoadingBase),
   };
 
   return {

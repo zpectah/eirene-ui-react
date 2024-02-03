@@ -1,11 +1,10 @@
 import Color from 'color';
 import { DeepPartial, ThemePalette, themeModeKeys } from 'types';
-import { PALETTE, PALETTE_RATIO } from 'core';
-import { getThemePaletteProps } from '../utils';
+import { PALETTE } from 'core';
+import { getRatio, getThemePaletteProps } from '../utils';
 
 export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePalette => {
   const mode = palette?.mode || themeModeKeys.light;
-
   const primaryColorMain = palette?.primary?.main || PALETTE.primary;
   const secondaryColorMain = palette?.secondary?.main || PALETTE.secondary;
   const tertiaryColorMain = palette?.tertiary?.main || PALETTE.tertiary;
@@ -13,6 +12,12 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   const warningColorMain = palette?.warning?.main || PALETTE.warning;
   const infoColorMain = palette?.info?.main || PALETTE.info;
   const successColorMain = palette?.success?.main || PALETTE.success;
+
+  const utils = {
+    getContrastColor: (primary: string, secondary: string) => Color(primary).contrast(Color(secondary)).toString(),
+    getLightenColor: (color: string, ratio: number) => Color(color).lighten(ratio).toString(),
+    getDarkenColor: (color: string, ratio: number) => Color(color).darken(ratio).toString(),
+  };
 
   const common = {
     black: palette?.common?.black || PALETTE.black,
@@ -52,20 +57,7 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     100: common.grey,
   };
 
-  const ratio = {
-    activeOpacity: palette?.ratio?.activeOpacity || PALETTE_RATIO.activeOpacity,
-    hoverOpacity: palette?.ratio?.hoverOpacity || PALETTE_RATIO.hoverOpacity,
-    disabledOpacity: palette?.ratio?.disabledOpacity || PALETTE_RATIO.disabledOpacity,
-    loadingOpacity: palette?.ratio?.loadingOpacity || PALETTE_RATIO.loadingOpacity,
-    textSecondary: palette?.ratio?.textSecondary || PALETTE_RATIO.textSecondary,
-    textTertiary: palette?.ratio?.textTertiary || PALETTE_RATIO.textTertiary,
-    shapeDivider: palette?.ratio?.shapeDivider || PALETTE_RATIO.shapeDivider,
-    shapeBorder: palette?.ratio?.shapeBorder || PALETTE_RATIO.shapeBorder,
-    backgroundSurface: palette?.ratio?.backgroundSurface || PALETTE_RATIO.backgroundSurface,
-    shapeAction: palette?.ratio?.shapeAction || PALETTE_RATIO.shapeAction,
-    hoverShadowOpacity: palette?.ratio?.hoverShadowOpacity || PALETTE_RATIO.hoverShadowOpacity,
-    focusOutlineOpacity: palette?.ratio?.focusOutlineOpacity || PALETTE_RATIO.focusOutlineOpacity,
-  };
+  const ratio = getRatio(palette?.ratio);
 
   const _action = {
     active: palette?.action?.active || primaryColorMain,
@@ -73,15 +65,9 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     disabled: palette?.action?.disabled || PALETTE.muted,
   };
   const action = {
-    active: Color(_action.active).alpha(ratio.activeOpacity).toString(),
-    hover: Color(_action.hover).alpha(ratio.hoverOpacity).toString(),
-    disabled: Color(_action.disabled).alpha(ratio.disabledOpacity).toString(),
-  };
-
-  const utils = {
-    contrastColor: (primary: string, secondary: string) => Color(primary).contrast(Color(secondary)).toString(),
-    lightenColor: (color: string, ratio: number) => Color(color).lighten(ratio).toString(),
-    darkenColor: (color: string, ratio: number) => Color(color).darken(ratio).toString(),
+    active: Color(_action.active).alpha(ratio.activeAlpha).toString(),
+    hover: Color(_action.hover).alpha(ratio.hoverAlpha).toString(),
+    disabled: Color(_action.disabled).alpha(ratio.disabledAlpha).toString(),
   };
 
   const themePrimary = {
@@ -102,44 +88,44 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     ...utils,
     primary: {
       main: primaryColorMain,
-      dark: palette?.primary?.dark || Color(primaryColorMain).darken(ratio.shapeAction).toString(),
-      light: palette?.primary?.light || Color(primaryColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.primary?.dark || Color(primaryColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.primary?.light || Color(primaryColorMain).lighten(ratio.backgroundLighten).toString(),
       contrast: palette?.primary?.contrast || PALETTE.white,
     },
     secondary: {
       main: secondaryColorMain,
-      dark: palette?.secondary?.dark || Color(secondaryColorMain).darken(ratio.shapeAction).toString(),
-      light: palette?.secondary?.light || Color(secondaryColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.secondary?.dark || Color(secondaryColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.secondary?.light || Color(secondaryColorMain).lighten(ratio.backgroundLighten).toString(),
       contrast: palette?.secondary?.contrast || PALETTE.white,
     },
     tertiary: {
       main: tertiaryColorMain,
-      dark: palette?.tertiary?.dark || Color(tertiaryColorMain).darken(ratio.shapeAction).toString(),
-      light: palette?.tertiary?.light || Color(tertiaryColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.tertiary?.dark || Color(tertiaryColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.tertiary?.light || Color(tertiaryColorMain).lighten(ratio.backgroundLighten).toString(),
       contrast: palette?.tertiary?.contrast || PALETTE.white,
     },
     error: {
       main: errorColorMain,
-      dark: palette?.error?.dark || Color(errorColorMain).darken(ratio.shapeAction).toString(),
-      light: palette?.error?.light || Color(errorColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.error?.dark || Color(errorColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.error?.light || Color(errorColorMain).lighten(ratio.backgroundLighten).toString(),
       contrast: palette?.error?.contrast || PALETTE.white,
     },
     warning: {
       main: warningColorMain,
-      dark: palette?.warning?.dark || Color(warningColorMain).darken(ratio.shapeAction).toString(),
-      light: palette?.warning?.light || Color(warningColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.warning?.dark || Color(warningColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.warning?.light || Color(warningColorMain).lighten(ratio.backgroundLighten).toString(),
       contrast: palette?.warning?.contrast || PALETTE.white,
     },
     info: {
       main: infoColorMain,
-      dark: palette?.info?.dark || Color(infoColorMain).darken(ratio.shapeAction).toString(),
-      light: palette?.info?.light || Color(infoColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.info?.dark || Color(infoColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.info?.light || Color(infoColorMain).lighten(ratio.backgroundLighten).toString(),
       contrast: palette?.info?.contrast || PALETTE.white,
     },
     success: {
       main: successColorMain,
-      dark: palette?.success?.dark || Color(successColorMain).darken(ratio.shapeAction).toString(),
-      light: palette?.success?.light || Color(successColorMain).lighten(ratio.shapeAction).toString(),
+      dark: palette?.success?.dark || Color(successColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.success?.light || Color(successColorMain).lighten(ratio.backgroundLighten).toString(),
       contrast: palette?.success?.contrast || PALETTE.white,
     },
   };

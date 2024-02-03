@@ -12,18 +12,20 @@ export interface ThemePaletteCluster {
 export interface ThemePalette {
   mode: ThemeMode;
   ratio: {
-    activeOpacity: number;
-    hoverOpacity: number;
-    disabledOpacity: number;
-    loadingOpacity: number;
+    activeAlpha: number;
+    hoverAlpha: number;
+    disabledAlpha: number;
+    backgroundDarken: number;
+    backgroundLighten: number;
     textSecondary: number;
     textTertiary: number;
     shapeDivider: number;
     shapeBorder: number;
-    backgroundSurface: number;
-    shapeAction: number;
-    hoverShadowOpacity: number;
-    focusOutlineOpacity: number;
+    surfaceBackground: number;
+    hoverShadowAlpha: number;
+    focusOutlineAlpha: number;
+    disabledInvertedAlpha: number;
+    loadingLabelAlpha: number;
   };
   common: {
     black: string;
@@ -90,7 +92,7 @@ export interface ThemePalette {
   info: ThemePaletteCluster;
   success: ThemePaletteCluster;
   inverted: ThemePaletteCluster;
-  contrastColor: (primary: string, secondary: string) => string;
-  lightenColor: (color: string, ratio: number) => string;
-  darkenColor: (color: string, ratio: number) => string;
+  getContrastColor: (primary: string, secondary: string) => string;
+  getLightenColor: (color: string, ratio: number) => string;
+  getDarkenColor: (color: string, ratio: number) => string;
 }

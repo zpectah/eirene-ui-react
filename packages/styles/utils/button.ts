@@ -1,25 +1,45 @@
 import Color from 'color';
-import { ButtonStylesProps, ThemePalette } from 'types';
+import {
+  ButtonStylesProps,
+  ThemePalette,
+  ThemeShape,
+  ThemeSpacing,
+  ShapeSize,
+  shapeSizeKeys,
+  baseColorKeys,
+  themeModeKeys,
+} from 'types';
 import { STATUS_CLASS_NAMES } from 'core';
 import { getFocusPropertyValue } from './shape';
 
-export const getContainedButtonVariant = (palette: ThemePalette, { color }: ButtonStylesProps) => {
-  const baseColor = palette[color];
-  const isInverted = color === 'inverted';
-  const isLightMode = palette.mode === 'light';
+export const getShadowWidth = (size: ShapeSize, spacing: ThemeSpacing) => {
+  switch (size) {
+    case shapeSizeKeys.small:
+      return spacing.get(4);
 
+    case shapeSizeKeys.medium:
+      return spacing.get(6);
+
+    case shapeSizeKeys.large:
+      return spacing.get(8);
+  }
+};
+
+export const getContainedButtonVariant = (
+  palette: ThemePalette,
+  shape: ThemeShape,
+  spacing: ThemeSpacing,
+  { color, size }: ButtonStylesProps
+) => {
+  const baseColor = palette[color];
+  const isInverted = color === baseColorKeys.inverted;
+  const isLightMode = palette.mode === themeModeKeys.light;
   const bgMain = baseColor.main;
   const bgLight = baseColor.light;
   const bgDark = baseColor.dark;
   const bgContrast = baseColor.contrast;
   const bgDisabled = palette.action.disabled;
-
-  // TODO
-  const HOVER_SHADOW_WIDTH = '3.5rem';
-  const FOCUS_OUTLINE_WIDTH = '2px';
-  const FOCUS_OUTLINE_ALPHA = 0.5;
-  const DISABLED_INVERTED_ALPHA = 0.5;
-  // const HOVER_SHADOW_ALPHA = 0.05;
+  const hoverShadowWidth = getShadowWidth(size, spacing);
 
   return {
     backgroundColor: bgMain,
@@ -28,18 +48,18 @@ export const getContainedButtonVariant = (palette: ThemePalette, { color }: Butt
 
     [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: isInverted
       ? {
-          boxShadow: `inset 0 0 0 ${HOVER_SHADOW_WIDTH} ${isLightMode ? bgLight : bgDark}`,
+          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${isLightMode ? bgLight : bgDark}`,
           borderColor: isLightMode ? bgLight : bgDark,
         }
       : {
-          boxShadow: `inset 0 0 0 ${HOVER_SHADOW_WIDTH} ${isLightMode ? bgDark : bgLight}`,
+          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${isLightMode ? bgDark : bgLight}`,
           borderColor: isLightMode ? bgDark : bgLight,
         },
-    ['&:focus']: getFocusPropertyValue(bgLight, FOCUS_OUTLINE_ALPHA, FOCUS_OUTLINE_WIDTH),
+    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
       ? {
           backgroundColor: bgDisabled,
-          color: Color(bgMain).alpha(DISABLED_INVERTED_ALPHA).toString(),
+          color: Color(bgMain).alpha(palette.ratio.disabledInvertedAlpha).toString(),
           borderColor: bgDisabled,
         }
       : {
@@ -47,28 +67,23 @@ export const getContainedButtonVariant = (palette: ThemePalette, { color }: Butt
           borderColor: 'transparent',
           textShadow: `0 1px .25rem ${bgDisabled}`,
         },
-    [`&.${STATUS_CLASS_NAMES.isActive}:hover`]: {
-      /* TODO */
-    },
   };
 };
 
-export const getOutlinedButtonVariant = (palette: ThemePalette, { color }: ButtonStylesProps) => {
+export const getOutlinedButtonVariant = (
+  palette: ThemePalette,
+  shape: ThemeShape,
+  spacing: ThemeSpacing,
+  { color, size }: ButtonStylesProps
+) => {
   const baseColor = palette[color];
-  const isInverted = color === 'inverted';
-  const isLightMode = palette.mode === 'light';
-
+  const isInverted = color === baseColorKeys.inverted;
+  const isLightMode = palette.mode === themeModeKeys.light;
   const bgMain = baseColor.main;
   const bgLight = baseColor.light;
   const bgDark = baseColor.dark;
-  // const bgContrast = baseColor.contrast;
   const bgDisabled = palette.action.disabled;
-
-  // TODO
-  const HOVER_SHADOW_WIDTH = '3.5rem';
-  const FOCUS_OUTLINE_WIDTH = '2px';
-  const FOCUS_OUTLINE_ALPHA = 0.5;
-  const HOVER_SHADOW_ALPHA = 0.05;
+  const hoverShadowWidth = getShadowWidth(size, spacing);
 
   return {
     backgroundColor: 'transparent',
@@ -77,18 +92,18 @@ export const getOutlinedButtonVariant = (palette: ThemePalette, { color }: Butto
 
     [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: isInverted
       ? {
-          boxShadow: `inset 0 0 0 ${HOVER_SHADOW_WIDTH} ${Color(isLightMode ? bgLight : bgDark)
-            .alpha(HOVER_SHADOW_ALPHA)
+          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(isLightMode ? bgLight : bgDark)
+            .alpha(palette.ratio.hoverShadowAlpha)
             .toString()}`,
           color: isLightMode ? bgLight : bgDark,
           borderColor: isLightMode ? bgLight : bgDark,
         }
       : {
-          boxShadow: `inset 0 0 0 ${HOVER_SHADOW_WIDTH} ${Color(bgLight).alpha(HOVER_SHADOW_ALPHA).toString()}`,
+          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(bgLight).alpha(palette.ratio.hoverShadowAlpha).toString()}`,
           color: isLightMode ? bgDark : bgLight,
           borderColor: isLightMode ? bgDark : bgLight,
         },
-    ['&:focus']: getFocusPropertyValue(bgLight, FOCUS_OUTLINE_ALPHA, FOCUS_OUTLINE_WIDTH),
+    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
       ? {
           color: bgDisabled,
@@ -98,28 +113,23 @@ export const getOutlinedButtonVariant = (palette: ThemePalette, { color }: Butto
           color: bgDisabled,
           borderColor: bgDisabled,
         },
-    [`&.${STATUS_CLASS_NAMES.isActive}:hover`]: {
-      /* TODO */
-    },
   };
 };
 
-export const getTextButtonVariant = (palette: ThemePalette, { color }: ButtonStylesProps) => {
+export const getTextButtonVariant = (
+  palette: ThemePalette,
+  shape: ThemeShape,
+  spacing: ThemeSpacing,
+  { color, size }: ButtonStylesProps
+) => {
   const baseColor = palette[color];
-  const isInverted = color === 'inverted';
-  const isLightMode = palette.mode === 'light';
-
+  const isInverted = color === baseColorKeys.inverted;
+  const isLightMode = palette.mode === themeModeKeys.light;
   const bgMain = baseColor.main;
   const bgLight = baseColor.light;
   const bgDark = baseColor.dark;
-  // const bgContrast = baseColor.contrast;
   const bgDisabled = palette.action.disabled;
-
-  // TODO
-  const HOVER_SHADOW_WIDTH = '3.5rem';
-  const FOCUS_OUTLINE_WIDTH = '2px';
-  const HOVER_SHADOW_ALPHA = 0.05;
-  const FOCUS_OUTLINE_ALPHA = 0.5;
+  const hoverShadowWidth = getShadowWidth(size, spacing);
 
   return {
     backgroundColor: 'transparent',
@@ -128,16 +138,16 @@ export const getTextButtonVariant = (palette: ThemePalette, { color }: ButtonSty
 
     [`&:hover:not(&.${STATUS_CLASS_NAMES.isDisabled}), &.${STATUS_CLASS_NAMES.isActive}`]: isInverted
       ? {
-          boxShadow: `inset 0 0 0 ${HOVER_SHADOW_WIDTH} ${Color(isLightMode ? bgLight : bgDark)
-            .alpha(HOVER_SHADOW_ALPHA)
+          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(isLightMode ? bgLight : bgDark)
+            .alpha(palette.ratio.hoverShadowAlpha)
             .toString()}`,
           color: isLightMode ? bgLight : bgDark,
         }
       : {
-          boxShadow: `inset 0 0 0 ${HOVER_SHADOW_WIDTH} ${Color(bgLight).alpha(HOVER_SHADOW_ALPHA).toString()}`,
+          boxShadow: `inset 0 0 0 ${hoverShadowWidth} ${Color(bgLight).alpha(palette.ratio.hoverShadowAlpha).toString()}`,
           color: isLightMode ? bgDark : bgLight,
         },
-    ['&:focus']: getFocusPropertyValue(bgLight, FOCUS_OUTLINE_ALPHA, FOCUS_OUTLINE_WIDTH),
+    ['&:focus']: getFocusPropertyValue(bgLight, palette.ratio.focusOutlineAlpha, shape.borderWidth.outline),
     [`&.${STATUS_CLASS_NAMES.isDisabled}`]: isInverted
       ? {
           color: bgDisabled,
@@ -145,8 +155,5 @@ export const getTextButtonVariant = (palette: ThemePalette, { color }: ButtonSty
       : {
           color: bgDisabled,
         },
-    [`&.${STATUS_CLASS_NAMES.isActive}:hover`]: {
-      /* TODO */
-    },
   };
 };
