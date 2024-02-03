@@ -33,10 +33,11 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
   };
 
   const {
-    composedStyles: { root, iconStart, iconEnd, iconLoading },
+    composedStyles: { root, label, iconStart, iconEnd, iconLoading },
   } = useButtonStyles({ styles }, { ...buttonStyleProps });
   const {
     root: rootProps,
+    label: labelProps,
     iconStart: iconStartProps,
     iconEnd: iconEndProps,
     iconLoading: iconLoadingProps,
@@ -50,7 +51,6 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
     <Component ref={ref} css={root} {...rootProps} {...rest}>
       {isLoading && (
         <span css={iconLoading} {...iconLoadingProps}>
-          {/* TODO #loading-icon */}
           {loadingIcon ? loadingIcon : <>loading icon</>}
         </span>
       )}
@@ -59,7 +59,9 @@ const Button = <T extends ElementType>(props: ButtonProps<T>, ref: PolymorphicIn
           {startIcon}
         </span>
       )}
-      {children}
+      <span css={label} {...labelProps}>
+        {children}
+      </span>
       {endIcon && (
         <span css={iconEnd} {...iconEndProps}>
           {endIcon}

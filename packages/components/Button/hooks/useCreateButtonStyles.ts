@@ -1,10 +1,11 @@
 import { Theme, ButtonStylesProps, shapeSizeKeys, shapeVariantKeys } from 'types';
 import {
   getElementTransitions,
-  getContainedButtonLikeVariant,
-  getOutlinedButtonLikeVariant,
-  getTextButtonLikeVariant,
+  getContainedButtonVariant,
+  getOutlinedButtonVariant,
+  getTextButtonVariant,
 } from 'styles';
+import { BUTTON_LABEL } from 'core';
 
 export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesProps) => {
   const { transitions, palette, spacing, shape, typography } = theme;
@@ -15,6 +16,8 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     transitions.duration.shortest,
     transitions.easing.easeInOut
   );
+
+  const LOADING_LABEL_OPACITY = 0.25; // TODO
 
   // root
   const rootBase = {
@@ -45,8 +48,11 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
     ? {
         position: 'relative',
         overflow: 'hidden',
-        pointerEvents: 'none',
-        cursor: 'default',
+        cursor: 'wait',
+
+        [`& .${BUTTON_LABEL}`]: {
+          opacity: LOADING_LABEL_OPACITY,
+        },
       }
     : {};
   const rootIsFullWidth = fullWidth
@@ -82,14 +88,21 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
   const getRootVariant = () => {
     switch (variant) {
       case shapeVariantKeys.contained:
-        return getContainedButtonLikeVariant(palette, stylesProps);
+        return getContainedButtonVariant(palette, stylesProps);
 
       case shapeVariantKeys.outlined:
-        return getOutlinedButtonLikeVariant(palette, stylesProps);
+        return getOutlinedButtonVariant(palette, stylesProps);
 
       case shapeVariantKeys.text:
-        return getTextButtonLikeVariant(palette, stylesProps);
+        return getTextButtonVariant(palette, stylesProps);
     }
+  };
+
+  // label
+  const labelBase = {
+    pointerEvents: 'none',
+    fontSize: 'inherit',
+    lineHeight: 'inherit',
   };
 
   // iconStart
@@ -122,6 +135,9 @@ export const useCreateButtonStyles = (theme: Theme, stylesProps: ButtonStylesPro
       ...rootIsFullWidth,
       ...getRootSize(),
       ...getRootVariant(),
+    }),
+    label: Object.assign({
+      ...labelBase,
     }),
     iconStart: Object.assign({
       ...iconStartBase,

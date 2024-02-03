@@ -2,12 +2,15 @@ import { ElementType, ReactNode } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
 import { ComponentStyles, Color, ShapeSize, ShapeVariant } from '../styles';
 
-export interface ButtonStyles {
-  root: ComponentStyles;
-  iconStart: ComponentStyles;
-  iconEnd: ComponentStyles;
-  iconLoading: ComponentStyles;
+interface ButtonStylesScheme<T> {
+  root: T;
+  label: T;
+  iconStart: T;
+  iconEnd: T;
+  iconLoading: T;
 }
+
+export interface ButtonStyles extends ButtonStylesScheme<ComponentStyles> {}
 
 export type ButtonInitialProps<T extends ElementType> = NonNullable<unknown> & PolymorphicComponentPropsWithRef<T>;
 
@@ -47,11 +50,6 @@ export interface UseButtonStylesReturn {
 
 export interface UseButtonProps extends Partial<ButtonStateProps>, Partial<ButtonShapeProps>, Partial<WithStyle> {}
 
-export interface UseButtonPropsReturn {
-  root: WithStyle;
-  iconStart: WithStyle;
-  iconEnd: WithStyle;
-  iconLoading: WithStyle;
-}
+export interface UseButtonPropsReturn extends ButtonStylesScheme<WithStyle> {}
 
 export interface ButtonStylesProps extends Partial<ButtonStateProps>, ButtonShapeProps {}

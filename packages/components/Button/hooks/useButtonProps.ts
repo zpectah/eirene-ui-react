@@ -6,6 +6,7 @@ import {
   SHAPE_SIZE_CLASS_NAMES,
   SHAPE_VARIANT_CLASS_NAME,
   BUTTON_ROOT,
+  BUTTON_LABEL,
   BUTTON_ICON_START,
   BUTTON_ICON_END,
   BUTTON_ICON_LOADING,
@@ -45,6 +46,10 @@ export const useButtonProps = (props: UseButtonProps): UseButtonPropsReturn => {
         className
       ),
       style: { ...style },
+    },
+    label: {
+      className: BUTTON_LABEL,
+      style: {},
     },
     iconStart: {
       className: BUTTON_ICON_START,

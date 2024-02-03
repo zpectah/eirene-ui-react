@@ -8,11 +8,12 @@ export const useButtonStyles = (
 ): UseButtonStylesReturn => {
   const { theme } = useUiContext();
   const {
-    styles: { root, iconStart, iconEnd, iconLoading },
+    styles: { root, label, iconStart, iconEnd, iconLoading },
   } = useCreateButtonStyles(theme, buttonStyles);
 
   const composedStyles = {
     root: [root, theme.components.Button.root, styles?.root],
+    label: [label, theme.components.Button.label, styles?.label],
     iconStart: [iconStart, theme.components.Button.iconStart, styles?.iconStart],
     iconEnd: [iconEnd, theme.components.Button.iconEnd, styles?.iconEnd],
     iconLoading: [iconLoading, theme.components.Button.iconLoading, styles?.iconLoading],
