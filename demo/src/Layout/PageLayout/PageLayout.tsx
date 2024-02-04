@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
 import { Header } from './../Header';
-import { Footer } from './../Footer';
 
 const Layout = () => {
   return (
@@ -27,7 +26,6 @@ const Layout = () => {
         }}
       >
         <Outlet />
-        <Footer />
       </main>
     </div>
   );

@@ -7,7 +7,45 @@ import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalDi
 const Components = () => {
   return (
     <Routes>
-      <Route path="/" element={<ViewLayout sidebar={<>My components 000 menu</>} />}>
+      <Route
+        path="/"
+        element={
+          <ViewLayout
+            items={[
+              {
+                key: 1,
+                label: 'Button',
+                path: `/components/button`,
+              },
+              {
+                key: 2,
+                label: 'Link',
+                path: `/components/link`,
+              },
+              {
+                key: 3,
+                label: 'Container',
+                path: `/components/container`,
+              },
+              {
+                key: 4,
+                label: 'Stack',
+                path: `/components/stack`,
+              },
+              {
+                key: 5,
+                label: 'Typography',
+                path: `/components/typography`,
+              },
+              {
+                key: 6,
+                label: 'Modal Dialog',
+                path: `/components/modal-dialog`,
+              },
+            ]}
+          />
+        }
+      >
         <Route index element={<div>some components index view </div>} />
         {/* ... */}
         <Route path="/button*" element={<ButtonView />} />

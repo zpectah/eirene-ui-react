@@ -4,3 +4,4 @@ export * from './Footer';
 export * from './View';
 export * from './ViewLayout';
 export * from './PlainLayout';
+export * from './SidebarNavigation';

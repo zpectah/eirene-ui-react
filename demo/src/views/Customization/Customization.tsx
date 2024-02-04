@@ -7,7 +7,40 @@ import { ThemeView, BreakpointsView, PaletteView, TypographyView, ComponentsView
 const Customization = () => {
   return (
     <Routes>
-      <Route path="/" element={<ViewLayout sidebar={<>My customization 000 menu</>} />}>
+      <Route
+        path="/"
+        element={
+          <ViewLayout
+            items={[
+              {
+                key: 1,
+                label: 'Breakpoints',
+                path: `/customization/breakpoints`,
+              },
+              {
+                key: 2,
+                label: 'Components',
+                path: `/customization/components`,
+              },
+              {
+                key: 3,
+                label: 'Palette',
+                path: `/customization/palette`,
+              },
+              {
+                key: 4,
+                label: 'Theme',
+                path: `/customization/theme`,
+              },
+              {
+                key: 5,
+                label: 'Typography',
+                path: `/customization/typography`,
+              },
+            ]}
+          />
+        }
+      >
         <Route index element={<div>some customization index view </div>} />
         {/* ... */}
         <Route path="/theme*" element={<ThemeView />} />

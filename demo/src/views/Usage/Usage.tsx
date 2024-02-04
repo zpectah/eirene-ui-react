@@ -7,7 +7,20 @@ import { InstallationView } from './views';
 const Usage = () => {
   return (
     <Routes>
-      <Route path="/" element={<ViewLayout sidebar={<>My usage 000 menu</>} />}>
+      <Route
+        path="/"
+        element={
+          <ViewLayout
+            items={[
+              {
+                key: 1,
+                label: 'Installation',
+                path: `/usage/installation`,
+              },
+            ]}
+          />
+        }
+      >
         <Route index element={<div>some usage index view </div>} />
         {/* ... */}
         <Route path="/installation*" element={<InstallationView />} />

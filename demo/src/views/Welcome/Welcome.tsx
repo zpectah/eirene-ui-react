@@ -4,6 +4,7 @@ import { useUiContext } from 'styles';
 import { Button, Container } from 'components';
 import { meta, routes } from '../../config';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
+import { Footer } from '../../Layout';
 
 const Welcome = () => {
   const { theme } = useUiContext();
@@ -56,6 +57,7 @@ const Welcome = () => {
               Github
             </Button>
           </div>
+          <Footer />
         </div>
       </Container>
     </article>
