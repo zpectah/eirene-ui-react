@@ -4,6 +4,7 @@ export const STATUS_CLASS_NAMES = {
   isLoading: 'isLoading',
   isFullWidth: 'isFullWidth',
   isTruncated: 'isTruncated',
+  isFluid: 'isFluid',
 };
 
 export const SHAPE_SIZE_CLASS_NAMES = {

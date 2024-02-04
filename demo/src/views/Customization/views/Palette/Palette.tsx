@@ -399,7 +399,7 @@ const PaletteView = () => {
               style={{
                 width: '4rem',
                 height: '4rem',
-                backgroundColor: theme.palette.background.body,
+                backgroundColor: theme.palette.background.primary,
               }}
             ></div>
             <div
@@ -407,7 +407,7 @@ const PaletteView = () => {
                 width: '4rem',
                 height: '4rem',
                 borderWidth: '1px',
-                backgroundColor: theme.palette.background.surface,
+                backgroundColor: theme.palette.background.secondary,
               }}
             ></div>
             <div
@@ -415,7 +415,32 @@ const PaletteView = () => {
                 width: '4rem',
                 height: '4rem',
                 borderWidth: '1px',
-                backgroundColor: theme.palette.background.surface,
+                backgroundColor: theme.palette.background.tertiary,
+              }}
+            ></div>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '.5rem',
+            }}
+          >
+            <div
+              style={{
+                width: '4rem',
+                height: '4rem',
+                borderWidth: '1px',
+                backgroundColor: theme.palette.background.secondary,
+                border: `1px solid ${theme.palette.shape.border}`,
+              }}
+            ></div>
+            <div
+              style={{
+                width: '4rem',
+                height: '4rem',
+                borderWidth: '1px',
+                backgroundColor: theme.palette.background.tertiary,
                 border: `1px solid ${theme.palette.shape.border}`,
               }}
             ></div>

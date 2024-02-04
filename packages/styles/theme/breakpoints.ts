@@ -20,10 +20,10 @@ export const createThemeBreakpoints = (breakpoints?: DeepPartial<ThemeBreakpoint
     xxl: breakpoints?.container?.xxl || CONTAINER_WIDTH.xxl,
   };
 
-  const up = (min: BreakpointKeys) => `@media (min-width: ${values[min]}${unit})`;
-  const down = (max: BreakpointKeys) => `@media (max-width: ${values[max]}${unit})`;
+  const up = (min: BreakpointKeys) => `@media only screen and (min-width: ${values[min]}${unit})`;
+  const down = (max: BreakpointKeys) => `@media only screen and (max-width: ${values[max]}${unit})`;
   const between = (min: BreakpointKeys, max: BreakpointKeys) =>
-    `@media (min-width: ${values[min]}${unit}) and (max-width: ${values[max]}${unit})`;
+    `@media only screen and (min-width: ${values[min]}${unit}) and (max-width: ${values[max]}${unit})`;
   const only = (key: BreakpointKeys) => {
     let min, max;
     switch (key) {
@@ -58,7 +58,7 @@ export const createThemeBreakpoints = (breakpoints?: DeepPartial<ThemeBreakpoint
         break;
     }
 
-    return `@media (min-width: ${min}) and (max-width: ${max})`;
+    return `@media only screen and (min-width: ${min}) and (max-width: ${max})`;
   };
 
   return {

@@ -46,7 +46,7 @@ export const PALETTE_RATIO = {
   textSecondary: 25,
   textTertiary: 40,
   shapeDivider: 85,
-  shapeBorder: 75,
+  shapeBorder: 80,
   backgroundSurface: 0.05,
   hoverShadowAlpha: 0.05,
   focusOutlineAlpha: 0.5,

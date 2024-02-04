@@ -28,7 +28,7 @@ export const getThemePaletteProps = (mode: ThemeMode, palette?: DeepPartial<Them
   switch (mode) {
     case themeModeKeys.dark:
       textColor = palette?.text?.primary || PALETTE.white;
-      backgroundColor = palette?.background?.body || PALETTE.dark;
+      backgroundColor = palette?.background?.primary || PALETTE.dark;
 
       return {
         text: {
@@ -59,11 +59,16 @@ export const getThemePaletteProps = (mode: ThemeMode, palette?: DeepPartial<Them
               .toString(),
         },
         background: {
-          body: backgroundColor,
-          surface:
-            palette?.background?.surface ||
+          primary: backgroundColor,
+          secondary:
+            palette?.background?.secondary ||
             Color(backgroundColor)
               .lighten(ratio.backgroundSurface * 4)
+              .toString(),
+          tertiary:
+            palette?.background?.tertiary ||
+            Color(backgroundColor)
+              .lighten(ratio.backgroundSurface * 6)
               .toString(),
         },
         inverted: {
@@ -77,7 +82,7 @@ export const getThemePaletteProps = (mode: ThemeMode, palette?: DeepPartial<Them
     case themeModeKeys.light:
     default:
       textColor = palette?.text?.primary || PALETTE.black;
-      backgroundColor = palette?.background?.body || PALETTE.light;
+      backgroundColor = palette?.background?.primary || PALETTE.light;
 
       return {
         text: {
@@ -92,8 +97,14 @@ export const getThemePaletteProps = (mode: ThemeMode, palette?: DeepPartial<Them
           border: palette?.shape?.border || Color(textColor).lighten(ratio.shapeBorder).toString(),
         },
         background: {
-          body: backgroundColor,
-          surface: palette?.background?.surface || Color(backgroundColor).darken(ratio.backgroundSurface).toString(),
+          primary: backgroundColor,
+          secondary:
+            palette?.background?.secondary || Color(backgroundColor).darken(ratio.backgroundSurface).toString(),
+          tertiary:
+            palette?.background?.tertiary ||
+            Color(backgroundColor)
+              .darken(ratio.backgroundSurface * 1.75)
+              .toString(),
         },
         inverted: {
           main: backgroundColor,

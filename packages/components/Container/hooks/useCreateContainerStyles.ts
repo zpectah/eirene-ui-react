@@ -18,40 +18,51 @@ export const useCreateContainerStyles = (theme: Theme, stylesProps: ContainerSty
   const rootMaxWidth = {
     xs: {
       [`${up('xs')}`]: {
-        maxWidth: isFluid ? '100%' : `${container.xs}${unit}`,
+        maxWidth: `${container.xs}${unit}`,
       },
     },
     sm: {
+      maxWidth: '100%',
       [`${up('sm')}`]: {
-        maxWidth: isFluid ? '100%' : `${container.sm}${unit}`,
+        maxWidth: `${container.sm}${unit}`,
       },
     },
     md: {
+      maxWidth: '100%',
       [`${up('md')}`]: {
-        maxWidth: isFluid ? '100%' : `${container.md}${unit}`,
+        maxWidth: `${container.md}${unit}`,
       },
     },
     lg: {
+      maxWidth: '100%',
       [`${up('lg')}`]: {
-        maxWidth: isFluid ? '100%' : `${container.lg}${unit}`,
+        maxWidth: `${container.lg}${unit}`,
       },
     },
     xl: {
+      maxWidth: '100%',
       [`${up('xl')}`]: {
-        maxWidth: isFluid ? '100%' : `${container.xl}${unit}`,
+        maxWidth: `${container.xl}${unit}`,
       },
     },
     xxl: {
+      maxWidth: '100%',
       [`${up('xxl')}`]: {
-        maxWidth: isFluid ? '100%' : `${container.xxl}${unit}`,
+        maxWidth: `${container.xxl}${unit}`,
       },
     },
   };
 
+  const rootWidth = isFluid
+    ? {
+        maxWidth: '100%',
+      }
+    : rootMaxWidth[maxWidth];
+
   const styles = {
     root: Object.assign({
       ...rootBase,
-      ...rootMaxWidth[maxWidth],
+      ...rootWidth,
     }),
   };
 

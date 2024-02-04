@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import { UseContainerProps, UseContainerPropsReturn } from 'types';
-import { CONTAINER_ROOT } from 'core';
+import { STATUS_CLASS_NAMES, CONTAINER_ROOT } from 'core';
 
 export const useContainerProps = (props: UseContainerProps): UseContainerPropsReturn => {
-  const { style, className } = props;
+  const { style, className, isFluid } = props;
 
   return {
     root: {
-      className: clsx(CONTAINER_ROOT, className),
+      className: clsx(CONTAINER_ROOT, isFluid && STATUS_CLASS_NAMES.isFluid, className),
       style: { ...style },
     },
   };

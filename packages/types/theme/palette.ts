@@ -76,8 +76,9 @@ export interface ThemePalette {
     border: string;
   };
   background: {
-    body: string;
-    surface: string;
+    primary: string;
+    secondary: string;
+    tertiary: string;
   };
   action: {
     active: string;

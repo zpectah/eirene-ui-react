@@ -71,7 +71,7 @@ const Components = () => {
         </div>
       </aside>
       <div style={{ flex: 1 }}>
-        <Container>{renderView}</Container>
+        <Container isFluid>{renderView}</Container>
       </div>
     </div>
   );
