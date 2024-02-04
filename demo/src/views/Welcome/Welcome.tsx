@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useUiContext } from 'styles';
 import { Button, Container } from 'components';
-import { meta, routes } from '../../config';
+import { meta } from '../../config';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
 import { Footer } from '../../Layout';
 
@@ -50,7 +50,7 @@ const Welcome = () => {
               gap: '1rem',
             }}
           >
-            <Button as={Link} to={routes.components.path}>
+            <Button as={Link} to="/components/button">
               Try it yourself
             </Button>
             <Button as="a" href={meta.gitHubRepository} target="_blank" variant="outlined" color="secondary">

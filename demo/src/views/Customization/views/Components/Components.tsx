@@ -4,9 +4,9 @@ import { Article, Section } from '../../../../components';
 
 const ComponentsView = () => {
   return (
-    <View title="Theme">
+    <View title="Components">
       <Article>
-        <Section>...Theme...</Section>
+        <Section>...Components...</Section>
       </Article>
     </View>
   );

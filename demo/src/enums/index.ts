@@ -1,1 +1,1 @@
-export * from './customization';
+export * from './routes';

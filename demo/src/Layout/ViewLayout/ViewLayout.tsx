@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useUiContext } from 'styles';
+import { Container } from 'components';
 import { HEADER_DESKTOP_HEIGHT, SIDEBAR_DESKTOP_WIDTH } from '../../constants';
 import { Footer } from '../Footer';
 import { SidebarNavigation, SidebarNavigationItemProps } from '../SidebarNavigation';
@@ -32,7 +33,7 @@ const ViewLayout = (props: ViewLayoutProps) => {
           position: 'fixed',
           top: HEADER_DESKTOP_HEIGHT,
           left: 0,
-          backgroundColor: theme.palette.background.tertiary,
+          backgroundColor: theme.palette.background.secondary,
           overflow: 'hidden',
         }}
       >
@@ -47,7 +48,7 @@ const ViewLayout = (props: ViewLayoutProps) => {
             overflowY: 'auto',
           }}
         >
-          <div>
+          <div style={{ padding: theme.spacing.get(2) }}>
             <SidebarNavigation items={items} />
             {sidebar}
           </div>
@@ -65,8 +66,10 @@ const ViewLayout = (props: ViewLayoutProps) => {
         }}
       >
         <div style={{ width: '100%', height: 'auto' }}>
-          <Outlet />
-          <Footer />
+          <Container isFluid>
+            <Outlet />
+            <Footer />
+          </Container>
         </div>
       </div>
     </div>

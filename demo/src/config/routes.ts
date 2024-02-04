@@ -1,17 +1,18 @@
 import { uiComponentsListKeys } from 'types';
-import { customizationRouteKeys } from '../enums';
+import { customizationRouteKeys, usageRouteKeys } from '../enums';
 
 const componentsRootPath = '/components';
 const customizationRootPath = '/customization';
+const usageRootPath = '/usage';
 
 export const routes = {
   welcome: {
-    path: '/',
+    root: '/',
     route: '/',
   },
   components: {
-    path: `${componentsRootPath}/${uiComponentsListKeys.button}`,
-    route: 'components/:id/:panel?',
+    root: `${componentsRootPath}/${uiComponentsListKeys.button}`,
+    route: 'components/*',
     routes: {
       button: `${componentsRootPath}/${uiComponentsListKeys.button}`,
       link: `${componentsRootPath}/${uiComponentsListKeys.link}`,
@@ -22,8 +23,8 @@ export const routes = {
     },
   },
   customization: {
-    path: `${customizationRootPath}/${customizationRouteKeys.theme}`,
-    route: 'customization/:id',
+    root: `${customizationRootPath}/${customizationRouteKeys.theme}`,
+    route: 'customization/*',
     routes: {
       theme: `${customizationRootPath}/${customizationRouteKeys.theme}`,
       palette: `${customizationRootPath}/${customizationRouteKeys.palette}`,
@@ -33,7 +34,10 @@ export const routes = {
     },
   },
   usage: {
-    path: '/usage',
-    route: 'usage',
+    root: `${usageRootPath}/${usageRouteKeys.installation}`,
+    route: 'usage/*',
+    routes: {
+      installation: `${usageRootPath}/${usageRouteKeys.installation}`,
+    },
   },
 };

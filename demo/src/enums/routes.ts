@@ -5,3 +5,7 @@ export enum customizationRouteKeys {
   breakpoints = 'breakpoints',
   components = 'components',
 }
+
+export enum usageRouteKeys {
+  installation = 'installation',
+}

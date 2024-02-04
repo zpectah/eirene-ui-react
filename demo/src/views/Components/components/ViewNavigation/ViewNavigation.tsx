@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { UiComponentsList } from 'types';
 import { Button } from 'components';
-import { routes } from '../../../../config';
+import { routes, DETAIL_NAVIGATION } from '../../../../config';
 
 export interface ViewNavigationProps {
   route: UiComponentsList;
@@ -11,27 +11,9 @@ export interface ViewNavigationProps {
 const ViewNavigation = ({ route }: ViewNavigationProps) => {
   const { panel } = useParams();
 
-  const menuItems = [
-    {
-      key: 1,
-      panel: '',
-      label: 'Preview',
-    },
-    {
-      key: 2,
-      panel: '/api',
-      label: 'API',
-    },
-    {
-      key: 3,
-      panel: '/playground',
-      label: 'Playground',
-    },
-  ];
-
   return (
     <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
-      {menuItems.map((item) => (
+      {DETAIL_NAVIGATION.map((item) => (
         <Button
           key={item.key}
           as={Link}

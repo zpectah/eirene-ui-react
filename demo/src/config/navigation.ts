@@ -1,55 +1,104 @@
-import { routes } from './routes';
-
-export const primaryNavigation = [
+export const PRIMARY_NAVIGATION = [
   {
     key: 1,
     label: 'Components',
-    path: routes.components.path,
+    path: `/components/button`,
   },
   {
     key: 2,
     label: 'Customization',
-    path: routes.customization.path,
+    path: `/customization/theme`,
   },
   {
     key: 3,
     label: 'Usage',
-    path: routes.usage.path,
+    path: `/usage/installation`,
   },
 ];
 
-export const componentsSidebarNavigation = [
+export const DETAIL_NAVIGATION = [
   {
     key: 1,
-    label: 'Button',
-    path: routes.components.routes.button,
-  },
-];
-
-export const customizationSidebarNavigation = [
-  {
-    key: 1,
-    label: 'Theme',
-    path: routes.customization.routes.theme,
+    label: 'Preview',
+    panel: '',
   },
   {
     key: 2,
-    label: 'Palette',
-    path: routes.customization.routes.palette,
+    label: 'API',
+    panel: '/api',
   },
   {
     key: 3,
-    label: 'Typography',
-    path: routes.customization.routes.typography,
+    label: 'Playground',
+    panel: '/playground',
+  },
+];
+
+export const COMPONENTS_SIDEBAR_NAVIGATION = [
+  {
+    key: 1,
+    label: 'Button',
+    path: `/components/button`,
+  },
+  {
+    key: 2,
+    label: 'Link',
+    path: `/components/link`,
+  },
+  {
+    key: 3,
+    label: 'Container',
+    path: `/components/container`,
   },
   {
     key: 4,
-    label: 'Breakpoints',
-    path: routes.customization.routes.breakpoints,
+    label: 'Stack',
+    path: `/components/stack`,
   },
   {
     key: 5,
+    label: 'Typography',
+    path: `/components/typography`,
+  },
+  {
+    key: 6,
+    label: 'Modal Dialog',
+    path: `/components/modal-dialog`,
+  },
+];
+
+export const CUSTOMIZATION_SIDEBAR_NAVIGATION = [
+  {
+    key: 1,
+    label: 'Breakpoints',
+    path: `/customization/breakpoints`,
+  },
+  {
+    key: 2,
     label: 'Components',
-    path: routes.customization.routes.components,
+    path: `/customization/components`,
+  },
+  {
+    key: 3,
+    label: 'Palette',
+    path: `/customization/palette`,
+  },
+  {
+    key: 4,
+    label: 'Theme',
+    path: `/customization/theme`,
+  },
+  {
+    key: 5,
+    label: 'Typography',
+    path: `/customization/typography`,
+  },
+];
+
+export const USAGE_SIDEBAR_NAVIGATION = [
+  {
+    key: 1,
+    label: 'Installation',
+    path: `/usage/installation`,
   },
 ];

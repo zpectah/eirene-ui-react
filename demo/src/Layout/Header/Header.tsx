@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useUiContext } from 'styles';
-import { primaryNavigation } from '../../config';
+import { PRIMARY_NAVIGATION } from '../../config';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
 import { Button } from 'components';
 
@@ -28,9 +28,9 @@ const Header = () => {
       <Link to="/" style={{ padding: '0 .25rem' }}>
         <h1 style={{ ...theme.typography.h5 }}>Eirine UI</h1>
       </Link>
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem', alignItems: 'center' }}>
         <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
-          {primaryNavigation.map((item) => (
+          {PRIMARY_NAVIGATION.map((item) => (
             <Link key={item.key} to={item.path}>
               {item.label}
             </Link>
