@@ -1,14 +1,26 @@
 import React from 'react';
-import { View } from '../../../../Layout';
+import { Route, Routes } from 'react-router-dom';
+import { PlainLayout, View } from '../../../../Layout';
 import { Article, Section } from '../../../../components';
 
 const ComponentsView = () => {
   return (
-    <View title="Components">
-      <Article>
-        <Section title="Components default">...ComponentsView...</Section>
-      </Article>
-    </View>
+    <Routes>
+      <Route path="/" element={<PlainLayout />}>
+        <Route
+          index
+          element={
+            <>
+              <View title="Theme">
+                <Article>
+                  <Section>...Theme...</Section>
+                </Article>
+              </View>
+            </>
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
 

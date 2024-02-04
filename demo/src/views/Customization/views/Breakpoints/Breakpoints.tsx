@@ -1,14 +1,26 @@
 import React from 'react';
-import { View } from '../../../../Layout';
+import { Route, Routes } from 'react-router-dom';
+import { PlainLayout, View } from '../../../../Layout';
 import { Article, Section } from '../../../../components';
 
 const BreakpointsView = () => {
   return (
-    <View title="Breakpoints">
-      <Article>
-        <Section title="Breakpoints default">...BreakpointsView...</Section>
-      </Article>
-    </View>
+    <Routes>
+      <Route path="/" element={<PlainLayout />}>
+        <Route
+          index
+          element={
+            <>
+              <View title="Breakpoints">
+                <Article>
+                  <Section>...Breakpoints...</Section>
+                </Article>
+              </View>
+            </>
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
 

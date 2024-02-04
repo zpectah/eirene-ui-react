@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { View, PlainLayout } from '../../../../Layout';
+import { PlainLayout, View } from '../../../../Layout';
 import { Article, Section } from '../../../../components';
 
-const ThemeView = () => {
+const InstallationView = () => {
   return (
     <Routes>
       <Route path="/" element={<PlainLayout />}>
@@ -11,9 +11,9 @@ const ThemeView = () => {
           index
           element={
             <>
-              <View title="Theme">
+              <View title="Usage - installation">
                 <Article>
-                  <Section>...Theme...</Section>
+                  <Section>...installation...</Section>
                 </Article>
               </View>
             </>
@@ -24,4 +24,4 @@ const ThemeView = () => {
   );
 };
 
-export default ThemeView;
+export default InstallationView;

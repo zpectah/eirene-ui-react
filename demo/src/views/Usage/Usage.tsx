@@ -1,17 +1,18 @@
 import React from 'react';
-import { Container } from 'components';
-import { View } from '../../Layout';
-import { Article, Section } from '../../components';
+import { Route, Routes } from 'react-router-dom';
+// import { routes } from '../../config';
+import { ViewLayout } from '../../Layout';
+import { InstallationView } from './views';
 
 const Usage = () => {
   return (
-    <Container>
-      <View title="Usage">
-        <Article>
-          <Section>usage view</Section>
-        </Article>
-      </View>
-    </Container>
+    <Routes>
+      <Route path="/" element={<ViewLayout sidebar={<>My usage 000 menu</>} />}>
+        <Route index element={<div>some usage index view </div>} />
+        {/* ... */}
+        <Route path="/installation*" element={<InstallationView />} />
+      </Route>
+    </Routes>
   );
 };
 

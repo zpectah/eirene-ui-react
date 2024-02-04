@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import { routes } from '../../config';
-import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalDialogView } from './views';
 import { ViewLayout } from '../../Layout';
+import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalDialogView } from './views';
 
 const Components = () => {
   return (
