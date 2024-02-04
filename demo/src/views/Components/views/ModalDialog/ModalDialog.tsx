@@ -1,24 +1,18 @@
 import React from 'react';
-import { View } from '../../../../Layout';
-import { useRenderPanelView } from '../../hooks';
-import { ViewNavigation } from '../../components/index';
+import { DetailLayout } from '../../components/index';
 import Preview from './_Preview';
 import Api from './_Api';
 import Playground from './_Playground';
+import { Route, Routes } from 'react-router-dom';
 
-const ModalDialogView = () => {
-  const { renderHashView } = useRenderPanelView({
-    defaultView: Preview,
-    apiView: Api,
-    playgroundView: Playground,
-  });
-
-  return (
-    <View title="Modal Dialog">
-      <ViewNavigation route="modal-dialog" />
-      {renderHashView}
-    </View>
-  );
-};
+const ModalDialogView = () => (
+  <Routes>
+    <Route path="/" element={<DetailLayout route="modal-dialog" title="MODAL DIALOG" />}>
+      <Route index element={<Preview />} />
+      <Route path="api" element={<Api />} />
+      <Route path="playground" element={<Playground />} />
+    </Route>
+  </Routes>
+);
 
 export default ModalDialogView;
