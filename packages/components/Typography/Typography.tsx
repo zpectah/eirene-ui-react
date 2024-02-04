@@ -12,10 +12,10 @@ const Typography = <T extends ElementType>(props: TypographyProps<T>) => {
     className,
     style,
     styles,
-    truncate,
+    isTruncated,
     ...rest
   } = props;
-  const typographyStyleProps = { variant, color, truncate };
+  const typographyStyleProps = { variant, color, isTruncated };
 
   const {
     composedStyles: { root },

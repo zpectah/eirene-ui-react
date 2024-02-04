@@ -45,7 +45,7 @@ const Preview = () => {
         </Typography>
       </Section>
       <Section title="Typography truncate">
-        <Typography truncate>
+        <Typography isTruncated>
           Molestie augue, felis non sit amet dui vel dolor praesent accumsan turpis, fusce ante magna sit amet odio. Vel
           arcu integer, eget rutrum sollicitudin ullamcorper mi orci urna mauris, condimentum iaculis ollicitudin
           facilisis. Ullamcorper elit, sed a pretium accumsan vestibulum in ex sem nisl convallis, quam at sem tristique

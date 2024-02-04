@@ -1,30 +1,16 @@
 import { Theme, TypographyStylesProps } from 'types';
+import { getTypographyColor } from 'styles';
 
 export const useCreateTypographyStyles = (theme: Theme, stylesProps: TypographyStylesProps) => {
-  const { variant, color, truncate } = stylesProps;
+  const { variant, color, isTruncated } = stylesProps;
 
-  const rootColorMap = {
-    primary: theme.palette.primary.main,
-    secondary: theme.palette.secondary.main,
-    tertiary: theme.palette.tertiary.main,
-    error: theme.palette.error.main,
-    warning: theme.palette.warning.main,
-    info: theme.palette.info.main,
-    success: theme.palette.success.main,
-    inverted: theme.palette.inverted.main,
-    'text-primary': theme.palette.text.primary,
-    'text-secondary': theme.palette.text.secondary,
-    'text-tertiary': theme.palette.text.tertiary,
-    'text-muted': theme.palette.text.muted,
-    'text-disabled': theme.palette.text.disabled,
-    inherit: 'inherit',
-  };
+  const rootBaseColor = getTypographyColor(theme, color);
 
   const rootBase = {
-    color: rootColorMap[color],
+    color: rootBaseColor,
   };
-  const rootVariant = theme.typography[variant];
-  const rootTruncate = truncate
+  const rootVariant = variant === 'inherit' ? {} : theme.typography[variant];
+  const rootTruncate = isTruncated
     ? {
         whiteSpace: 'nowrap',
         overflow: 'hidden',

@@ -15,7 +15,7 @@ export interface TypographyElementaryProps extends Partial<WithStyle> {}
 export interface TypographyShapeProps {
   variant: TypographyVariant;
   color: TypographyColor;
-  truncate: boolean;
+  isTruncated: boolean;
 }
 
 export type TypographyProps<T extends ElementType> = {

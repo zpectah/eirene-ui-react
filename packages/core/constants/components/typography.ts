@@ -4,6 +4,6 @@ export const TYPOGRAPHY_ROOT = 'Typography';
 
 export const TYPOGRAPHY_DEFAULT_VALUES = {
   as: 'p',
-  variant: typographyVariantKeys.body1,
+  variant: typographyVariantKeys.inherit,
   color: textColorKeys.inherit,
 };

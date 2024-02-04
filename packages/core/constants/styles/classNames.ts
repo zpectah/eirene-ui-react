@@ -3,6 +3,7 @@ export const STATUS_CLASS_NAMES = {
   isActive: 'isActive',
   isLoading: 'isLoading',
   isFullWidth: 'isFullWidth',
+  isTruncated: 'isTruncated',
 };
 
 export const SHAPE_SIZE_CLASS_NAMES = {
