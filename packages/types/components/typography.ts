@@ -1,12 +1,10 @@
 import { ElementType } from 'react';
 import { PolymorphicComponentPropsWithRef, WithStyle } from '../common';
-import { ComponentStyles, TypographyVariant, BaseColor, EmotionColor, TextColor } from '../styles';
+import { ComponentStyles, TypographyVariant, TypographyColor } from '../styles';
 
 interface TypographyStylesScheme<T> {
   root: T;
 }
-
-export type TypographyColor = BaseColor | EmotionColor | TextColor;
 
 export interface TypographyStyles extends TypographyStylesScheme<ComponentStyles> {}
 

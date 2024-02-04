@@ -18,5 +18,8 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     Typography: {
       root: components?.Typography?.root,
     },
+    Link: {
+      root: components?.Link?.root,
+    },
   };
 };

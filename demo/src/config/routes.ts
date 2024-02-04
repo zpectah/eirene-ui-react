@@ -1,4 +1,5 @@
-import { componentRouteKeys, customizationRouteKeys } from '../enums';
+import { uiComponentsListKeys } from 'types';
+import { customizationRouteKeys } from '../enums';
 
 const componentsRootPath = '/components';
 const customizationRootPath = '/customization';
@@ -9,14 +10,14 @@ export const routes = {
     route: '/',
   },
   components: {
-    path: `${componentsRootPath}/${componentRouteKeys.button}`,
+    path: `${componentsRootPath}/${uiComponentsListKeys.button}`,
     route: 'components/:id/:panel?',
     routes: {
-      button: `${componentsRootPath}/${componentRouteKeys.button}`,
-      link: `${componentsRootPath}/${componentRouteKeys.link}`,
-      container: `${componentsRootPath}/${componentRouteKeys.container}`,
-      stack: `${componentsRootPath}/${componentRouteKeys.stack}`,
-      typography: `${componentsRootPath}/${componentRouteKeys.typography}`,
+      button: `${componentsRootPath}/${uiComponentsListKeys.button}`,
+      link: `${componentsRootPath}/${uiComponentsListKeys.link}`,
+      container: `${componentsRootPath}/${uiComponentsListKeys.container}`,
+      stack: `${componentsRootPath}/${uiComponentsListKeys.stack}`,
+      typography: `${componentsRootPath}/${uiComponentsListKeys.typography}`,
     },
   },
   customization: {

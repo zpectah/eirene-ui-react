@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { uiComponentsListKeys } from 'types';
 import { Container } from 'components';
 import { routes } from '../../config';
-import { componentRouteKeys } from '../../enums';
 import { ButtonView, ContainerView, StackView, LinkView, TypographyView } from './views';
 
 const Components = () => {
@@ -38,19 +38,19 @@ const Components = () => {
 
   const renderView = useMemo(() => {
     switch (id) {
-      case componentRouteKeys.button:
+      case uiComponentsListKeys.button:
         return <ButtonView />;
 
-      case componentRouteKeys.link:
+      case uiComponentsListKeys.link:
         return <LinkView />;
 
-      case componentRouteKeys.container:
+      case uiComponentsListKeys.container:
         return <ContainerView />;
 
-      case componentRouteKeys.stack:
+      case uiComponentsListKeys.stack:
         return <StackView />;
 
-      case componentRouteKeys.typography:
+      case uiComponentsListKeys.typography:
         return <TypographyView />;
 
       case undefined:

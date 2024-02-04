@@ -1,4 +1,4 @@
-import { TextTransform, TextDirection } from '../common';
+import { TextTransform, TextDirection } from '../styles';
 
 export interface ThemeTypographyCluster {
   fontFamily: string;
