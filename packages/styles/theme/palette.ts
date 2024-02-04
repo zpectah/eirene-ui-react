@@ -12,6 +12,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   const warningColorMain = palette?.warning?.main || PALETTE.warning;
   const infoColorMain = palette?.info?.main || PALETTE.info;
   const successColorMain = palette?.success?.main || PALETTE.success;
+  const lightColorMain = palette?.success?.light || PALETTE.light;
+  const darkColorMain = palette?.success?.dark || PALETTE.dark;
 
   const utils = {
     getContrastColor: (primary: string, secondary: string) => Color(primary).contrast(Color(secondary)).toString(),
@@ -127,6 +129,18 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
       dark: palette?.success?.dark || Color(successColorMain).darken(ratio.backgroundDarken).toString(),
       light: palette?.success?.light || Color(successColorMain).lighten(ratio.backgroundLighten).toString(),
       contrast: palette?.success?.contrast || PALETTE.white,
+    },
+    light: {
+      main: lightColorMain,
+      dark: palette?.light?.dark || Color(lightColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.light?.light || Color(lightColorMain).lighten(ratio.backgroundLighten).toString(),
+      contrast: palette?.light?.contrast || PALETTE.dark,
+    },
+    dark: {
+      main: darkColorMain,
+      dark: palette?.dark?.dark || Color(darkColorMain).darken(ratio.backgroundDarken).toString(),
+      light: palette?.dark?.light || Color(darkColorMain).lighten(ratio.backgroundLighten).toString(),
+      contrast: palette?.dark?.contrast || PALETTE.light,
     },
   };
 };

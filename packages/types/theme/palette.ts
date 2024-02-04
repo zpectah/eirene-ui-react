@@ -91,6 +91,8 @@ export interface ThemePalette {
   warning: ThemePaletteCluster;
   info: ThemePaletteCluster;
   success: ThemePaletteCluster;
+  dark: ThemePaletteCluster;
+  light: ThemePaletteCluster;
   inverted: ThemePaletteCluster;
   getContrastColor: (primary: string, secondary: string) => string;
   getLightenColor: (color: string, ratio: number) => string;

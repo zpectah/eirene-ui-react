@@ -33,6 +33,12 @@ const Playground = () => {
             <Button variant="text" color="error">
               Button
             </Button>
+            <Button variant="text" color="light">
+              Button
+            </Button>
+            <Button variant="text" color="dark">
+              Button
+            </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
             <Button variant="outlined" color="primary">
@@ -56,6 +62,12 @@ const Playground = () => {
             <Button variant="outlined" color="error">
               Button
             </Button>
+            <Button variant="outlined" color="light">
+              Button
+            </Button>
+            <Button variant="outlined" color="dark">
+              Button
+            </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
             <Button variant="contained" color="primary">
@@ -77,6 +89,12 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="contained" color="error">
+              Button
+            </Button>
+            <Button variant="contained" color="light">
+              Button
+            </Button>
+            <Button variant="contained" color="dark">
               Button
             </Button>
           </div>
@@ -125,6 +143,12 @@ const Playground = () => {
             <Button variant="text" color="error" isDisabled>
               Button
             </Button>
+            <Button variant="text" color="light" isDisabled>
+              Button
+            </Button>
+            <Button variant="text" color="dark" isDisabled>
+              Button
+            </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
             <Button variant="outlined" color="primary" isDisabled>
@@ -148,6 +172,12 @@ const Playground = () => {
             <Button variant="outlined" color="error" isDisabled>
               Button
             </Button>
+            <Button variant="outlined" color="light" isDisabled>
+              Button
+            </Button>
+            <Button variant="outlined" color="dark" isDisabled>
+              Button
+            </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
             <Button variant="contained" color="primary" isDisabled>
@@ -169,6 +199,12 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="contained" color="error" isDisabled>
+              Button
+            </Button>
+            <Button variant="contained" color="light" isDisabled>
+              Button
+            </Button>
+            <Button variant="contained" color="dark" isDisabled>
               Button
             </Button>
           </div>
@@ -217,7 +253,13 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="text" color="error" size="large">
-              Button with long text
+              Button
+            </Button>
+            <Button variant="text" color="light" size="large">
+              Button
+            </Button>
+            <Button variant="text" color="dark" size="large">
+              Button
             </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
@@ -240,7 +282,13 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="outlined" color="error" size="large">
-              Button with long text
+              Button
+            </Button>
+            <Button variant="outlined" color="light" size="large">
+              Button
+            </Button>
+            <Button variant="outlined" color="dark" size="large">
+              Button
             </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
@@ -263,7 +311,13 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="contained" color="error" size="large">
-              Button with long text
+              Button
+            </Button>
+            <Button variant="contained" color="light" size="large">
+              Button
+            </Button>
+            <Button variant="contained" color="dark" size="large">
+              Button
             </Button>
           </div>
         </Section>
@@ -309,7 +363,13 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="text" color="error" isDisabled size="large">
-              Button with long text
+              Button
+            </Button>
+            <Button variant="text" color="light" isDisabled size="large">
+              Button
+            </Button>
+            <Button variant="text" color="dark" isDisabled size="large">
+              Button
             </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
@@ -332,7 +392,13 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="outlined" color="error" isDisabled size="large">
-              Button with long text
+              Button
+            </Button>
+            <Button variant="outlined" color="light" isDisabled size="large">
+              Button
+            </Button>
+            <Button variant="outlined" color="dark" isDisabled size="large">
+              Button
             </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
@@ -355,7 +421,13 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="contained" color="error" isDisabled size="large">
-              Button with long text
+              Button
+            </Button>
+            <Button variant="contained" color="light" isDisabled size="large">
+              Button
+            </Button>
+            <Button variant="contained" color="dark" isDisabled size="large">
+              Button
             </Button>
           </div>
         </Section>
@@ -405,6 +477,12 @@ const Playground = () => {
             <Button variant="text" color="error" size="small">
               Button
             </Button>
+            <Button variant="text" color="light" size="small">
+              Button
+            </Button>
+            <Button variant="text" color="dark" size="small">
+              Button
+            </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
             <Button variant="outlined" color="primary" size="small">
@@ -428,6 +506,12 @@ const Playground = () => {
             <Button variant="outlined" color="error" size="small">
               Button
             </Button>
+            <Button variant="outlined" color="light" size="small">
+              Button
+            </Button>
+            <Button variant="outlined" color="dark" size="small">
+              Button
+            </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
             <Button variant="contained" color="primary" size="small">
@@ -449,6 +533,12 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="contained" color="error" size="small">
+              Button
+            </Button>
+            <Button variant="contained" color="light" size="small">
+              Button
+            </Button>
+            <Button variant="contained" color="dark" size="small">
               Button
             </Button>
           </div>
@@ -497,6 +587,12 @@ const Playground = () => {
             <Button variant="text" color="error" isDisabled size="small">
               Button
             </Button>
+            <Button variant="text" color="light" isDisabled size="small">
+              Button
+            </Button>
+            <Button variant="text" color="dark" isDisabled size="small">
+              Button
+            </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
             <Button variant="outlined" color="primary" isDisabled size="small">
@@ -520,6 +616,12 @@ const Playground = () => {
             <Button variant="outlined" color="error" isDisabled size="small">
               Button
             </Button>
+            <Button variant="outlined" color="light" isDisabled size="small">
+              Button
+            </Button>
+            <Button variant="outlined" color="dark" isDisabled size="small">
+              Button
+            </Button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'row', gap: theme.spacing.get(2) }}>
             <Button variant="contained" color="primary" isDisabled size="small">
@@ -541,6 +643,12 @@ const Playground = () => {
               Button
             </Button>
             <Button variant="contained" color="error" isDisabled size="small">
+              Button
+            </Button>
+            <Button variant="contained" color="light" isDisabled size="small">
+              Button
+            </Button>
+            <Button variant="contained" color="dark" isDisabled size="small">
               Button
             </Button>
           </div>

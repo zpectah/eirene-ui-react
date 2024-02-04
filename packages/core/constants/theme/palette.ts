@@ -1,5 +1,5 @@
 export const PALETTE = {
-  primary: 'hsl(261, 58%, 47%)',
+  primary: 'hsl(207, 85%, 50%)',
   secondary: 'hsl(324, 2.6%, 37.5%)',
   tertiary: 'hsl(199, 18.3%, 33.1%)',
 

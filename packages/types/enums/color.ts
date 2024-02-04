@@ -2,6 +2,11 @@ export enum baseColorKeys {
   primary = 'primary',
   secondary = 'secondary',
   tertiary = 'tertiary',
+}
+
+export enum exoticColorKeys {
+  light = 'light',
+  dark = 'dark',
   inverted = 'inverted',
 }
 
