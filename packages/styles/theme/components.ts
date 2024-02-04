@@ -21,5 +21,8 @@ export const createThemeComponents = (components?: DeepPartial<ThemeComponents>)
     Link: {
       root: components?.Link?.root,
     },
+    ModalDialog: {
+      root: components?.ModalDialog?.root,
+    },
   };
 };

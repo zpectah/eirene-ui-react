@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { uiComponentsListKeys } from 'types';
 import { Container } from 'components';
 import { routes } from '../../config';
-import { ButtonView, ContainerView, StackView, LinkView, TypographyView } from './views';
+import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalDialogView } from './views';
 
 const Components = () => {
   const { id } = useParams();
@@ -34,6 +34,11 @@ const Components = () => {
       label: 'Typography',
       path: routes.components.routes.typography,
     },
+    {
+      key: 6,
+      label: 'Modal Dialog',
+      path: routes.components.routes['modal-dialog'],
+    },
   ];
 
   const renderView = useMemo(() => {
@@ -52,6 +57,9 @@ const Components = () => {
 
       case uiComponentsListKeys.typography:
         return <TypographyView />;
+
+      case uiComponentsListKeys['modal-dialog']:
+        return <ModalDialogView />;
 
       case undefined:
       default:

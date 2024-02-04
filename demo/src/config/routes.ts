@@ -18,6 +18,7 @@ export const routes = {
       container: `${componentsRootPath}/${uiComponentsListKeys.container}`,
       stack: `${componentsRootPath}/${uiComponentsListKeys.stack}`,
       typography: `${componentsRootPath}/${uiComponentsListKeys.typography}`,
+      'modal-dialog': `${componentsRootPath}/${uiComponentsListKeys['modal-dialog']}`,
     },
   },
   customization: {
