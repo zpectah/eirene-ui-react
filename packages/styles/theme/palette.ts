@@ -12,8 +12,6 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   const warningColorMain = palette?.warning?.main || PALETTE.warning;
   const infoColorMain = palette?.info?.main || PALETTE.info;
   const successColorMain = palette?.success?.main || PALETTE.success;
-  const lightColorMain = palette?.success?.light || PALETTE.light;
-  const darkColorMain = palette?.success?.dark || PALETTE.dark;
 
   const utils = {
     getContrastColor: (primary: string, secondary: string) => Color(primary).contrast(Color(secondary)).toString(),
@@ -58,6 +56,9 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     90: Color(common.grey).lighten(0.1).toString(),
     100: common.grey,
   };
+
+  const lightColorMain = palette?.light?.main || common.light;
+  const darkColorMain = palette?.dark?.main || common.dark;
 
   const ratio = getRatio(palette?.ratio);
 

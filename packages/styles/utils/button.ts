@@ -63,9 +63,9 @@ export const getContainedButtonVariant = (
           borderColor: bgDisabled,
         }
       : {
+          color: isLightMode ? Color(bgDisabled).darken(0.25).toString() : Color(bgDisabled).lighten(0.25).toString(),
           backgroundColor: bgDisabled,
           borderColor: 'transparent',
-          textShadow: `0 1px .25rem ${bgDisabled}`,
         },
   };
 };
