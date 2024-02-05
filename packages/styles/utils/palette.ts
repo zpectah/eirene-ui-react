@@ -72,10 +72,16 @@ export const getThemePaletteProps = (mode: ThemeMode, palette?: DeepPartial<Them
               .toString(),
         },
         inverted: {
-          main: backgroundColor,
+          main: palette?.inverted?.main || backgroundColor,
           dark: palette?.inverted?.dark || Color(backgroundColor).darken(ratio.backgroundDarken).toString(),
           light: palette?.inverted?.light || Color(backgroundColor).lighten(ratio.backgroundLighten).toString(),
           contrast: palette?.inverted?.contrast || PALETTE.light,
+        },
+        neutral: {
+          main: palette?.neutral?.main || textColor,
+          dark: palette?.neutral?.dark || Color(textColor).darken(ratio.backgroundDarken).toString(),
+          light: palette?.neutral?.light || Color(textColor).lighten(ratio.backgroundLighten).toString(),
+          contrast: palette?.neutral?.contrast || PALETTE.dark,
         },
       };
 
@@ -107,10 +113,16 @@ export const getThemePaletteProps = (mode: ThemeMode, palette?: DeepPartial<Them
               .toString(),
         },
         inverted: {
-          main: backgroundColor,
+          main: palette?.inverted?.main || backgroundColor,
           dark: palette?.inverted?.dark || Color(backgroundColor).darken(ratio.backgroundDarken).toString(),
           light: palette?.inverted?.light || Color(backgroundColor).lighten(ratio.backgroundLighten).toString(),
           contrast: palette?.inverted?.contrast || PALETTE.dark,
+        },
+        neutral: {
+          main: palette?.neutral?.main || textColor,
+          dark: palette?.neutral?.dark || Color(textColor).darken(ratio.backgroundDarken).toString(),
+          light: palette?.neutral?.light || Color(textColor).lighten(ratio.backgroundLighten).toString(),
+          contrast: palette?.neutral?.contrast || PALETTE.light,
         },
       };
   }

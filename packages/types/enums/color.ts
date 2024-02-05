@@ -8,6 +8,7 @@ export enum exoticColorKeys {
   light = 'light',
   dark = 'dark',
   inverted = 'inverted',
+  neutral = 'neutral',
 }
 
 export enum emotionColorKeys {
