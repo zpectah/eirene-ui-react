@@ -1,43 +1,45 @@
 import { uiComponentsListKeys } from 'types';
-import { customizationRouteKeys, usageRouteKeys } from '../enums';
+import { customizationRouteKeys, getStartedRouteKeys } from '../enums';
 
-const componentsRootPath = '/components';
-const customizationRootPath = '/customization';
-const usageRootPath = '/usage';
+const getStartedRootPrefix = 'get-started';
+const componentsRootPrefix = 'components';
+const customizationRootPrefix = 'customization';
 
 export const routes = {
   welcome: {
     root: '/',
     route: '/',
   },
-  components: {
-    root: `${componentsRootPath}/${uiComponentsListKeys.button}`,
-    route: 'components/*',
+  getStarted: {
+    root: `/${getStartedRootPrefix}/${getStartedRouteKeys.overview}`,
+    route: `${getStartedRootPrefix}/*`,
     routes: {
-      button: `${componentsRootPath}/${uiComponentsListKeys.button}`,
-      link: `${componentsRootPath}/${uiComponentsListKeys.link}`,
-      container: `${componentsRootPath}/${uiComponentsListKeys.container}`,
-      stack: `${componentsRootPath}/${uiComponentsListKeys.stack}`,
-      typography: `${componentsRootPath}/${uiComponentsListKeys.typography}`,
-      'modal-dialog': `${componentsRootPath}/${uiComponentsListKeys['modal-dialog']}`,
+      overview: `/${getStartedRootPrefix}/${getStartedRouteKeys.overview}`,
+      installation: `/${getStartedRootPrefix}/${getStartedRouteKeys.installation}`,
+      usage: `/${getStartedRootPrefix}/${getStartedRouteKeys.usage}`,
+    },
+  },
+  components: {
+    root: `/${componentsRootPrefix}/${uiComponentsListKeys.button}`,
+    route: `${componentsRootPrefix}/*`,
+    routes: {
+      button: `/${componentsRootPrefix}/${uiComponentsListKeys.button}`,
+      link: `/${componentsRootPrefix}/${uiComponentsListKeys.link}`,
+      container: `/${componentsRootPrefix}/${uiComponentsListKeys.container}`,
+      stack: `/${componentsRootPrefix}/${uiComponentsListKeys.stack}`,
+      typography: `/${componentsRootPrefix}/${uiComponentsListKeys.typography}`,
+      'modal-dialog': `/${componentsRootPrefix}/${uiComponentsListKeys['modal-dialog']}`,
     },
   },
   customization: {
-    root: `${customizationRootPath}/${customizationRouteKeys.theme}`,
-    route: 'customization/*',
+    root: `/${customizationRootPrefix}/${customizationRouteKeys.theme}`,
+    route: `${customizationRootPrefix}/*`,
     routes: {
-      theme: `${customizationRootPath}/${customizationRouteKeys.theme}`,
-      palette: `${customizationRootPath}/${customizationRouteKeys.palette}`,
-      typography: `${customizationRootPath}/${customizationRouteKeys.typography}`,
-      breakpoints: `${customizationRootPath}/${customizationRouteKeys.breakpoints}`,
-      components: `${customizationRootPath}/${customizationRouteKeys.components}`,
-    },
-  },
-  usage: {
-    root: `${usageRootPath}/${usageRouteKeys.installation}`,
-    route: 'usage/*',
-    routes: {
-      installation: `${usageRootPath}/${usageRouteKeys.installation}`,
+      theme: `/${customizationRootPrefix}/${customizationRouteKeys.theme}`,
+      palette: `/${customizationRootPrefix}/${customizationRouteKeys.palette}`,
+      typography: `/${customizationRootPrefix}/${customizationRouteKeys.typography}`,
+      breakpoints: `/${customizationRootPrefix}/${customizationRouteKeys.breakpoints}`,
+      components: `/${customizationRootPrefix}/${customizationRouteKeys.components}`,
     },
   },
 };

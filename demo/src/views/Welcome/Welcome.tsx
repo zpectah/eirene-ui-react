@@ -30,10 +30,10 @@ const Welcome = () => {
             <Typography>{meta.description}</Typography>
           </Stack>
           <Stack gap={4}>
-            <Button as={Link} to={routes.components.root} size="large">
-              Try it yourself
+            <Button as={Link} to={routes.getStarted.root} size="large">
+              Get started
             </Button>
-            <Button as="a" href={meta.gitHubRepository} target="_blank" variant="outlined" color="neutral" size="large">
+            <Button as="a" href={meta.gitHubRepository} target="_blank" variant="text" color="neutral" size="large">
               Github
             </Button>
           </Stack>

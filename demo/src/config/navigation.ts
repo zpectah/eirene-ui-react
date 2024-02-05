@@ -3,18 +3,18 @@ import { routes } from './routes';
 export const PRIMARY_NAVIGATION = [
   {
     key: 1,
+    label: 'Get started',
+    path: routes.getStarted.root,
+  },
+  {
+    key: 2,
     label: 'Components',
     path: routes.components.root,
   },
   {
-    key: 2,
+    key: 3,
     label: 'Customization',
     path: routes.customization.root,
-  },
-  {
-    key: 3,
-    label: 'Usage',
-    path: routes.usage.root,
   },
 ];
 
@@ -33,6 +33,24 @@ export const DETAIL_NAVIGATION = [
     key: 3,
     label: 'Playground',
     panel: '/playground',
+  },
+];
+
+export const GET_STARTED_SIDEBAR_NAVIGATION = [
+  {
+    key: 1,
+    label: 'Overview',
+    path: routes.getStarted.routes.overview,
+  },
+  {
+    key: 2,
+    label: 'Installation',
+    path: routes.getStarted.routes.installation,
+  },
+  {
+    key: 3,
+    label: 'Usage',
+    path: routes.getStarted.routes.usage,
   },
 ];
 
@@ -94,13 +112,5 @@ export const CUSTOMIZATION_SIDEBAR_NAVIGATION = [
     key: 5,
     label: 'Components',
     path: routes.customization.routes.components,
-  },
-];
-
-export const USAGE_SIDEBAR_NAVIGATION = [
-  {
-    key: 1,
-    label: 'Installation',
-    path: routes.usage.routes.installation,
   },
 ];
