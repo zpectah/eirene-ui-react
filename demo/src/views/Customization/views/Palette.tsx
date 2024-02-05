@@ -7,7 +7,10 @@ const PaletteView = () => {
   const { theme } = useUiContext();
 
   return (
-    <View title="Palette">
+    <View
+      title="Palette"
+      subtitle="Tellus ut hendrerit, fusce ante sapien sapien tincidunt aliquet sollicitudin proin, nisi commodo convallis sagittis lectus quis. Augue augue, nulla sollicitudin ac hendrerit dui aliquet dui et, vel arcu faucibus non consectetur. "
+    >
       <Article>
         <Section title="Default palette">
           <div

@@ -7,7 +7,10 @@ const TypographyView = () => {
   const { theme } = useUiContext();
 
   return (
-    <View title="Typography">
+    <View
+      title="Typography"
+      subtitle="Condimentum at sem, fusce ante turpis venenatis donec bibendum volutpat rutrum, vitae ut libero odio leo. Ultrices auctor, libero fusce vitae cursus tellus iaculis nullam integer, nec ullamcorper fermentum ligula."
+    >
       <Article>
         <Section title="default">
           <div

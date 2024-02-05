@@ -66,7 +66,7 @@ const ViewLayout = (props: ViewLayoutProps) => {
         }}
       >
         <div style={{ width: '100%', height: 'auto' }}>
-          <Container>
+          <Container xOffset={3}>
             <Outlet />
             <Footer />
           </Container>
