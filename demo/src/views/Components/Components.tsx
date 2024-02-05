@@ -8,8 +8,7 @@ const Components = () => {
   return (
     <Routes>
       <Route path="/" element={<ViewLayout items={COMPONENTS_SIDEBAR_NAVIGATION} />}>
-        <Route index element={<div>some components index view </div>} />
-        {/* ... */}
+        {/*<Route index element={<div>some components index view </div>} />*/}
         <Route path="/button/*" element={<ButtonView />} />
         <Route path="/link/*" element={<LinkView />} />
         <Route path="/container/*" element={<ContainerView />} />

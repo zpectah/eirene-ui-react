@@ -2,7 +2,7 @@ import React from 'react';
 import { Stack } from 'components';
 import { Article, Section } from '../../../../components';
 
-const Preview = () => {
+const PreviewView = () => {
   return (
     <Article>
       <Section>
@@ -18,4 +18,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default PreviewView;

@@ -1,18 +1,20 @@
+import { routes } from './routes';
+
 export const PRIMARY_NAVIGATION = [
   {
     key: 1,
     label: 'Components',
-    path: `/components/button`,
+    path: routes.components.root,
   },
   {
     key: 2,
     label: 'Customization',
-    path: `/customization/theme`,
+    path: routes.customization.root,
   },
   {
     key: 3,
     label: 'Usage',
-    path: `/usage/installation`,
+    path: routes.usage.root,
   },
 ];
 
@@ -38,60 +40,60 @@ export const COMPONENTS_SIDEBAR_NAVIGATION = [
   {
     key: 1,
     label: 'Button',
-    path: `/components/button`,
+    path: routes.components.routes.button,
   },
   {
     key: 2,
     label: 'Link',
-    path: `/components/link`,
+    path: routes.components.routes.link,
   },
   {
     key: 3,
     label: 'Container',
-    path: `/components/container`,
+    path: routes.components.routes.container,
   },
   {
     key: 4,
     label: 'Stack',
-    path: `/components/stack`,
+    path: routes.components.routes.stack,
   },
   {
     key: 5,
     label: 'Typography',
-    path: `/components/typography`,
+    path: routes.components.routes.typography,
   },
   {
     key: 6,
     label: 'Modal Dialog',
-    path: `/components/modal-dialog`,
+    path: routes.components.routes['modal-dialog'],
   },
 ];
 
 export const CUSTOMIZATION_SIDEBAR_NAVIGATION = [
   {
     key: 1,
-    label: 'Breakpoints',
-    path: `/customization/breakpoints`,
+    label: 'Theme',
+    path: routes.customization.routes.theme,
   },
   {
     key: 2,
-    label: 'Components',
-    path: `/customization/components`,
+    label: 'Palette',
+    path: routes.customization.routes.palette,
   },
   {
     key: 3,
-    label: 'Palette',
-    path: `/customization/palette`,
+    label: 'Breakpoints',
+    path: routes.customization.routes.breakpoints,
   },
   {
     key: 4,
-    label: 'Theme',
-    path: `/customization/theme`,
+    label: 'Typography',
+    path: routes.customization.routes.typography,
   },
   {
     key: 5,
-    label: 'Typography',
-    path: `/customization/typography`,
+    label: 'Components',
+    path: routes.customization.routes.components,
   },
 ];
 
@@ -99,6 +101,6 @@ export const USAGE_SIDEBAR_NAVIGATION = [
   {
     key: 1,
     label: 'Installation',
-    path: `/usage/installation`,
+    path: routes.usage.routes.installation,
   },
 ];

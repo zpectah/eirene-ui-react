@@ -1,8 +1,8 @@
 import React from 'react';
 import { Article } from '../../../../components';
 
-const Documentation = () => {
+const ApiView = () => {
   return <Article>TypographyDocumentation</Article>;
 };
 
-export default Documentation;
+export default ApiView;

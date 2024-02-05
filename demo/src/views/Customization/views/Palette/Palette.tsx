@@ -26,8 +26,8 @@ const PaletteView = () => {
             >
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -39,8 +39,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -52,8 +52,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -65,8 +65,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -78,8 +78,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -91,8 +91,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -104,8 +104,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -117,8 +117,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -127,6 +127,19 @@ const PaletteView = () => {
                 }}
               >
                 inverted
+              </div>
+              <div
+                style={{
+                  width: '75px',
+                  height: '75px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: theme.palette.neutral.main,
+                  color: theme.palette.neutral.contrast,
+                }}
+              >
+                neutral
               </div>
             </div>
 
@@ -139,8 +152,8 @@ const PaletteView = () => {
             >
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -152,8 +165,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -165,8 +178,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -178,8 +191,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -191,8 +204,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -204,8 +217,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -217,8 +230,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -230,8 +243,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -240,6 +253,19 @@ const PaletteView = () => {
                 }}
               >
                 inverted
+              </div>
+              <div
+                style={{
+                  width: '75px',
+                  height: '75px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: theme.palette.neutral.dark,
+                  color: theme.palette.neutral.contrast,
+                }}
+              >
+                neutral
               </div>
             </div>
 
@@ -252,8 +278,8 @@ const PaletteView = () => {
             >
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -265,8 +291,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -278,8 +304,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -291,8 +317,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -304,8 +330,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -317,8 +343,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -330,8 +356,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -343,8 +369,8 @@ const PaletteView = () => {
               </div>
               <div
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '75px',
+                  height: '75px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -353,6 +379,19 @@ const PaletteView = () => {
                 }}
               >
                 inverted
+              </div>
+              <div
+                style={{
+                  width: '75px',
+                  height: '75px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: theme.palette.neutral.light,
+                  color: theme.palette.neutral.contrast,
+                }}
+              >
+                neutral
               </div>
             </div>
           </div>

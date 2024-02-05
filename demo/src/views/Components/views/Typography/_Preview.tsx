@@ -2,7 +2,7 @@ import React from 'react';
 import { Article, Section } from '../../../../components';
 import { Typography } from 'components';
 
-const Preview = () => {
+const PreviewView = () => {
   return (
     <Article>
       <Section title="Typography default">
@@ -57,4 +57,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default PreviewView;

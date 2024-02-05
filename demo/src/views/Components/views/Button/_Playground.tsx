@@ -3,7 +3,7 @@ import { useUiContext } from 'styles';
 import { Button } from 'components';
 import { Article, Section } from '../../../../components';
 
-const Playground = () => {
+const PlaygroundView = () => {
   const { theme } = useUiContext();
 
   return (
@@ -733,4 +733,4 @@ const Playground = () => {
   );
 };
 
-export default Playground;
+export default PlaygroundView;

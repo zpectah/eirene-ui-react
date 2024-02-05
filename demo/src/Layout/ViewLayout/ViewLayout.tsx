@@ -66,7 +66,7 @@ const ViewLayout = (props: ViewLayoutProps) => {
         }}
       >
         <div style={{ width: '100%', height: 'auto' }}>
-          <Container isFluid>
+          <Container>
             <Outlet />
             <Footer />
           </Container>

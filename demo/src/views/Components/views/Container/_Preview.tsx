@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from 'components';
 import { Article, Section } from '../../../../components';
 
-const Preview = () => {
+const PreviewView = () => {
   // const { theme } = useUiContext();
 
   return (
@@ -20,4 +20,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default PreviewView;

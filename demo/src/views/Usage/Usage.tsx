@@ -8,8 +8,7 @@ const Usage = () => {
   return (
     <Routes>
       <Route path="/" element={<ViewLayout items={USAGE_SIDEBAR_NAVIGATION} />}>
-        <Route index element={<div>some usage index view </div>} />
-        {/* ... */}
+        {/*<Route index element={<div>some usage index view </div>} />*/}
         <Route path="/installation/*" element={<InstallationView />} />
       </Route>
     </Routes>

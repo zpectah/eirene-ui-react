@@ -3,7 +3,7 @@ import { useUiContext } from 'styles';
 import { Button } from 'components';
 import { Article, Section } from '../../../../components';
 
-const Preview = () => {
+const PreviewView = () => {
   const { theme } = useUiContext();
 
   return (
@@ -178,4 +178,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default PreviewView;

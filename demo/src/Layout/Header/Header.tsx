@@ -37,7 +37,9 @@ const Header = () => {
           ))}
         </div>
         <div>
-          <Button onClick={toggleThemeMode}>Toggle theme [{theme.palette.mode}]</Button>
+          <Button variant="outlined" color="light" onClick={toggleThemeMode}>
+            Toggle theme [{theme.palette.mode}]
+          </Button>
         </div>
       </div>
     </header>

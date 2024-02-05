@@ -1,8 +1,8 @@
 import React from 'react';
 import { Article } from '../../../../components';
 
-const Playground = () => {
+const PlaygroundView = () => {
   return <Article>TypographyPlayground</Article>;
 };
 
-export default Playground;
+export default PlaygroundView;

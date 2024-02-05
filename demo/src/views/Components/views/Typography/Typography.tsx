@@ -1,9 +1,9 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { DetailLayout } from '../../components/index';
 import Preview from './_Preview';
 import Api from './_Api';
 import Playground from './_Playground';
-import { Route, Routes } from 'react-router-dom';
 
 const TypographyView = () => (
   <Routes>

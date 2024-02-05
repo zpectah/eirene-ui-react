@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'components';
 import { Article, Section } from '../../../../components';
 
-const Preview = () => {
+const PreviewView = () => {
   return (
     <Article>
       <Section title="Default link">
@@ -38,4 +38,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default PreviewView;

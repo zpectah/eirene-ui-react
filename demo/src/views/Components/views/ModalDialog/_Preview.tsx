@@ -2,7 +2,7 @@ import React from 'react';
 // import { useUiContext } from 'styles';
 import { Article, Section } from '../../../../components';
 
-const Preview = () => {
+const PreviewView = () => {
   // const { theme } = useUiContext();
 
   return (
@@ -12,4 +12,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default PreviewView;

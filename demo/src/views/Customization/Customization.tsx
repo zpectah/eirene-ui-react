@@ -8,8 +8,7 @@ const Customization = () => {
   return (
     <Routes>
       <Route path="/" element={<ViewLayout items={CUSTOMIZATION_SIDEBAR_NAVIGATION} />}>
-        <Route index element={<div>some customization index view </div>} />
-        {/* ... */}
+        {/*<Route index element={<div>some customization index view </div>} />*/}
         <Route path="/theme/*" element={<ThemeView />} />
         <Route path="/breakpoints/*" element={<BreakpointsView />} />
         <Route path="/palette/*" element={<PaletteView />} />
