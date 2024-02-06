@@ -5,16 +5,19 @@ export const PRIMARY_NAVIGATION = [
     key: 1,
     label: 'Get started',
     path: routes.getStarted.root,
+    prefix: routes.getStarted.rootPrefix,
   },
   {
     key: 2,
     label: 'Components',
     path: routes.components.root,
+    prefix: routes.components.rootPrefix,
   },
   {
     key: 3,
     label: 'Customization',
     path: routes.customization.root,
+    prefix: routes.customization.rootPrefix,
   },
 ];
 

@@ -4,7 +4,7 @@ import { useUiContext } from 'styles';
 import { Container } from 'components';
 import { HEADER_DESKTOP_HEIGHT, SIDEBAR_DESKTOP_WIDTH } from '../../constants';
 import { Footer } from '../Footer';
-import { SidebarNavigation, SidebarNavigationItemProps } from '../SidebarNavigation';
+import { SidebarNavigation, SidebarNavigationItemProps } from '../Sidebar';
 
 export interface ViewLayoutProps {
   sidebar?: ReactNode;

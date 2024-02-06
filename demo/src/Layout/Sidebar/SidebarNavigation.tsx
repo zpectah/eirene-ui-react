@@ -26,7 +26,7 @@ const SidebarNavigation = (props: SidebarNavigationProps) => {
           to={path}
           style={{
             padding: theme.spacing.get(1),
-            color: pathname === path ? theme.palette.primary.main : theme.palette.dark.main,
+            color: pathname === path ? theme.palette.primary.main : theme.palette.neutral.main,
           }}
         >
           {label}

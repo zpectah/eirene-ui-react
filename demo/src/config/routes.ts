@@ -11,6 +11,7 @@ export const routes = {
     route: '/',
   },
   getStarted: {
+    rootPrefix: `/${getStartedRootPrefix}`,
     root: `/${getStartedRootPrefix}/${getStartedRouteKeys.overview}`,
     route: `${getStartedRootPrefix}/*`,
     routes: {
@@ -20,6 +21,7 @@ export const routes = {
     },
   },
   components: {
+    rootPrefix: `/${componentsRootPrefix}`,
     root: `/${componentsRootPrefix}/${uiComponentsListKeys.button}`,
     route: `${componentsRootPrefix}/*`,
     routes: {
@@ -32,6 +34,7 @@ export const routes = {
     },
   },
   customization: {
+    rootPrefix: `/${customizationRootPrefix}`,
     root: `/${customizationRootPrefix}/${customizationRouteKeys.theme}`,
     route: `${customizationRootPrefix}/*`,
     routes: {
