@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { COMPONENTS_SIDEBAR_NAVIGATION } from '../../config';
+import { COMPONENTS_SIDEBAR_NAVIGATION } from '../../constants';
 import { ViewLayout } from '../../Layout';
 import { ButtonView, ContainerView, StackView, LinkView, TypographyView, ModalDialogView } from './views';
 

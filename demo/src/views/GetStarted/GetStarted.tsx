@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { GET_STARTED_SIDEBAR_NAVIGATION } from '../../config';
+import { GET_STARTED_SIDEBAR_NAVIGATION } from '../../constants';
 import { ViewLayout } from '../../Layout';
 import { OverviewView, InstallationView, UsageView } from './views';
 

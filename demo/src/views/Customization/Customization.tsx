@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { CUSTOMIZATION_SIDEBAR_NAVIGATION } from '../../config';
+import { CUSTOMIZATION_SIDEBAR_NAVIGATION } from '../../constants';
 import { ViewLayout } from '../../Layout';
 import { ThemeView, BreakpointsView, PaletteView, TypographyView, ComponentsView } from './views';
 

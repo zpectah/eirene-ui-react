@@ -501,8 +501,37 @@ const PaletteView = () => {
               style={{
                 width: '2rem',
                 height: '2rem',
+                backgroundColor: theme.palette.grey[0],
+                border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[0]),
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              0
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
+                backgroundColor: theme.palette.grey[5],
+                border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[5]),
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              5
+            </div>
+            <div
+              style={{
+                width: '2rem',
+                height: '2rem',
                 backgroundColor: theme.palette.grey[10],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[10]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -516,6 +545,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[20],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[20]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -529,6 +559,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[30],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[30]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -542,6 +573,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[40],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[40]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -555,6 +587,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[50],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[50]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -568,6 +601,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[60],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[60]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -581,6 +615,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[70],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[70]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -594,6 +629,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[80],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[80]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -607,6 +643,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[90],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[90]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -620,6 +657,7 @@ const PaletteView = () => {
                 height: '2rem',
                 backgroundColor: theme.palette.grey[100],
                 border: `1px solid ${theme.palette.shape.border}`,
+                color: theme.palette.utils.getNegativeColor(theme.palette.grey[100]),
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -629,7 +667,6 @@ const PaletteView = () => {
             </div>
           </div>
         </Section>
-
         <Section title="Common">
           <div>...todo</div>
         </Section>

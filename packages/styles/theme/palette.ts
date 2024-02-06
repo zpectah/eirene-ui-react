@@ -3,6 +3,16 @@ import { DeepPartial, ThemePalette, themeModeKeys } from 'types';
 import { PALETTE } from 'core';
 import { getRatio, getThemePaletteProps } from '../utils';
 
+const getLightenColor = (color: string, ratio: number) => Color(color).lighten(ratio).toString();
+const getDarkenColor = (color: string, ratio: number) => Color(color).darken(ratio).toString();
+const getNegativeColor = (color: string) => Color(color).negate().toString();
+const getGreyscaleColor = (color: string) => Color(color).grayscale().toString();
+const getWhitenColor = (color: string, ratio: number) => Color(color).whiten(ratio).toString();
+const getBlackenColor = (color: string, ratio: number) => Color(color).blacken(ratio).toString();
+const getAlphaColor = (color: string, ratio: number) => Color(color).alpha(ratio).toString();
+const isColorLight = (color: string) => Color(color).isLight();
+const isColorDark = (color: string) => Color(color).isDark();
+
 export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePalette => {
   const mode = palette?.mode || themeModeKeys.light;
   const primaryColorMain = palette?.primary?.main || PALETTE.primary;
@@ -14,9 +24,15 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   const successColorMain = palette?.success?.main || PALETTE.success;
 
   const utils = {
-    getContrastColor: (primary: string, secondary: string) => Color(primary).contrast(Color(secondary)).toString(),
-    getLightenColor: (color: string, ratio: number) => Color(color).lighten(ratio).toString(),
-    getDarkenColor: (color: string, ratio: number) => Color(color).darken(ratio).toString(),
+    getLightenColor,
+    getDarkenColor,
+    getNegativeColor,
+    getGreyscaleColor,
+    getWhitenColor,
+    getBlackenColor,
+    getAlphaColor,
+    isColorLight,
+    isColorDark,
   };
 
   const common = {
@@ -44,18 +60,6 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     brown: palette?.common?.brown || PALETTE.brown,
     blueGrey: palette?.common?.blueGrey || PALETTE.blueGrey,
   };
-  const grey = {
-    10: Color(common.grey).lighten(0.9).toString(),
-    20: Color(common.grey).lighten(0.8).toString(),
-    30: Color(common.grey).lighten(0.7).toString(),
-    40: Color(common.grey).lighten(0.6).toString(),
-    50: Color(common.grey).lighten(0.5).toString(),
-    60: Color(common.grey).lighten(0.4).toString(),
-    70: Color(common.grey).lighten(0.3).toString(),
-    80: Color(common.grey).lighten(0.2).toString(),
-    90: Color(common.grey).lighten(0.1).toString(),
-    100: common.grey,
-  };
 
   const lightColorMain = palette?.light?.main || common.light;
   const darkColorMain = palette?.dark?.main || common.dark;
@@ -68,9 +72,9 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     disabled: palette?.action?.disabled || PALETTE.muted,
   };
   const action = {
-    active: Color(_action.active).alpha(ratio.activeAlpha).toString(),
-    hover: Color(_action.hover).alpha(ratio.hoverAlpha).toString(),
-    disabled: Color(_action.disabled).alpha(ratio.disabledAlpha).toString(),
+    active: getAlphaColor(_action.active, ratio.activeAlpha),
+    hover: getAlphaColor(_action.hover, ratio.hoverAlpha),
+    disabled: getAlphaColor(_action.disabled, ratio.disabledAlpha),
   };
 
   const themePrimary = {
@@ -78,9 +82,8 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
     common,
     action,
     ratio,
-    grey,
   };
-  const themeSecondary = getThemePaletteProps(mode, {
+  const themeSecondary = getThemePaletteProps(mode, utils, {
     ...palette,
     ...themePrimary,
   });
@@ -88,59 +91,59 @@ export const createThemePalette = (palette?: DeepPartial<ThemePalette>): ThemePa
   return {
     ...themePrimary,
     ...themeSecondary,
-    ...utils,
+    utils,
     primary: {
       main: primaryColorMain,
-      dark: palette?.primary?.dark || Color(primaryColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.primary?.light || Color(primaryColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.primary?.dark || getDarkenColor(primaryColorMain, ratio.backgroundDarken),
+      light: palette?.primary?.light || getLightenColor(primaryColorMain, ratio.backgroundLighten),
       contrast: palette?.primary?.contrast || PALETTE.white,
     },
     secondary: {
       main: secondaryColorMain,
-      dark: palette?.secondary?.dark || Color(secondaryColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.secondary?.light || Color(secondaryColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.secondary?.dark || getDarkenColor(secondaryColorMain, ratio.backgroundDarken),
+      light: palette?.secondary?.light || getLightenColor(secondaryColorMain, ratio.backgroundLighten),
       contrast: palette?.secondary?.contrast || PALETTE.white,
     },
     tertiary: {
       main: tertiaryColorMain,
-      dark: palette?.tertiary?.dark || Color(tertiaryColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.tertiary?.light || Color(tertiaryColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.tertiary?.dark || getDarkenColor(tertiaryColorMain, ratio.backgroundDarken),
+      light: palette?.tertiary?.light || getLightenColor(tertiaryColorMain, ratio.backgroundLighten),
       contrast: palette?.tertiary?.contrast || PALETTE.white,
     },
     error: {
       main: errorColorMain,
-      dark: palette?.error?.dark || Color(errorColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.error?.light || Color(errorColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.error?.dark || getDarkenColor(errorColorMain, ratio.backgroundDarken),
+      light: palette?.error?.light || getLightenColor(errorColorMain, ratio.backgroundLighten),
       contrast: palette?.error?.contrast || PALETTE.white,
     },
     warning: {
       main: warningColorMain,
-      dark: palette?.warning?.dark || Color(warningColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.warning?.light || Color(warningColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.warning?.dark || getDarkenColor(warningColorMain, ratio.backgroundDarken),
+      light: palette?.warning?.light || getLightenColor(warningColorMain, ratio.backgroundLighten),
       contrast: palette?.warning?.contrast || PALETTE.white,
     },
     info: {
       main: infoColorMain,
-      dark: palette?.info?.dark || Color(infoColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.info?.light || Color(infoColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.info?.dark || getDarkenColor(infoColorMain, ratio.backgroundDarken),
+      light: palette?.info?.light || getLightenColor(infoColorMain, ratio.backgroundLighten),
       contrast: palette?.info?.contrast || PALETTE.white,
     },
     success: {
       main: successColorMain,
-      dark: palette?.success?.dark || Color(successColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.success?.light || Color(successColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.success?.dark || getDarkenColor(successColorMain, ratio.backgroundDarken),
+      light: palette?.success?.light || getLightenColor(successColorMain, ratio.backgroundLighten),
       contrast: palette?.success?.contrast || PALETTE.white,
     },
     light: {
       main: lightColorMain,
-      dark: palette?.light?.dark || Color(lightColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.light?.light || Color(lightColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.light?.dark || getDarkenColor(lightColorMain, ratio.backgroundDarken),
+      light: palette?.light?.light || getLightenColor(lightColorMain, ratio.backgroundLighten),
       contrast: palette?.light?.contrast || PALETTE.dark,
     },
     dark: {
       main: darkColorMain,
-      dark: palette?.dark?.dark || Color(darkColorMain).darken(ratio.backgroundDarken).toString(),
-      light: palette?.dark?.light || Color(darkColorMain).lighten(ratio.backgroundLighten).toString(),
+      dark: palette?.dark?.dark || getDarkenColor(darkColorMain, ratio.backgroundDarken).toString(),
+      light: palette?.dark?.light || getLightenColor(darkColorMain, ratio.backgroundLighten),
       contrast: palette?.dark?.contrast || PALETTE.light,
     },
   };

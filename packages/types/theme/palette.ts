@@ -53,6 +53,8 @@ export interface ThemePalette {
     blueGrey: string;
   };
   grey: {
+    0: string;
+    5: string;
     10: string;
     20: string;
     30: string;
@@ -96,7 +98,15 @@ export interface ThemePalette {
   light: ThemePaletteCluster;
   inverted: ThemePaletteCluster;
   neutral: ThemePaletteCluster;
-  getContrastColor: (primary: string, secondary: string) => string;
-  getLightenColor: (color: string, ratio: number) => string;
-  getDarkenColor: (color: string, ratio: number) => string;
+  utils: {
+    getNegativeColor: (color: string) => string;
+    getLightenColor: (color: string, ratio: number) => string;
+    getDarkenColor: (color: string, ratio: number) => string;
+    isColorLight: (color: string) => boolean;
+    isColorDark: (color: string) => boolean;
+    getGreyscaleColor: (color: string) => string;
+    getWhitenColor: (color: string, ratio: number) => string;
+    getBlackenColor: (color: string, ratio: number) => string;
+    getAlphaColor: (color: string, ratio: number) => string;
+  };
 }

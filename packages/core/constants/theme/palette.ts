@@ -53,3 +53,9 @@ export const PALETTE_RATIO = {
   disabledInvertedAlpha: 0.5,
   loadingLabelAlpha: 0.25,
 };
+
+export const PALETTE_RATIO_CORRECTION = {
+  darkBgSecondary: 4,
+  darkBgTertiary: 6,
+  lightBgTertiary: 1.75,
+};

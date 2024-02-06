@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useUiContext } from 'styles';
-import { PRIMARY_NAVIGATION } from '../../config';
+import { Button, Typography } from 'components';
+import { meta } from '../../config';
 import { HEADER_DESKTOP_HEIGHT } from '../../constants';
-import { Button } from 'components';
+import HeaderNavigation from './HeaderNavigation';
 
 const Header = () => {
   const { theme, toggleThemeMode } = useUiContext();
@@ -21,24 +22,20 @@ const Header = () => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: theme.palette.primary.dark,
-        color: theme.palette.primary.contrast,
+        backgroundColor: theme.palette.dark.dark,
+        color: theme.palette.dark.contrast,
       }}
     >
       <Link to="/" style={{ padding: '0 .25rem' }}>
-        <h1 style={{ ...theme.typography.h5 }}>Eirine UI</h1>
+        <Typography variant="h5" as="h1">
+          {meta.name}
+        </Typography>
       </Link>
       <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem', alignItems: 'center' }}>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}>
-          {PRIMARY_NAVIGATION.map((item) => (
-            <Link key={item.key} to={item.path}>
-              {item.label}
-            </Link>
-          ))}
-        </div>
+        <HeaderNavigation />
         <div>
           <Button variant="outlined" color="light" onClick={toggleThemeMode}>
-            Toggle theme [{theme.palette.mode}]
+            [{theme.palette.mode}]
           </Button>
         </div>
       </div>

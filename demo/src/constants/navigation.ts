@@ -1,4 +1,4 @@
-import { routes } from './routes';
+import { routes } from '../config';
 
 export const PRIMARY_NAVIGATION = [
   {
@@ -22,17 +22,17 @@ export const DETAIL_NAVIGATION = [
   {
     key: 1,
     label: 'Preview',
-    panel: '',
+    path: '',
   },
   {
     key: 2,
     label: 'API',
-    panel: '/api',
+    path: '/api',
   },
   {
     key: 3,
     label: 'Playground',
-    panel: '/playground',
+    path: '/playground',
   },
 ];
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useUiContext } from 'styles';
+import { meta } from '../../config';
 
 const Footer = () => {
   const { theme } = useUiContext();
@@ -18,7 +19,7 @@ const Footer = () => {
         ...theme.typography.caption,
       }}
     >
-      &copy; 2024 EirineUI - All rights reserved
+      &copy; {meta.copyrightYear} {meta.name} - All rights reserved
     </footer>
   );
 };

@@ -1,1 +1,2 @@
-export * from './style.ts';
+export * from './style';
+export * from './navigation';
